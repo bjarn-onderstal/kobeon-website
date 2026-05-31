@@ -1,0 +1,162 @@
+{
+  "_README": "Vul per slot in. Zet images in /public/screens/<map>/. status 'placeholder' = toon mock-fallback; 'live' = toon echte screenshot (vereist anonymized:true bij klantdata). Zie 'Kobeon - Screenshot Integration Brief v1.0.md'.",
+
+  "hero-primary": {
+    "frame": "browser",
+    "urlBar": "app.kobeon.nl",
+    "label": "Live dashboard",
+    "metric": "€100K bespaard/jaar",
+    "metricSub": "bij één klant",
+    "images": ["hero/hero-primary-1.png", "hero/hero-primary-2.png"],
+    "animation": "tour",
+    "cursor": true,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+  "hero-secondary": {
+    "frame": "phone",
+    "urlBar": "",
+    "label": "",
+    "metric": "MVP in 6 weken",
+    "metricSub": "",
+    "images": ["hero/hero-secondary-1.png"],
+    "animation": "kenburns",
+    "cursor": false,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+
+  "proces": {
+    "frame": "browser",
+    "urlBar": "",
+    "label": "Procesautomatisering",
+    "metric": "−62% doorlooptijd",
+    "metricSub": "",
+    "images": ["services/proces-1.png", "services/proces-2.png"],
+    "animation": "tour",
+    "cursor": false,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+  "agent": {
+    "frame": "browser",
+    "urlBar": "",
+    "label": "Agentic AI",
+    "metric": "40+ u/week terug",
+    "metricSub": "",
+    "images": ["services/agent-1.png"],
+    "animation": "kenburns",
+    "cursor": true,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+  "aidev": {
+    "frame": "browser",
+    "urlBar": "",
+    "label": "AI Development",
+    "metric": "94% accuraat",
+    "metricSub": "",
+    "images": ["services/aidev-1.png"],
+    "animation": "static",
+    "cursor": false,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+  "portal": {
+    "frame": "browser",
+    "urlBar": "portaal.klant.nl",
+    "label": "Portalen & dashboards",
+    "metric": "Realtime inzicht",
+    "metricSub": "",
+    "images": ["services/portal-1.png"],
+    "animation": "scroll",
+    "cursor": false,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+
+  "homezero": {
+    "frame": "browser",
+    "urlBar": "",
+    "label": "HomeZero",
+    "metric": "6 weken",
+    "metricSub": "naar livegang",
+    "images": ["cases/homezero-1.png"],
+    "animation": "kenburns",
+    "cursor": false,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+  "petjeaf": {
+    "frame": "browser",
+    "urlBar": "",
+    "label": "Petje af",
+    "metric": "250K+ kinderen",
+    "metricSub": "",
+    "images": ["cases/petjeaf-1.png", "cases/petjeaf-2.png"],
+    "animation": "tour",
+    "cursor": false,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+  "epsa": {
+    "frame": "browser",
+    "urlBar": "",
+    "label": "EPSA",
+    "metric": "40+ u/week",
+    "metricSub": "administratie terug",
+    "images": ["cases/epsa-1.png"],
+    "animation": "kenburns",
+    "cursor": false,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+  "golfclub": {
+    "frame": "browser",
+    "urlBar": "",
+    "label": "Golfclub",
+    "metric": "€60–100K/jaar",
+    "metricSub": "",
+    "images": ["cases/golfclub-1.png"],
+    "animation": "kenburns",
+    "cursor": false,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+  "bkd": {
+    "frame": "phone",
+    "urlBar": "",
+    "label": "Bloembollenkeuringsdienst",
+    "metric": "Digitale inspectie",
+    "metricSub": "in het veld",
+    "images": ["cases/bkd-1.png", "cases/bkd-2.png"],
+    "animation": "tour",
+    "cursor": true,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+  "rechtspraak": {
+    "frame": "browser",
+    "urlBar": "",
+    "label": "Semi-publieke dienst (anoniem)",
+    "metric": "AI-model",
+    "metricSub": "op jurisprudentie",
+    "images": ["cases/rechtspraak-1.png"],
+    "animation": "static",
+    "cursor": false,
+    "anonymized": false,
+    "status": "placeholder"
+  },
+  "floriusflowers": {
+    "frame": "browser",
+    "urlBar": "",
+    "label": "FloriusFlowers",
+    "metric": "In ontwikkeling",
+    "metricSub": "",
+    "images": [],
+    "animation": "static",
+    "cursor": false,
+    "anonymized": false,
+    "status": "placeholder"
+  }
+}

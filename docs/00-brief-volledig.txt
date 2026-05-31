@@ -1,0 +1,1075 @@
+Build a visually stunning, highly interactive enterprise B2B website for Kobeon — a Dutch Mendix + AI software partner. The benchmark is capisoft.nl: a site where almost every section contains a LIVING, MOVING product demo — not static text-on-color. The single most important instruction in this entire brief:
+
+>>> Wherever Capisoft would embed a looping product/demo video, YOU MUST BUILD A SELF-ANIMATING FAKE PRODUCT UI IN CODE. <<<
+
+These are small, looping, auto-playing interface mockups — a dashboard whose charts draw themselves, a workflow whose tasks tick off one by one, an AI agent that types and fills a form, integration nodes that pulse data along connecting lines. They run on a loop like a video, with no user action required. This is what makes Capisoft feel alive and expensive. A site that is just bold headings on alternating purple/white backgrounds is BORING and is exactly what we are trying to avoid. If a section is only text + a color, you have done it wrong — add motion, a mock UI, floating data cards, or a live visual.
+
+================================================================
+## THE CORE PATTERN — "MOCK PRODUCT DEMO" COMPONENTS (read first)
+================================================================
+
+Build a reusable set of animated, looping "fake software" components. Each is a stylized browser/app window (rounded corners, subtle top bar with 3 dots, soft shadow, glass or dark surface) containing UI that animates on an infinite loop using Framer Motion / CSS keyframes. They should feel like you are watching a screen recording of real software.
+
+Build these specific mock demos and reuse them across the site:
+
+1. **MockDashboard** — a stylized analytics dashboard. Bars grow from 0, a line chart path draws itself (stroke-dashoffset animation), 2–3 KPI tiles count up, a small donut fills. Loops every ~6s. Used for "Portalen & dashboards" and the hero.
+
+2. **MockWorkflow** — a vertical/horizontal process flow of 4–5 task chips ("Order binnen", "Validatie", "Verwerking", "Factuur", "Klaar"). One by one they switch from grey → teal with a checkmark, a progress bar fills, then it resets and loops. Represents Procesautomatisering.
+
+3. **MockAgent** — a chat/agent panel. An AI message types out character by character ("Ik verwerk 14 aanvragen..."), then shows "tool calls" appearing as little pills (Dynamics 365 ✓, document gecontroleerd ✓, e-mail verstuurd ✓), then a form auto-fills. Loops. Represents Agentic AI.
+
+4. **MockTraining** — an AI model training view. A loss curve animates downward, an accuracy number ticks up toward 94%, a row of data records streams in. Represents AI Development.
+
+5. **MockIntegration** — 4–5 system nodes positioned around a central Mendix node (HOMEPAGE = enterprise: Microsoft Dynamics 365, SAP, Azure, REST API, OpenAI). Animated dots travel along connecting lines between the outer nodes and the center, pulsing. Represents Systeemintegratie. (Op sectorpagina's mogen branche-specifieke nodes — Agriware/Infor/Metacom voor horticultuur, AFAS/Nmbrs voor staffing.)
+
+6. **MockPortal** — a clean customer/employee portal: sidebar nav, a table whose rows fade in, a status badge flipping from "In behandeling" → "Goedgekeurd". Represents Portalen & legacy modernisering.
+
+**Floating metric cards (Capisoft signature):** over/around several of these mock UIs, float 1–2 small glass cards with a live-counting number, e.g. "Tijdsbesparing +40 u/week ↑", "Besparing €100K/jaar", "Doorlooptijd −62%". They drift gently (subtle y-axis float, 4s ease-in-out loop) and the number counts up when in view. Use these on the hero and on service rows — they are a huge part of the premium feel.
+
+Performance: these are CSS/SVG/Framer Motion only — no real video files, no heavy libs. Pause animations when off-screen (Intersection Observer) and respect prefers-reduced-motion.
+
+================================================================
+## BRAND IDENTITY
+================================================================
+
+**Colors:**
+- Primary Purple #3A0CA3 · Deep Purple (hero) #2A0870 · Medium Purple #5348CE
+- Teal #13A6A6 · Light Teal #14C8C8
+- Yellow accent #FFB703 (use sparingly, max impact)
+- Black #161616 · Dark section #0D0D1A
+- White #FFFFFF · Purple bg light #EDE7F6 · Teal bg light #E0F7FA · Gray bg #F5F5F5
+
+**Fonts:** Headlines 'DM Serif Display' (large, editorial, confident). Body/UI 'Ubuntu' (Google Fonts). Hero headline 72–88px desktop, letter-spacing -0.02em.
+
+**Visual system:**
+- Alternate dark (#0D0D1A / #2A0870) and light (#FFF / #F5F5F5) sections.
+- Purple→teal gradient on key highlighted words.
+- Glassmorphism cards on dark sections: bg rgba(255,255,255,0.05), backdrop-blur, border rgba(255,255,255,0.1).
+- Every section enters with fade + slide-up (Intersection Observer, ~600ms), and varies its layout direction so no two consecutive sections feel the same.
+- Scroll progress bar at top (thin, purple→teal). Custom small purple cursor dot on desktop.
+- Cards lift on hover: scale(1.02), border → #3A0CA3.
+
+================================================================
+## NAVIGATION (fixed, transparent over hero → frosted glass after 60px scroll)
+================================================================
+
+Left: Kobeon wordmark + small glass "Mendix Partner" badge.
+Center megamenu:
+1. **Diensten** (dark dropdown, 3 cols): Bouwen (Procesautomatisering, App ontwikkeling, Portalen & dashboards, Legacy modernisering) · AI & Integratie (Agentic AI, AI Development, Systeemintegratie) · Strategie (Design & Prototyping, IT Consultancy). Each item gets a tiny animated icon.
+2. **Projecten** → /projecten
+3. **Quickscan** (small yellow "Gratis" badge) → /quickscan
+4. **Sectoren** (dropdown, 6): 🌱 Sierteelt & Horticultuur · 👥 Staffing & Detachering · ⚖️ Semi-Publiek · 🎓 Onderwijs · 🧸 Kinderopvang · 🏭 Maakindustrie
+5. **Over ons** → /over-ons
+Right: "Plan Discovery-sessie" — yellow button (#FFB703, black text), bold.
+
+================================================================
+## HOMEPAGE — SECTIONS
+================================================================
+
+### SECTION 1 — HERO (full viewport, dark #2A0870) — split layout, NOT centered text
+LEFT (55%):
+- Glass pill badge: "MENDIX CERTIFIED PARTNER" (teal text)
+- H1 massive white: "Elke organisatie weet / dat digitalisering moet." + line 3 in yellow: "De meeste weten niet hoe."
+- Subline (white/70%, max 520px): "Kobeon bouwt enterprise-software op Mendix — 9 jaar Gartner Leader. Altijd een werkende MVP in 6 weken."
+- Buttons: Primary yellow "Plan Discovery-sessie →" + ghost "Bekijk projecten".
+RIGHT (45%): a composed stack of the MOCK DEMO components — a **MockDashboard** as the main window, with a smaller **MockWorkflow** card overlapping its bottom-left corner, and 2 floating glass metric cards drifting at the edges ("MVP in 6 weken", "€100K bespaard/jaar" counting up). The whole composition assembles on load (cards slide/scale in, staggered) then each inner element runs its own loop. THIS replaces the old "abstract floating orbs" idea — show software, not decoration.
+Background: subtle slow gradient-mesh shift behind the composition; keep it understated so the mock UI pops.
+Bottom: thin auto-scrolling marquee — "3 Mendix MVP's · ⭐ 9× Gartner Leader · 6 Experts · ISO 27001 · 2 Advanced Trainers · MVP in 6 weken ·" (loops). Bouncing scroll arrow.
+
+### SECTION 2 — "WAT WE BOUWEN, LIVE" — SERVICE DEMO ROWS (dark #0D0D1A) — the centerpiece
+This is the Capisoft service-video strip, reimagined. Instead of one carousel of vague cards, build 4 ALTERNATING ROWS (text left/demo right, then text right/demo left, etc.). Each row: a short headline + 2-line description + "Meer info →" on one side, and a large MOCK DEMO component on the other, with a floating metric card on top.
+
+Row 1 — **Procesautomatisering** → MockWorkflow + card "Doorlooptijd −62%"
+Row 2 — **Agentic AI** → MockAgent + card "40+ u/week terug"
+Row 3 — **AI Development** → MockTraining + card "94% accuraat"
+Row 4 — **Systeemintegratie** → MockIntegration + card "8 systemen verbonden"
+
+Each demo only starts looping when scrolled into view. Below the four rows: a two-row logo marquee moving in opposite directions, subtle, white-on-dark SVG logos: "Mendix · Microsoft Dynamics 365 · SAP · AWS · Microsoft Azure · AFAS · Exact · Salesforce · OpenAI · Siemens". (Branche-specifieke systemen zoals Agriware, Infor, Metacom en Nmbrs horen op de sectorpagina's, niet op de homepage — zie v3.8/v3.9.)
+
+### SECTION 3 — INTRODUCTIE (white) — left text 60% / right 40%
+Label "WAAROM KOBEON" (purple). H2 "Uw processen zijn uniek." + gradient line "Uw software zou dat ook moeten zijn." Body about custom Mendix software, MVP in 6 weken. Right column: 3 feature rows (Rocket/purple "Snel — MVP in 4–6 weken", Shield/teal "Enterprise-kwaliteit — ISO 27001, GDPR", Chart/yellow "Schaalbaar — 10 tot 100.000 gebruikers"), each sliding in staggered.
+
+### SECTION 4 — QUICKSCAN TEASER (dark #0D0D1A) — interactive
+Yellow pill "GRATIS QUICKSCAN". H2 white "Hoe digitaal volwassen is" + gradient "uw organisatie?". Large glass URL input (teal border, animated focus glow) placeholder "https://uwbedrijf.nl" + yellow "Start Quickscan →". On submit → /quickscan/results?url=. Below: 3 preview chips (Gauge "Volwassenheidsscore", Zap "Automatiseringskansen", Target "Persoonlijk advies"). Add a tiny looping gauge animation beside the input so even this section moves.
+
+### SECTION 5 — STATS (dark purple #3A0CA3, clip-path angled top edge)
+4 count-up stats with a subtle rotating glow halo behind each number: "7+" projecten · "6" weken naar MVP · "€100K" besparing bij één klant · "9×" Gartner MQ Leader. Thin white dividers. Numbers count from 0 when in view.
+
+### SECTION 6 — DIENSTEN GRID (dark #0D0D1A) — the full 9, interactive
+Label "ALLE DIENSTEN" (teal). H2 white + gradient line. 3×3 glassmorphism grid. Each card: teal icon, title, one-line desc. Hover: purple glow border, icon scales 120%, "→" slides in bottom-right. On hover of cards 1–4, optionally swap the icon area for a 2-second micro-preview of that service's mock demo (mini version) — gives a sense of depth. Services: Procesautomatisering, Agentic AI, AI Development, App ontwikkeling, Systeemintegratie, Portalen & dashboards, Legacy modernisering, Design & Prototyping, IT Consultancy. CTA link "Bekijk alle diensten →".
+
+### SECTION 7 — MENDIX VOORDEEL (white, alternating)
+Label "HET MENDIX VOORDEEL" (purple). H2 + gradient "niet kunnen bieden". 2×2 tiles (purple bg light → purple on hover): Standaard veilig · Enterprise-schaalbaarheid · Governance & audit trails (NIS2, EU AI Act) · Siemens-ecosysteem. Beside/below: dark-purple quote block, yellow left accent: "Mendix is voor het 9e achtereenvolgende jaar Leader in de Gartner Magic Quadrant." Add a small animated "9×" badge that the eye is drawn to.
+
+### SECTION 8 — HOE WE WERKEN / PROCES (dark #0D0D1A) — animated stepper
+Label "HOE WE WERKEN" (teal). H2 white + gradient "Stap voor stap." Horizontal stepper (desktop) / vertical accordion (mobile), connected by a dashed line that DRAWS itself left→right on scroll-in. Steps: 01 Discovery (1–2 wk) · 02 Design & Prototype (Figma Make, Lovable, Google Stitch) · 03 MVP bouwen (4–6 wk; Mendix, Agentic AI, REST/API) · 04 Implementatie & training (1 wk) · then a special yellow card "∞ · 90-daagse cycli · Doorlopend — U bent partner, geen project." Hover/click a step to expand detail.
+
+### SECTION 9 — PROJECTEN, CAPISOFT-STYLE STORY CARDS (white)
+This replaces plain case cards with Capisoft's narrative + mockup style. Label "PROJECTEN" (purple). H2 "Industrieën die we al" + gradient "gemoderniseerd hebben". Filter pills (animated purple-fill active): Alle · Horticultuur · Staffing · Semi-Publiek · Onderwijs · Energie · Overige.
+
+Staggered grid of 7 cards. EACH CARD CONTAINS A SMALL DEVICE MOCKUP (browser frame or phone frame) showing a stylized, on-brand fake screenshot of that project's UI (built with divs/SVG — a mini dashboard, a portal, a map view, etc.), plus a Capisoft-style transformation one-liner "Van [oude pijn] naar [nieuw resultaat]". On hover: card lifts (scale 1.03), the mockup's inner UI does a 1–2s micro-animation, and a "Bekijk case →" button slides up.
+
+Cases (sector tag + name + metric + transformation line + mockup type):
+1. Energie — HomeZero — "6 weken" (purple) — "Van papieren projectadmin naar één digitaal systeem." — mockup: project dashboard
+2. Onderwijs + Kinderopvang — Petje af — "250K+ kinderen" (teal) — "Van handmatige aanmelding naar een platform dat meegroeit." — mockup: signup portal
+3. Professional Services — EPSA — "40+ u/week terug" (yellow) — "Van eindeloze administratie naar geautomatiseerde flow." — mockup: workflow board
+4. Sport & Vrije Tijd — Golfclub — "€60–100K/jaar" (yellow) — "Van vrijwilligers-chaos naar zelfsturende administratie." — mockup: member admin
+5. Horticultuur — Bloembollenkeuringsdienst (BKD) — "Digitale inspectie" (teal) — "Van klembord naar mobiele keuring in het veld." — mockup: inspection app (phone frame)
+6. Semi-Publiek (badge "Anoniem") — Rechtspraak — "AI-model" (purple) — "Van zoeken naar jurisprudentie naar AI die het vindt." — mockup: AI search panel
+7. (dashed, 65% opacity, "Binnenkort") Horticultuur — FloriusFlowers — "In ontwikkeling" — "Supply-chain-portaal in aanbouw." — mockup: supply chain board
+
+### SECTION 10 — SECTOREN SPOTLIGHT (dark #2A0870) — 3×2 grid of 6
+H2 white "Sectorspecifieke kennis." + yellow "Wij denken in uw processen." Six dark cards, colored border that floods to full color on hover, with an animated checklist of challenges appearing on hover:
+1. Sierteelt & Horticultuur (teal) — "Agriware · Infor · Metacom (Meijel) · BKD · supply chain"
+2. Staffing & Detachering (purple) — "AFAS · Wet DBA · AI-matching · Consultant portalen"
+3. Semi-Publiek (yellow) — "Compliance · Documentbeheer · AI op regelgeving · Veilige data"
+4. Onderwijs (teal) — "Aanmeldportalen · AVG · Administratie · Rapportages"
+5. Kinderopvang (purple) — "Ouderportalen · LRK · Facturering · Planning"
+6. Maakindustrie (yellow) — "ERP-integratie · Kwaliteitscontrole · Productie-planning · Supply chain"
+Each → "Bekijk sector →".
+
+### SECTION 11 — TESTIMONIALS (white)
+Label "WAT KLANTEN ZEGGEN" (purple). H2 "Niet zeggen — laten zien." Auto-playing carousel (5s, pause on hover, dots + arrows, fade/slide). Each card: large faded purple quotation mark, italic quote, avatar initials (purple) + name + functie + company (teal). 3 placeholder quotes (keep [Naam]/[Functie]/[Bedrijf] placeholders).
+
+### SECTION 12 — FINAL CTA (dark purple #3A0CA3, clip-path angled bottom)
+Centered. H2 white "Klaar om uw eerste" + yellow "stap te zetten?". Body about free 60-min Discovery-sessie. 2×2 yellow-checkmark items. Big yellow rounded-full CTA "Plan uw Discovery-sessie →" with a subtle pulsing ring (yellow, 0.15 opacity) and scale(1.04) on hover. Subtext "Vrijblijvend · 60 minuten · via Calendly".
+
+### FOOTER (#161616)
+4 columns (Kobeon info + glass Mendix badge + newsletter input "Blijf op de hoogte →" · 9 Diensten links · Projecten links · Contact + Sectoren). Links: white/60 → white with arrow on hover. Top border 1px purple→teal gradient. Bottom bar: copyright · Privacy · Disclaimer.
+
+================================================================
+## ADDITIONAL PAGES
+================================================================
+
+### /quickscan  (dark #0D0D1A, 3 states)
+Step 1 input: H1 "Gratis Quickscan", URL input (animated teal focus), 5 dimension icons (Processen · Integraties · AI-gereedheid · Security · Schaalbaarheid).
+Step 2 loading (3s): animated scanning visual — concentric pulsing rings + rotating purple/teal gradient ring + cycling messages every 0.6s ("Website structuur analyseren...", "Procesautomatisering potentieel bepalen...", "AI-integratie scannen...", "Security baseline controleren...", "Rapport samenstellen...") + 0→100% bar.
+Step 3 results: big animated circular gauge fills to 62/100. Five score cards with bars filling on entrance (Procesautomatisering 4/10, Systeemintegratie 3/10, AI-gereedheid 5/10, Schaalbaarheid 6/10, Security 7/10), each with a one-line verdict. "Top 3 aanbevelingen" (purple/teal/yellow cards). Purple CTA block → Discovery-sessie + "Download rapport als PDF →" (print). Optional lead capture (e-mail + naam + bedrijf).
+
+### /projecten
+Header with count-up "7 projecten · 6 sectoren". Filter pills (animated). Full grid of the 7 story cards (same as Section 9, all visible). Each card click → /projecten/[slug] placeholder.
+
+### /sectoren/sierteelt — purple/green theme. Challenger-Sale order: problem first, then solution. Branche-ERP-integraties: Agriware, Infor en Metacom (Meijel) + BKD-ketenregister. Adapted process steps. CTA Discovery.
+### /sectoren/detachering — purple/blue. DBA compliance + AI-matching. CTA Discovery.
+### /sectoren/semi-publiek (#3A0CA3) — Hero "Semi-publieke organisaties" + yellow "Compliance én efficiëntie. Zonder compromis." Challenges (regelgeving, legacy, AVG/BIO, documentstromen). Aanpak (governance standaard ingebouwd, audit trails, BIO-compliant cloud). Case: Rechtspraak (Anoniem badge). Platform: ISO 27001 · BIO · NIS2 · audit trails. CTA Discovery.
+### /sectoren/onderwijs (#13A6A6) — Hero "Onderwijsinstellingen" + "Meer tijd voor onderwijs." Challenges (admin-last, legacy, AVG leerlingdata, DUO/BRON). Aanpak (leerlingportalen, automatische aanmelding, dashboards, DUO-integratie). Case: Petje af (250K+ kinderen). CTA Discovery.
+### /sectoren/kinderopvang (warm teal/purple) — Hero "Kinderopvang" + "Minder administratie. Meer tijd voor de kinderen." Challenges (LRK, ouderportalen, facturering, planning, GGD). Aanpak (ouderportalen, automatische facturering, planningsmodule, LRK-compliant). Case: Petje af (angle: schaalbaar privacy-compliant platform). CTA Discovery.
+### /sectoren/maakindustrie (#161616 + yellow) — Hero "Maakindustrie" + yellow "Slimme fabrieken beginnen met slimme software." Challenges (ERP-silo's SAP/D365/legacy, kwaliteitscontrole op papier, geen actueel zicht op de toeleverketen, planning in Excel, OEE handmatig). Aanpak (ERP-integratie, digitale werkorderflows, mobiele kwaliteitsregistratie, supply chain portaal, OEE-dashboard). Placeholder case "Uw sector. Uw uitdaging. Onze expertise." CTA Discovery.
+
+### /discovery-sessie — dark hero "Plan een gratis Discovery-sessie" (yellow H1). "Wat u meekrijgt" 4 flip-in cards. Styled Calendly embed placeholder (dark, 600px). FAQ accordion (3 Q, smooth expand).
+
+================================================================
+## TECHNICAL
+================================================================
+React + TypeScript + Vite · Tailwind · Lucide React · Framer Motion · React Router v6 · Intersection Observer (trigger animations + pause off-screen mock demos) · react-countup (or custom hook) · Embla/Swiper for carousels. Custom purple cursor dot (desktop). Top scroll-progress bar. Fully responsive, mobile-first (mock demos simplify gracefully on mobile). Nav transparent→frosted after 60px. Subtle fade page transitions. prefers-reduced-motion respected. No external API calls — all content static, all "demos" are coded animations.
+
+================================================================
+## GOLDEN RULE
+================================================================
+Capisoft's magic is that you are always watching software DO something. Replicate that feeling: in every major section there is motion that signals a working product — a chart drawing, a workflow completing, an agent typing, data flowing between systems, numbers counting up, a mockup coming to life on hover. Bold typography on a colored background is the floor, not the deliverable. If a section sits still, it is not finished. Reference: capisoft.nl energy, Kobeon brand colors, Mendix credibility.
+
+================================================================
+## BUILD ORDER
+================================================================
+1. First build the
+
+================================================================
+================================================================
+## v3.1 ADDITIONS — MENDIX-DERIVED PROPOSITION CONTENT + EXPANDED FAQ
+================================================================
+================================================================
+
+Keep the entire form/structure of v3.0 unchanged. The items below are CONTENT ADDITIONS that slot into existing sections or add one new FAQ section. Guiding principle: borrow Mendix's enterprise credibility and "agentic enterprise" narrative to strengthen Kobeon's proposition AS AN IMPLEMENTATION PARTNER — but always in Kobeon's voice. Rule of thumb: Mendix is the engine, Kobeon builds the car. Never copy Mendix taglines verbatim; reframe everything in Dutch, Kobeon-flavored, and always tie it back to "wij implementeren dit voor u".
+
+----------------------------------------------------------------
+### ADD A — TRUST BLOCK: "Uw modellen. Uw data. Uw cloud." (NEW band)
+Placement: directly after Section 7 (Mendix Voordeel), white or light-purple bg.
+----------------------------------------------------------------
+This is one of Mendix's strongest and most reassuring messages — perfect for our security-conscious sectors. Reframe it as Kobeon's promise.
+
+- Label (purple): "GEEN LOCK-IN"
+- H2: "Uw modellen. Uw data." + gradient line "Uw cloud."
+- Subline (gray): "Wij bouwen op Mendix, maar u houdt de regie. De software draait op wat u al gebruikt — geen gedwongen winkelnering, geen dataverhuizing, geen vendor lock-in."
+- Three glass/light cards in a row, each with a SMALL LOOPING ANIMATION (keep the v3.0 golden rule — these move):
+  1. "Uw eigen AI-model" — "Een toonaangevend model, open-source of een eigen model binnen uw eigen omgeving. Vrij te wisselen." → animation: a model-selector toggle that cycles between "GPT", "Claude", "Open-source", "Eigen model" with the active pill highlighting.
+  2. "Uw eigen data" — "AI wordt gegrond in úw data, zonder die te vervangen. Uw systemen blijven het bronsysteem." → animation: data records streaming from existing-system icons into a central brain icon.
+  3. "Uw eigen cloud" — "Publieke cloud, private cloud, on-prem of volledig afgeschermd (air-gapped) als regelgeving dat eist." → animation: a deploy-target toggle Cloud ⇄ On-prem ⇄ Air-gapped with a lock icon appearing on air-gapped.
+
+----------------------------------------------------------------
+### ADD B — ENTERPRISE CREDIBILITY STRIP (borrowed trust)
+Placement: add to the hero trust marquee AND as a dedicated logo strip in Section 2 (logo marquee already exists — extend it).
+----------------------------------------------------------------
+Frame carefully and accurately: these are organisations that trust the PLATFORM Kobeon builds on, not Kobeon's own clients.
+- Small caption above the logo strip (white/60%): "Gebouwd op het platform dat wereldwijd vertrouwd wordt door:"
+- Logo marquee (white SVG style, scrolling): Rabobank · ABN AMRO · PostNL · Schiphol · Gemeente Rotterdam · Bosch · BMW · Rolls-Royce · Continental · Siemens
+- Keep it visually distinct from Kobeon's own client cases (Section 9) so there's no confusion between "platform users" and "our clients".
+
+----------------------------------------------------------------
+### ADD C — "VAN PILOT NAAR PRODUCTIE" (reframe into Section 8 / Agentic AI)
+Placement: a highlighted strip inside Section 6 (Diensten) or as an intro line above Section 8 (Proces). Also strengthen the Agentic AI demo row in Section 2.
+----------------------------------------------------------------
+Mendix's sharpest AI message: most AI dies in the pilot stage; production-grade is the differentiator. Use it.
+- Pull-quote / stat card (dark, with subtle looping bg animation): "Slechts 2 op de 10 organisaties voelt zich klaar voor AI." — small source line: "(Gartner, via Mendix)"
+- Adjacent copy (Kobeon voice): "De meeste AI-initiatieven stranden in een eindeloze pilot — een losse proof-of-concept die nooit veilig, geïntegreerd of beheersbaar genoeg wordt voor de praktijk. Wij bouwen vanaf dag één productieklaar: governance, integraties en security ingebouwd. In zes weken een werkende MVP in uw eigen omgeving — geen demo, maar iets dat u echt gebruikt."
+- Add a small "Pilot → Productie" mini-animation: a dashed "pilot" box that transforms/snaps into a solid "productie" box with a checkmark.
+
+----------------------------------------------------------------
+### ADD D — "MENS + AI ALS ÉÉN TEAM" / ORKESTRATIE (enrich Agentic AI proposition)
+Placement: expand the Agentic AI service description (Section 2 Row 2 + Section 6 card). Optionally a small sub-block in Section 7.
+----------------------------------------------------------------
+Reframe Mendix "process orchestration / human-AI workforce" into Kobeon language:
+- Copy: "Wij orkestreren mensen, AI-agenten én uw bestaande systemen in één werkstroom. Routinematig en cognitief werk gaat naar de agent; beslissingen en uitzonderingen blijven bij uw mensen. Uw team houdt de regie en wint tijd terug voor het werk dat er echt toe doet."
+- The MockAgent demo (Section 2, Row 2) should visibly show a "mens keurt goed" step: after the agent fills the form, a human-avatar approval toggle flips to ✓ before the flow completes. This single detail communicates "mens in the loop / governance" beautifully.
+
+----------------------------------------------------------------
+### ADD E — GOVERNANCE, EXPLICIET (enrich Section 7 tile #3)
+----------------------------------------------------------------
+Sharpen the "Governance & audit trails" tile and quote block:
+- Tile copy: "Elke actie — van mens of AI-agent — is auditeerbaar, traceerbaar en afdwingbaar. Klaar voor NIS2, EU AI Act, AVG, BIO en ISO 27001."
+- This directly answers the compliance worry in our semi-publiek / onderwijs / kinderopvang sectors. Add a small animated "audit log" UI (rows appearing with timestamps + a green 'compliant' badge) to make the tile move.
+
+----------------------------------------------------------------
+### ADD F — FIVE BUILD CAPABILITIES (optional enrichment of Section 6 intro)
+----------------------------------------------------------------
+Mendix frames its platform as five capabilities. We can mirror this as "waar wij op bouwen" WITHOUT copying — present as a single horizontal strip of 5 small labeled icons above the Diensten grid, signalling depth:
+Enterprise-context (alle systemen & data verbonden) · AI-modellen op maat · Agentic development · Procesorkestratie · Governance & control.
+Keep it light — one line each, animated icons. This shows we operate at platform depth, not just "we maken appjes".
+
+================================================================
+### ADD G — EXPANDED FAQ (NEW homepage section + reuse on /diensten)
+================================================================
+Placement: add a FAQ section between Section 11 (Testimonials) and Section 12 (Final CTA). Use the same smooth accordion animation already specified for /discovery-sessie (expand/collapse, +/– icon rotate, one open at a time). White or light-gray bg.
+- Label (purple): "VEELGESTELDE VRAGEN"
+- H2: "Alles wat u wilt weten" + gradient "voordat u begint."
+- Accordion items below. These answers are the positioning core — render them in full. Two-column layout on desktop optional, single column with generous spacing also fine.
+
+Q1. Waarom een agentic AI-platform en niet 'gewone' AI zoals ChatGPT?
+A1. Een losse AI-tool beantwoordt vragen; een agentic platform voert werk uit. Het verschil zit in regie en context. Een standaard chatbot heeft geen veilige toegang tot uw systemen, kent uw processen niet en handelt niets zelfstandig af. Een agentic oplossing op Mendix krijgt — binnen strikte governance — toegang tot uw data en applicaties (AFAS, SAP, Agriware), volgt uw bedrijfsregels en voert complete processen end-to-end uit, met een mens die goedkeurt waar dat nodig is. Het resultaat is geen 'slim antwoord', maar een taak die af is. En omdat alles binnen één auditeerbare laag draait, komt u uit de pilotfase waar losse AI-experimenten vaak in blijven steken.
+
+Q2. Waarom Mendix en niet alles custom (high-code) laten bouwen?
+A2. High-code geeft maximale vrijheid, maar tegen een prijs: lange doorlooptijden, hoge kosten en een codebase die afhankelijk is van schaarse specialisten. Mendix levert dezelfde enterprise-kwaliteit — security, schaalbaarheid, integraties — maar dan modelgedreven, waardoor wij in weken bouwen wat custom-teams in maanden doen. U houdt volledige flexibiliteit (eigen code kan altijd worden toegevoegd waar dat zinvol is), zonder volledig afhankelijk te worden van één ontwikkelaar of een dichtgetimmerde codebase. Kort gezegd: de snelheid van low-code, de degelijkheid van enterprise software, en een MVP in zes weken in plaats van een traject van een jaar.
+
+Q3. Is low-code wel veilig en schaalbaar genoeg voor bedrijfskritische toepassingen?
+A3. Ja. Mendix staat negen jaar op rij als Leider in de Gartner Magic Quadrant voor enterprise low-code en draait bij organisaties als Rabobank, ABN AMRO, PostNL, Schiphol en de gemeente Rotterdam. Security, schaalbaarheid en performance zijn ingebouwd — niet iets dat achteraf moet worden 'aangezet'. Applicaties schalen van tien tot honderdduizenden gebruikers, draaien cloud-native of on-prem, en voldoen aan ISO 27001, AVG en BIO. Low-code is hier geen 'lichte' variant, maar de manier waarop enterprises hun bedrijfskritische software bouwen.
+
+Q4. Onze data is gevoelig. Waar draait dit en welke AI-modellen worden gebruikt?
+A4. U houdt de regie over modellen, data en infrastructuur. We koppelen het AI-model dat bij u past — een toonaangevend model, een open-source model of een eigen model binnen uw eigen omgeving — en kunnen daar vrij tussen wisselen. AI-agenten worden gegrond in úw data zonder die te verplaatsen of te vervangen: uw bestaande systemen blijven het bronsysteem. En u bepaalt waar het draait: publieke cloud, private cloud, on-prem of volledig afgeschermd (air-gapped) als regelgeving dat eist. Voor sectoren met strenge eisen — semi-publiek, onderwijs, kinderopvang — is dit precies waarom Mendix het juiste fundament is.
+
+Q5. Hoe voorkomen we dat onze AI in een eindeloze pilot blijft hangen?
+A5. Daar is onze aanpak op gebouwd. Veel AI-initiatieven stranden omdat een losse proof-of-concept nooit veilig, geïntegreerd of beheersbaar genoeg wordt voor productie. Wij bouwen vanaf dag één op een productieklaar platform met governance, integraties en security ingebouwd. Binnen zes weken staat er een werkende MVP in uw eigen omgeving — geen demo, maar iets dat u echt gebruikt. Daarna breiden we uit in cycli van 90 dagen, zodat de oplossing meegroeit in plaats van stil te vallen.
+
+Q6. We hebben al systemen (AFAS, SAP, Agriware, Nmbrs). Moeten die eruit?
+A6. Nee. Wij bouwen bovenop en tussen wat u al heeft. Mendix is ontworpen om te integreren — via standaard connectoren en API's praten uw bestaande systemen met elkaar en met nieuwe applicaties. Vaak is de grootste winst juist het verbinden van silo's die nu niet samenwerken, zonder dat u een werkend systeem hoeft te vervangen. Legacy moderniseren we gefaseerd, nooit met een big bang.
+
+Q7. Wat is het verschil tussen Kobeon en Mendix zelf?
+A7. Mendix is het platform; Kobeon is de partner die het voor u inzet. Mendix levert de motor — security, schaalbaarheid, AI- en governance-bouwstenen, gedragen door Siemens. Wij vertalen uw processen naar werkende software op die motor: van Discovery en ontwerp tot bouw, implementatie en doorontwikkeling. U koopt geen platform om het vervolgens zelf uit te zoeken; u krijgt een team dat de oplossing bouwt, oplevert en met u laat meegroeien.
+
+Q8. Vervangt AI onze mensen?
+A8. Nee — de kracht zit in de combinatie. We orkestreren mensen, AI-agenten en systemen in één werkstroom: routinematig en cognitief werk gaat naar de agent, beslissingen en uitzonderingen blijven bij uw mensen. Uw team houdt de regie en wint tijd terug voor het werk dat er echt toe doet.
+
+Q9. Wat kost het en hoe snel zien we resultaat?
+A9. Elke samenwerking begint met een gratis Discovery-sessie van 60 minuten waarin we uw situatie en het besparingspotentieel concreet maken. Daarna werken we naar een werkende MVP in vier tot zes weken, met een transparante scope en planning. U investeert dus eerst in een klein, concreet resultaat — niet in een open-eind traject van een jaar.
+
+(Reuse Q1, Q2, Q3 also as a short 3-item FAQ on relevant sector pages where the high-code/AI objection is most likely.)
+
+----------------------------------------------------------------
+### CLAIMS / ACCURACY GUARDRAILS (for whoever fills real copy later)
+----------------------------------------------------------------
+- "9 jaar Gartner Leader" and "furthest on Completeness of Vision" refer to Mendix in the 2025 Gartner MQ for Enterprise Low-Code — accurate as of mid-2026; keep attributed to Mendix/Gartner.
+- The enterprise logo list (Rabobank, ABN AMRO, PostNL, Schiphol, Rotterdam, Bosch, BMW, Rolls-Royce, Continental, Siemens) are Mendix platform customers — always frame as "het platform dat ... vertrouwen", never as Kobeon's own clients.
+- Kobeon's own numbers (7+ projecten, MVP in 6 weken, €100K besparing bij één klant) stay as-is from the existing
+
+================================================================
+================================================================
+## v3.2 ADDITIONS — WERKWIJZE PAGE, WERKEN BIJ + VACATURES, EXTRA CAPISOFT ELEMENTS
+================================================================
+================================================================
+
+Keep all existing form. Below: two new full pages + nav updates + four supplementary Capisoft-style elements that we hadn't captured yet. The v3.0 golden rule still applies everywhere: if a section sits still, it isn't finished — add motion, a mock UI, counters, or a hover reveal.
+
+----------------------------------------------------------------
+### NAVIGATION UPDATES
+----------------------------------------------------------------
+- "Over ons" becomes a small dropdown: Over ons → /over-ons · Werkwijze → /werkwijze · Werken bij → /werken-bij (with a small teal "Vacatures" badge).
+- Footer: add a "Bedrijf" column or extend an existing one with: Over ons · Werkwijze · Werken bij · Vacatures.
+
+================================================================
+### NEW PAGE — /werkwijze  ("Onze werkwijze")
+================================================================
+Tone: transparency + control. The Capisoft insight worth stealing: the whole traject is made inzichtelijk vooraf — no surprises, fixed scope, clear deliverables per phase. Reframe in Kobeon voice (Mendix-partner, MVP in 6 weken, 90-daagse cycli).
+
+### SECTION 1 — HERO (dark #2A0870)
+- Glass pill: "ONZE WERKWIJZE"
+- H1 white: "Van idee naar werkende software." + yellow line "Zonder verrassingen."
+- Subline (white/70%): "Elk traject is vooraf inzichtelijk: heldere scope, vaste planning, een werkende MVP in zes weken. U weet precies wat u krijgt, wanneer, en wat het oplevert — voordat we beginnen."
+- Right/below: a horizontal animated timeline that draws itself (the same dashed-line draw as the homepage stepper) showing the 5 phases as glowing dots.
+
+### SECTION 2 — DE 5 FASEN (alternating rows, like Capisoft's werkwijze page)
+One row per phase, alternating text-left/visual-right then reversed. Each phase visual is a SMALL LOOPING MOCK UI (reuse the v3.0 mock-demo system) so the page moves. Each row: big phase number ("01"), title, duration pill, 2–3 sentence description, and a "wat u krijgt" mini-list (deliverables) with animated check-in.
+
+Phase 01 — Discovery — "1–2 weken"
+"We brengen uw processen, doelen en knelpunten in kaart en berekenen het concrete besparingspotentieel. U krijgt een helder beeld van waar software de meeste impact heeft — en wat het oplevert." Deliverables: procesanalyse · ROI-inschatting · scopevoorstel. Visual: MockDashboard with a "Besparing €.. /jaar" metric counting up.
+
+Phase 02 — Design & Prototype — "1–2 weken"
+"Onze designers vertalen de analyse naar een klikbaar prototype. U ziet en test het eindresultaat vóór er gebouwd wordt." Tools badges: Figma Make · Lovable · Google Stitch. Visual: a prototype frame where screens swap/transition on a loop.
+
+Phase 03 — Heldere afspraken (scope, planning, prijs) — "vooraf"
+"Voordat we bouwen, leggen we scope, planning en investering transparant vast. Geen open einde, geen budgetverrassingen — u weet vooraf waar u aan toe bent." Visual: an animated "offerte/planning" card where a scope checklist fills in and a timeline bar locks. (This is our reframe of Capisoft's 'fixed-fee' trust pillar — keep it about transparency/zekerheid rather than literally promising a fixed fee unless Kobeon confirms that pricing model.)
+
+Phase 04 — MVP bouwen — "4–6 weken"
+"We bouwen in korte sprints op Mendix, met u nauw betrokken. Elke sprint levert iets werkends op — geen black box. Security, integraties en governance zitten vanaf dag één ingebouwd." Tech badges: Mendix · Agentic AI · REST/API. Visual: MockWorkflow building sprint-by-sprint (a kanban-ish board where cards move to "Done").
+
+Phase 05 — Implementatie & training — "1 week"
+"We zetten de oplossing live in uw eigen omgeving en trainen uw team, zodat iedereen er met vertrouwen mee werkt." Deliverables: livegang · teamtraining · documentatie. Visual: MockPortal going from "staging" to a green "live" badge + a small adoption gauge.
+
+### SECTION 3 — DAARNA: 90-DAAGSE CYCLI (yellow accent card, full-width)
+Special block (yellow #FFB703, black text): "∞ · 90-daagse cycli" — "Na livegang stopt het niet. Elke 90 dagen breiden we uit op basis van echte resultaten en nieuwe inzichten. U bent partner, geen project." Subtle animated infinity/loop motif.
+
+### SECTION 4 — WAAROM DEZE AANPAK WERKT (3-up, light bg)
+Three cards with count-up/animated icons: "MVP in 6 weken — geen traject van een jaar" · "Altijd iets werkends per sprint — geen black box" · "Vooraf inzichtelijk — scope, planning, opbrengst".
+
+### SECTION 5 — REUSE the homepage process stat strip + FAQ (Q5, Q9) + Final CTA (Discovery-sessie).
+
+================================================================
+### NEW PAGE — /werken-bij  ("Werken bij Kobeon") + /vacatures
+================================================================
+Capisoft's team energy to borrow: bold human tagline ("Jouw visie, Onze code"), pride in a small elite team, real photos, a sense of momentum. Kobeon angle: a small senior Mendix team (6 experts, incl. 2 Advanced Mendix Trainers, ISO 27001, Mendix Certified Partner) where you have real ownership and ship enterprise software fast.
+
+### SECTION 1 — HERO (dark #0D0D1A, photo or team-grid background with subtle motion)
+- Glass pill: "WERKEN BIJ KOBEON"
+- H1 white: "Bouw mee aan software die er" + gradient/yellow "echt toe doet."
+- Subline: "Geen tickets afwerken in een grote machine. Bij Kobeon zit je dicht op de klant, lever je in weken werkende Mendix-oplossingen op en groei je mee met een klein, senior team."
+- Buttons: "Bekijk vacatures →" (yellow, scrolls to vacancies) + ghost "Open sollicitatie".
+- Trust strip: "Mendix Certified Partner · 2 Advanced Mendix Trainers · ISO 27001 · 6 experts".
+
+### SECTION 2 — WAAROM KOBEON (culture pillars, animated card grid)
+4–6 glass cards, icon + title + line, hover lift:
+- "Echte impact" — "Je werk gaat live bij klanten in horticultuur, staffing en de publieke sector — geen la-projecten."
+- "Snelheid" — "MVP in 6 weken. Je ziet je werk snel in productie."
+- "Senioriteit & groei" — "Klein team, korte lijnen, 2 Advanced Mendix Trainers die je naar certificering coachen."
+- "Aan de voorkant van AI" — "Agentic AI, custom modellen en orkestratie — niet als hype, maar in echte oplossingen."
+- "Vrijheid & eigenaarschap" — "Jij pakt features end-to-end op, van Discovery tot livegang."
+- "Enterprise zonder bureaucratie" — "Mendix-fundament, ISO 27001, maar de wendbaarheid van een klein bureau."
+
+### SECTION 3 — HOE WIJ WERKEN ALS TEAM (mirror of /werkwijze, lichter)
+A short animated strip: "Discovery → Prototype → Bouwen in sprints → Live → Doorontwikkelen". One line: "Je werkt mee in elke fase, dicht op de klant."
+
+### SECTION 4 — ONS TEAM (photo grid, hover reveal)
+Grid of team member cards (placeholders): foto, naam, rol, één persoonlijke regel. Hover: card lifts, role/expertise badges slide in (bv. "Mendix Advanced Trainer", "Agentic AI"). Keep [Naam]/[Rol] placeholders. Add a "Wij zijn met 6 — en groeien" caption.
+
+### SECTION 5 — VACATURES (anchor #vacatures; this is also the standalone /vacatures page)
+- Label (teal): "OPEN POSITIES"
+- H2: "Word onderdeel van het team."
+- Filter pills (animated active): Alle · Development · Consultancy · AI · Sales · Stage/Traineeship
+- Vacancy list — each row a card that expands on click (accordion) OR links to /vacatures/[slug]. Card shows: titel, type (Fulltime/Parttime/Stage), locatie (Hybride / [stad]), 1-line teaser, "Bekijk vacature →". Hover: lift + arrow slide.
+
+Vacancies (placeholders — realistic for a Mendix/AI partner; mark salaris/locatie as in te vullen):
+1. **Medior/Senior Mendix Developer** — Development · Fulltime · Hybride — "Bouw enterprise-applicaties op Mendix voor klanten in horticultuur, staffing en publieke sector."
+2. **Mendix Consultant / Solution Architect** — Consultancy · Fulltime · Hybride — "Vertaal klantprocessen naar werkende oplossingen; voer Discovery-sessies en bewaak de architectuur."
+3. **AI / Agentic Engineer** — AI · Fulltime · Hybride — "Bouw agentic AI-oplossingen en custom modellen, geïntegreerd in Mendix-applicaties."
+4. **UX Designer / Prototyper** — Development · Fulltime/Parttime · Hybride — "Ontwerp en prototype in Figma Make, Lovable en Google Stitch; van idee naar klikbaar in dagen."
+5. **Business Development / Sales** — Sales · Fulltime · Hybride — "Help organisaties de eerste stap zetten; van Discovery-sessie naar partnership."
+6. **Traineeship Mendix Developer** — Stage/Traineeship · Fulltime — "Leer Mendix van 2 Advanced Trainers en werk vanaf dag één aan echte projecten. Begeleiding naar certificering."
+7. **Open sollicitatie** (dashed card, yellow accent): "Niets gevonden dat past, maar wel overtuigd? Verras ons. →"
+
+### SECTION 6 — VACATURE-DETAIL TEMPLATE (/vacatures/[slug])
+Reusable layout: hero met functietitel + type/locatie pills + "Solliciteer direct →" (yellow). Then blocks: "Wat je gaat doen" (bullet list), "Wat je meebrengt" (bullet list), "Wat wij bieden" (perks: marktconform salaris, certificeringsbudget, hybride werken, klein senior team, snelle groei, moderne stack), "Over Kobeon" (korte herhaling propositie), en een sollicitatieformulier (naam, e-mail, telefoon, LinkedIn/CV-upload, motivatie) of mailto-CTA naar werkenbij@kobeon.nl. Sticky "Solliciteer" knop op desktop.
+
+### SECTION 7 — SOLLICITATIEPROCES (mini animated stepper)
+"Reactie binnen 5 werkdagen → Kennismaking → Technische/case-sessie → Aanbod". Dashed line draws itself.
+
+### SECTION 8 — Final CTA: "Klaar om mee te bouwen?" + "Bekijk vacatures" / "Open sollicitatie".
+
+----------------------------------------------------------------
+### EXTRA CAPISOFT-STYLE ELEMENTS (supplements for the HOMEPAGE)
+----------------------------------------------------------------
+A fresh, critical pass over capisoft.nl surfaced four signature elements we hadn't captured. Add these:
+
+**SUP-1 — "Jaren → Maanden → Weken" snelheidsanimatie.**
+Capisoft uses a "Jaren → Maanden" shrink animation for delivery speed. Do a Kobeon version with three steps collapsing: a long bar labeled "Custom / high-code: maanden tot jaren" shrinks into a short yellow bar "Kobeon op Mendix: 6 weken". Animate on scroll-in. Place inside Section 3 (Introductie) or near the Mendix Voordeel section. Strong, instantly legible differentiator.
+
+**SUP-2 — Insight/onderzoek-cards (the McKinsey/Accenture-style strip, Kobeon edition).**
+Capisoft runs a scroll of research quote cards with looping background animations. Build a horizontally-scrollable row of 4–6 "inzicht" cards, each: a bold stat/quote + source, over a subtle looping animated background. Use defensible, attributed stats, e.g.:
+- "9 jaar op rij Leader in de Gartner Magic Quadrant voor enterprise low-code." — Gartner, 2025 (via Mendix)
+- "Slechts 2 op de 10 organisaties voelt zich klaar voor AI." — Gartner (via Mendix)
+- "Tot 100.000 gebruikers op één platform — cloud-native of on-prem." — Mendix
+- "Vertrouwd door o.a. Rabobank, PostNL en Schiphol." — Mendix-klanten
+Keep all attributed; this borrows authority without copying Capisoft's exact stats.
+
+**SUP-3 — "Eén partner, het hele traject" (full-service strip).**
+Capisoft's "Full service agency" message. Add a slim band: "Eén partner, van eerste idee tot doorontwikkeling." with a horizontal icon flow: Strategie → Design → Bouw → Integratie → Beheer → Doorontwikkeling, each lighting up in sequence on loop. Reassures buyers they don't need to stitch vendors together.
+
+**SUP-4 — "Zuivere, schaalbare oplossingen" proof tile.**
+Capisoft shows a code-snippet "clean code" tile. Our equivalent (we're low-code, so don't show raw code): a small tile "Schaalbaar van 10 tot 100.000 gebruikers" with an animated mini line-chart climbing and a "cloud-native · on-prem · air-gapped" toggle. Reinforces enterprise-grade without pretending to be a high-code shop.
+
+----------------------------------------------------------------
+### BUILD ORDER (v3.2 additions)
+----------------------------------------------------------------
+After the homepage + existing pages: build /werkwijze, then /werken-bij (+ /vacatures and the vacancy-detail template), then fold SUP-1…SUP-4 into the homepage. Reuse the existing mock-demo components and animation system throughout — these new pages must feel as alive as the homepage, not like static text pages.
+
+
+================================================================
+================================================================
+## v3.3 ADDITIONS — HERO GEANIMEERDE-LAGEN-COMPOSITIE + HERBOUWDE DIENSTENSECTIE (image-rijk, divers)
+================================================================
+================================================================
+
+Twee gerichte upgrades op de homepage. Houd al het andere uit v3.0–v3.2 intact. Achtergrond-images komen uit de Nano Banana visual brief (map /public/visuals/). Net als bij de screenshots: als een asset ontbreekt, val terug op de gecodeerde gradient/mock zodat de site altijd af is.
+
+----------------------------------------------------------------
+### UPGRADE 1 — HERO MET GEANIMEERDE-LAGEN-COMPOSITIE (GEKOZEN AANPAK — GEEN videobestand)
+----------------------------------------------------------------
+Bewust geen mp4-loop: te zwaar voor de laadtijd. In plaats daarvan bouwen we de "loop" als een lichtgewicht, geanimeerde parallax-compositie van losse beeldlagen. Het effect is bijna net zo rijk als een video, maar snel en schaalbaar.
+
+Render de hero-achtergrond via een `<HeroBackdrop>` component met deze prioriteit:
+1. **Primaire aanpak — als de losse lagen bestaan** (`hero-bg.png`, `hero-orbs.png`, `hero-panel-1/2/3.png`): bouw een geanimeerde parallax-compositie. De achtergrond-mesh drift heel traag; de orbs pulseren/zweven zacht (verschillende snelheden en richtingen); de UI-panelen bewegen subtiel op-en-neer met een lichte glans-sweep eroverheen. 12–20s loops, ease-in-out, oneindig. Optioneel een lichte mouse-parallax (lagen verschuiven max ~10px met de cursor). Donkere overlay-gradient eroverheen (van #2A0870/85% links naar transparant rechts) zodat de kop leesbaar blijft.
+2. **Fallback — als alleen `hero-scene.jpg` bestaat (één plat beeld):** toon de still met een trage Ken Burns (langzaam inzoomen/pannen, ~20s loop) + de zwevende metric-kaartjes eroverheen.
+3. **Laatste fallback (geen assets):** de bestaande gecodeerde gradient-mesh + drijvende orbs uit v3.0.
+
+(Géén `<video>`/mp4-route. Wil Kobeon later toch een echte videoloop, dan kan die als extra laag worden toegevoegd, maar de gebouwde site gaat uit van de geanimeerde lagen.)
+
+Belangrijk:
+- De hero-COPY (kop, subtekst, knoppen, trust-strip) blijft exact zoals in v3.0/v3.1 en ligt altijd bovenop de backdrop. De split-layout met de product-mockup rechts (ScreenShowcase `hero-primary`) blijft ook — de bewegende lagen zijn de SFEER eráchter, de mockup blijft het bewijs.
+- Performance: lagen zijn geoptimaliseerde PNG's; animeer met CSS transforms/opacity (GPU-vriendelijk), pauzeer buiten beeld. `prefers-reduced-motion` → toon de platte still zonder beweging.
+- Mobiel: minder/zachtere beweging en geen mouse-parallax; gebruik `hero-scene-mobile.jpg` als de lagen op klein scherm te druk worden.
+
+----------------------------------------------------------------
+### UPGRADE 2 — DIENSTENSECTIE HERBOUWEN (vervang de vlakke 3×3 glass-grid)
+----------------------------------------------------------------
+Probleem met de huidige opzet: Sectie 6 is een uniforme 3×3 grid van identieke glaskaarten — vlak en voorspelbaar. Capisoft's diensten zijn juist DIVERS: elke dienst is een royaal blok met een eigen, sfeervolle 3D-achtergrond. Bouw dit na als een moderne **BENTO-grid met achtergrond-images** i.p.v. negen klonen.
+
+VERVANG Sectie 6 (DIENSTEN GRID) volledig door onderstaande "Diensten Bento". (Sectie 2 — de 4 alternerende demo-rijen — blijft als de uitgelichte showcase; deze bento is het complete overzicht van alle 9.)
+
+**Sectie 6 (nieuw) — DIENSTEN BENTO (donker #0D0D1A)**
+- Label (teal): "ALLE DIENSTEN" · H2 wit + gradient-regel "negen manieren waarop wij uw organisatie digitaliseren" · korte subtekst.
+- Daaronder een **asymmetrische bento-grid** (CSS grid, 12 koloms, variabele tegelgroottes) met 9 dienst-tegels. Géén uniforme maat: meng groot/middel/klein zodat het ritme levendig is. Voorgestelde indeling (desktop):
+  - Rij A: **Procesautomatisering** (groot, 2×2) · **Agentic AI** (groot, breed 2×1) naast 2 kleine eronder.
+  - Rij B: **AI Development** (middel) · **Systeemintegratie** (middel) · **App ontwikkeling** (middel).
+  - Rij C: **Portalen & dashboards** (breed 2×1) · **Legacy modernisering** (klein) · **Design & Prototyping** (klein) · **IT Consultancy** (klein).
+  - (Exacte plaatsing mag de bouwer optimaliseren, zolang het asymmetrisch en gebalanceerd is.)
+
+**Elke tegel (`<ServiceTile>`):**
+- **Achtergrond-image** uit `/public/visuals/svc-<id>.jpg` (de Nano Banana set), met een donkere gradient-overlay onderaan (transparant → #0D0D1A) zodat tekst leesbaar is. Ontbreekt de image? Val terug op een merk-gradient (per dienst een andere paars/teal-combinatie) zodat de tegel toch sfeervol is.
+- Inhoud onderaan: klein teal icoon, titel (wit, bold), en — alleen op de grotere tegels — één regel beschrijving. Kleine tegels tonen alleen icoon + titel (verschijnt voluit bij hover).
+- **Hover:** achtergrond-image zoomt subtiel in (scale 1.05, 400ms), overlay wordt iets donkerder, titel schuift omhoog, beschrijving + "→" gledt in beeld, dunne rand kleurt op (afwisselend #3A0CA3 of #13A6A6 per tegel).
+- **Diversiteit-accenten:** geef 2–3 tegels een net andere behandeling, zodat het geen patroon wordt: bv. de Procesautomatisering-tegel toont een kleine loopende mock-animatie (MockWorkflow uit v3.0) i.p.v. een still; de Portalen-tegel een mini-dashboard-mock; de Agentic AI-tegel een glow-accent in teal. Eén of twee tegels mogen een lichtere achtergrond hebben voor contrast.
+- Entrance: tegels faden + slide-up in met staggered delay (60ms per tegel) wanneer de sectie in beeld komt.
+
+Services (titel — één regel, ongewijzigd t.o.v. eerdere versie):
+1. Procesautomatisering — Repetitieve en cognitieve taken automatiseren met Mendix.
+2. Agentic AI — AI-agenten die zelfstandig kenniswerk uitvoeren, geregisseerd door Mendix.
+3. AI Development — Custom AI-modellen trainen op uw eigen bedrijfsdata.
+4. App ontwikkeling — Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd.
+5. Systeemintegratie — Microsoft Dynamics, SAP, REST-API's — al je systemen praten met elkaar.
+6. Portalen & dashboards — Klant- en medewerkersportalen met zelfservice en actueel inzicht.
+7. Legacy modernisering — Verouderde systemen gefaseerd vervangen. Stap voor stap, niet in één keer.
+8. Design & Prototyping — Rapid prototyping met Figma Make, Lovable, Google Stitch.
+9. IT Consultancy — Datastructuur, architectuuradvies en IT-roadmap.
+
+Onder de bento: CTA-link "Bekijk alle diensten →" (teal, pijl animeert naar rechts op hover).
+
+**Ook de service-demo-rijen (Sectie 2) krijgen sfeer:** plaats achter elke demo-rij subtiel de bijbehorende `svc-<id>.jpg` als donkere, sterk getemperde achtergrond (low opacity, blur) zodat de vier rijen elk een eigen kleurtoon krijgen i.p.v. één egale donkere band. Houd de mockup en tekst goed leesbaar.
+
+----------------------------------------------------------------
+### ASSET-MAP (samenvatting voor de bouwer)
+----------------------------------------------------------------
+/public/visuals/
+   hero-bg.png  hero-orbs.png  hero-p
+
+================================================================
+================================================================
+## v3.4 ADDITIONS — SEO-FUNDAMENT + STERKERE CLAIMS (verwerk in elke pagina)
+================================================================
+================================================================
+
+Twee dingen die in elke pagina van de build moeten landen: (A) een degelijk SEO-fundament, en (B) scherpere, autoritaire claims zodat Kobeon zichzelf niet langer tekortdoet. Houd al het andere intact.
+
+----------------------------------------------------------------
+### A — SEO-FUNDAMENT (bouw dit standaard in)
+----------------------------------------------------------------
+**Indexeerbaarheid (kritiek):** de site moet door zoekmachines te crawlen zijn. Als dit een React/Vite-app is, gebruik **SSR, SSG of prerendering** (bv. via een prerender-stap of een framework dat statische HTML genereert per route). Pure client-side routes zonder pre-render tellen niet voor SEO — elke pagina hieronder moet een echte, indexeerbare URL met server-gerenderde inhoud zijn.
+
+**Per pagina verplicht:**
+- Unieke `<title>` (50–60 tekens) met primair keyword + merk. Unieke `<meta name="description">` (150–160 tekens) met keyword + bewijs + CTA.
+- Exact één semantische `<h1>` per pagina, met het primaire keyword — **niet** opgeknipt in losse woord-spans (animeer met CSS op intacte tekst, zodat de DOM één schone H1 houdt).
+- Logische H2/H3-hiërarchie met secundaire keywords waar natuurlijk.
+- Open Graph + Twitter-card tags (title, description, image) voor nette social-previews.
+- Beschrijvende `alt`-teksten op álle betekenisvolle afbeeldingen en logo's (met natuurlijke keywords, bv. `alt="ABN AMRO — klant van Kobeon"`).
+- Canonical tag (self-referencing) per pagina.
+
+**Title/meta per pagina (gebruik deze, pas aan waar nodig):**
+- Home — `Mendix Partner Nederland | Enterprise software & AI op maat – Kobeon` / `Kobeon bouwt enterprise-software op Mendix — 9 jaar Gartner Leader. Van procesautomatisering tot AI op maat. Werkende MVP in 6 weken. Plan een gratis Discovery-sessie.`
+- Diensten — `Mendix & AI diensten — procesautomatisering tot agentic AI | Kobeon`
+- Elke dienst-pagina — `[Dienst] op Mendix | Kobeon` (bv. `Procesautomatisering op Mendix | Kobeon`)
+- Elke sector-pagina — `Software voor [sector] op Mendix | Kobeon`
+- Projecten — `Klantcases — Mendix-software in de praktijk | Kobeon`
+- Werkwijze — `Onze werkwijze — van idee naar Mendix-software in 6 weken | Kobeon`
+- Werken bij — `Werken bij Kobeon — Mendix Developer & Consultant vacatures`
+- Quickscan — `Gratis digitale Quickscan | Kobeon`
+
+**Structured data (JSON-LD):**
+- `Organization` (naam Kobeon, logo, adres Noordzeelaan 50, 8017 JW Zwolle, telefoon, e-mail info@kobeon.nl, sameAs social) — sitebreed.
+- `FAQPage` op de FAQ-sectie (homepage + sectorpagina's) — kan FAQ-rich-results opleveren.
+- `Service` per dienst-pagina; `BreadcrumbList` op alle subpagina's; `JobPosting` per vacature; `Article` op blog/cases waar van toepassing.
+
+**Techniek/performance (Core Web Vitals):**
+- XML-sitemap genereren + `robots.txt` die belangrijke pagina's toelaat.
+- Lazy-load afbeeldingen/video; comprimeer de Nano-Banana-assets en screenshots (WebP, redelijke bestandsgroottes); reserveer afmetingen om CLS te voorkomen.
+- Houd de hero-animatie (geanimeerde lagen) licht; bewaak LCP — de grootste tekst/afbeelding moet snel laden.
+- Schone, leesbare URL's (`/sectoren/sierteelt`, `/diensten/procesautomatisering`).
+
+**Interne links:** maak een "Mendix partner"-pijler-logica — homepage en diensten linken naar elke dienst- en sectorpagina; cases linken naar de bijbehorende dienst/sector en omgekeerd. Geen weespagina's.
+
+----------------------------------------------------------------
+### B — STERKERE CLAIMS (Kobeon doet zichzelf nu tekort)
+----------------------------------------------------------------
+Pas de copy zo aan dat autoriteit vooropstaat. Leidend principe: **leid met Mendix + enterprise + bewijs; gebruik "low-code" en "energie/samenwerking" als ondersteunend, niet als hoofdframe.**
+
+1. **Echte klantlogo's prominent en hoog.** Voeg direct onder de hero een sterke logo-strook toe met de ECHTE Kobeon-klanten: **ABN AMRO · Zilveren Kruis · de Rechtspraak · BKD · Petje af · HomeZero · EPSA · FincValue · TLFS**. Caption: "Vertrouwd door ABN AMRO, Zilveren Kruis en de Rechtspraak." Dit is je sterkste, eerlijke autoriteit. Houd dit visueel gescheiden van de "platform-credibility"-strook (Rabobank/PostNL/Schiphol = Mendix-klanten, niet die van Kobeon) om verwarring te voorkomen.
+
+2. **Kernclaim: hoogste Mendix-expertdichtheid.** Verwerk prominent (hero-nabij of als eigen accent): **"De hoogste Mendix-expertdichtheid van Nederland"** — onderbouwd met "3 MVP's · 6 Experts · 2 Advanced Trainers". Dit is jouw verdedigbare equivalent van Capisoft's "#1", maar specifiek en geloofwaardig. (Alleen gebruiken als feitelijk juist.)
+
+3. **Hero leidt met autoriteit, niet met zachtheid.** Boventitel-badge: "MENDIX CERTIFIED PARTNER · 9× GARTNER LEADER". H1 zoals in v3.0 (digitalisering moet / de meeste weten niet hoe). Vermijd dat "low-code" of "energie waar je blij van wordt" de eerste indruk bepalen — die mogen lager op de pagina terugkomen als merk-toon.
+
+4. **Cijfers boven adjectieven.** Zorg dat deze hard en hoog in beeld staan: MVP in 6 weken · €100K besparing (golfclub) · 250.000+ eindgebruikers bereikt · 9× Gartner Leader · 7+ projecten. (Stats-balk bestaat al — voeg "250.000+ eindgebruikers bereikt" toe als 5e/2e-rij metric.)
+
+5. **Geleende platform-autoriteit (blijft, v3.1):** "Gebouwd op het platform dat 9 jaar Gartner Leader is en wereldwijd vertrouwd wordt door Rabobank, PostNL en Schiphol."
+
+6. **Toon-balans:** de warme Kobeon-stem ("samen bouwen", "energie", "eindgebruiker voorop") is waardevol als differentiatie en mag zeker terugkomen — maar ná de autoriteits- en bewijslagen, niet als opening. Enterprise-kopers willen eerst zekerheid (Gartner, ISO, A-merk-klanten), dan de prettige samenwerking.
+
+**Eerlijkheids-guardrail:** alle claims moeten kloppen en logo's met toestemming worden getoond. "Hoogste expertdichtheid", aantallen en klantnamen alleen gebruiken als verifieerbaar. Geen loos "#1 van Nederland" zonder onderbouwing — een specifieke, controleerbare claim overtuigt enterprise-kopers méér dan een superlatief.
+
+----------------------------------------------------------------
+### HOMEPAGE-ARCHITECTUUR (waarom langer/gelaagd — bevestiging)
+----------------------------------------------------------------
+Houd de homepage bewust gelaagd en substantieel (de 12+ secties uit v3.x), met de boodschap in variatie herhaald — belofte → echte klantlogo's → diensten → harde cijfers → werkwijze → cases → sectoren → Gartner/Mendix-autoriteit → FAQ → CTA — en de **Discovery-CTA op 3 momenten** (hero, na de cases, slot). Dit geeft het funnel- en SEO-voordeel van een lange pagina. Maar houd de toon strak en enterprise-waardig: herhaal met variatie en bewijs, niet met holle superlatieven of letterlijke duplicatie.
+
+
+================================================================
+================================================================
+## v3.5 ADDITIONS — DIENST-TEGELS MET LOOPENDE ACHTERGRONDVIDEO (Capisoft-stijl)
+================================================================
+================================================================
+
+Doel: de dienstensectie hetzelfde "levende" gevoel geven als capisoft.nl, waar achter elke dienst-tegel een loopende video draait. Dit vervangt/verrijkt de statische achtergrond-images uit v3.3. Houd al het andere intact.
+
+----------------------------------------------------------------
+### WAT CAPISOFT TECHNISCH DOET (en wij nabouwen)
+----------------------------------------------------------------
+Elke dienst-tegel = een container met: (1) een full-bleed loopende `<video>` als achtergrond, (2) een donkere gradient-overlay voor leesbaarheid, (3) de tekst-content erbovenop. De video draait `autoplay loop muted playsinline` met `object-fit: cover` en een **poster-image** als fallback, in twee formaten (`.mp4` + `.webm`). De grid komt met een subtiele 3D-diepte binnen (cube-stijl).
+
+----------------------------------------------------------------
+### COMPONENT — `<ServiceTile>` (met video-achtergrond)
+----------------------------------------------------------------
+Structuur (per tegel):
+- **Container:** `position: relative; overflow: hidden; border-radius: 16–20px;` met een vaste verhouding (bento-tegels) en een zachte schaduw.
+- **Achtergrondvideo (laag 1):** `<video autoplay loop muted playsinline preload="none" poster="/public/visuals/svc-<id>.jpg">` met bronnen `svc-<id>.webm` én `svc-<id>.mp4`. CSS: `position:absolute; inset:0; width/height:100%; object-fit:cover;`. (muted + playsinline zijn VERPLICHT, anders weigert de browser autoplay — zeker op iOS.)
+- **Overlay (laag 2):** donkere gradient van onder (#0D0D1A ~90%) naar boven (transparant), zodat titel/tekst altijd leesbaar zijn. Op hover iets donkerder.
+- **Content (laag 3):** `position:relative; z-index:2;` — klein teal icoon, titel (wit, bold), 1 regel beschrijving (op grote tegels), en "Meer info →".
+- **Hover/3D:** subtiele 3D-tilt (max ~6°) + lichte scale (1.02); video speelt door, overlay donkert, "→" schuift in. Entrance: tegels komen met staggered diepte/scale in (cube-gevoel), 60ms per tegel.
+
+**Fallback-keten (belangrijk, zelfde filosofie als de rest van de site):**
+1. Video aanwezig (`svc-<id>.webm/.mp4`) → toon loopende video.
+2. Geen video, wel still (`svc-<id>.jpg`, de Nano Banana-render) → toon still met trage Ken Burns + de bestaande hover-zoom.
+3. Geen assets → merk-gradient + (op de feature-tegels) een gecodeerde mock-animatie.
+
+----------------------------------------------------------------
+### PERFORMANCE (cruciaal — niet 9 video's tegelijk autoplayen)
+----------------------------------------------------------------
+Negen autoplay-video's tegelijk maakt de pagina traag en leegt accu's. Daarom:
+- **Hybride aanpak (aanbevolen):** zet video alleen op de **2–3 grote "feature"-tegels** (bv. Procesautomatisering, Agentic AI, Portalen). De overige (kleinere) tegels gebruiken de gegronde Nano Banana-**still** met subtiele Ken Burns/hover-zoom. Visueel net zo rijk, veel lichter.
+- **Lazy + pauzeren:** laad/start een video pas wanneer de tegel in beeld komt (IntersectionObserver) en pauzeer 'm zodra hij uit beeld is. `preload="none"`.
+- **Klein houden:** elke clip 6–10s, naadloze loop, gecomprimeerd (mp4 H.264 + webm VP9/AV1), richt op < ~1,5 MB per clip. Lever altijd een geoptimaliseerde poster (`.jpg`) mee.
+- **`prefers-reduced-motion`:** toon alleen de poster (geen video, geen Ken Burns).
+- **Mobiel:** standaard alleen posters; eventueel 1 video op de hoofd-feature-tegel.
+
+----------------------------------------------------------------
+### HOE MAAK JE DE CLIPS? (3 routes, van "echtst" naar "snelst")
+----------------------------------------------------------------
+Asset-namen: `/public/visuals/svc-<id>.mp4` + `svc-<id>.webm` + poster `svc-<id>.jpg`.
+
+1. **Schermopname van échte klantsoftware (meest geloofwaardig — sluit aan op je wens voor "echter").** Neem 6–10s van de echte app op (een dashboard dat laadt, een workflow die afvinkt, een portaal dat scrollt), anonimiseer gevoelige data (zie de Screenshot-brief §7), exporteer naar mp4+webm. Dit is wat Capisoft in feite doet en oogt het minst "nep".
+2. **De gegronde Nano Banana-still animeren tot een korte loop.** Voer de realistische still (uit de Nano Banana-brief) als startframe in Veo 3 / Runway / Kling met een rustige bewegingsprompt ("very gentle camera drift over a clean workspace, soft daylight shifting, calm, seamless loop, no glowing effects"). Exporteer kort + klein.
+3. **Geen videobestand — live in code.** Laat de tegel de still tonen met Ken Burns + de gecodeerde mock-animatie eroverheen. Geen extra assets, lichtst van allemaal. Prima voor de kleinere tegels.
+
+Advies: route 1 voor je 2–3 sterkste diensten (echte software!), route 3 voor de rest. Zo krijg je de Capisoft-levendigheid zonder de hele pagina vol zware video's te zetten.
+
+
+================================================================
+================================================================
+## v3.6 — NEDERLANDSE COPY: TOON, ANTI-NEDERENGELS & SCHERPERE TEKST
+================================================================
+================================================================
+
+Doel: de copy op Capisoft-niveau krijgen — kort, zelfverzekerd, voordeel-eerst — en alle letterlijke Engels→Nederlands-vertalingen eruit. Dit geldt voor ALLE pagina's en is leidend boven losse tekstvoorbeelden elders in de brief. Reeds gecorrigeerd in v3.0/v3.1/v3.3: "uit de doos", "selfservice", "real-time", "Coming soon", "big bang", "privaat (model)", "efficiency", "Security by default". Pas onderstaande regels overal toe.
+
+----------------------------------------------------------------
+### BESLIST: "je / jouw" (informeel) — zie v3.7
+----------------------------------------------------------------
+De aanspreekvorm is **"je / jouw"**, consequent op de hele site (past bij Kobeons warme, energieke merkstem). Alle u-vorm-voorbeelden in deze brief (v3.0–v3.6) zijn daarmee achterhaald: **v3.7 hieronder bevat de definitieve copy in je/jouw en overschrijft de eerdere tekstvoorbeelden.** Schrijf nooit "u/uw".
+
+----------------------------------------------------------------
+### TOON-REGELS (Capisoft-niveau, maar enterprise-waardig)
+----------------------------------------------------------------
+- **Kort en actief.** Eén idee per zin. Liever twee korte zinnen dan één lange.
+- **Voordeel eerst, niet "wij".** Niet "Wij bieden procesautomatisering die…" maar "Repetitief werk verdwijnt. Uw mensen houden tijd over."
+- **Cijfers en bewijs boven bijvoeglijke naamwoorden.** "MVP in 6 weken", "€100K bespaard", "250.000+ gebruikers" zeggen meer dan "snel", "krachtig", "innovatief".
+- **Concreet, geen holle woorden.** Vermijd: innovatief, naadloos, ontzorgen, het volgende niveau, oplossingen-op-maat (tenzij je het meteen concreet maakt), synergie, toekomstbestendig zonder uitleg.
+- **Geen "wij zijn gespecialiseerd in…"-openingen.** Begin met de klant of het resultaat.
+- **Transformatie-frame voor cases** (werkt sterk, zie Capisoft): "Van [oude pijn] naar [nieuw resultaat]."
+- **Vermijd Nederengels en letterlijke vertalingen** (zie woordenlijst hieronder).
+
+----------------------------------------------------------------
+### WOORDENLIJST — fout/Engels → beter Nederlands
+----------------------------------------------------------------
+Vermijd → gebruik:
+- privaat (model) → eigen / privé model
+- uit de doos (out of the box) → standaard / standaard ingebouwd
+- real-time → realtime, of: actueel / live
+- selfservice → zelfservice
+- coming soon → binnenkort
+- by default → standaard
+- big bang → in één keer / in één klap
+- naadloos / seamless (overgebruikt) → soepel, moeiteloos, vanzelf
+- insights → inzichten
+- features → functies
+- enterprise-grade → enterprise-kwaliteit
+- efficiency → efficiëntie
+- high-end → premium / topkwaliteit
+- "naar het volgende niveau tillen" → schrappen of concreet maken
+- "ontzorgen" → zeg wát je uit handen neemt
+- supporten → ondersteunen
+- e-mailen/whatsappen → prima, maar consistent spellen
+
+**Vakjargon dat je WÉL houdt** (gangbaar in NL enterprise, niet vertalen): Mendix, low-code, MVP, agentic AI, governance, compliance, audit trail, API, dashboard, portaal, cloud, on-prem, private cloud, ISO 27001, AVG, BIO, NIS2, supply chain (of "toeleverketen"), enterprise. ("Governance" en "compliance" zijn geaccepteerd; gebruik ze waar ze precies zijn, niet als opvulling.)
+
+**Spelling/stijl-details:** schrijf samenstellingen aaneen of met koppelteken (supply-chain-portaal, consultantportalen, Enterprise-schaalbaarheid, AI-model, low-code-platform); getallen in lopende tekst uitschrijven ("negen jaar op rij" i.p.v. "9e achtereenvolgende jaar"), maar in cijferblokken/stats juist cijfers gebruiken ("9×", "6 weken").
+
+----------------------------------------------------------------
+### SCHERPERE SLEUTEL-COPY (gebruik deze versies)
+----------------------------------------------------------------
+**Hero — subline (vervangt de huidige):**
+"Kobeon bouwt enterprise-software op Mendix — het platform dat al negen jaar Gartner-Leider is. Van procesautomatisering tot AI op maat. Binnen zes weken draait uw eerste werkende versie. Altijd meetbaar."
+
+**Introductie (Sectie 3) — body (scherper, minder generiek):**
+"Standaardpakketten passen nooit helemaal. Maatwerk in high-code duurt te lang en kost te veel. En intussen draait uw organisatie op Excel, e-mail en losse WhatsApp-groepen.
+Wij bouwen software die wél past — op Mendix, het platform dat enterprise-zekerheid combineert met de snelheid van een start-up. Veilig, schaalbaar, en binnen zes weken werkend."
+
+**Dienst-one-liners (voordeel-eerst, vervangt de huidige waar scherper kan):**
+- Procesautomatisering — "Repetitief en denkwerk dat zichzelf doet. Uw mensen houden tijd over — met een volledig audit-spoor."
+- Agentic AI — "AI-agenten die het werk áf maken: matchen, controleren, verwerken. Geregisseerd door Mendix, altijd controleerbaar."
+- AI Development — "Een AI-model getraind op úw data. U houdt de data, wij bouwen het model."
+- App ontwikkeling — "Web- en mobiele apps op Mendix. Enterprise-kwaliteit, standaard ingebouwd."
+- Systeemintegratie — "Agriware, AFAS, SAP, REST — eindelijk praten uw systemen met elkaar."
+- Portalen & dashboards — "Klanten en medewerkers regelen het zelf. U ziet alles, actueel."
+- Legacy modernisering — "Verouderde systemen vervangen we stap voor stap. Niet in één keer, geen risico."
+- Design & Prototyping — "Van idee naar klikbaar prototype in dagen. U ziet het eindresultaat vóór we bouwen."
+- IT Consultancy — "Datastructuur, architectuur en een IT-routekaart die hout snijdt."
+
+**Mendix-voordeel — tegel-titels (Nederlands, scherp):**
+"Standaard veilig" · "Enterprise-schaalbaarheid" · "Governance & audit trails" · "Siemens als fundament"
+
+**Sector-hero-regels (puntiger):**
+- Sierteelt & Horticultuur — "Software die uw keten begrijpt. Van keuring tot levering."
+- Staffing & Detachering — "Minder administratie, meer plaatsingen. En altijd DBA-proof."
+- Semi-Publiek — "Compliance én efficiëntie. Zonder compromis."
+- Onderwijs — "Minder administratie. Meer tijd voor onderwijs."
+- Kinderopvang — "Minder papierwerk. Meer tijd voor de kinderen."
+- Maakindustrie — "Slimme fabrieken beginnen met slimme software."
+
+**CTA's (consistent, concreet):**
+- Primair: "Plan een Discovery-sessie" + subregel "Gratis · 60 minuten · meteen inzicht in uw situatie."
+- Slot-CTA: "Klaar om uw eerste stap te zetten?" + "Eén gesprek van 60 minuten. U betaalt niets en weet daarna precies waar u staat."
+
+**Werken bij — hero:**
+"Bouw mee aan software die er echt toe doet." + "Geen radertje in een grote machine. Bij Kobeon zit je dicht op de klant en zie je je werk binnen weken live."
+(let op: dit is bewust "je" — recruitmentpagina mag informeler. Houd dat dan apart van de u-vorm op de zakelijke pagina's, of trek alles gelijk — zie de u/je-beslissing.)
+
+----------------------------------------------------------------
+### REDACTIE-CHECK (laat de bouwer/copywriter dit nalopen)
+----------------------------------------------------------------
+Loop voor publicatie elke pagina na op: (1) Nederengels/letterlijke vertalingen uit de woordenlijst, (2) holle woorden, (3) consequente u- of je-vorm, (4) of elke sectie met een voordeel/cijfer opent i.p.v. met "wij", (5) correcte samenstellingen en spelling. Tip: een NL-tekstcheck (bv. een spelling-/stijlcontrole) over de definitieve teksten haalt de laatste anglicismen eruit.
+                                                                                                                                                                                                                    
+
+================================================================
+================================================================
+## v3.7 — ICP + DEFINITIEVE COPY IN JE/JOUW (overschrijft alle eerdere tekstvoorbeelden)
+================================================================
+================================================================
+
+Dit blok is leidend voor álle copy. Aanspreekvorm overal: **je / jouw** (nooit u/uw). De toon mag duidelijk minder braaf: warm, energiek, no-nonsense — Kobeons eigen stem ("Wij maken je trots op je software", "zonder gedoe", "partner in crime") — maar altijd met hard bewijs erachter. Behoud dus de autoriteit (Mendix, Gartner, ABN AMRO, Zilveren Kruis, Rechtspraak), maar breng 'm menselijk.
+
+----------------------------------------------------------------
+### WIE SPREKEN WE AAN — DE ICP
+----------------------------------------------------------------
+Gebaseerd op Kobeons eigen klanten (HomeZero, Petje af, EPSA, BKD, ABN AMRO, Zilveren Kruis, Rechtspraak) en hun verhalen.
+
+**Kernprofiel:** ambitieuze, gegroeide organisaties die hun processen zijn ontgroeid. Scale-ups, mkb-plus, sectorspelers (horticultuur, staffing), non-profits en semi-publieke organisaties. Vaak founder- of directie-gedreven; soms een IT-/operations-lead.
+
+**Wie beslist:** oprichters/directeuren, operations-managers en IT-verantwoordelijken die de pijn van opschalen op "plak-en-knip"-processen dagelijks voelen.
+
+**Hun pijn (in hun eigen woorden):**
+- "Alles draait nog op Excel, e-mail en WhatsApp-groepjes — en het werkt niet meer."
+- "We groeien, maar de complexiteit groeit harder. Geen overzicht, geen grip, foutgevoelig."
+- "Standaardpakketten passen niet, maatwerk is te duur en te traag."
+- "We willen een partner die meedenkt en snel schakelt — geen leverancier die factureert vanaf de zijlijn."
+
+**Wat ze willen voelen:** grip, rust, snelheid, en plezier in de samenwerking. Software die werkt zoals zij denken. Een team dat naast ze staat, korte lijntjes, no-nonsense, en dat de boel ook nog leuk maakt.
+
+**Wat ze moeten geloven (de bewijslast):** dat dit warme team óók enterprise-niveau levert — Mendix-experts, 9× Gartner-Leider, ISO 27001, en klanten als ABN AMRO, Zilveren Kruis en de Rechtspraak. Het onderscheidende van Kobeon = **enterprise-vakwerk met de menselijkheid en snelheid van een klein, scherp team.**
+
+**Copy-implicatie:** open met herkenning van hún chaos en ambitie (niet met "wij bieden…"), beloof grip + snelheid + plezier, en onderbouw met keiharde namen en cijfers. Warm én sterk. Dat is de toon die de ICP raakt en die je nu mist.
+
+----------------------------------------------------------------
+### TOON — minder braaf
+----------------------------------------------------------------
+- Spreek de lezer direct aan ("je"), stel af en toe een rake vraag ("Herkenbaar?").
+- Korte, ritmische zinnen. Durf een one-liner. Durf een knipoog (Kobee mag bestaan).
+- Voordeel en herkenning eerst, bewijs direct erachter. Geen opsommingen van wat jullie "doen".
+- Vermijd braaf-corporate ("oplossingen op maat", "wij ontzorgen", "naadloos"). Zeg het concreet en met lef.
+- Warm maar niet zweverig: elke energieke claim landt op een cijfer of een naam.
+
+----------------------------------------------------------------
+### DEFINITIEVE COPY (je/jouw) — gebruik deze
+----------------------------------------------------------------
+
+**HERO**
+- Boventitel-badge: "MENDIX CERTIFIED PARTNER · 9× GARTNER-LEIDER"
+- H1: "Iedereen weet dat het digitaler moet. / Bijna niemand weet hoe." (slotregel in geel)
+- Subline: "Kobeon bouwt enterprise-software op Mendix — het platform dat al negen jaar Gartner-Leider is. Geen Excel-chaos, geen traject van jaren. Binnen zes weken draait jouw eerste werkende versie. En ja, je wordt er trots op."
+- Primaire CTA: "Plan een Discovery-sessie" · subregel "Gratis · 60 minuten · daarna weet je precies waar je staat."
+- Tweede knop: "Bekijk klantverhalen"
+
+**TRUST-REGEL (onder de hero, bij de klantlogo's):**
+"Van ABN AMRO en Zilveren Kruis tot de Rechtspraak, BKD en snelgroeiende scale-ups — ze vertrouwen ons hun software toe."
+
+**INTRODUCTIE (Sectie 3):**
+Kop: "Je bent gegroeid. Je processen niet."
+Body: "Alles draait nog op Excel, e-mail en een groeiend aantal WhatsApp-groepjes. Standaardpakketten passen niet, en maatwerk in high-code duurt eindeloos en kost een vermogen. Herkenbaar?
+Wij bouwen software die wél past — op Mendix. De zekerheid van enterprise, de snelheid van een scale-up, en een team dat naast je staat in plaats van te factureren vanaf de zijlijn. Binnen zes weken werkend. Zonder gedoe."
+
+**DRIE KERNVOORDELEN (tegels):**
+- Snel — "MVP in 4–6 weken. Je ziet resultaat voordat de concurrent klaar is met de offerte."
+- Enterprise-kwaliteit — "ISO 27001, AVG en rolgebaseerde toegang. Standaard ingebouwd, niet bijgeprikt."
+- Schaalbaar — "Van 10 tot 100.000 gebruikers. Je software groeit met je mee."
+
+**DIENST-ONE-LINERS:**
+- Procesautomatisering — "Het saaie, repeterende werk doet de software voortaan. Jouw mensen houden tijd over voor het echte werk — met een volledig audit-spoor."
+- Agentic AI — "AI-agenten die het werk áf maken: matchen, controleren, verwerken. Jij houdt de regie, zij doen het zware werk."
+- AI Development — "Een AI-model getraind op jouw data. Jij houdt de data, wij bouwen het brein."
+- App ontwikkeling — "Web- en mobiele apps op Mendix. Enterprise-kwaliteit, standaard ingebouwd."
+- Systeemintegratie — "Microsoft Dynamics, SAP, REST/API — eindelijk praten je systemen met elkaar. Geen los zand meer."
+- Portalen & dashboards — "Je klanten en je mensen regelen het zelf. Jij ziet alles, op elk moment."
+- Legacy modernisering — "Dat oude systeem vervangen we stap voor stap. Geen alles-in-één-keer-stress, geen risico."
+- Design & Prototyping — "Van idee naar klikbaar prototype in dagen. Je ziet het eindresultaat vóór we bouwen."
+- IT Consultancy — "Datastructuur, architectuur en een IT-routekaart die hout snijdt. Gewoon helder advies."
+
+**STATS-LABELS:**
+"7+ projecten opgeleverd" · "6 weken van idee naar werkende app" · "€100K per jaar bespaard bij één klant" · "9× Gartner-Leider (Mendix)". (2e rij optioneel: "3 MVP's · 6 Mendix Experts · 2 Advanced Trainers · 250.000+ gebruikers bereikt".)
+
+**MENDIX-VOORDEEL — tegel-titels:**
+"Standaard veilig" · "Enterprise-schaalbaarheid" · "Governance & audit trails" · "Siemens als fundament".
+Quote-blok: "Mendix is al negen jaar op rij Gartner-Leider voor enterprise low-code. Daar bouwen wij jouw software op."
+
+**SECTOR-HERO-REGELS:**
+- Sierteelt & Horticultuur — "Software die jouw keten snapt. Van keuring tot levering."
+- Staffing & Detachering — "Minder administratie, meer plaatsingen. En altijd DBA-proof."
+- Semi-Publiek — "Compliance én snelheid. Zonder dat je op één van de twee inlevert."
+- Onderwijs — "Minder administratie. Meer tijd voor onderwijs."
+- Kinderopvang — "Minder papierwerk. Meer tijd voor de kinderen."
+- Maakindustrie — "Slimme fabrieken beginnen met slimme software."
+
+**WERKWIJZE — hero:**
+"Van idee naar werkende software. Zonder verrassingen." + "Heldere scope, vaste planning, een werkende versie in zes weken. Je weet steeds precies waar je staat."
+
+**WERKEN BIJ — hero:**
+"Bouw mee aan software die er echt toe doet." + "Geen radertje in een grote machine. Bij Kobeon zit je dicht op de klant, schakel je snel en zie je je werk binnen weken live. En er wordt gelachen."
+
+**SLOT-CTA:**
+Kop: "Klaar voor de eerste stap?" + body: "Eén gesprek van 60 minuten. Je betaalt niets en weet daarna precies waar je staat — en wat het je oplevert." + knop "Plan een Discovery-sessie".
+
+**FAQ — zet alle antwoorden om naar je/jouw.** Voorbeeld (Q1): "Een losse AI-tool beantwoordt vragen; een agentic platform doet het werk. Het verschil zit in regie en context. Een gewone chatbot kent jouw systemen en processen niet en handelt niets zelfstandig af. Een agentic oplossing op Mendix krijgt — binnen strikte governance — toegang tot jouw data en applicaties (Microsoft Dynamics, SAP, AFAS), volgt jouw bedrijfsregels en voert hele processen end-to-end uit, met een mens die goedkeurt waar dat moet. Geen 'slim antwoord', maar een taak die áf is." (Herschrijf Q2–Q9 in dezelfde je-vorm; inhoud blijft gelijk aan v3.1.)
+
+----------------------------------------------------------------
+### TOEPASSEN
+----------------------------------------------------------------
+Zet overal je/jouw door (ook in eerder genoemde u-voorbeelden, microcopy, formulieren, knoppen, foutmeldingen). Behoud de vakwoorden uit de v3.6-woordenlijst. Loop voor publicatie de redactie-check uit v3.6 na — nu specifiek op: consequent je/jouw, energieke maar onderbouwde toon, en geen braaf-corporat
+
+================================================================
+================================================================
+## v3.8 — ENTERPRISE-TOON (gemoedelijke eraf) + INTEGRATIE-BELEID + CAPISOFT-COPY HERSCHREVEN
+================================================================
+================================================================
+
+Leidend boven v3.7 waar het de toon en de copy aanscherpt. Aanspreekvorm blijft **je/jouw**, maar de uitstraling schuift richting **enterprise**: zelfverzekerd, helder, bewijs-gedreven. Het gemoedelijke gaat eruit.
+
+----------------------------------------------------------------
+### TOON — wat eruit gaat en wat erin blijft
+----------------------------------------------------------------
+**Eruit (te gemoedelijk):** "en ja, je wordt er trots op", "er wordt gelachen", "partner in crime", "zonder gedoe" als kernbelofte, knipogen, "Herkenbaar?"-achtige tussenvragen, en koppen die op gevoel leunen ("Wij maken je trots op je software") in plaats van op resultaat.
+**Erin blijft:** directe je/jouw-aanspreking, korte zinnen, voordeel-eerst — maar nu zakelijker, scherper en met autoriteit. Warmte mag, subtiel en professioneel; nooit als hoofdtoon. Elke claim landt op een cijfer, een naam of een concreet resultaat.
+Kort: **van "leuk en warm" naar "scherp, zeker en bewezen".**
+
+----------------------------------------------------------------
+### INTEGRATIE-BELEID (homepage enterprise, verticals diep)
+----------------------------------------------------------------
+Reden: op de homepage willen we enterprise-herkenbaarheid uitstralen; branche-niche-systemen tonen we juist op de sectorpagina's, waar ze diepgang en geloofwaardigheid geven.
+
+- **Homepage & algemene diensten — noem brede enterprise-platforms:** Microsoft Dynamics 365, SAP, Microsoft Azure (+ Mendix, Siemens, Google Cloud, OpenAI als platform/tech). **Geen** Agriware/AFAS/Infor/Metacom op de homepage.
+- **Sectorpagina's — daar de branche-specifieke systemen, met diepgang:**
+  - Sierteelt & Horticultuur: **Agriware, Infor, Metacom (van Meijel)** + BKD-ketenregister. (Agriware is branche-specifiek; veel telers/handel draaien juist op Infor of Metacom — noem ze alle drie zodat je elke lezer raakt.)
+  - Staffing & Detachering: **AFAS, Nmbrs** (+ Wet DBA, AI-matching).
+  - Maakindustrie: SAP, Microsoft Dynamics 365, legacy-ERP's.
+  - Semi-publiek/onderwijs/kinderopvang: relevante vaksystemen (DUO/BRON, LRK, documentbeheer) per pagina.
+- **FAQ "we hebben al systemen":** voorbeelden mogen een mix zijn (Microsoft Dynamics, SAP, AFAS) — dat zijn systemen die de klant al heeft, geen claim over onze focus.
+- **Algemeen principe in copy:** noem op de homepage "je ERP, CRM en bestaande systemen" generiek + de enterprise-namen; word concreet met merknamen pas op de relevante sectorpagina.
+
+(Reeds doorgevoerd in v3.0/v3.3/v3.7: homepage-logo-strip, MockIntegration-nodes, MockAgent-pills, Systeemintegratie-one-liner en de sierteelt-trefwoorden.)
+
+----------------------------------------------------------------
+### CAPISOFT-COPY → KOBEON ENTERPRISE (je/jouw). Gebruik deze; overschrijft v3.7 waar strakker.
+----------------------------------------------------------------
+
+**HERO (challenger-hook, à la Capisoft "…de meeste weten niet hoe. Wij wel."):**
+- Badge: "MENDIX CERTIFIED PARTNER · 9× GARTNER-LEIDER"
+- H1: "Elke organisatie weet dat digitaliseren moet. / De meeste weten alleen niet hoe." + gele slotregel: "Wij wel."
+- Subline: "Kobeon bouwt enterprise-software op Mendix — het platform dat al negen jaar Gartner-Leider is. Van procesautomatisering tot AI op maat. Binnen zes weken draait je eerste werkende versie, met meetbaar resultaat."
+- Primaire CTA: "Plan een Discovery-sessie" · "Gratis · 60 minuten · daarna weet je precies waar je staat."
+- Tweede knop: "Bekijk klantverhalen"
+
+**TRUST-REGEL (bij de klantlogo's):**
+"Software voor ABN AMRO, Zilveren Kruis en de Rechtspraak — en voor groeiende organisaties die dezelfde kwaliteit eisen."
+
+**INTRODUCTIE (Sectie 3):**
+- Kop: "Je bent gegroeid. Je systemen niet."
+- Body: "Je draait op losse pakketten, Excel en e-mail. Standaardsoftware past niet op je processen; maatwerk in high-code is te traag en te duur. Wij bouwen software die wél past — op Mendix. De zekerheid van enterprise, de snelheid van low-code, en een team van Mendix-experts dat het binnen zes weken werkend krijgt."
+
+**DRIE KERNVOORDELEN:**
+- Snel — "Een werkende MVP in 4–6 weken. Geen traject van een jaar."
+- Enterprise-kwaliteit — "ISO 27001, AVG en rolgebaseerde toegang. Standaard ingebouwd."
+- Schaalbaar — "Van 10 tot 100.000 gebruikers, zonder herbouw."
+
+**DIENST-ONE-LINERS (zakelijk, voordeel-eerst):**
+- Procesautomatisering — "Repetitief en cognitief werk geautomatiseerd op Mendix — met een volledig audit-spoor."
+- Agentic AI — "AI-agenten die kenniswerk zelfstandig uitvoeren: matchen, controleren, verwerken. Geregisseerd door Mendix, altijd controleerbaar."
+- AI Development — "AI-modellen getraind op je eigen bedrijfsdata. Jij houdt de data, wij bouwen het model."
+- App ontwikkeling — "Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd."
+- Systeemintegratie — "Microsoft Dynamics, SAP, REST/API — je systemen werken eindelijk samen."
+- Portalen & dashboards — "Klant- en medewerkersportalen met zelfservice en actueel inzicht."
+- Legacy modernisering — "Verouderde systemen gefaseerd vervangen. Beheerst, zonder risico."
+- Design & Prototyping — "Van idee naar klikbaar prototype in dagen. Je ziet het resultaat vóór de bouw."
+- IT Consultancy — "Datastructuur, architectuur en een IT-roadmap die hout snijdt."
+
+**ALLROUND-PARTNER-BLOK (adaptatie van Capisoft "jouw allround partner…"):**
+Kop: "Je Mendix-partner, van eerste idee tot doorontwikkeling."
+Body: "Van Discovery en ontwerp tot bouw, integratie en beheer — alles op het platform dat al negen jaar Gartner-Leider is en wereldwijd draait bij Rabobank, PostNL en Schiphol. Eén partner, het hele traject."
+
+**SECTOREN-INTRO (adaptatie "Word koploper in jouw industrie"):**
+Kop: "Loop voorop in je sector." + regel: "Software gebouwd op de processen, systemen en regels van jouw branche."
+
+**SECTOR-HERO-REGELS (enterprise, je):**
+- Sierteelt & Horticultuur — "Software die je keten begrijpt. Van keuring tot levering — gekoppeld aan Agriware, Infor of Metacom."
+- Staffing & Detachering — "Minder administratie, meer plaatsingen. DBA-proof, gekoppeld aan AFAS en Nmbrs."
+- Semi-Publiek — "Compliance én snelheid. Zonder dat je op één van de twee inlevert."
+- Onderwijs — "Minder administratie. Meer tijd voor onderwijs."
+- Kinderopvang — "Minder papierwerk. Meer tijd voor de kinderen."
+- Maakindustrie — "Slimme fabrieken beginnen met slimme software."
+
+**ONDERZOEK/AUTORITEIT-STROOK (adaptatie van Capisoft's McKinsey/Accenture-strip → Gartner/Mendix):**
+Korte, gebronde uitspraken op kaarten: "Negen jaar op rij Gartner-Leider voor enterprise low-code." (Gartner, 2025) · "Tot 100.000 gebruikers op één platform — cloud of on-prem." (Mendix) · "Gedragen door Siemens." Houd het feitelijk en toegeschreven.
+
+**WERKWIJZE — hero:** "Van idee naar werkende software. Zonder verrassingen." + "Heldere scope, vaste planning, een werkende versie in zes weken. Je weet steeds precies waar je staat."
+
+**WERKEN BIJ — hero (warmte mag iets, geen giechel):** "Bouw mee aan software die er echt toe doet." + "Je werkt dicht op de klant, schakelt snel en ziet je werk binnen weken live — op enterprise-niveau, in een klein en scherp team."
+
+**SLOT-CTA:** "Klaar voor de eerste stap?" + "Eén gesprek van 60 minuten. Je betaalt niets en weet daarna precies waar je staat — en wat het oplevert." + knop "Plan een Discovery-sessie".
+
+----------------------------------------------------------------
+### TOEPASSEN
+----------------------------------------------------------------
+Trek de enterprise-toon en het integratiebeleid door op álle pagina's en microcopy. Houd je/jouw aan. Loop de redactie-check (v3.6) na, nu specifiek op: geen gemoedelijke/folksy formuleringen, geen branche-niche-namen op de homepage, en elke claim onderbouwd met cijfer of naam.
+
+
+================================================================
+================================================================
+## v3.9 — INTEGRATIES (Mendix out-of-the-box, AWS, AFAS, Exact) + ONDERZOEK/AUTORITEIT-STROOK
+================================================================
+================================================================
+
+Verfijning op v3.8. Twee dingen: (A) het integratieverhaal completer en sterker maken met wat Mendix standaard biedt, en (B) een onderzoek/autoriteit-strook met concrete quotes (Capisoft-set als startpunt, Kobeon past aan).
+
+----------------------------------------------------------------
+### A — INTEGRATIES OP DE HOMEPAGE (bijgewerkt)
+----------------------------------------------------------------
+Op de homepage tonen we nu een bredere, herkenbare mix — enterprise + sterke NL-namen + wat Mendix standaard kan koppelen. AFAS en Exact horen er expliciet bij (breed herkenbaar in NL). Branche-niche (Agriware, Infor, Metacom, Nmbrs) blijft op de sectorpagina's.
+
+**Homepage logo-strip (bijgewerkt):** Mendix · Microsoft Dynamics 365 · SAP · AWS · Microsoft Azure · AFAS · Exact · Salesforce · OpenAI · Siemens.
+
+**Benoem expliciet: Mendix koppelt out-of-the-box.** Dit is een sterk verkoopargument — verwerk het in de Systeemintegratie-sectie en/of het Mendix-voordeel-blok:
+- Mendix draait cloud-native op **AWS** (Mendix Cloud), of op **Azure**, private cloud of on-prem.
+- Standaard connectoren/bouwstenen voor **SAP, Microsoft Dynamics 365 & Microsoft 365, Salesforce, AWS-services (o.a. AI/ML), AFAS, Exact** en open standaarden (**REST, OData, SOAP, Kafka**).
+- Copy-regel (Systeemintegratie): "Mendix koppelt out-of-the-box met SAP, Microsoft Dynamics, AFAS, Exact, Salesforce en AWS — plus elke REST/OData-API. Je systemen werken eindelijk samen."
+- Extra Mendix-voordeel-tegel (optioneel, 5e of vervang er een): **"Out-of-the-box integraties"** — "Standaard connectoren voor SAP, Dynamics, AFAS, Exact, Salesforce en AWS. Koppelen zonder maatwerk-gedoe."
+
+**Sectorpagina's — branche-ERP's (diep):** Sierteelt: Agriware, Infor, Metacom (Meijel) + BKD. Staffing: AFAS, Nmbrs. Maakindustrie: SAP, Dynamics 365, legacy. (AFAS staat dus zowel op de homepage als, met diepgang, op de staffing-pagina — dat mag.)
+
+**Let op (cloud-naming):** "Mendix Cloud draait op AWS" is correct; vermijd te stellige uitspraken over partnerstatus. Houd het bij "draait op / koppelt met". Verifieer de exacte connector-namen in de Mendix Marketplace voordat je ze 1-op-1 als logo toont.
+
+----------------------------------------------------------------
+### B — ONDERZOEK / AUTORITEIT-STROOK (Capisoft-stijl, Kobeon past aan)
+----------------------------------------------------------------
+Bouw — net als Capisoft — een horizontaal scrollbare strook met "inzicht"-kaarten: een vette, gebronde uitspraak per kaart, op een rustige (gegronde, niet-neon) achtergrond. Doel: autoriteit en urgentie, met externe bronnen.
+
+**Belangrijk:** onderstaande quotes zijn **Capisoft's bronnenset als startpunt** (zoals gevraagd). Kobeon vervangt/vult aan met eigen bronnen en stemt de selectie af op de Mendix/low-code/agentic-AI-propositie. **Verifieer elk cijfer en de exacte bron vóór publicatie** en schrijf de bron er zichtbaar bij.
+
+Startset (overnemen en daarna aanpassen):
+1. "Vooroplopende bedrijven die AI op schaal inzetten realiseren tot 60% meer omzetgroei en tot 45% hogere kostenbesparingen dan bedrijven die nog experimenteren." — *McKinsey, The State of AI* (de favoriet — bovenaan plaatsen).
+2. "Bedrijven die AI diep integreren realiseren tot 50% snellere omzetgroei dan hun branchegenoten." — *Accenture, The Art of AI Maturity (2022)*.
+3. "De kloof in digitale en AI-volwassenheid tussen leiders en achterblijvers groeide in drie jaar met 60%." — *McKinsey Digital (2023)*.
+4. "90% van de bedrijfswaarde in de S&P 500 bestaat uit immateriële activa zoals software, data en IP." — *Ocean Tomo, Intangible Asset Market Value Study*.
+5. "Maatwerk-AI-oplossingen presteren aantoonbaar beter dan standaardsoftware, doordat ze aansluiten op unieke data en processen." — *(branchestudie — vervangen door eigen/sterkere bron)*.
+6. "Bedrijven die AI uitstellen, lopen het risico structureel achterop te raken." — *McKinsey / BCG*.
+
+**Kobeon-eigen kaarten (toevoegen tussen de bovenstaande — sluiten beter aan op onze propositie):**
+- "Mendix is negen jaar op rij Gartner-Leider voor enterprise low-code." — *Gartner (2025), via Mendix*.
+- "Eén platform van 10 tot 100.000 gebruikers — cloud of on-prem." — *Mendix*.
+- "Gedragen door Siemens." — *Mendix*.
+(Plek voor de extra bronnen die jij zelf hebt — voeg ze hier toe en stem de toon af op je/jouw, enterprise.)
+
+**Vorm:** kaarten met de gegronde, realistische achtergrond-stijl uit de Nano Banana-brief (geen neon). Quote groot, bron klein eronder, subtiele entrance/auto-scroll. Houd de toon zakelijk en feitelijk — laat de cijfers het werk doen.
+
+----------------------------------------------------------------
+### TOEPASSEN
+----------------------------------------------------------------
+Werk de homepage-integratie-copy en -logo's bij zoals hierboven, voeg de out-of-the-box-boodschap toe aan Systeemintegratie/Mendix-voordeel, en bouw de onderzoek/autoriteit-strook met de startset. Markeer de quotes als te verifiëren placeholders tot Kobeon de definitieve bronnen heeft aangeleverd.
+
+
+================================================================
+================================================================
+## v3.10 — LICHTER MAKEN (minder zwart) + "VIER OPLOSSINGEN, ÉÉN PLATFORM" HERSCHREVEN
+================================================================
+================================================================
+
+Twee dingen: (A) de site oogt te donker/"duister-AI" door veel near-black vlakken — maak 'm lichter en luchtiger (Mendix.com is overwegend licht, donker alleen in de hero; Capisoft wisselt af maar voelt luchtig). (B) De sectie "vier categorieën, één platform" specifieker maken en schrijven naar oplossingen vanuit wat Kobeon met de techniek dóét.
+
+----------------------------------------------------------------
+### A — LICHTER KLEUR- EN CONTRASTBELEID (leidend, overschrijft eerdere bg-keuzes)
+----------------------------------------------------------------
+Principe: **lead light, dark als accent.** Het bijna-zwart (#0D0D1A / #161616) grotendeels loslaten als sectie-achtergrond. Als je een "donkere" sectie wilt, gebruik dan het merk-**diep paars #2A0870** (warmer, on-brand) in plaats van near-black, en beperk donkere secties tot een handvol accenten. Meerderheid van de pagina = wit / licht-grijs (#F7F7FB) / licht-paars (#EDE7F6) / licht-teal (#E0F7FA), met paars/teal als accent en geel voor CTA's.
+
+**Herzien achtergrond-ritme homepage (vervang near-black door licht/diep-paars):**
+- Hero — diep paars #2A0870 (met de lichte geanimeerde lagen) — donker, maar dat is het enige grote donkere blok bovenaan.
+- Wat we bouwen / service-demo-rijen — **WIT of #F7F7FB** (was #0D0D1A). De device-mockups en svc-beelden poppen juist op licht.
+- Introductie — wit.
+- Quickscan-teaser — **licht-paars #EDE7F6** (was #0D0D1A).
+- Vier oplossingen, één platform — **licht (#F5F5F5 / wit)** met een smalle diep-paarse "platform"-band (zie B).
+- Stats — diep paars #2A0870 (accent — mag donker).
+- Mendix-voordeel — wit.
+- Je modellen/data/cloud — licht-teal #E0F7FA of wit.
+- Hoe we werken / proces — **licht #F5F5F5** (was #0D0D1A).
+- Projecten — wit.
+- Sectoren-spotlight — diep paars #2A0870 (accent — mag donker).
+- Testimonials — wit.
+- Onderzoek/autoriteit-strook — wit of licht-grijs (kaarten met gegronde beelden).
+- FAQ — wit / #F5F5F5.
+- Slot-CTA — #3A0CA3 (accent — mag donker).
+- Footer — #161616 (donker is prima voor een footer).
+
+Resultaat: maximaal ~4 donkere blokken (hero, stats, sectoren, CTA + footer), de rest licht. Dat haalt het "duister/AI"-gevoel weg en houdt de premium uitstraling.
+**Extra tips tegen "te AI/donker":** meer witruimte; gebruik de gegronde (niet-neon) beelden uit de Nano Banana-brief; geel en teal spaarzaam als warme accenten; vermijd grote egale zwarte vlakken met alleen gloeiende elementen.
+
+----------------------------------------------------------------
+### B — "VIER OPLOSSINGEN, ÉÉN PLATFORM" (vervangt de huidige donkere categorieën-sectie)
+----------------------------------------------------------------
+Mendix presenteert zichzelf als "Five solutions. One platform." (Context, Intelligence, Coordination, Alignment, Trust). Dat is platform-taal. Wij draaien het om: **vier oplossingen vanuit wat Kobeon vóór je doet**, met Mendix als de ene veilige basis eronder. Maak deze sectie **licht** (#F5F5F5/wit), met vier heldere kaarten en een smalle diep-paarse platform-band onderaan.
+
+**Sectie-kop:** "Vier oplossingen. Eén platform." + subregel: "Alles wat we bouwen, bouwen we op Mendix — vier soorten oplossingen, één veilige basis."
+
+**Vier kaarten (licht, elk een eigen accentkleur-icoon; outcome-first, je/jouw):**
+
+1. **Automatiseren** (icoon paars)
+   Kop-belofte: "Repetitief en denkwerk uit je processen."
+   Body: "We automatiseren en orkestreren processen, workflows en goedkeuringen over al je systemen heen — met een volledig audit-spoor. Je mensen houden tijd over voor het werk dat telt."
+   Label: Procesautomatisering · proces-orkestratie
+
+2. **Bouwen** (icoon teal)
+   Kop-belofte: "Software die past op hoe jij werkt."
+   Body: "Web- en mobiele apps, klant- en medewerkersportalen en dashboards. En verouderde systemen vervangen we gefaseerd — beheerst, zonder risico."
+   Label: App ontwikkeling · Portalen & dashboards · Legacy modernisering
+
+3. **Verbinden** (icoon paars)
+   Kop-belofte: "Al je systemen en data werken samen."
+   Body: "Microsoft Dynamics, SAP, AFAS, Exact, Salesforce, AWS en elke REST/OData-API — out-of-the-box gekoppeld. Geen silo's meer, één bron van waarheid."
+   Label: Systeemintegratie · dataontsluiting
+
+4. **AI inzetten** (icoon geel/teal)
+   Kop-belofte: "AI die echt werk uit handen neemt."
+   Body: "Agentic AI die kenniswerk zelfstandig uitvoert — matchen, controleren, verwerken — en AI-modellen getraind op je eigen data. Geregisseerd door Mendix, altijd controleerbaar."
+   Label: Agentic AI · AI Development
+
+**Platform-band (smal, diep paars #2A0870, ónder de vier kaarten — niet een groot zwart blok):**
+"Eén platform: Mendix." + regel: "Security, governance en schaalbaarheid standaard ingebouwd — ISO 27001, audit trails, van 10 tot 100.000 gebruikers. Gedragen door Siemens, negen jaar op rij Gartner-Leider."
+(Eventueel met het Mendix-logo + 3 kleine trust-chips. Dit kleine donkere bandje is genoeg "platform-gravitas" — de vier oplossingen erboven blijven licht.)
+
+**Interactie:** kaarten op wit met zachte schaduw; hover = lichte lift + accentrand in de categoriekleur; elke kaart linkt door naar de bijbehorende dienst(en). Houd het luchtig: veel witruimte, één duidelijke icoon-stijl.
+
+**Let op:** deze lichte "Vier oplossingen, één platform" vervangt de eerdere donkere categorieën-/diensten-grid als hét overzicht. De diepere 9-diensten (met de video/bento-tegels uit v3.5) mag blijven, maar zet die dan op een lichtere sectie-achtergrond zodat het geen tweede zwart blok wordt — of verплaats 'm naar /diensten.
+
+----------------------------------------------------------------
+### TOEPASSEN
+----------------------------------------------------------------
+Pas het lichtere ritme site-breed toe (minder near-black, diep-paars als accent), bouw de lichte "Vier oplossingen, één platform" en houd je/jouw + de enterprise-toon (v3.8) aan.
+
+
+================================================================
+================================================================
+## v3.11 — LICHTE VARIANTEN VAN ALLE MOCKUPS & DEVICE-FRAMES
+================================================================
+================================================================
+
+Omdat de meeste secties nu licht zijn (v3.10), moeten de mock-demo's en device-frames een **lichte variant** krijgen — anders blijven het donkere vlakken op een lichte pagina. Geef elk mock-component en frame een `theme`-prop en laat het standaard de sectie-achtergrond volgen.
+
+----------------------------------------------------------------
+### THEME-PROP (op alle visuele componenten)
+----------------------------------------------------------------
+Voeg `theme="light" | "dark"` toe aan: MockDashboard, MockWorkflow, MockAgent, MockTraining, MockIntegration, MockPortal, DeviceFrame, ScreenShowcase, en de zwevende metric-kaartjes.
+- **Standaard = light.** Op lichte secties (de meeste) gebruik je de lichte variant; op de paar donkere accentsecties (hero #2A0870, stats, sectoren, CTA) gebruik je de donkere variant.
+- Animaties, timing en gedrag blijven identiek — alleen de kleuren/oppervlakken wisselen.
+
+----------------------------------------------------------------
+### LICHT PALET (voor de mock-UI's)
+----------------------------------------------------------------
+- Oppervlak/venster: wit #FFFFFF op een heel licht-grijs canvas #F7F7FB.
+- Randen/scheidingslijnen: #E6E6EF (subtiel), geen harde zwarte lijnen.
+- Tekst: #161616 (primair), #6B6B7B (secundair) — niet wit.
+- Accenten/data: merkpaars #3A0CA3 en teal #13A6A6 voor grafieklijnen, balken, actieve states; geel #FFB703 alleen voor één highlight.
+- Diepte: zachte, lichte schaduwen (bv. 0 10px 30px rgba(20,20,40,0.08)) i.p.v. gloed. **Geen neon/glow** op licht.
+- Browser/topbar van het frame: licht-grijs met de 3 stippen; adresbalk-pill in #F0F0F5.
+
+----------------------------------------------------------------
+### PER COMPONENT — wat verandert in de lichte variant
+----------------------------------------------------------------
+- **MockDashboard** — witte kaart, lichtgrijze gridlijnen, grafieklijn in paars→teal-gradient, KPI-tegels met donkere cijfers en een klein gekleurd deltapijltje. Dondonts/bars in merkkleuren op wit.
+- **MockWorkflow** — taak-chips in licht-grijs (#F1F1F6) die naar teal met witte check "flippen"; voortgangsbalk teal op licht spoor.
+- **MockAgent** — wit chatpaneel, gebruikersbubbels licht-grijs, agent-bubbel licht-paars (#EDE7F6); tool-pills met donkere tekst en een teal vinkje; de "mens keurt goed"-toggle in teal.
+- **MockTraining** — witte kaart, dalende loss-curve in paars, oplopend accuraat-getal in donkere tekst met teal accent; datarijen met subtiele scheidingslijnen.
+- **MockIntegration** — centrale Mendix-node + omliggende nodes als lichte kaartjes met logo/lettermerk; verbindingslijnen licht-grijs met teal datapunten die pulseren (geen gloeiende neonlijnen).
+- **MockPortal** — lichte sidebar, witte tabel met rijen die infaden, statusbadge die van grijs "In behandeling" naar groen "Goedgekeurd" omklapt.
+- **Zwevende metric-kaartjes** — wit/licht glas (rgba(255,255,255,0.85) + lichte rand + zachte schaduw) met donker cijfer en gekleurd label, i.p.v. donker glas. Tellen nog steeds op.
+- **DeviceFrame** — licht variant: lichtgrijze/zilveren bezel, witte topbar. (Donkere variant blijft voor gebruik op de donkere accentsecties.)
+- **ScreenShowcase** — de overlay-gradient onder echte screenshots wordt licht (van wit/transparant) op lichte secties; gebruik de donkere overlay alleen op donkere secties.
+
+----------------------------------------------------------------
+### HERO (donkere sectie) — combineer
+----------------------------------------------------------------
+De hero blijft diep paars. Daar werkt een **lichte device-mockup/ScreenShowcase** juist heel goed: een wit dashboard-venster met zachte schaduw "zweeft" op het paars en springt eruit. Gebruik dus op de hero de lichte mock-variant in een (licht of donker) frame — niet een donkere mock op donkere achtergrond.
+
+----------------------------------------------------------------
+### NANO BANANA SVC-BEELDEN — ook lichtere set
+----------------------------------------------------------------
+De dienst-achtergronden (Nano Banana) krijgen nu lichte secties, dus lever ze **lichter/luchtiger** aan: heldere werkplekken met daglicht, witte/lichte oppervlakken, merkkleur alleen als zachte tint. Voeg aan het stijl-anker toe: *"bright, airy, light background, lots of soft daylight, predominantly white/light surfaces, subtle purple/teal tint only as a light accent."* (Zo passen ze bij de lichtere bento/secties i.p.v. donkere beelden op licht.)
+
+----------------------------------------------------------------
+### TOEPASSEN
+----------------------------------------------------------------
+Bouw beide varianten één keer (theme-prop) en laat elke sectie de juiste kiezen op basis van zijn achtergrond. Lichte secties = lichte mocks met zachte schaduwen en merk-accenten; de paar donkere accentsecties = de bestaande donkere variant. Doel: dezelfde levendigheid, maar luchtig en premium — niet "duister".
