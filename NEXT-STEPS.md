@@ -43,7 +43,7 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
   5 fasen als lichte, alternerende rijen (Discovery → Design & Prototype → Heldere afspraken → MVP bouwen → Implementatie & training) + 90-daagse-cycli-blok + Discovery-CTA. Mock-visuals per fase.
   Klaar wanneer: /werkwijze compleet, build slaagt.
 
-- [ ] **7. /werken-bij + /vacatures + vacature-detail**
+- [x] **7. /werken-bij + /vacatures + vacature-detail**
   Werken-bij (hero, cultuurkaarten, teamgrid placeholder, sollicitatieproces-stepper). /vacatures met generieke vacaturekaarten + filters. Herbruikbaar vacature-detailtemplate met formulier. JobPosting-schema.
   Klaar wanneer: drie onderdelen live, vacatures generiek gehouden.
 
@@ -86,3 +86,4 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 - 2026-05-31 — Onderzoek-strook: horizontale scrollbar vervangen door responsieve grid (alle inzichten in beeld). (cdaabdd)
 - 2026-05-31 — Stap 5 afgerond: sectorpagina's semi-publiek, onderwijs, kinderopvang en maakindustrie op het template; alle 6 sectoren actief + in sitemap. (ed19c82)
 - 2026-05-31 — Stap 6 afgerond: /werkwijze met 5 fasen (alternerende rijen + mock-visuals), 90-daagse-cycli-blok en Discovery-CTA; in nav + sitemap. (d41c253)
+- 2026-05-31 — Stap 7 afgerond: /werken-bij + /vacatures + herbruikbaar vacature-detailtemplate met JobPosting-schema; generieke vacatures, filters, mailto-CTA. (d8d44db)
