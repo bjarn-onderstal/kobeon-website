@@ -78,4 +78,4 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 ## VOORTGANGSLOG
 - 2026-05-31 — Stap 0 afgerond: foundation opgeleverd (homepage + componenten + SEO-basis).
 - 2026-05-31 — Stap 1 afgerond: 5 mock-componenten (licht/donker) + sectie "Wat we bouwen"; demo's spelen één keer af; Atyp Display als kop-font. (959d572, d501e6c)
-- 2026-05-31 — Stap 2 afgerond: Mendix-voordeel (2×2 + Gartner-quote), "Je modellen. Je data. Je cloud." en onderzoek/autoriteit-strook toegevoegd op de homepage, licht, met bronvermelding. (c7e9eba)
+- 2026-05-31 — Stap 2 afgerond: Mendix-voordeel (2×2 + Gartner-quote), "Je modellen. Je data. Je cloud." en onderzoek/autoriteit-strook toegevoegd op de homepage, licht, met bronvermelding. (7ccea1d)
