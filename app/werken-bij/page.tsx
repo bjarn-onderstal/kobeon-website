@@ -1,14 +1,122 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import Section from "@/components/Section";
+import VacanciesList from "@/components/VacanciesList";
+import FinalCta from "@/components/sections/FinalCta";
+import { culture } from "@/lib/siteConfig";
 
-export const metadata = { title: "Werken bij" };
+const title = "Werken bij Kobeon — bouw mee aan Mendix & AI";
+const description =
+  "Werken bij Kobeon: een klein, senior Mendix-team met 2 Advanced Trainers en ISO 27001. Echte impact, MVP's in zes weken en eigenaarschap van Discovery tot livegang.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: { canonical: "/werken-bij" },
+  openGraph: { title: `${title} | Kobeon`, description, url: "/werken-bij", type: "website" },
+};
+
+const team = [
+  { naam: "[Naam]", rol: "Mendix Advanced Trainer" },
+  { naam: "[Naam]", rol: "Solution Architect" },
+  { naam: "[Naam]", rol: "AI / Agentic Engineer" },
+  { naam: "[Naam]", rol: "Medior Mendix Developer" },
+  { naam: "[Naam]", rol: "UX Designer" },
+  { naam: "[Naam]", rol: "Business Development" },
+];
+
+const proces = ["Reactie binnen 5 werkdagen", "Kennismaking", "Technische / case-sessie", "Aanbod"];
 
 export default function Page() {
   return (
-    <Section tone="light" className="pt-32">
-      <h1 className="h-display text-4xl md:text-5xl capitalize">werken bij</h1>
-      <p className="mt-4 max-w-2xl text-muted">
-        Deze pagina is nog in aanbouw. Werk 'm uit met Claude Code op basis van de brief in <code>/docs</code>.
-      </p>
-    </Section>
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-purple-deep text-white">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-60"
+          style={{ background: "radial-gradient(60% 60% at 80% 20%, rgba(19,166,166,0.22), transparent), radial-gradient(50% 50% at 10% 90%, rgba(83,72,206,0.32), transparent)" }}
+        />
+        <div className="container-x relative pb-16 pt-32 md:pb-20 md:pt-40">
+          <span className="chip border-white/20 bg-white/10 text-white/80">WERKEN BIJ KOBEON</span>
+          <h1 className="h-display mt-6 max-w-3xl text-4xl md:text-6xl">
+            Bouw mee aan software die er <span className="text-yellow">echt toe doet.</span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg text-white/75">
+            Geen tickets afwerken in een grote machine. Bij Kobeon zit je dicht op de klant, lever je in weken werkende Mendix-oplossingen op en groei je mee met een klein, senior team.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link href="#vacatures" className="btn-primary">Bekijk vacatures</Link>
+            <Link href="/vacatures/open-sollicitatie" className="btn-ghost text-white">Open sollicitatie</Link>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60">
+            {["Mendix Certified Partner", "2 Advanced Mendix Trainers", "ISO 27001", "6 experts"].map((t) => (
+              <span key={t}>· {t}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Waarom Kobeon — cultuurpijlers */}
+      <Section tone="light">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-wide text-purple">Waarom Kobeon</p>
+          <h2 className="h-display mt-3 text-3xl md:text-4xl">Klein team, grote impact.</h2>
+        </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {culture.map((c) => (
+            <div key={c.title} className="rounded-2xl border border-line bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
+              <h3 className="font-serif text-xl text-ink">{c.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{c.body}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Ons team */}
+      <Section tone="canvas">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-wide text-purple">Ons team</p>
+          <h2 className="h-display mt-3 text-3xl md:text-4xl">Wij zijn met 6 — en groeien.</h2>
+        </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {team.map((m, i) => (
+            <div key={i} className="rounded-2xl border border-line bg-white p-6 shadow-soft">
+              <div className="h-14 w-14 rounded-full bg-gradient-to-br from-purple-med to-teal" />
+              <h3 className="mt-4 font-serif text-lg text-ink">{m.naam}</h3>
+              <p className="text-sm text-muted">{m.rol}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Vacatures */}
+      <Section tone="light" id="vacatures">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-wide text-teal">Open posities</p>
+          <h2 className="h-display mt-3 text-3xl md:text-4xl">Word onderdeel van het team.</h2>
+        </div>
+        <div className="mt-10">
+          <VacanciesList />
+        </div>
+      </Section>
+
+      {/* Sollicitatieproces */}
+      <Section tone="canvas">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-wide text-purple">Sollicitatieproces</p>
+          <h2 className="h-display mt-3 text-3xl md:text-4xl">Zo verloopt het.</h2>
+        </div>
+        <ol className="mt-10 grid gap-6 md:grid-cols-4">
+          {proces.map((p, i) => (
+            <li key={p} className="rounded-2xl border border-line bg-white p-6 shadow-soft">
+              <span className="h-display text-3xl text-purple/30">0{i + 1}</span>
+              <p className="mt-2 text-sm font-medium text-ink">{p}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <FinalCta />
+    </>
   );
 }
