@@ -3,6 +3,7 @@ import LogoStrip from "@/components/sections/LogoStrip";
 import WatWeBouwen from "@/components/sections/WatWeBouwen";
 import Introductie from "@/components/sections/Introductie";
 import Stats from "@/components/sections/Stats";
+import HoeWeWerken from "@/components/sections/HoeWeWerken";
 import DienstenBento from "@/components/sections/DienstenBento";
 import MendixVoordeel from "@/components/sections/MendixVoordeel";
 import ModellenDataCloud from "@/components/sections/ModellenDataCloud";
@@ -19,6 +20,7 @@ export default function Home() {
       <WatWeBouwen />
       <Introductie />
       <Stats />
+      <HoeWeWerken />
       <DienstenBento />
       <MendixVoordeel />
       <ModellenDataCloud />

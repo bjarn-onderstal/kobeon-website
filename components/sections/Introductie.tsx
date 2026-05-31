@@ -50,36 +50,27 @@ export default function Introductie() {
       <div className="mt-16 rounded-2xl border border-line bg-white p-7 shadow-soft md:p-9">
         <p className="text-sm font-semibold text-ink">Van idee naar werkende software</p>
         <div className="mt-6 space-y-5">
-          <div>
-            <div className="mb-1.5 flex items-center justify-between text-sm">
-              <span className="text-muted">Custom / high-code</span>
-              <span className="font-medium text-muted">maanden tot jaren</span>
+          {[
+            { label: "Custom / high-code", note: "maanden tot jaren", width: "100%", bar: "bg-gradient-to-r from-purple-med/60 to-purple-deep/70", strong: false, dur: 1.4, delay: 0 },
+            { label: "Standaard low-code", note: "weken tot maanden", width: "55%", bar: "bg-gradient-to-r from-purple-med/70 to-teal/70", strong: false, dur: 1.0, delay: 0.25 },
+            { label: "Enterprise low-code · Kobeon", note: "6 weken", width: "16%", bar: "bg-yellow", strong: true, dur: 0.7, delay: 0.5 },
+          ].map((b) => (
+            <div key={b.label}>
+              <div className="mb-1.5 flex items-center justify-between text-sm">
+                <span className={b.strong ? "font-semibold text-ink" : "text-muted"}>{b.label}</span>
+                <span className={b.strong ? "font-semibold text-ink" : "font-medium text-muted"}>{b.note}</span>
+              </div>
+              <div className="h-4 overflow-hidden rounded-full bg-canvas">
+                <motion.div
+                  className={`h-full rounded-full ${b.bar}`}
+                  initial={{ width: 0 }}
+                  whileInView={{ width: b.width }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: b.dur, ease: "easeOut", delay: b.delay }}
+                />
+              </div>
             </div>
-            <div className="h-4 overflow-hidden rounded-full bg-canvas">
-              <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-purple-med/70 to-purple-deep/70"
-                initial={{ width: 0 }}
-                whileInView={{ width: "100%" }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 1.4, ease: "easeOut" }}
-              />
-            </div>
-          </div>
-          <div>
-            <div className="mb-1.5 flex items-center justify-between text-sm">
-              <span className="font-semibold text-ink">Kobeon op Mendix</span>
-              <span className="font-semibold text-ink">6 weken</span>
-            </div>
-            <div className="h-4 overflow-hidden rounded-full bg-canvas">
-              <motion.div
-                className="h-full rounded-full bg-yellow"
-                initial={{ width: 0 }}
-                whileInView={{ width: "16%" }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-              />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </Section>
