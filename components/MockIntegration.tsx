@@ -58,6 +58,8 @@ export default function MockIntegration({
                 animate={{ cx: [p.x, CX], cy: [p.y, CY], opacity: [0, 1, 1, 0] }}
                 transition={{
                   duration: 1.6,
+                  repeat: Infinity,
+                  repeatDelay: 0.6,
                   delay: i * 0.32,
                   ease: "easeInOut",
                 }}

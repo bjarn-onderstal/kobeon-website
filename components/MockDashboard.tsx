@@ -1,16 +1,27 @@
 "use client";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useInView } from "@/lib/useInView";
 
 // Lichte (default) of donkere variant van een geanimeerd dashboard-mock.
+// De balken groeien telkens opnieuw (loopt als video) zolang in beeld.
 export default function MockDashboard({ theme = "light" }: { theme?: "light" | "dark" }) {
   const light = theme === "light";
   const surface = light ? "bg-white" : "bg-dark";
   const tile = light ? "bg-canvas border-line" : "bg-white/5 border-white/10";
   const textMuted = light ? "text-muted" : "text-white/50";
   const bars = [42, 68, 55, 80, 61, 92];
+  const { ref, inView } = useInView<HTMLDivElement>();
+  const [cycle, setCycle] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    const id = setInterval(() => setCycle((c) => c + 1), 4200);
+    return () => clearInterval(id);
+  }, [inView]);
 
   return (
-    <div className={`rounded-xl ${surface}`}>
+    <div ref={ref} className={`rounded-xl ${surface}`}>
       <div className="grid grid-cols-3 gap-3 p-4">
         {[
           { k: "Doorlooptijd", v: "−62%" },
@@ -33,13 +44,12 @@ export default function MockDashboard({ theme = "light" }: { theme?: "light" | "
       <div className="flex items-end gap-2 px-4 pb-5 pt-1" style={{ height: 120 }}>
         {bars.map((h, i) => (
           <motion.div
-            key={i}
+            key={`${cycle}-${i}`}
             className="flex-1 rounded-t-md"
             style={{ background: "linear-gradient(180deg,#5348CE,#13A6A6)" }}
             initial={{ height: 0 }}
-            whileInView={{ height: `${h}%` }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 + i * 0.08, ease: "easeOut" }}
+            animate={{ height: inView ? `${h}%` : 0 }}
+            transition={{ duration: 0.8, delay: i * 0.08, ease: "easeOut" }}
           />
         ))}
       </div>

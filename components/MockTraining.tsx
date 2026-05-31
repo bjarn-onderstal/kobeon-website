@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { mockTokens, type MockTheme } from "@/lib/mockTheme";
 import { useInView } from "@/lib/useInView";
@@ -7,16 +7,26 @@ import { useInView } from "@/lib/useInView";
 const RECORDS = ["Batch 1.024", "Batch 1.025", "Batch 1.026", "Batch 1.027"];
 const TARGET = 94;
 
-// AI Development: de loss-curve tekent zich naar beneden, de accuraatheid telt op
-// naar 94% en datarecords stromen binnen. Speelt één keer af en blijft staan.
+// AI Development: de loss-curve tekent zich en datarecords stromen binnen — dat
+// loopt als een video. De accuraatheid telt één keer op naar 94% en blijft staan
+// (eindcijfer reset niet mee met de visuele loop).
 export default function MockTraining({ theme = "light" }: { theme?: MockTheme }) {
   const t = mockTokens(theme);
   const { ref, inView } = useInView<HTMLDivElement>();
+  const [cycle, setCycle] = useState(0);
   const [acc, setAcc] = useState(0);
+  const accDone = useRef(false);
 
-  // accuraatheid telt één keer op naar 94% wanneer in beeld
+  // visuele loop: loss-curve + records herhalen zolang in beeld
   useEffect(() => {
     if (!inView) return;
+    const id = setInterval(() => setCycle((c) => c + 1), 4800);
+    return () => clearInterval(id);
+  }, [inView]);
+
+  // accuraatheid telt één keer op naar 94% en blijft daarna op het eindcijfer
+  useEffect(() => {
+    if (!inView || accDone.current) return;
     const start = performance.now();
     const dur = 2400;
     let raf = 0;
@@ -24,6 +34,7 @@ export default function MockTraining({ theme = "light" }: { theme?: MockTheme })
       const p = Math.min((now - start) / dur, 1);
       setAcc(Math.round(TARGET * (1 - Math.pow(1 - p, 3))));
       if (p < 1) raf = requestAnimationFrame(tick);
+      else { setAcc(TARGET); accDone.current = true; }
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
@@ -43,6 +54,7 @@ export default function MockTraining({ theme = "light" }: { theme?: MockTheme })
       <div className={`rounded-lg border ${t.tile} p-3`}>
         <svg viewBox="0 0 200 80" className="h-24 w-full" preserveAspectRatio="none">
           <motion.path
+            key={cycle}
             d="M0,10 C36,16 56,52 100,60 S164,76 200,78"
             fill="none"
             stroke="url(#lossgrad)"
@@ -66,7 +78,7 @@ export default function MockTraining({ theme = "light" }: { theme?: MockTheme })
       <div className="mt-3 space-y-1.5">
         {RECORDS.map((r, i) => (
           <motion.div
-            key={r}
+            key={`${cycle}-${r}`}
             className={`flex items-center justify-between rounded-md border px-3 py-1.5 text-xs ${t.tile} ${t.text}`}
             initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -12 }}
