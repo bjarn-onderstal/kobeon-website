@@ -40,12 +40,12 @@ export default function Onderzoek() {
         </p>
       </div>
 
-      {/* horizontaal scrollbare strook */}
-      <div className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:thin]">
+      {/* nette grid — alle inzichten in beeld, geen scrollbar */}
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {insights.map((it, i) => (
           <motion.figure
             key={it.quote}
-            className="flex min-h-[220px] w-[300px] shrink-0 snap-start flex-col justify-between rounded-2xl border border-line bg-white p-7 shadow-soft md:w-[340px]"
+            className="flex min-h-[200px] flex-col justify-between rounded-2xl border border-line bg-white p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-lift"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
@@ -66,7 +66,6 @@ export default function Onderzoek() {
           </motion.figure>
         ))}
       </div>
-      <p className="mt-2 text-xs text-muted">Sleep of scroll horizontaal voor meer inzichten.</p>
     </Section>
   );
 }
