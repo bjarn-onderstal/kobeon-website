@@ -39,7 +39,7 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
   /sectoren/semi-publiek, /onderwijs, /kinderopvang, /maakindustrie met het template en de juiste branche-systemen/cases uit de brief.
   Klaar wanneer: alle 6 sectorpagina's bestaan, in sitemap.
 
-- [ ] **6. /werkwijze**
+- [x] **6. /werkwijze**
   5 fasen als lichte, alternerende rijen (Discovery → Design & Prototype → Heldere afspraken → MVP bouwen → Implementatie & training) + 90-daagse-cycli-blok + Discovery-CTA. Mock-visuals per fase.
   Klaar wanneer: /werkwijze compleet, build slaagt.
 
@@ -85,3 +85,4 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 - 2026-05-31 — Stap 4 afgerond: /sectoren-overzicht (6) + herbruikbaar SectorPage-template; sierteelt en detachering uitgewerkt (Challenger-structuur), routes in sitemap. (c90d76e)
 - 2026-05-31 — Onderzoek-strook: horizontale scrollbar vervangen door responsieve grid (alle inzichten in beeld). (cdaabdd)
 - 2026-05-31 — Stap 5 afgerond: sectorpagina's semi-publiek, onderwijs, kinderopvang en maakindustrie op het template; alle 6 sectoren actief + in sitemap. (ed19c82)
+- 2026-05-31 — Stap 6 afgerond: /werkwijze met 5 fasen (alternerende rijen + mock-visuals), 90-daagse-cycli-blok en Discovery-CTA; in nav + sitemap. (d41c253)
