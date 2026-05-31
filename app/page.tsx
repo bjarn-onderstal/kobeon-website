@@ -1,7 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import LogoStrip from "@/components/sections/LogoStrip";
 import WatWeBouwen from "@/components/sections/WatWeBouwen";
-import Solutions from "@/components/sections/Solutions";
 import Stats from "@/components/sections/Stats";
 import DienstenBento from "@/components/sections/DienstenBento";
 import MendixVoordeel from "@/components/sections/MendixVoordeel";
@@ -17,7 +16,6 @@ export default function Home() {
       <Hero />
       <LogoStrip />
       <WatWeBouwen />
-      <Solutions />
       <Stats />
       <DienstenBento />
       <MendixVoordeel />

@@ -80,41 +80,6 @@ export const stats = [
   { value: "9×", label: "Gartner-Leider (Mendix)" },
 ];
 
-export const solutions = [
-  {
-    key: "automatiseren",
-    title: "Automatiseren",
-    promise: "Repetitief en denkwerk uit je processen.",
-    body: "We automatiseren en orkestreren processen, workflows en goedkeuringen over al je systemen heen — met een volledig audit-spoor. Je mensen houden tijd over voor het werk dat telt.",
-    tags: ["Procesautomatisering", "Proces-orkestratie"],
-    accent: "purple",
-  },
-  {
-    key: "bouwen",
-    title: "Bouwen",
-    promise: "Software die past op hoe jij werkt.",
-    body: "Web- en mobiele apps, klant- en medewerkersportalen en dashboards. En verouderde systemen vervangen we gefaseerd — beheerst, zonder risico.",
-    tags: ["App ontwikkeling", "Portalen & dashboards", "Legacy modernisering"],
-    accent: "teal",
-  },
-  {
-    key: "verbinden",
-    title: "Verbinden",
-    promise: "Al je systemen en data werken samen.",
-    body: "Microsoft Dynamics, SAP, AFAS, Exact, Salesforce, AWS en elke REST/OData-API — out-of-the-box gekoppeld. Geen silo's meer, één bron van waarheid.",
-    tags: ["Systeemintegratie", "Dataontsluiting"],
-    accent: "purple",
-  },
-  {
-    key: "ai",
-    title: "AI inzetten",
-    promise: "AI die echt werk uit handen neemt.",
-    body: "Agentic AI die kenniswerk zelfstandig uitvoert — matchen, controleren, verwerken — en AI-modellen getraind op je eigen data. Geregisseerd door Mendix, altijd controleerbaar.",
-    tags: ["Agentic AI", "AI Development"],
-    accent: "teal",
-  },
-];
-
 export const faqs = [
   {
     q: "Waarom een agentic AI-platform en niet 'gewone' AI zoals ChatGPT?",
