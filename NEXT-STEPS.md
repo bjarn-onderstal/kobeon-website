@@ -40,7 +40,7 @@ Wanneer de gebruiker zegt **"pak de volgende stap op"**:
 - [x] **2. Introductie-sectie**
   Kop "Je bent gegroeid. Je systemen niet." + body (v3.8) + 3 kernvoordeel-tegels (Snel / Enterprise-kwaliteit / Schaalbaar). Licht. Voeg de **jaren → maanden → weken** snelheidsvergelijking toe (lange balk "high-code: maanden tot jaren" → korte gele balk "Kobeon op Mendix: 6 weken").
 
-- [ ] **3. "Hoe we werken" — tempo (proces-stepper op de homepage)**
+- [x] **3. "Hoe we werken" — tempo (proces-stepper op de homepage)**
   Horizontale stepper met getekende stippellijn: 01 Discovery (1–2 wk) → 02 Design & Prototype (1–2 wk) → 03 MVP bouwen (4–6 wk) → 04 Implementatie & training (1 wk) → geel kaartje "∞ 90-daagse cycli". Maakt het tempo zichtbaar. Link naar /werkwijze.
 
 - [x] **4. Mendix-voordeel + "Je modellen, je data, je cloud"**
@@ -85,6 +85,8 @@ Wanneer de gebruiker zegt **"pak de volgende stap op"**:
 - 2026-05-31 — Stap 13 afgerond: "Wat we bouwen" naar 4 taken + "Eén platform: Mendix"-band + integratie-marquee; abstracte "Vier oplossingen"-sectie (Solutions/SolutionCard/solutions) verwijderd. (94be996) — let op: de losse diensten-bento staat (op eerder verzoek) nog op de homepage; meenemen bij stap 8.
 
 - 2026-05-31 — Stap 2 afgerond: introductie-sectie "Je bent gegroeid. Je systemen niet." (v3.8) + 3 kernvoordeel-tegels + jaren→maanden→weken-snelheidsvergelijking, na "Wat we bouwen". (c6a6485)
+
+- 2026-05-31 — Stap 3 afgerond: "Hoe we werken"-stepper (zichzelf-tekenende stippellijn, 4 fasen + 90-daagse-cycli, link /werkwijze) na Stats. Plus 3e snelheidsbalk: high-code → standaard low-code → enterprise low-code. (b1d6229)
 
 ### Reconciliatie met eerder gebouwd werk (2026-05-31)
 Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pad):
