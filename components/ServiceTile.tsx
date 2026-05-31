@@ -1,13 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-
-export type Service = {
-  title: string;
-  desc: string;
-  icon: string;
-  gradient: string;
-  span: string;
-};
+import type { Service } from "@/lib/siteConfig";
 
 export default function ServiceTile({ service, index }: { service: Service; index: number }) {
   const { title, desc, icon, gradient, span } = service;

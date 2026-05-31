@@ -349,3 +349,25 @@ export const vacancies: {
     open: true,
   },
 ];
+
+// De 9 diensten als bento-tegels (homepage-sectie 6 + /diensten). `span` stuurt
+// de asymmetrische grid, `gradient` de merk-achtergrond (fallback voor svc-images).
+export type Service = {
+  title: string;
+  desc: string;
+  icon: string;
+  gradient: string;
+  span: string;
+};
+
+export const services: Service[] = [
+  { title: "Procesautomatisering", desc: "Repetitieve en cognitieve taken automatiseren met Mendix.", icon: "⚙️", gradient: "bg-gradient-to-br from-purple-deep to-teal", span: "md:col-span-2 md:row-span-2" },
+  { title: "Agentic AI", desc: "AI-agenten die zelfstandig kenniswerk uitvoeren, geregisseerd door Mendix.", icon: "🤖", gradient: "bg-gradient-to-br from-teal to-purple-med", span: "md:col-span-2" },
+  { title: "AI Development", desc: "Custom AI-modellen trainen op je eigen bedrijfsdata.", icon: "🧠", gradient: "bg-gradient-to-br from-purple to-purple-deep", span: "md:col-span-1" },
+  { title: "Systeemintegratie", desc: "Microsoft Dynamics, SAP, REST-API's — al je systemen praten met elkaar.", icon: "🔗", gradient: "bg-gradient-to-br from-purple-med to-teal", span: "md:col-span-1" },
+  { title: "App ontwikkeling", desc: "Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd.", icon: "📱", gradient: "bg-gradient-to-br from-teal to-teal-light", span: "md:col-span-2" },
+  { title: "Portalen & dashboards", desc: "Klant- en medewerkersportalen met zelfservice en actueel inzicht.", icon: "📊", gradient: "bg-gradient-to-br from-purple-deep to-purple-med", span: "md:col-span-2" },
+  { title: "Legacy modernisering", desc: "Verouderde systemen gefaseerd vervangen. Stap voor stap, niet in één keer.", icon: "🏗️", gradient: "bg-gradient-to-br from-purple to-teal", span: "md:col-span-1" },
+  { title: "Design & Prototyping", desc: "Rapid prototyping met Figma Make, Lovable en Google Stitch.", icon: "✏️", gradient: "bg-gradient-to-br from-teal to-purple", span: "md:col-span-1" },
+  { title: "IT Consultancy", desc: "Datastructuur, architectuuradvies en IT-roadmap.", icon: "🧭", gradient: "bg-gradient-to-br from-purple-med to-purple-deep", span: "md:col-span-2" },
+];

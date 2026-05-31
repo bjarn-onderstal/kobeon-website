@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Section from "@/components/Section";
-import ServiceTile, { type Service } from "@/components/ServiceTile";
+import DienstenBentoGrid from "@/components/DienstenBentoGrid";
+import { services } from "@/lib/siteConfig";
 
 const title = "Diensten — negen manieren om te digitaliseren";
 const description =
@@ -13,19 +14,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/diensten" },
   openGraph: { title: `${title} | Kobeon`, description, url: "/diensten", type: "website" },
 };
-
-// Bento-volgorde gekozen voor een nette, asymmetrische flow op 4 koloms.
-const services: Service[] = [
-  { title: "Procesautomatisering", desc: "Repetitieve en cognitieve taken automatiseren met Mendix.", icon: "⚙️", gradient: "bg-gradient-to-br from-purple-deep to-teal", span: "md:col-span-2 md:row-span-2" },
-  { title: "Agentic AI", desc: "AI-agenten die zelfstandig kenniswerk uitvoeren, geregisseerd door Mendix.", icon: "🤖", gradient: "bg-gradient-to-br from-teal to-purple-med", span: "md:col-span-2" },
-  { title: "AI Development", desc: "Custom AI-modellen trainen op je eigen bedrijfsdata.", icon: "🧠", gradient: "bg-gradient-to-br from-purple to-purple-deep", span: "md:col-span-1" },
-  { title: "Systeemintegratie", desc: "Microsoft Dynamics, SAP, REST-API's — al je systemen praten met elkaar.", icon: "🔗", gradient: "bg-gradient-to-br from-purple-med to-teal", span: "md:col-span-1" },
-  { title: "App ontwikkeling", desc: "Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd.", icon: "📱", gradient: "bg-gradient-to-br from-teal to-teal-light", span: "md:col-span-2" },
-  { title: "Portalen & dashboards", desc: "Klant- en medewerkersportalen met zelfservice en actueel inzicht.", icon: "📊", gradient: "bg-gradient-to-br from-purple-deep to-purple-med", span: "md:col-span-2" },
-  { title: "Legacy modernisering", desc: "Verouderde systemen gefaseerd vervangen. Stap voor stap, niet in één keer.", icon: "🏗️", gradient: "bg-gradient-to-br from-purple to-teal", span: "md:col-span-1" },
-  { title: "Design & Prototyping", desc: "Rapid prototyping met Figma Make, Lovable en Google Stitch.", icon: "✏️", gradient: "bg-gradient-to-br from-teal to-purple", span: "md:col-span-1" },
-  { title: "IT Consultancy", desc: "Datastructuur, architectuuradvies en IT-roadmap.", icon: "🧭", gradient: "bg-gradient-to-br from-purple-med to-purple-deep", span: "md:col-span-2" },
-];
 
 const servicesSchema = {
   "@context": "https://schema.org",
@@ -56,10 +44,8 @@ export default function Page() {
         </p>
       </div>
 
-      <div className="mt-12 grid auto-rows-[180px] grid-cols-1 gap-5 md:grid-flow-row-dense md:grid-cols-4">
-        {services.map((s, i) => (
-          <ServiceTile key={s.title} service={s} index={i} />
-        ))}
+      <div className="mt-12">
+        <DienstenBentoGrid />
       </div>
 
       <div className="mt-12">
