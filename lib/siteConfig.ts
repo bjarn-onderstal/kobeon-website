@@ -89,3 +89,92 @@ export const faqs = [
     a: "Nee. Wij bouwen bovenop en tussen wat je al hebt. Mendix is ontworpen om te integreren — via standaard connectoren en API's praten je bestaande systemen met elkaar en met nieuwe applicaties. Vaak is de grootste winst juist het verbinden van silo's, zonder een werkend systeem te vervangen.",
   },
 ];
+
+// Klantcases (homepage-sectie + /projecten). `kind` stuurt de mini-mockup,
+// `filter` de filterpills, `accent` de kleur van het resultaatcijfer.
+export type ProjectKind =
+  | "dashboard" | "portal" | "workflow" | "members" | "inspection" | "search" | "supply";
+
+export const projects: {
+  slug: string;
+  name: string;
+  sector: string;
+  filter: string;
+  metric: string;
+  accent: "purple" | "teal" | "yellow";
+  transformation: string;
+  kind: ProjectKind;
+  soon?: boolean;
+}[] = [
+  {
+    slug: "homezero",
+    name: "HomeZero",
+    sector: "Energie",
+    filter: "Energie",
+    metric: "6 weken",
+    accent: "purple",
+    transformation: "Van papieren projectadministratie naar één digitaal systeem.",
+    kind: "dashboard",
+  },
+  {
+    slug: "petje-af",
+    name: "Petje af",
+    sector: "Onderwijs & Kinderopvang",
+    filter: "Onderwijs",
+    metric: "250K+ kinderen",
+    accent: "teal",
+    transformation: "Van handmatige aanmelding naar een platform dat meegroeit.",
+    kind: "portal",
+  },
+  {
+    slug: "epsa",
+    name: "EPSA",
+    sector: "Professional Services",
+    filter: "Overige",
+    metric: "40+ u/week terug",
+    accent: "yellow",
+    transformation: "Van eindeloze administratie naar een geautomatiseerde flow.",
+    kind: "workflow",
+  },
+  {
+    slug: "golfclub",
+    name: "Golfclub",
+    sector: "Sport & Vrije Tijd",
+    filter: "Overige",
+    metric: "€60–100K/jaar",
+    accent: "yellow",
+    transformation: "Van vrijwilligers-chaos naar een zelfsturende administratie.",
+    kind: "members",
+  },
+  {
+    slug: "bkd",
+    name: "Bloembollenkeuringsdienst (BKD)",
+    sector: "Horticultuur",
+    filter: "Horticultuur",
+    metric: "Digitale inspectie",
+    accent: "teal",
+    transformation: "Van klembord naar mobiele keuring in het veld.",
+    kind: "inspection",
+  },
+  {
+    slug: "rechtspraak",
+    name: "Rechtspraak (anoniem)",
+    sector: "Semi-Publiek",
+    filter: "Semi-Publiek",
+    metric: "AI-model",
+    accent: "purple",
+    transformation: "Van zoeken naar jurisprudentie naar AI die het vindt.",
+    kind: "search",
+  },
+  {
+    slug: "floriusflowers",
+    name: "FloriusFlowers",
+    sector: "Horticultuur",
+    filter: "Horticultuur",
+    metric: "In ontwikkeling",
+    accent: "teal",
+    transformation: "Supply-chain-portaal in aanbouw.",
+    kind: "supply",
+    soon: true,
+  },
+];

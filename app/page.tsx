@@ -5,6 +5,7 @@ import Solutions from "@/components/sections/Solutions";
 import Stats from "@/components/sections/Stats";
 import MendixVoordeel from "@/components/sections/MendixVoordeel";
 import ModellenDataCloud from "@/components/sections/ModellenDataCloud";
+import Projecten from "@/components/sections/Projecten";
 import Onderzoek from "@/components/sections/Onderzoek";
 import Faq from "@/components/sections/Faq";
 import FinalCta from "@/components/sections/FinalCta";
@@ -19,6 +20,7 @@ export default function Home() {
       <Stats />
       <MendixVoordeel />
       <ModellenDataCloud />
+      <Projecten />
       <Onderzoek />
       <Faq />
       <FinalCta />
