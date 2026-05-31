@@ -27,7 +27,7 @@ Wanneer de gebruiker zegt **"pak de volgende stap op"**:
 - [x] **1. Mock-componenten (alle 6, light + dark)**
   Bouw `MockWorkflow`, `MockAgent`, `MockTraining`, `MockIntegration`, `MockPortal` (naast de bestaande `MockDashboard`) in `/components`, elk met `theme="light"|"dark"` en lichte stijl uit v3.11 (witte vlakken, zachte schaduw, geen neon). Deze worden hergebruikt in de demo-rijen.
 
-- [ ] **13. "WAT WE BOUWEN" — de 4 taken in actie (de ontbrekende homepage-opbouw)**
+- [x] **13. "WAT WE BOUWEN" — de 4 taken in actie (de ontbrekende homepage-opbouw)**
   Voeg direct onder de hero de sectie **"Wat we bouwen"** toe: 4 alternerende, lichte demo-rijen (tekst links/mock rechts, dan omgekeerd), elk met een mock-component + een zwevend metric-kaartje. De 4 taken (zoals in Lovable):
   1. **Procesautomatisering** → MockWorkflow + kaart "−62% doorlooptijd" — "Repetitief en denkwerk geautomatiseerd op Mendix, met een volledig audit-spoor."
   2. **Agentic AI** → MockAgent (met 'mens keurt goed'-stap) + kaart "40+ u/week terug" — "AI-agenten die kenniswerk zelfstandig uitvoeren. Geregisseerd door Mendix, altijd controleerbaar."
@@ -81,6 +81,8 @@ Wanneer de gebruiker zegt **"pak de volgende stap op"**:
 ## VOORTGANGSLOG
 - 2026-05-31 — Stap 0 afgerond: foundation opgeleverd (homepage-basis + componenten + SEO-basis).
 - 2026-05-31 — Bouwplan verrijkt: volledige homepage-opbouw toegevoegd (4-taken-sectie "Wat we bouwen" als stap 13, plus tempo/proces, introductie, Mendix-voordeel, onderzoek-strook, projecten/sectoren/testimonials, quickscan-teaser).
+
+- 2026-05-31 — Stap 13 afgerond: "Wat we bouwen" naar 4 taken + "Eén platform: Mendix"-band + integratie-marquee; abstracte "Vier oplossingen"-sectie (Solutions/SolutionCard/solutions) verwijderd. (94be996) — let op: de losse diensten-bento staat (op eerder verzoek) nog op de homepage; meenemen bij stap 8.
 
 ### Reconciliatie met eerder gebouwd werk (2026-05-31)
 Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pad):
