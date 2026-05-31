@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Section from "@/components/Section";
 import FinalCta from "@/components/sections/FinalCta";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { vacancies, perks, site } from "@/lib/siteConfig";
 
 export function generateStaticParams() {
@@ -53,6 +54,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       {jobPosting && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPosting) }} />
       )}
+      <BreadcrumbJsonLd items={[{ label: "Home", href: "/" }, { label: "Vacatures", href: "/vacatures" }, { label: title }]} />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-purple-deep text-white">

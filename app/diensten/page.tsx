@@ -27,9 +27,25 @@ const services: Service[] = [
   { title: "IT Consultancy", desc: "Datastructuur, architectuuradvies en IT-roadmap.", icon: "🧭", gradient: "bg-gradient-to-br from-purple-med to-purple-deep", span: "md:col-span-2" },
 ];
 
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: services.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: s.title,
+      description: s.desc,
+      provider: { "@type": "Organization", name: "Kobeon" },
+    },
+  })),
+};
+
 export default function Page() {
   return (
     <Section tone="light" className="pt-24">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
       <div className="max-w-2xl">
         <p className="text-sm font-semibold uppercase tracking-wide text-teal">Alle diensten</p>
         <h1 className="h-display mt-3 text-4xl md:text-6xl">

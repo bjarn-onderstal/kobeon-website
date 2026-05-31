@@ -6,7 +6,14 @@
   --container: 1200px;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+/* Zichtbare toetsenbord-focus (toegankelijkheid) */
+:focus-visible {
+  outline: 2px solid #3A0CA3;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
 
 body {
   background: #ffffff;

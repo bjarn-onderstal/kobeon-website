@@ -2,6 +2,7 @@ import Link from "next/link";
 import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 import FinalCta from "@/components/sections/FinalCta";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { projects } from "@/lib/siteConfig";
 
 export type SectorContent = {
@@ -33,6 +34,7 @@ export default function SectorPage({ content }: { content: SectorContent }) {
 
   return (
     <>
+      <BreadcrumbJsonLd items={[{ label: "Home", href: "/" }, { label: "Sectoren", href: "/sectoren" }, { label: title }]} />
       {/* Hero — diep paars accent */}
       <section className="relative overflow-hidden bg-purple-deep text-white">
         <div

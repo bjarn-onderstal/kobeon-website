@@ -1,12 +1,14 @@
 "use client";
 import { useState } from "react";
 import Section from "@/components/Section";
+import FaqJsonLd from "@/components/FaqJsonLd";
 import { faqs } from "@/lib/siteConfig";
 
 export default function Faq() {
   const [open, setOpen] = useState(0);
   return (
     <Section tone="light">
+      <FaqJsonLd items={faqs} />
       <div className="max-w-2xl">
         <p className="text-sm font-semibold uppercase tracking-wide text-purple">Veelgestelde vragen</p>
         <h2 className="h-display mt-3 text-3xl md:text-5xl">

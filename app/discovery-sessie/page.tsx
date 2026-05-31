@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Section from "@/components/Section";
 import Accordion from "@/components/Accordion";
+import FaqJsonLd from "@/components/FaqJsonLd";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 
 const title = "Plan een gratis Discovery-sessie — Kobeon";
 const description =
@@ -29,6 +31,8 @@ const faq = [
 export default function Page() {
   return (
     <>
+      <FaqJsonLd items={faq} />
+      <BreadcrumbJsonLd items={[{ label: "Home", href: "/" }, { label: "Discovery-sessie" }]} />
       {/* Hero */}
       <section className="relative overflow-hidden bg-purple-deep text-white">
         <div

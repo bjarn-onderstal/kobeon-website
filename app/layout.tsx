@@ -5,6 +5,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import MotionProvider from "@/components/MotionProvider";
 import { site } from "@/lib/siteConfig";
 
 const sans = Ubuntu({ subsets: ["latin"], weight: ["400", "500", "700"], variable: "--font-sans" });
@@ -40,9 +41,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="nl" className={`${sans.variable} ${display.variable}`}>
       <body>
         <JsonLd />
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        <MotionProvider>
+          <Nav />
+          <main>{children}</main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

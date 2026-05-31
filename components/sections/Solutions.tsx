@@ -16,8 +16,8 @@ export default function Solutions() {
       </div>
 
       <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {solutions.map((s) => (
-          <SolutionCard key={s.key} {...(s as any)} />
+        {solutions.map(({ key, ...rest }) => (
+          <SolutionCard key={key} {...(rest as any)} />
         ))}
       </div>
 
