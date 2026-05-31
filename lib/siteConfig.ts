@@ -13,6 +13,7 @@ export const nav = [
   { label: "Diensten", href: "/diensten" },
   { label: "Projecten", href: "/projecten" },
   { label: "Sectoren", href: "/sectoren" },
+  { label: "Werkwijze", href: "/werkwijze" },
   { label: "Over Kobeon", href: "/over-kobeon" },
   { label: "Werken bij", href: "/werken-bij" },
 ];
