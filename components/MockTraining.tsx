@@ -8,24 +8,15 @@ const RECORDS = ["Batch 1.024", "Batch 1.025", "Batch 1.026", "Batch 1.027"];
 const TARGET = 94;
 
 // AI Development: de loss-curve tekent zich naar beneden, de accuraatheid telt op
-// naar 94% en datarecords stromen binnen. Elke cyclus speelt opnieuw af.
+// naar 94% en datarecords stromen binnen. Speelt één keer af en blijft staan.
 export default function MockTraining({ theme = "light" }: { theme?: MockTheme }) {
   const t = mockTokens(theme);
   const { ref, inView } = useInView<HTMLDivElement>();
-  const [cycle, setCycle] = useState(0);
   const [acc, setAcc] = useState(0);
 
-  // herhaal de hele cyclus zolang in beeld
+  // accuraatheid telt één keer op naar 94% wanneer in beeld
   useEffect(() => {
     if (!inView) return;
-    const id = setInterval(() => setCycle((c) => c + 1), 4800);
-    return () => clearInterval(id);
-  }, [inView]);
-
-  // accuraatheid telt op naar 94% bij elke cyclus
-  useEffect(() => {
-    if (!inView) return;
-    setAcc(0);
     const start = performance.now();
     const dur = 2400;
     let raf = 0;
@@ -36,7 +27,7 @@ export default function MockTraining({ theme = "light" }: { theme?: MockTheme })
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [inView, cycle]);
+  }, [inView]);
 
   return (
     <div ref={ref} className={`rounded-xl ${t.surface} p-4`} style={{ minHeight: 268 }}>
@@ -52,14 +43,13 @@ export default function MockTraining({ theme = "light" }: { theme?: MockTheme })
       <div className={`rounded-lg border ${t.tile} p-3`}>
         <svg viewBox="0 0 200 80" className="h-24 w-full" preserveAspectRatio="none">
           <motion.path
-            key={cycle}
             d="M0,10 C36,16 56,52 100,60 S164,76 200,78"
             fill="none"
             stroke="url(#lossgrad)"
             strokeWidth={2.5}
             strokeLinecap="round"
             initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
+            animate={{ pathLength: inView ? 1 : 0 }}
             transition={{ duration: 2.4, ease: "easeInOut" }}
           />
           <defs>
@@ -76,10 +66,10 @@ export default function MockTraining({ theme = "light" }: { theme?: MockTheme })
       <div className="mt-3 space-y-1.5">
         {RECORDS.map((r, i) => (
           <motion.div
-            key={`${cycle}-${r}`}
+            key={r}
             className={`flex items-center justify-between rounded-md border px-3 py-1.5 text-xs ${t.tile} ${t.text}`}
             initial={{ opacity: 0, x: -12 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={{ opacity: inView ? 1 : 0, x: inView ? 0 : -12 }}
             transition={{ delay: 0.3 + i * 0.35, duration: 0.4 }}
           >
             <span>{r}</span>

@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-// Kleine IntersectionObserver-hook: laat loop-animaties alleen draaien wanneer
-// de mock-UI in beeld is (performance + respecteert de "pauzeer buiten beeld"-regel).
+// Kleine IntersectionObserver-hook: vuurt één keer wanneer de mock-UI in beeld
+// komt en blijft dan true. De demo's spelen zo één keer af en stoppen daarna —
+// geen oneindige loop. Stopt met observeren zodra hij is getriggerd.
 export function useInView<T extends HTMLElement>(threshold = 0.3) {
   const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
@@ -10,7 +11,12 @@ export function useInView<T extends HTMLElement>(threshold = 0.3) {
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          io.disconnect();
+        }
+      },
       { threshold }
     );
     io.observe(el);

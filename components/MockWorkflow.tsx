@@ -6,17 +6,21 @@ import { useInView } from "@/lib/useInView";
 
 const STEPS = ["Order binnen", "Validatie", "Verwerking", "Factuur", "Klaar"];
 
-// Procesautomatisering: taken kleuren één voor één van grijs → teal met een vink,
-// de voortgangsbalk loopt vol, daarna reset de flow en herhaalt.
+// Procesautomatisering: taken kleuren één voor één van grijs → teal met een vink
+// en de voortgangsbalk loopt vol. Speelt één keer af en blijft daarna op "klaar".
 export default function MockWorkflow({ theme = "light" }: { theme?: MockTheme }) {
   const t = mockTokens(theme);
   const { ref, inView } = useInView<HTMLDivElement>();
   const [done, setDone] = useState(0);
 
+  // Speelt één keer af: taken lopen door tot alles klaar is, daarna stopt het.
   useEffect(() => {
     if (!inView) return;
+    let d = 0;
     const id = setInterval(() => {
-      setDone((d) => (d >= STEPS.length ? 0 : d + 1));
+      d += 1;
+      setDone(d);
+      if (d >= STEPS.length) clearInterval(id);
     }, 850);
     return () => clearInterval(id);
   }, [inView]);

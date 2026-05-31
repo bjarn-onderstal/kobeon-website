@@ -17,7 +17,7 @@ body {
 
 @layer components {
   .container-x { @apply mx-auto w-full max-w-container px-5 md:px-8; }
-  .h-display { @apply font-serif font-normal tracking-tight leading-[1.05]; }
+  .h-display { @apply font-serif font-semibold tracking-tight leading-[1.05]; }
   .gradient-text {
     background: linear-gradient(90deg, #3A0CA3, #13A6A6);
     -webkit-background-clip: text; background-clip: text; color: transparent;

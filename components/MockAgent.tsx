@@ -8,7 +8,7 @@ const MESSAGE = "Ik verwerk 14 aanvragen en koppel ze aan Dynamics 365…";
 const TOOLS = ["Dynamics 365 ✓", "Document gecontroleerd ✓", "E-mail verstuurd ✓"];
 
 // Agentic AI: de agent typt een bericht, voert tool-calls uit (pills), een mens
-// keurt goed (mens-in-de-loop), waarna het formulier zich vult. Daarna loopt het opnieuw.
+// keurt goed (mens-in-de-loop), waarna het formulier zich vult. Speelt één keer af.
 export default function MockAgent({ theme = "light" }: { theme?: MockTheme }) {
   const t = mockTokens(theme);
   const { ref, inView } = useInView<HTMLDivElement>();
@@ -62,12 +62,11 @@ export default function MockAgent({ theme = "light" }: { theme?: MockTheme }) {
     return () => { clearTimeout(to1); clearTimeout(to2); };
   }, [inView, phase]);
 
-  // Fase 3 — formulier vult + reset
+  // Fase 3 — formulier vult zich; hier stopt de demo (geen reset).
   useEffect(() => {
     if (!inView || phase !== 3) return;
     const to1 = setTimeout(() => setFilled(true), 250);
-    const to2 = setTimeout(() => setPhase(0), 2200);
-    return () => { clearTimeout(to1); clearTimeout(to2); };
+    return () => clearTimeout(to1);
   }, [inView, phase]);
 
   return (

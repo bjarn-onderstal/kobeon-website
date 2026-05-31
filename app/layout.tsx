@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Ubuntu } from "next/font/google";
+import { Ubuntu } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -7,7 +8,15 @@ import JsonLd from "@/components/JsonLd";
 import { site } from "@/lib/siteConfig";
 
 const sans = Ubuntu({ subsets: ["latin"], weight: ["400", "500", "700"], variable: "--font-sans" });
-const serif = DM_Serif_Display({ subsets: ["latin"], weight: ["400"], variable: "--font-serif" });
+
+// Koppen: Atyp Display (Kobeon brand-font). Vult de --font-serif variabele die
+// .h-display en de Tailwind `font-serif` family gebruiken.
+const display = localFont({
+  src: "./fonts/AtypDisplay-Semibold.otf",
+  weight: "600",
+  display: "swap",
+  variable: "--font-serif",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -28,7 +37,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="nl" className={`${sans.variable} ${serif.variable}`}>
+    <html lang="nl" className={`${sans.variable} ${display.variable}`}>
       <body>
         <JsonLd />
         <Nav />

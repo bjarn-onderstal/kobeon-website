@@ -16,21 +16,14 @@ const ROWS = [
 export default function MockPortal({ theme = "light" }: { theme?: MockTheme }) {
   const t = mockTokens(theme);
   const { ref, inView } = useInView<HTMLDivElement>();
-  const [cycle, setCycle] = useState(0);
   const [approved, setApproved] = useState(false);
 
+  // Speelt één keer af: rijen laden in en de laatste klapt naar "Goedgekeurd".
   useEffect(() => {
     if (!inView) return;
-    const id = setInterval(() => setCycle((c) => c + 1), 4200);
-    return () => clearInterval(id);
-  }, [inView]);
-
-  useEffect(() => {
-    if (!inView) return;
-    setApproved(false);
     const to = setTimeout(() => setApproved(true), 2000);
     return () => clearTimeout(to);
-  }, [inView, cycle]);
+  }, [inView]);
 
   return (
     <div ref={ref} className={`flex overflow-hidden rounded-xl ${t.surface}`} style={{ minHeight: 268 }}>
@@ -66,10 +59,10 @@ export default function MockPortal({ theme = "light" }: { theme?: MockTheme }) {
             const done = isLast && approved;
             return (
               <motion.div
-                key={`${cycle}-${row.id}`}
+                key={row.id}
                 className={`flex items-center justify-between rounded-lg border px-3 py-2 ${t.tile}`}
                 initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 8 }}
                 transition={{ delay: i * 0.25, duration: 0.4 }}
               >
                 <div>
