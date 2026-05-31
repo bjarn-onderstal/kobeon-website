@@ -3,9 +3,10 @@ import { motion } from "framer-motion";
 import type { Service } from "@/lib/siteConfig";
 
 export default function ServiceTile({ service, index }: { service: Service; index: number }) {
-  const { title, desc, icon, gradient, span } = service;
+  const { slug, title, desc, icon, gradient, span } = service;
   return (
     <motion.div
+      id={slug}
       className={`group relative min-h-[180px] overflow-hidden rounded-2xl shadow-soft ${span}`}
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}

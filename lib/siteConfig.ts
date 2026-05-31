@@ -8,14 +8,57 @@ export const site = {
   address: "Noordzeelaan 50, 8017 JW Zwolle",
 };
 
-export const nav = [
-  { label: "Oplossingen", href: "/oplossingen" },
-  { label: "Diensten", href: "/diensten" },
+// Navigatie. Items met `columns` zijn dropdowns/megamenu's; items met `href`
+// zijn directe links. Diensten-items deeplinken naar de tegels op /diensten.
+export type NavLink = { label: string; href: string };
+export type NavColumn = { heading?: string; items: NavLink[] };
+export type NavItem = { label: string; href?: string; columns?: NavColumn[] };
+
+export const nav: NavItem[] = [
+  {
+    label: "Diensten",
+    href: "/diensten",
+    columns: [
+      {
+        heading: "Bouwen",
+        items: [
+          { label: "Procesautomatisering", href: "/diensten#procesautomatisering" },
+          { label: "App ontwikkeling", href: "/diensten#app-ontwikkeling" },
+          { label: "Portalen & dashboards", href: "/diensten#portalen-dashboards" },
+          { label: "Legacy modernisering", href: "/diensten#legacy-modernisering" },
+        ],
+      },
+      {
+        heading: "AI & Integratie",
+        items: [
+          { label: "Agentic AI", href: "/diensten#agentic-ai" },
+          { label: "AI Development", href: "/diensten#ai-development" },
+          { label: "Systeemintegratie", href: "/diensten#systeemintegratie" },
+        ],
+      },
+      {
+        heading: "Strategie",
+        items: [
+          { label: "Design & Prototyping", href: "/diensten#design-prototyping" },
+          { label: "IT Consultancy", href: "/diensten#it-consultancy" },
+        ],
+      },
+    ],
+  },
   { label: "Projecten", href: "/projecten" },
   { label: "Sectoren", href: "/sectoren" },
   { label: "Werkwijze", href: "/werkwijze" },
-  { label: "Over Kobeon", href: "/over-kobeon" },
-  { label: "Werken bij", href: "/werken-bij" },
+  {
+    label: "Over ons",
+    columns: [
+      {
+        items: [
+          { label: "Over Kobeon", href: "/over-kobeon" },
+          { label: "Werken bij", href: "/werken-bij" },
+        ],
+      },
+    ],
+  },
 ];
 
 // Integratie-namen voor de homepage = enterprise + sterke NL-namen (geen branche-niche).
@@ -353,6 +396,7 @@ export const vacancies: {
 // De 9 diensten als bento-tegels (homepage-sectie 6 + /diensten). `span` stuurt
 // de asymmetrische grid, `gradient` de merk-achtergrond (fallback voor svc-images).
 export type Service = {
+  slug: string;
   title: string;
   desc: string;
   icon: string;
@@ -361,13 +405,13 @@ export type Service = {
 };
 
 export const services: Service[] = [
-  { title: "Procesautomatisering", desc: "Repetitieve en cognitieve taken automatiseren met Mendix.", icon: "⚙️", gradient: "bg-gradient-to-br from-purple-deep to-teal", span: "md:col-span-2 md:row-span-2" },
-  { title: "Agentic AI", desc: "AI-agenten die zelfstandig kenniswerk uitvoeren, geregisseerd door Mendix.", icon: "🤖", gradient: "bg-gradient-to-br from-teal to-purple-med", span: "md:col-span-2" },
-  { title: "AI Development", desc: "Custom AI-modellen trainen op je eigen bedrijfsdata.", icon: "🧠", gradient: "bg-gradient-to-br from-purple to-purple-deep", span: "md:col-span-1" },
-  { title: "Systeemintegratie", desc: "Microsoft Dynamics, SAP, REST-API's — al je systemen praten met elkaar.", icon: "🔗", gradient: "bg-gradient-to-br from-purple-med to-teal", span: "md:col-span-1" },
-  { title: "App ontwikkeling", desc: "Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd.", icon: "📱", gradient: "bg-gradient-to-br from-teal to-teal-light", span: "md:col-span-2" },
-  { title: "Portalen & dashboards", desc: "Klant- en medewerkersportalen met zelfservice en actueel inzicht.", icon: "📊", gradient: "bg-gradient-to-br from-purple-deep to-purple-med", span: "md:col-span-2" },
-  { title: "Legacy modernisering", desc: "Verouderde systemen gefaseerd vervangen. Stap voor stap, niet in één keer.", icon: "🏗️", gradient: "bg-gradient-to-br from-purple to-teal", span: "md:col-span-1" },
-  { title: "Design & Prototyping", desc: "Rapid prototyping met Figma Make, Lovable en Google Stitch.", icon: "✏️", gradient: "bg-gradient-to-br from-teal to-purple", span: "md:col-span-1" },
-  { title: "IT Consultancy", desc: "Datastructuur, architectuuradvies en IT-roadmap.", icon: "🧭", gradient: "bg-gradient-to-br from-purple-med to-purple-deep", span: "md:col-span-2" },
+  { slug: "procesautomatisering", title: "Procesautomatisering", desc: "Repetitieve en cognitieve taken automatiseren met Mendix.", icon: "⚙️", gradient: "bg-gradient-to-br from-purple-deep to-teal", span: "md:col-span-2 md:row-span-2" },
+  { slug: "agentic-ai", title: "Agentic AI", desc: "AI-agenten die zelfstandig kenniswerk uitvoeren, geregisseerd door Mendix.", icon: "🤖", gradient: "bg-gradient-to-br from-teal to-purple-med", span: "md:col-span-2" },
+  { slug: "ai-development", title: "AI Development", desc: "Custom AI-modellen trainen op je eigen bedrijfsdata.", icon: "🧠", gradient: "bg-gradient-to-br from-purple to-purple-deep", span: "md:col-span-1" },
+  { slug: "systeemintegratie", title: "Systeemintegratie", desc: "Microsoft Dynamics, SAP, REST-API's — al je systemen praten met elkaar.", icon: "🔗", gradient: "bg-gradient-to-br from-purple-med to-teal", span: "md:col-span-1" },
+  { slug: "app-ontwikkeling", title: "App ontwikkeling", desc: "Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd.", icon: "📱", gradient: "bg-gradient-to-br from-teal to-teal-light", span: "md:col-span-2" },
+  { slug: "portalen-dashboards", title: "Portalen & dashboards", desc: "Klant- en medewerkersportalen met zelfservice en actueel inzicht.", icon: "📊", gradient: "bg-gradient-to-br from-purple-deep to-purple-med", span: "md:col-span-2" },
+  { slug: "legacy-modernisering", title: "Legacy modernisering", desc: "Verouderde systemen gefaseerd vervangen. Stap voor stap, niet in één keer.", icon: "🏗️", gradient: "bg-gradient-to-br from-purple to-teal", span: "md:col-span-1" },
+  { slug: "design-prototyping", title: "Design & Prototyping", desc: "Rapid prototyping met Figma Make, Lovable en Google Stitch.", icon: "✏️", gradient: "bg-gradient-to-br from-teal to-purple", span: "md:col-span-1" },
+  { slug: "it-consultancy", title: "IT Consultancy", desc: "Datastructuur, architectuuradvies en IT-roadmap.", icon: "🧭", gradient: "bg-gradient-to-br from-purple-med to-purple-deep", span: "md:col-span-2" },
 ];

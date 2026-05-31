@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { site, nav } from "@/lib/siteConfig";
 
+// Platte linklijst: items met eigen href blijven top-level; dropdowns zonder href
+// (zoals "Over ons") klappen uit naar hun onderliggende pagina's.
+const footerLinks = nav.flatMap((n) =>
+  n.href ? [{ label: n.label, href: n.href }] : (n.columns?.flatMap((c) => c.items) ?? [])
+);
+
 export default function Footer() {
   return (
     <footer className="bg-ink text-white/70">
@@ -13,9 +19,9 @@ export default function Footer() {
         <div>
           <div className="mb-3 text-sm font-semibold text-white">Bedrijf</div>
           <ul className="space-y-2 text-sm">
-            {nav.map((n) => (
-              <li key={n.href}>
-                <Link href={n.href} className="hover:text-white">{n.label}</Link>
+            {footerLinks.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="hover:text-white">{l.label}</Link>
               </li>
             ))}
           </ul>
