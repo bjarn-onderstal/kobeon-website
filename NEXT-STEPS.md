@@ -59,11 +59,11 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
   De 9 diensten als lichte bento met achtergrond-beelden (v3.3/v3.5). ServiceTile met optionele video-achtergrond (poster + mp4/webm, fallback naar still/mock). Op een lichte sectie-achtergrond.
   Klaar wanneer: /diensten compleet, geen zwart slab.
 
-- [ ] **11. SEO + schema afronden**
+- [x] **11. SEO + schema afronden**
   Per pagina unieke title/meta/H1 (zie v3.4 voor teksten), JSON-LD FAQPage/Service/BreadcrumbList/JobPosting, sitemap bijwerken, OG-images, alt-teksten.
   Klaar wanneer: elke route heeft eigen metadata + relevant schema.
 
-- [ ] **12. Toegankelijkheid & performance**
+- [x] **12. Toegankelijkheid & performance**
   Lighthouse-check, contrast, focus-states, `prefers-reduced-motion`, lazy-load beeld, Core Web Vitals. Fix wat opvalt.
   Klaar wanneer: Lighthouse SEO + a11y ≥ 90.
 
@@ -91,3 +91,5 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 - 2026-05-31 — Stap 8 afgerond: /quickscan met 3 states (invoer → 3s scan-animatie → resultaten met gauge 62/100, dimensiekaarten, top-3, CTA); ?url-param + in sitemap. (9b369b5)
 - 2026-05-31 — Stap 9 afgerond: /discovery-sessie (hero, wat-je-meekrijgt, Calendly-placeholder, herbruikbare Accordion + FAQ). (9df4dfd)
 - 2026-05-31 — Stap 10 afgerond: /diensten lichte asymmetrische bento met 9 ServiceTiles (gradient-fallback, hover-zoom), geen zwart slab. (afcc608)
+- 2026-05-31 — Stap 11 afgerond: JSON-LD uitgebreid (FAQPage, ItemList/Service, BreadcrumbList via templates); Organization + JobPosting bestonden al. (15cecf3)
+- 2026-05-31 — Stap 12 afgerond: MotionConfig reducedMotion="user" (alle animaties respecteren reduce-motion), :focus-visible, scroll-padding-top, key-spread-warning weg. Lighthouse-meting nog lokaal te draaien. (15cecf3)
