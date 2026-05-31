@@ -1,97 +1,105 @@
 # NEXT-STEPS — bouwplan Kobeon-site
 
-Dit is de gedeelde takenlijst. De gebruiker zegt "pak de volgende stap op"; jij (Claude Code) werkt één stap af en werkt dit bestand bij.
+Gedeelde takenlijst. De gebruiker zegt "pak de volgende stap op"; jij (Claude Code) werkt één stap af en werkt dit bestand bij.
 
 ## PROTOCOL — zo gebruik je dit bestand (Claude Code, lees dit elke keer)
-Wanneer de gebruiker zegt **"pak de volgende stap op"** (of iets vergelijkbaars):
-1. Open dit bestand en zoek de **eerste stap met `[ ]`** (nog niet afgevinkt).
+Wanneer de gebruiker zegt **"pak de volgende stap op"**:
+1. Open dit bestand, zoek de **eerste stap met `[ ]`**.
 2. Lees `CLAUDE.md` en de bij die stap genoemde stukken uit `/docs` (vooral `docs/00-brief-volledig.txt`).
 3. Voer **alleen die ene stap** uit. Houd je aan: je/jouw, enterprise-toon, licht-eerst, merk-tokens, integratiebeleid en SEO-regels.
 4. Controleer dat `npm run build` slaagt (of dev draait zonder errors).
-5. **Vink de stap af** (`[ ]` → `[x]`) en voeg een regel toe aan het **Voortgangslog** onderaan (datum + 1 zin + commit-hash).
-6. **Commit** met een duidelijke message (bv. `feat: wat-we-bouwen demo-rijen`).
+5. **Vink de stap af** (`[ ]` → `[x]`) en zet een regel in het **Voortgangslog** (datum + 1 zin + commit).
+6. **Commit** met een duidelijke message.
 7. Geef kort terug wát je deed en **stop voor review**. Begin niet automatisch aan de volgende stap.
-Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alleen de eerste.
+
+> Belangrijk: de homepage moet net zo rijk worden als in de Lovable-brief. De foundation had maar 6 secties; stappen 1–8 bouwen de volledige homepage op. Houd de copy/teksten aan uit `docs/00-brief-volledig.txt` (v3.7/v3.8/v3.12).
+
+> Status-reconciliatie (2026-05-31): dit plan is later herzien/hernummerd. Veel pagina's en enkele homepage-secties zijn al gebouwd in een eerdere reeks (zie voortgangslog onderaan). De vakjes hieronder zijn bijgewerkt naar de werkelijke stand. Steps die nog deels open staan, staan bewust op `[ ]` met een toelichting in het log.
 
 ---
 
 ## STAPPEN
 
-- [x] **0. Foundation** — Next.js + Tailwind + Framer Motion, homepage (Hero, LogoStrip, Solutions, Stats, FAQ, FinalCTA), Nav/Footer, SEO-basis, asset-structuur. (al opgeleverd)
+- [x] **0. Foundation** — Next.js + Tailwind + Framer Motion; homepage (Hero, LogoStrip, "Vier oplossingen, één platform", Stats, FAQ, FinalCTA), Nav/Footer, SEO-basis, asset-structuur.
 
-- [x] **1. Mock-componenten + sectie "Wat we bouwen"**
-  Bouw `MockWorkflow`, `MockAgent`, `MockTraining`, `MockIntegration`, `MockPortal` in `/components`, elk met `theme="light"|"dark"` (zie v3.11 voor de lichte stijl). Voeg onder de hero de sectie **"Wat we bouwen"** toe: 4 alternerende, lichte demo-rijen (tekst + mock + zwevend metric-kaartje) voor Procesautomatisering, Agentic AI, AI Development, Systeemintegratie. Integratie-namen = enterprise (Dynamics, SAP, AWS…).
-  Klaar wanneer: sectie staat op de homepage, mocks animeren licht, build slaagt.
+### Homepage compleet maken (stap 1–8)
 
-- [x] **2. Mendix-voordeel + "Je modellen, je data, je cloud" + onderzoek-strook**
-  Voeg toe: het 2×2 "Mendix-voordeel"-blok (Standaard veilig · Enterprise-schaalbaarheid · Governance & audit trails · Siemens als fundament) met Gartner-quote; de band "Je modellen. Je data. Je cloud." (geen lock-in, 3 kaarten); en de **onderzoek/autoriteit-strook** (v3.9, quotes als placeholders mét bron, markeer als 'te verifiëren').
-  Klaar wanneer: drie blokken op de homepage, licht, met bronvermelding bij quotes.
+- [x] **1. Mock-componenten (alle 6, light + dark)**
+  Bouw `MockWorkflow`, `MockAgent`, `MockTraining`, `MockIntegration`, `MockPortal` (naast de bestaande `MockDashboard`) in `/components`, elk met `theme="light"|"dark"` en lichte stijl uit v3.11 (witte vlakken, zachte schaduw, geen neon). Deze worden hergebruikt in de demo-rijen.
 
-- [x] **3. Projecten (homepage-sectie + /projecten)**
-  Case-kaarten met een device-mockup (browser/phone) en een "van X naar Y"-regel + sectortag + resultaatcijfer. 7 cases uit de brief. Filters op /projecten. Hergebruik `DeviceFrame`.
-  Klaar wanneer: homepage-sectie + volledige /projecten-pagina, build slaagt.
+- [ ] **13. "WAT WE BOUWEN" — de 4 taken in actie (de ontbrekende homepage-opbouw)**
+  Voeg direct onder de hero de sectie **"Wat we bouwen"** toe: 4 alternerende, lichte demo-rijen (tekst links/mock rechts, dan omgekeerd), elk met een mock-component + een zwevend metric-kaartje. De 4 taken (zoals in Lovable):
+  1. **Procesautomatisering** → MockWorkflow + kaart "−62% doorlooptijd" — "Repetitief en denkwerk geautomatiseerd op Mendix, met een volledig audit-spoor."
+  2. **Agentic AI** → MockAgent (met 'mens keurt goed'-stap) + kaart "40+ u/week terug" — "AI-agenten die kenniswerk zelfstandig uitvoeren. Geregisseerd door Mendix, altijd controleerbaar."
+  3. **AI Development** → MockTraining + kaart "94% accuraat" — "AI-modellen getraind op je eigen data. Jij houdt de data, wij bouwen het model."
+  4. **Systeemintegratie** → MockIntegration + kaart "8 systemen verbonden" — "Microsoft Dynamics, SAP, REST/API — je systemen werken eindelijk samen."
+  Onder de rijen: een dunne logo-marquee (Mendix · Microsoft Dynamics 365 · SAP · AWS · Azure · AFAS · Exact · Salesforce · OpenAI · Siemens). Licht thema, Framer Motion, demo's loopen pas in beeld.
+  **VERVANGT de bestaande abstracte sectie "Vier oplossingen, één platform" (Automatiseren / Bouwen / Verbinden / AI inzetten) — die categorieën zijn te nietszeggend en gaan eruit.** Verwijder de `solutions`-array uit `lib/siteConfig.ts` en de component `Solutions.tsx`/`SolutionCard.tsx` (of herbouw ze rond deze 4 concrete taken). Behoud wél de smalle diep-paarse band **"Eén platform: Mendix"** (ISO 27001, governance, 10–100.000 gebruikers, Siemens, 9× Gartner) direct ónder de 4 demo-rijen — die regel is sterk.
+  Klaar wanneer: de 4 concrete demo-rijen staan onder de hero, de abstracte categorieën-sectie is weg, de "Eén platform: Mendix"-band staat eronder, build slaagt.
 
-- [x] **4. Sectoren — overzicht + template (sierteelt, staffing)**
-  /sectoren met 6 sectorkaarten (3×2). Maak een herbruikbaar sector-paginatemplate; werk **sierteelt** (Agriware, Infor, Metacom + BKD) en **staffing** (AFAS, Nmbrs, Wet DBA) uit volgens de Challenger-structuur (probleem → aanpak → case → CTA).
-  Klaar wanneer: /sectoren + /sectoren/sierteelt + /sectoren/detachering live.
+- [ ] **2. Introductie-sectie**
+  Kop "Je bent gegroeid. Je systemen niet." + body (v3.8) + 3 kernvoordeel-tegels (Snel / Enterprise-kwaliteit / Schaalbaar). Licht. Voeg de **jaren → maanden → weken** snelheidsvergelijking toe (lange balk "high-code: maanden tot jaren" → korte gele balk "Kobeon op Mendix: 6 weken").
 
-- [x] **5. Resterende sectorpagina's**
-  /sectoren/semi-publiek, /onderwijs, /kinderopvang, /maakindustrie met het template en de juiste branche-systemen/cases uit de brief.
-  Klaar wanneer: alle 6 sectorpagina's bestaan, in sitemap.
+- [ ] **3. "Hoe we werken" — tempo (proces-stepper op de homepage)**
+  Horizontale stepper met getekende stippellijn: 01 Discovery (1–2 wk) → 02 Design & Prototype (1–2 wk) → 03 MVP bouwen (4–6 wk) → 04 Implementatie & training (1 wk) → geel kaartje "∞ 90-daagse cycli". Maakt het tempo zichtbaar. Link naar /werkwijze.
 
-- [x] **6. /werkwijze**
-  5 fasen als lichte, alternerende rijen (Discovery → Design & Prototype → Heldere afspraken → MVP bouwen → Implementatie & training) + 90-daagse-cycli-blok + Discovery-CTA. Mock-visuals per fase.
-  Klaar wanneer: /werkwijze compleet, build slaagt.
+- [x] **4. Mendix-voordeel + "Je modellen, je data, je cloud"**
+  2×2 voordeel-tegels (Standaard veilig · Enterprise-schaalbaarheid · Governance & audit trails · Siemens als fundament) + Gartner-quote. Plus de licht-band "Je modellen. Je data. Je cloud." (geen lock-in, 3 kaarten).
 
-- [x] **7. /werken-bij + /vacatures + vacature-detail**
-  Werken-bij (hero, cultuurkaarten, teamgrid placeholder, sollicitatieproces-stepper). /vacatures met generieke vacaturekaarten + filters. Herbruikbaar vacature-detailtemplate met formulier. JobPosting-schema.
-  Klaar wanneer: drie onderdelen live, vacatures generiek gehouden.
+- [x] **5. Onderzoek/autoriteit-strook**
+  Horizontale "inzicht"-kaarten met gebronde quotes (v3.9, McKinsey State of AI bovenaan; quotes als te-verifiëren placeholders mét bron). Licht, gegronde achtergronden.
 
-- [x] **8. /quickscan (3 stappen)**
-  Input → laad-animatie (3s) → resultaten (score-gauge 62/100, 5 dimensie-kaarten, top-3 aanbevelingen, CTA). Donker mag hier als accent, maar houd het licht waar kan.
-  Klaar wanneer: de 3 states werken met query-param voor de URL.
+- [ ] **6. Projecten + Sectoren-spotlight + Testimonials (homepage)**
+  Projecten: case-kaarten met device-mockup + "van X naar Y"-regel (7 cases). Sectoren-spotlight: 3×2 kaarten (6 sectoren). Testimonials: carrousel met placeholders. Allemaal licht.
 
-- [x] **9. /discovery-sessie**
-  Hero, "wat je meekrijgt" (4 kaarten), Calendly-embed-placeholder, FAQ-accordion (3). Discovery-CTA.
-  Klaar wanneer: pagina compleet.
+- [ ] **7. Quickscan-teaser (homepage)**
+  Licht-paarse band met URL-invoer + "Start Quickscan" + 3 preview-chips. Linkt naar /quickscan.
 
-- [x] **10. Diensten-overzicht (/diensten) + bento/video-tegels**
-  De 9 diensten als lichte bento met achtergrond-beelden (v3.3/v3.5). ServiceTile met optionele video-achtergrond (poster + mp4/webm, fallback naar still/mock). Op een lichte sectie-achtergrond.
-  Klaar wanneer: /diensten compleet, geen zwart slab.
+- [ ] **8. Homepage-volgorde controleren**
+  Volgorde: Hero → Wat we bouwen (4 taken) + "Eén platform: Mendix"-band → Introductie + snelheid → Stats → Hoe we werken → Mendix-voordeel → Je modellen/data/cloud → Onderzoek-strook → Projecten → Sectoren → Testimonials → Quickscan-teaser → FAQ → Final CTA. (Geen aparte abstracte "Vier oplossingen"-sectie meer.) Check ritme licht/donker (max ~4 donkere blokken) en dat de Discovery-CTA 3× terugkomt.
 
-- [x] **11. SEO + schema afronden**
-  Per pagina unieke title/meta/H1 (zie v3.4 voor teksten), JSON-LD FAQPage/Service/BreadcrumbList/JobPosting, sitemap bijwerken, OG-images, alt-teksten.
-  Klaar wanneer: elke route heeft eigen metadata + relevant schema.
+### Pagina's (stap 9–16)
 
-- [x] **12. Toegankelijkheid & performance**
-  Lighthouse-check, contrast, focus-states, `prefers-reduced-motion`, lazy-load beeld, Core Web Vitals. Fix wat opvalt.
-  Klaar wanneer: Lighthouse SEO + a11y ≥ 90.
+- [x] **9. /projecten** — volledige case-grid + filters.
+- [x] **10. /sectoren** — overzicht (6) + herbruikbaar sectortemplate; werk sierteelt (Agriware, Infor, Metacom + BKD) en staffing (AFAS, Nmbrs, Wet DBA) uit.
+- [x] **11. Resterende sectorpagina's** — semi-publiek, onderwijs, kinderopvang, maakindustrie.
+- [x] **12. /werkwijze** — 5 fasen als rijen + 90-daagse-cycli + CTA (uitgebreide versie van de homepage-stepper).
+- [x] **14. /werken-bij + /vacatures + vacature-detail** — cultuur, teamgrid, generieke vacatures, JobPosting-schema.
+- [x] **15. /quickscan** — 3 stappen (input → laden → resultaten).
+- [x] **16. /discovery-sessie** — hero, "wat je meekrijgt", Calendly-placeholder, FAQ.
+- [x] **17. /diensten** — 9 diensten als lichte bento met (optioneel) video-tegels (v3.5).
 
-- [ ] **13. Assets inladen (wanneer beschikbaar)**
-  Nano Banana-beelden → `/public/visuals`; echte screenshots → `/public/screens` + `screens.config.json` invullen (status 'live' + anonymized). Tot dan blijven de mocks staan.
+### Afronden (stap 18–21)
 
-- [ ] **14. Deploy naar Vercel**
-  Zet `site.url` in `lib/siteConfig.ts` goed, deploy, controleer sitemap/robots en metadata in productie.
+- [x] **18. SEO + schema** — per-pagina title/meta/H1 (v3.4-teksten), JSON-LD (FAQPage/Service/BreadcrumbList/JobPosting), sitemap bijwerken, OG-images, alt-teksten.
+- [ ] **19. Toegankelijkheid & performance** — Lighthouse ≥ 90 (SEO + a11y), contrast, focus, lazy-load, reduced-motion.
+- [ ] **20. Assets inladen** — Nano Banana → `/public/visuals`; screenshots → `/public/screens` + `screens.config.json`. Tot dan blijven de mocks staan.
+- [ ] **21. Deploy naar Vercel** — `site.url` goedzetten, deploy, sitemap/robots/metadata in productie checken.
 
 ---
 
 ## VOORTGANGSLOG
-- 2026-05-31 — Stap 0 afgerond: foundation opgeleverd (homepage + componenten + SEO-basis).
-- 2026-05-31 — Stap 1 afgerond: 5 mock-componenten (licht/donker) + sectie "Wat we bouwen"; demo's spelen één keer af; Atyp Display als kop-font. (959d572, d501e6c)
-- 2026-05-31 — Stap 2 afgerond: Mendix-voordeel (2×2 + Gartner-quote), "Je modellen. Je data. Je cloud." en onderzoek/autoriteit-strook toegevoegd op de homepage, licht, met bronvermelding. (7ccea1d)
-- 2026-05-31 — Fix: metric-teller (StatCounter) stopt nu op het eindcijfer i.p.v. eindeloos te herstarten; €100K komt netjes in beeld. (d0e63a8)
-- 2026-05-31 — Stap 3 afgerond: Projecten-sectie op de homepage + volledige /projecten met 7 cases, MiniMock-mockups, ProjectCard en filterpills. (7b210c4)
-- 2026-05-31 — Animatielogica verfijnd: demo's loopen weer als video; alleen optellende eindcijfers (StatCounter, 94% in training) blijven staan zodra bereikt. (699c8f0)
-- 2026-05-31 — Stap 4 afgerond: /sectoren-overzicht (6) + herbruikbaar SectorPage-template; sierteelt en detachering uitgewerkt (Challenger-structuur), routes in sitemap. (c90d76e)
-- 2026-05-31 — Onderzoek-strook: horizontale scrollbar vervangen door responsieve grid (alle inzichten in beeld). (cdaabdd)
-- 2026-05-31 — Stap 5 afgerond: sectorpagina's semi-publiek, onderwijs, kinderopvang en maakindustrie op het template; alle 6 sectoren actief + in sitemap. (ed19c82)
-- 2026-05-31 — Stap 6 afgerond: /werkwijze met 5 fasen (alternerende rijen + mock-visuals), 90-daagse-cycli-blok en Discovery-CTA; in nav + sitemap. (d41c253)
-- 2026-05-31 — Stap 7 afgerond: /werken-bij + /vacatures + herbruikbaar vacature-detailtemplate met JobPosting-schema; generieke vacatures, filters, mailto-CTA. (d8d44db)
-- 2026-05-31 — Sectorkaarten: hover verfijnd (zachte accenttint i.p.v. vollopen met witte tekst); vacature-detailroutes toegevoegd aan sitemap. (c8ad9c0, 3a1fee1)
-- 2026-05-31 — Stap 8 afgerond: /quickscan met 3 states (invoer → 3s scan-animatie → resultaten met gauge 62/100, dimensiekaarten, top-3, CTA); ?url-param + in sitemap. (9b369b5)
-- 2026-05-31 — Stap 9 afgerond: /discovery-sessie (hero, wat-je-meekrijgt, Calendly-placeholder, herbruikbare Accordion + FAQ). (9df4dfd)
-- 2026-05-31 — Stap 10 afgerond: /diensten lichte asymmetrische bento met 9 ServiceTiles (gradient-fallback, hover-zoom), geen zwart slab. (afcc608)
-- 2026-05-31 — Stap 11 afgerond: JSON-LD uitgebreid (FAQPage, ItemList/Service, BreadcrumbList via templates); Organization + JobPosting bestonden al. (15cecf3)
-- 2026-05-31 — Stap 12 afgerond: MotionConfig reducedMotion="user" (alle animaties respecteren reduce-motion), :focus-visible, scroll-padding-top, key-spread-warning weg. Lighthouse-meting nog lokaal te draaien. (15cecf3)
-- 2026-05-31 — Fix: diensten-bento (sectie 6) ontbrak op de homepage — toegevoegd na Stats; services/grid gedeeld met /diensten via siteConfig + DienstenBentoGrid. (1d77c0d)
-- 2026-05-31 — Navigatie herstructureerd: Diensten-megamenu (Bouwen/AI & Integratie/Strategie, deeplinks naar /diensten#slug), Over ons-dropdown (+ Werken bij), Werkwijze los; Oplossingen-pagina verwijderd; mobiel menu toegevoegd. (2ab4dc5)
+- 2026-05-31 — Stap 0 afgerond: foundation opgeleverd (homepage-basis + componenten + SEO-basis).
+- 2026-05-31 — Bouwplan verrijkt: volledige homepage-opbouw toegevoegd (4-taken-sectie "Wat we bouwen" als stap 13, plus tempo/proces, introductie, Mendix-voordeel, onderzoek-strook, projecten/sectoren/testimonials, quickscan-teaser).
+
+### Reconciliatie met eerder gebouwd werk (2026-05-31)
+Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pad):
+- **Stap 1** — 5 mock-componenten (light/dark) + MockDashboard; demo's loopen, eindcijfers bevriezen. (959d572, d501e6c, 699c8f0)
+- **Stap 4** — Mendix-voordeel (2×2 + Gartner-quote) + "Je modellen. Je data. Je cloud." op de homepage. (7ccea1d)
+- **Stap 5** — Onderzoek/autoriteit-strook (responsieve grid met gebronde kaarten). (7ccea1d, cdaabdd)
+- **Stap 9** — /projecten volledige case-grid + filters (7 cases, MiniMock, ProjectCard). (7b210c4)
+- **Stap 10** — /sectoren overzicht + SectorPage-template + sierteelt + detachering. (c90d76e)
+- **Stap 11** — sectorpagina's semi-publiek, onderwijs, kinderopvang, maakindustrie. (ed19c82)
+- **Stap 12** — /werkwijze (5 fasen + 90-daagse cycli + CTA). (d41c253)
+- **Stap 14** — /werken-bij + /vacatures + vacature-detail (JobPosting). (d8d44db, 3a1fee1)
+- **Stap 15** — /quickscan (3 states). (9b369b5)
+- **Stap 16** — /discovery-sessie. (9df4dfd)
+- **Stap 17** — /diensten lichte bento (9 ServiceTiles). (afcc608)
+- **Stap 18** — JSON-LD (FAQPage/Service/BreadcrumbList/JobPosting), per-pagina metadata + OG, sitemap. (15cecf3) — open: exacte v3.4-teksten en echte OG-images/alt (wacht op assets).
+- **Extra (buiten plan)** — diensten-bento óók op de homepage (1d77c0d); navigatie herstructureerd met Diensten-megamenu + Over ons-dropdown + mobiel menu (2ab4dc5).
+
+**Nog open / deels:**
+- **Stap 13** — demo-rijen "Wat we bouwen" staan al op de homepage, MÁÁR met 5 rijen i.p.v. 4; de abstracte "Vier oplossingen"-sectie is nog NIET verwijderd en er staat nu ook een extra diensten-bento op de homepage. Nog te doen: terugbrengen naar de 4 taken, de abstracte sectie eruit, "Eén platform: Mendix"-band eronder, homepage-bento heroverwegen.
+- **Stap 2** (introductie + snelheidsvergelijking), **Stap 3** (homepage tempo-stepper), **Stap 6** (Sectoren-spotlight + Testimonials op de homepage — Projecten-sectie staat al), **Stap 7** (Quickscan-teaser op de homepage), **Stap 8** (homepage-volgorde) — nog niet gebouwd.
+- **Stap 19** — reduced-motion (MotionConfig), :focus-visible en de key-warning zijn gedaan; Lighthouse ≥ 90 nog te meten. (15cecf3)
+- **Stap 20** (assets) en **Stap 21** (deploy) — wachten op input.
