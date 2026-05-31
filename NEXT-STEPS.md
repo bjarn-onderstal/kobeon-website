@@ -93,3 +93,4 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 - 2026-05-31 — Stap 10 afgerond: /diensten lichte asymmetrische bento met 9 ServiceTiles (gradient-fallback, hover-zoom), geen zwart slab. (afcc608)
 - 2026-05-31 — Stap 11 afgerond: JSON-LD uitgebreid (FAQPage, ItemList/Service, BreadcrumbList via templates); Organization + JobPosting bestonden al. (15cecf3)
 - 2026-05-31 — Stap 12 afgerond: MotionConfig reducedMotion="user" (alle animaties respecteren reduce-motion), :focus-visible, scroll-padding-top, key-spread-warning weg. Lighthouse-meting nog lokaal te draaien. (15cecf3)
+- 2026-05-31 — Fix: diensten-bento (sectie 6) ontbrak op de homepage — toegevoegd na Stats; services/grid gedeeld met /diensten via siteConfig + DienstenBentoGrid. (1d77c0d)
