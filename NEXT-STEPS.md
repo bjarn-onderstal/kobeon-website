@@ -37,7 +37,7 @@ Wanneer de gebruiker zegt **"pak de volgende stap op"**:
   **VERVANGT de bestaande abstracte sectie "Vier oplossingen, één platform" (Automatiseren / Bouwen / Verbinden / AI inzetten) — die categorieën zijn te nietszeggend en gaan eruit.** Verwijder de `solutions`-array uit `lib/siteConfig.ts` en de component `Solutions.tsx`/`SolutionCard.tsx` (of herbouw ze rond deze 4 concrete taken). Behoud wél de smalle diep-paarse band **"Eén platform: Mendix"** (ISO 27001, governance, 10–100.000 gebruikers, Siemens, 9× Gartner) direct ónder de 4 demo-rijen — die regel is sterk.
   Klaar wanneer: de 4 concrete demo-rijen staan onder de hero, de abstracte categorieën-sectie is weg, de "Eén platform: Mendix"-band staat eronder, build slaagt.
 
-- [ ] **2. Introductie-sectie**
+- [x] **2. Introductie-sectie**
   Kop "Je bent gegroeid. Je systemen niet." + body (v3.8) + 3 kernvoordeel-tegels (Snel / Enterprise-kwaliteit / Schaalbaar). Licht. Voeg de **jaren → maanden → weken** snelheidsvergelijking toe (lange balk "high-code: maanden tot jaren" → korte gele balk "Kobeon op Mendix: 6 weken").
 
 - [ ] **3. "Hoe we werken" — tempo (proces-stepper op de homepage)**
@@ -83,6 +83,8 @@ Wanneer de gebruiker zegt **"pak de volgende stap op"**:
 - 2026-05-31 — Bouwplan verrijkt: volledige homepage-opbouw toegevoegd (4-taken-sectie "Wat we bouwen" als stap 13, plus tempo/proces, introductie, Mendix-voordeel, onderzoek-strook, projecten/sectoren/testimonials, quickscan-teaser).
 
 - 2026-05-31 — Stap 13 afgerond: "Wat we bouwen" naar 4 taken + "Eén platform: Mendix"-band + integratie-marquee; abstracte "Vier oplossingen"-sectie (Solutions/SolutionCard/solutions) verwijderd. (94be996) — let op: de losse diensten-bento staat (op eerder verzoek) nog op de homepage; meenemen bij stap 8.
+
+- 2026-05-31 — Stap 2 afgerond: introductie-sectie "Je bent gegroeid. Je systemen niet." (v3.8) + 3 kernvoordeel-tegels + jaren→maanden→weken-snelheidsvergelijking, na "Wat we bouwen". (c6a6485)
 
 ### Reconciliatie met eerder gebouwd werk (2026-05-31)
 Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pad):
