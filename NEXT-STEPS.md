@@ -27,7 +27,7 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
   Voeg toe: het 2×2 "Mendix-voordeel"-blok (Standaard veilig · Enterprise-schaalbaarheid · Governance & audit trails · Siemens als fundament) met Gartner-quote; de band "Je modellen. Je data. Je cloud." (geen lock-in, 3 kaarten); en de **onderzoek/autoriteit-strook** (v3.9, quotes als placeholders mét bron, markeer als 'te verifiëren').
   Klaar wanneer: drie blokken op de homepage, licht, met bronvermelding bij quotes.
 
-- [ ] **3. Projecten (homepage-sectie + /projecten)**
+- [x] **3. Projecten (homepage-sectie + /projecten)**
   Case-kaarten met een device-mockup (browser/phone) en een "van X naar Y"-regel + sectortag + resultaatcijfer. 7 cases uit de brief. Filters op /projecten. Hergebruik `DeviceFrame`.
   Klaar wanneer: homepage-sectie + volledige /projecten-pagina, build slaagt.
 
@@ -79,3 +79,5 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 - 2026-05-31 — Stap 0 afgerond: foundation opgeleverd (homepage + componenten + SEO-basis).
 - 2026-05-31 — Stap 1 afgerond: 5 mock-componenten (licht/donker) + sectie "Wat we bouwen"; demo's spelen één keer af; Atyp Display als kop-font. (959d572, d501e6c)
 - 2026-05-31 — Stap 2 afgerond: Mendix-voordeel (2×2 + Gartner-quote), "Je modellen. Je data. Je cloud." en onderzoek/autoriteit-strook toegevoegd op de homepage, licht, met bronvermelding. (7ccea1d)
+- 2026-05-31 — Fix: metric-teller (StatCounter) stopt nu op het eindcijfer i.p.v. eindeloos te herstarten; €100K komt netjes in beeld. (d0e63a8)
+- 2026-05-31 — Stap 3 afgerond: Projecten-sectie op de homepage + volledige /projecten met 7 cases, MiniMock-mockups, ProjectCard en filterpills. (7b210c4)
