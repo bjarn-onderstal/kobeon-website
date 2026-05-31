@@ -94,3 +94,4 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 - 2026-05-31 — Stap 11 afgerond: JSON-LD uitgebreid (FAQPage, ItemList/Service, BreadcrumbList via templates); Organization + JobPosting bestonden al. (15cecf3)
 - 2026-05-31 — Stap 12 afgerond: MotionConfig reducedMotion="user" (alle animaties respecteren reduce-motion), :focus-visible, scroll-padding-top, key-spread-warning weg. Lighthouse-meting nog lokaal te draaien. (15cecf3)
 - 2026-05-31 — Fix: diensten-bento (sectie 6) ontbrak op de homepage — toegevoegd na Stats; services/grid gedeeld met /diensten via siteConfig + DienstenBentoGrid. (1d77c0d)
+- 2026-05-31 — Navigatie herstructureerd: Diensten-megamenu (Bouwen/AI & Integratie/Strategie, deeplinks naar /diensten#slug), Over ons-dropdown (+ Werken bij), Werkwijze los; Oplossingen-pagina verwijderd; mobiel menu toegevoegd. (2ab4dc5)
