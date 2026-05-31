@@ -31,7 +31,7 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
   Case-kaarten met een device-mockup (browser/phone) en een "van X naar Y"-regel + sectortag + resultaatcijfer. 7 cases uit de brief. Filters op /projecten. Hergebruik `DeviceFrame`.
   Klaar wanneer: homepage-sectie + volledige /projecten-pagina, build slaagt.
 
-- [ ] **4. Sectoren — overzicht + template (sierteelt, staffing)**
+- [x] **4. Sectoren — overzicht + template (sierteelt, staffing)**
   /sectoren met 6 sectorkaarten (3×2). Maak een herbruikbaar sector-paginatemplate; werk **sierteelt** (Agriware, Infor, Metacom + BKD) en **staffing** (AFAS, Nmbrs, Wet DBA) uit volgens de Challenger-structuur (probleem → aanpak → case → CTA).
   Klaar wanneer: /sectoren + /sectoren/sierteelt + /sectoren/detachering live.
 
@@ -81,3 +81,5 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 - 2026-05-31 — Stap 2 afgerond: Mendix-voordeel (2×2 + Gartner-quote), "Je modellen. Je data. Je cloud." en onderzoek/autoriteit-strook toegevoegd op de homepage, licht, met bronvermelding. (7ccea1d)
 - 2026-05-31 — Fix: metric-teller (StatCounter) stopt nu op het eindcijfer i.p.v. eindeloos te herstarten; €100K komt netjes in beeld. (d0e63a8)
 - 2026-05-31 — Stap 3 afgerond: Projecten-sectie op de homepage + volledige /projecten met 7 cases, MiniMock-mockups, ProjectCard en filterpills. (7b210c4)
+- 2026-05-31 — Animatielogica verfijnd: demo's loopen weer als video; alleen optellende eindcijfers (StatCounter, 94% in training) blijven staan zodra bereikt. (699c8f0)
+- 2026-05-31 — Stap 4 afgerond: /sectoren-overzicht (6) + herbruikbaar SectorPage-template; sierteelt en detachering uitgewerkt (Challenger-structuur), routes in sitemap. (c90d76e)
