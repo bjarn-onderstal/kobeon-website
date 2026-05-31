@@ -19,11 +19,11 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 
 - [x] **0. Foundation** — Next.js + Tailwind + Framer Motion, homepage (Hero, LogoStrip, Solutions, Stats, FAQ, FinalCTA), Nav/Footer, SEO-basis, asset-structuur. (al opgeleverd)
 
-- [ ] **1. Mock-componenten + sectie "Wat we bouwen"**
+- [x] **1. Mock-componenten + sectie "Wat we bouwen"**
   Bouw `MockWorkflow`, `MockAgent`, `MockTraining`, `MockIntegration`, `MockPortal` in `/components`, elk met `theme="light"|"dark"` (zie v3.11 voor de lichte stijl). Voeg onder de hero de sectie **"Wat we bouwen"** toe: 4 alternerende, lichte demo-rijen (tekst + mock + zwevend metric-kaartje) voor Procesautomatisering, Agentic AI, AI Development, Systeemintegratie. Integratie-namen = enterprise (Dynamics, SAP, AWS…).
   Klaar wanneer: sectie staat op de homepage, mocks animeren licht, build slaagt.
 
-- [ ] **2. Mendix-voordeel + "Je modellen, je data, je cloud" + onderzoek-strook**
+- [x] **2. Mendix-voordeel + "Je modellen, je data, je cloud" + onderzoek-strook**
   Voeg toe: het 2×2 "Mendix-voordeel"-blok (Standaard veilig · Enterprise-schaalbaarheid · Governance & audit trails · Siemens als fundament) met Gartner-quote; de band "Je modellen. Je data. Je cloud." (geen lock-in, 3 kaarten); en de **onderzoek/autoriteit-strook** (v3.9, quotes als placeholders mét bron, markeer als 'te verifiëren').
   Klaar wanneer: drie blokken op de homepage, licht, met bronvermelding bij quotes.
 
@@ -77,3 +77,5 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 
 ## VOORTGANGSLOG
 - 2026-05-31 — Stap 0 afgerond: foundation opgeleverd (homepage + componenten + SEO-basis).
+- 2026-05-31 — Stap 1 afgerond: 5 mock-componenten (licht/donker) + sectie "Wat we bouwen"; demo's spelen één keer af; Atyp Display als kop-font. (959d572, d501e6c)
+- 2026-05-31 — Stap 2 afgerond: Mendix-voordeel (2×2 + Gartner-quote), "Je modellen. Je data. Je cloud." en onderzoek/autoriteit-strook toegevoegd op de homepage, licht, met bronvermelding. (c7e9eba)
