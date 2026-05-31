@@ -190,8 +190,8 @@ export const sectors: {
 }[] = [
   { slug: "sierteelt", title: "Sierteelt & Horticultuur", emoji: "🌱", accent: "teal", systems: ["Agriware", "Infor", "Metacom (Meijel)", "BKD", "Supply chain"], available: true },
   { slug: "detachering", title: "Staffing & Detachering", emoji: "👥", accent: "purple", systems: ["AFAS", "Wet DBA", "AI-matching", "Consultant­portalen"], available: true },
-  { slug: "semi-publiek", title: "Semi-Publiek", emoji: "⚖️", accent: "yellow", systems: ["Compliance", "Documentbeheer", "AI op regelgeving", "Veilige data"], available: false },
-  { slug: "onderwijs", title: "Onderwijs", emoji: "🎓", accent: "teal", systems: ["Aanmeldportalen", "AVG", "Administratie", "Rapportages"], available: false },
-  { slug: "kinderopvang", title: "Kinderopvang", emoji: "🧸", accent: "purple", systems: ["Ouderportalen", "LRK", "Facturering", "Planning"], available: false },
-  { slug: "maakindustrie", title: "Maakindustrie", emoji: "🏭", accent: "yellow", systems: ["ERP-integratie", "Kwaliteitscontrole", "Productie-planning", "Supply chain"], available: false },
+  { slug: "semi-publiek", title: "Semi-Publiek", emoji: "⚖️", accent: "yellow", systems: ["Compliance", "Documentbeheer", "AI op regelgeving", "Veilige data"], available: true },
+  { slug: "onderwijs", title: "Onderwijs", emoji: "🎓", accent: "teal", systems: ["Aanmeldportalen", "AVG", "Administratie", "Rapportages"], available: true },
+  { slug: "kinderopvang", title: "Kinderopvang", emoji: "🧸", accent: "purple", systems: ["Ouderportalen", "LRK", "Facturering", "Planning"], available: true },
+  { slug: "maakindustrie", title: "Maakindustrie", emoji: "🏭", accent: "yellow", systems: ["ERP-integratie", "Kwaliteitscontrole", "Productie-planning", "Supply chain"], available: true },
 ];
