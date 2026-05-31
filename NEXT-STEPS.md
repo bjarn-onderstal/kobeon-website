@@ -55,7 +55,7 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
   Hero, "wat je meekrijgt" (4 kaarten), Calendly-embed-placeholder, FAQ-accordion (3). Discovery-CTA.
   Klaar wanneer: pagina compleet.
 
-- [ ] **10. Diensten-overzicht (/diensten) + bento/video-tegels**
+- [x] **10. Diensten-overzicht (/diensten) + bento/video-tegels**
   De 9 diensten als lichte bento met achtergrond-beelden (v3.3/v3.5). ServiceTile met optionele video-achtergrond (poster + mp4/webm, fallback naar still/mock). Op een lichte sectie-achtergrond.
   Klaar wanneer: /diensten compleet, geen zwart slab.
 
@@ -90,3 +90,4 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 - 2026-05-31 — Sectorkaarten: hover verfijnd (zachte accenttint i.p.v. vollopen met witte tekst); vacature-detailroutes toegevoegd aan sitemap. (c8ad9c0, 3a1fee1)
 - 2026-05-31 — Stap 8 afgerond: /quickscan met 3 states (invoer → 3s scan-animatie → resultaten met gauge 62/100, dimensiekaarten, top-3, CTA); ?url-param + in sitemap. (9b369b5)
 - 2026-05-31 — Stap 9 afgerond: /discovery-sessie (hero, wat-je-meekrijgt, Calendly-placeholder, herbruikbare Accordion + FAQ). (9df4dfd)
+- 2026-05-31 — Stap 10 afgerond: /diensten lichte asymmetrische bento met 9 ServiceTiles (gradient-fallback, hover-zoom), geen zwart slab. (afcc608)
