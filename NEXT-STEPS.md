@@ -51,7 +51,7 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
   Input → laad-animatie (3s) → resultaten (score-gauge 62/100, 5 dimensie-kaarten, top-3 aanbevelingen, CTA). Donker mag hier als accent, maar houd het licht waar kan.
   Klaar wanneer: de 3 states werken met query-param voor de URL.
 
-- [ ] **9. /discovery-sessie**
+- [x] **9. /discovery-sessie**
   Hero, "wat je meekrijgt" (4 kaarten), Calendly-embed-placeholder, FAQ-accordion (3). Discovery-CTA.
   Klaar wanneer: pagina compleet.
 
@@ -89,3 +89,4 @@ Als een stap te groot blijkt, splits 'm in dit bestand in substappen en doe alle
 - 2026-05-31 — Stap 7 afgerond: /werken-bij + /vacatures + herbruikbaar vacature-detailtemplate met JobPosting-schema; generieke vacatures, filters, mailto-CTA. (d8d44db)
 - 2026-05-31 — Sectorkaarten: hover verfijnd (zachte accenttint i.p.v. vollopen met witte tekst); vacature-detailroutes toegevoegd aan sitemap. (c8ad9c0, 3a1fee1)
 - 2026-05-31 — Stap 8 afgerond: /quickscan met 3 states (invoer → 3s scan-animatie → resultaten met gauge 62/100, dimensiekaarten, top-3, CTA); ?url-param + in sitemap. (9b369b5)
+- 2026-05-31 — Stap 9 afgerond: /discovery-sessie (hero, wat-je-meekrijgt, Calendly-placeholder, herbruikbare Accordion + FAQ). (9df4dfd)
