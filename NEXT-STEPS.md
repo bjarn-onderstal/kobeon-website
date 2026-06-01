@@ -49,13 +49,13 @@ Wanneer de gebruiker zegt **"pak de volgende stap op"**:
 - [x] **5. Onderzoek/autoriteit-strook**
   Horizontale "inzicht"-kaarten met gebronde quotes (v3.9, McKinsey State of AI bovenaan; quotes als te-verifiëren placeholders mét bron). Licht, gegronde achtergronden.
 
-- [ ] **6. Projecten + Sectoren-spotlight + Testimonials (homepage)**
+- [x] **6. Projecten + Sectoren-spotlight + Testimonials (homepage)**
   Projecten: case-kaarten met device-mockup + "van X naar Y"-regel (7 cases). Sectoren-spotlight: 3×2 kaarten (6 sectoren). Testimonials: carrousel met placeholders. Allemaal licht.
 
-- [ ] **7. Quickscan-teaser (homepage)**
+- [x] **7. Quickscan-teaser (homepage)**
   Licht-paarse band met URL-invoer + "Start Quickscan" + 3 preview-chips. Linkt naar /quickscan.
 
-- [ ] **8. Homepage-volgorde controleren**
+- [x] **8. Homepage-volgorde controleren**
   Volgorde: Hero → Wat we bouwen (4 taken) + "Eén platform: Mendix"-band → Introductie + snelheid → Stats → Hoe we werken → Mendix-voordeel → Je modellen/data/cloud → Onderzoek-strook → Projecten → Sectoren → Testimonials → Quickscan-teaser → FAQ → Final CTA. (Geen aparte abstracte "Vier oplossingen"-sectie meer.) Check ritme licht/donker (max ~4 donkere blokken) en dat de Discovery-CTA 3× terugkomt.
 
 ### Pagina's (stap 9–16)
@@ -111,9 +111,10 @@ Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pa
 
 - 2026-05-31 — Verfijning V1 afgerond: diensten-bento naar lichte, consistente kaarten + eigen line-icon-set (`components/Icon.tsx`); sectoren typografisch zonder iconen (accentbalk + serif); alle emoji weg. `Service`-type: `gradient`/`icon` → `accent` + optionele `mock`. Open: **V2** (2e mini-mock op Portalen & dashboards).
 - 2026-05-31 — Verfijning V2 afgerond: Portalen & dashboards als 2e feature-tegel met dashboard-mini-mock; bento herbalanceerd naar 16 cellen (App ontwikkeling + IT Consultancy naar 1-breed), geen gaten. (9e5cc95)
+- 2026-05-31 — Stap 6–8 afgerond: Sectoren-spotlight (hergebruikt SectorCard) + Testimonials-carrousel + Quickscan-teaser op de homepage; homepage-volgorde vastgezet (3 donkere blokken). Homepage compleet. (a06d9a0)
 
 **Nog open / deels:**
 - **Stap 13** — demo-rijen "Wat we bouwen" staan al op de homepage, MÁÁR met 5 rijen i.p.v. 4; de abstracte "Vier oplossingen"-sectie is nog NIET verwijderd en er staat nu ook een extra diensten-bento op de homepage. Nog te doen: terugbrengen naar de 4 taken, de abstracte sectie eruit, "Eén platform: Mendix"-band eronder, homepage-bento heroverwegen.
-- **Stap 2** (introductie + snelheidsvergelijking), **Stap 3** (homepage tempo-stepper), **Stap 6** (Sectoren-spotlight + Testimonials op de homepage — Projecten-sectie staat al), **Stap 7** (Quickscan-teaser op de homepage), **Stap 8** (homepage-volgorde) — nog niet gebouwd.
+- Stap 2, 3, 6, 7, 8, 13, V1, V2 zijn inmiddels alle afgerond — **de homepage is compleet**. Nog open: **19** (Lighthouse-meting), **20** (assets), **21** (deploy, incl. csstype build-fix).
 - **Stap 19** — reduced-motion (MotionConfig), :focus-visible en de key-warning zijn gedaan; Lighthouse ≥ 90 nog te meten. (15cecf3)
 - **Stap 20** (assets) en **Stap 21** (deploy) — wachten op input.
