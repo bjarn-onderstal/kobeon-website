@@ -69,6 +69,11 @@ Wanneer de gebruiker zegt **"pak de volgende stap op"**:
 - [x] **16. /discovery-sessie** — hero, "wat je meekrijgt", Calendly-placeholder, FAQ.
 - [x] **17. /diensten** — 9 diensten als lichte bento met (optioneel) video-tegels (v3.5).
 
+### Verfijningen (visueel)
+
+- [x] **V1. Diensten-bento + iconen herontwerp** — bento omgezet naar lichte, consistente kaarten (wit, `shadow-soft`, hover lift + accentrand) i.p.v. donkere gradient-slabs; line-iconen via `components/Icon.tsx` voor de diensten; **sectoren typografisch zónder iconen** (accentbalk + naam in de serif). Alle emoji verwijderd (diensten, sector-kaarten, 6 sectordetailpagina's, `SectorPage`-hero).
+- [ ] **V2. Tweede feature-tegel met mini-mock (diensten-bento)** — geef de tegel **Portalen & dashboards** een lichte mini-mock: zet in `lib/siteConfig.ts` `mock: "dashboard"` op die service en vergroot 'm naar feature-formaat (`span: "md:col-span-2 md:row-span-2"`), zodat 'ie — net als Procesautomatisering — een `MiniMock` toont i.p.v. een icoon. De grid is `grid-flow-row-dense`; pas zo nodig de `span` van de andere tegels aan zodat er geen gaten vallen en het ritme klopt. Klaar wanneer: 2 feature-tegels met mini-mock, bento netjes gevuld, `npm run build` slaagt.
+
 ### Afronden (stap 18–21)
 
 - [x] **18. SEO + schema** — per-pagina title/meta/H1 (v3.4-teksten), JSON-LD (FAQPage/Service/BreadcrumbList/JobPosting), sitemap bijwerken, OG-images, alt-teksten.
@@ -102,10 +107,4 @@ Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pa
 - **Stap 16** — /discovery-sessie. (9df4dfd)
 - **Stap 17** — /diensten lichte bento (9 ServiceTiles). (afcc608)
 - **Stap 18** — JSON-LD (FAQPage/Service/BreadcrumbList/JobPosting), per-pagina metadata + OG, sitemap. (15cecf3) — open: exacte v3.4-teksten en echte OG-images/alt (wacht op assets).
-- **Extra (buiten plan)** — diensten-bento óók op de homepage (1d77c0d); navigatie herstructureerd met Diensten-megamenu + Over ons-dropdown + mobiel menu (2ab4dc5).
-
-**Nog open / deels:**
-- **Stap 13** — demo-rijen "Wat we bouwen" staan al op de homepage, MÁÁR met 5 rijen i.p.v. 4; de abstracte "Vier oplossingen"-sectie is nog NIET verwijderd en er staat nu ook een extra diensten-bento op de homepage. Nog te doen: terugbrengen naar de 4 taken, de abstracte sectie eruit, "Eén platform: Mendix"-band eronder, homepage-bento heroverwegen.
-- **Stap 2** (introductie + snelheidsvergelijking), **Stap 3** (homepage tempo-stepper), **Stap 6** (Sectoren-spotlight + Testimonials op de homepage — Projecten-sectie staat al), **Stap 7** (Quickscan-teaser op de homepage), **Stap 8** (homepage-volgorde) — nog niet gebouwd.
-- **Stap 19** — reduced-motion (MotionConfig), :focus-visible en de key-warning zijn gedaan; Lighthouse ≥ 90 nog te meten. (15cecf3)
-- **Stap 20** (assets) en **Stap 21** (deploy) — wachten op input.
+- **Extra (buiten plan)** — d

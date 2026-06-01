@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 };
 
 const content: SectorContent = {
-  icon: "detachering",
   title: "Staffing & Detachering",
   tagline: "Match sneller. Factureer foutloos. Blijf compliant.",
   intro:

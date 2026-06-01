@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 };
 
 const content: SectorContent = {
-  icon: "sierteelt",
   title: "Sierteelt & Horticultuur",
   tagline: "Software die meebeweegt met je seizoen.",
   intro:

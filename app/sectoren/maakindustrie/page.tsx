@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 };
 
 const content: SectorContent = {
-  icon: "maakindustrie",
   title: "Maakindustrie",
   tagline: "Slimme fabrieken beginnen met slimme software.",
   intro:
