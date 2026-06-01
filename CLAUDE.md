@@ -36,4 +36,15 @@ Je bouwt de productie-website voor **Kobeon**, een Nederlandse **Mendix + AI imp
 - Assets met fallback: `/public/visuals` (Nano Banana), `/public/screens` + `screens.config.json` (echte screenshots). Werkt ook zonder assets.
 
 ## Wat al staat
-Homepage: Hero, LogoStrip, WatWeBouwen (4 tak
+Homepage: Hero, LogoStrip, WatWeBouwen (4 taken), Introductie + snelheid, HoeWeWerken, MendixVoordeel, ModellenDataCloud, Onderzoek, Projecten, DienstenBento, FAQ, FinalCTA. Pagina's: /diensten, /projecten, /sectoren (+ 6 detailpagina's), /werkwijze, /werken-bij, /vacatures, /quickscan, /discovery-sessie, /over-kobeon. Nav + Footer + SEO-basis. De abstracte "Vier oplossingen"-sectie is verwijderd.
+
+## Wat nog moet (volgorde)
+1. Service-demo-rijen (licht) met de mock-componenten uit de brief (MockWorkflow/MockAgent/MockTraining/MockIntegration/MockPortal — bouw die nog).
+2. Diensten-bento / video-tegels (v3.5) op lichte achtergrond.
+3. Projecten (case-cards met device-mockups), Sectoren (6), Werkwijze, Werken bij + vacatures, Quickscan, Discovery-sessie.
+4. Onderzoek/autoriteit-strook (v3.9). Mendix-voordeel + "Je modellen, je data, je cloud".
+5. Per-pagina SEO + schema afmaken.
+Werk steeds met kleine, afgebakende stappen en commit vaak.
+
+## Bouwplan
+Volg `NEXT-STEPS.md`. Als de gebruiker zegt "pak de volgende stap op", volg het PROTOCOL bovenaan dat bestand: doe één stap, vink af, log de voortgang, commit, en stop voor review.
