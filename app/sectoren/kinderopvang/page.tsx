@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const content: SectorContent = {
-  emoji: "🧸",
+  icon: "kinderopvang",
   title: "Kinderopvang",
   tagline: "Minder administratie. Meer tijd voor de kinderen.",
   intro:

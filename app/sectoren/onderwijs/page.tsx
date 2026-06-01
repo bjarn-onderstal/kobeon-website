@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const content: SectorContent = {
-  emoji: "🎓",
+  icon: "onderwijs",
   title: "Onderwijsinstellingen",
   tagline: "Meer tijd voor onderwijs.",
   intro:

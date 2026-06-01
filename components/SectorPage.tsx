@@ -3,10 +3,11 @@ import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 import FinalCta from "@/components/sections/FinalCta";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import Icon from "@/components/Icon";
 import { projects } from "@/lib/siteConfig";
 
 export type SectorContent = {
-  emoji: string;
+  icon: string;
   title: string;
   tagline: string;
   intro: string;
@@ -29,7 +30,7 @@ const accentBg: Record<SectorContent["accent"], string> = {
 };
 
 export default function SectorPage({ content }: { content: SectorContent }) {
-  const { emoji, title, tagline, intro, accent, problems, approach, systems, caseSlug } = content;
+  const { icon, title, tagline, intro, accent, problems, approach, systems, caseSlug } = content;
   const caseProject = projects.find((p) => p.slug === caseSlug);
 
   return (
@@ -43,7 +44,7 @@ export default function SectorPage({ content }: { content: SectorContent }) {
         />
         <div className="container-x relative pb-16 pt-32 md:pb-20 md:pt-40">
           <span className="chip border-white/20 bg-white/10 text-white/80">
-            <span aria-hidden>{emoji}</span> Sector
+            <Icon name={icon} className="h-4 w-4 text-teal-light" /> Sector
           </span>
           <h1 className="h-display mt-6 max-w-3xl text-4xl md:text-6xl">
             {title} <span className="block text-yellow">{tagline}</span>

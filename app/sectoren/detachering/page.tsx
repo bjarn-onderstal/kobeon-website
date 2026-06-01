@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const content: SectorContent = {
-  emoji: "👥",
+  icon: "detachering",
   title: "Staffing & Detachering",
   tagline: "Match sneller. Factureer foutloos. Blijf compliant.",
   intro:

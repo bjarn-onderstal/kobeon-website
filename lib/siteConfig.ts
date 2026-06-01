@@ -192,17 +192,16 @@ export const projects: {
 export const sectors: {
   slug: string;
   title: string;
-  emoji: string;
   accent: "teal" | "purple" | "yellow";
   systems: string[];
   available: boolean;
 }[] = [
-  { slug: "sierteelt", title: "Sierteelt & Horticultuur", emoji: "🌱", accent: "teal", systems: ["Agriware", "Infor", "Metacom (Meijel)", "BKD", "Supply chain"], available: true },
-  { slug: "detachering", title: "Staffing & Detachering", emoji: "👥", accent: "purple", systems: ["AFAS", "Wet DBA", "AI-matching", "Consultant­portalen"], available: true },
-  { slug: "semi-publiek", title: "Semi-Publiek", emoji: "⚖️", accent: "yellow", systems: ["Compliance", "Documentbeheer", "AI op regelgeving", "Veilige data"], available: true },
-  { slug: "onderwijs", title: "Onderwijs", emoji: "🎓", accent: "teal", systems: ["Aanmeldportalen", "AVG", "Administratie", "Rapportages"], available: true },
-  { slug: "kinderopvang", title: "Kinderopvang", emoji: "🧸", accent: "purple", systems: ["Ouderportalen", "LRK", "Facturering", "Planning"], available: true },
-  { slug: "maakindustrie", title: "Maakindustrie", emoji: "🏭", accent: "yellow", systems: ["ERP-integratie", "Kwaliteitscontrole", "Productie-planning", "Supply chain"], available: true },
+  { slug: "sierteelt", title: "Sierteelt & Horticultuur", accent: "teal", systems: ["Agriware", "Infor", "Metacom (Meijel)", "BKD", "Supply chain"], available: true },
+  { slug: "detachering", title: "Staffing & Detachering", accent: "purple", systems: ["AFAS", "Wet DBA", "AI-matching", "Consultant­portalen"], available: true },
+  { slug: "semi-publiek", title: "Semi-Publiek", accent: "yellow", systems: ["Compliance", "Documentbeheer", "AI op regelgeving", "Veilige data"], available: true },
+  { slug: "onderwijs", title: "Onderwijs", accent: "teal", systems: ["Aanmeldportalen", "AVG", "Administratie", "Rapportages"], available: true },
+  { slug: "kinderopvang", title: "Kinderopvang", accent: "purple", systems: ["Ouderportalen", "LRK", "Facturering", "Planning"], available: true },
+  { slug: "maakindustrie", title: "Maakindustrie", accent: "yellow", systems: ["ERP-integratie", "Kwaliteitscontrole", "Productie-planning", "Supply chain"], available: true },
 ];
 
 // Cultuurpijlers voor /werken-bij.
@@ -359,24 +358,26 @@ export const vacancies: {
 ];
 
 // De 9 diensten als bento-tegels (homepage-sectie 6 + /diensten). `span` stuurt
-// de asymmetrische grid, `gradient` de merk-achtergrond (fallback voor svc-images).
+// de asymmetrische grid, `accent` de merk-kleur (icoon + hover), `mock` geeft een
+// grote feature-tegel een lichte mini-UI i.p.v. alleen icoon. Iconen komen uit
+// <Icon name={slug}>. Geen emoji, geen donkere gradient-slabs (licht-eerst).
 export type Service = {
   slug: string;
   title: string;
   desc: string;
-  icon: string;
-  gradient: string;
+  accent: "purple" | "teal" | "yellow";
   span: string;
+  mock?: ProjectKind;
 };
 
 export const services: Service[] = [
-  { slug: "procesautomatisering", title: "Procesautomatisering", desc: "Repetitieve en cognitieve taken automatiseren met Mendix.", icon: "⚙️", gradient: "bg-gradient-to-br from-purple-deep to-teal", span: "md:col-span-2 md:row-span-2" },
-  { slug: "agentic-ai", title: "Agentic AI", desc: "AI-agenten die zelfstandig kenniswerk uitvoeren, geregisseerd door Mendix.", icon: "🤖", gradient: "bg-gradient-to-br from-teal to-purple-med", span: "md:col-span-2" },
-  { slug: "ai-development", title: "AI Development", desc: "Custom AI-modellen trainen op je eigen bedrijfsdata.", icon: "🧠", gradient: "bg-gradient-to-br from-purple to-purple-deep", span: "md:col-span-1" },
-  { slug: "systeemintegratie", title: "Systeemintegratie", desc: "Microsoft Dynamics, SAP, REST-API's — al je systemen praten met elkaar.", icon: "🔗", gradient: "bg-gradient-to-br from-purple-med to-teal", span: "md:col-span-1" },
-  { slug: "app-ontwikkeling", title: "App ontwikkeling", desc: "Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd.", icon: "📱", gradient: "bg-gradient-to-br from-teal to-teal-light", span: "md:col-span-2" },
-  { slug: "portalen-dashboards", title: "Portalen & dashboards", desc: "Klant- en medewerkersportalen met zelfservice en actueel inzicht.", icon: "📊", gradient: "bg-gradient-to-br from-purple-deep to-purple-med", span: "md:col-span-2" },
-  { slug: "legacy-modernisering", title: "Legacy modernisering", desc: "Verouderde systemen gefaseerd vervangen. Stap voor stap, niet in één keer.", icon: "🏗️", gradient: "bg-gradient-to-br from-purple to-teal", span: "md:col-span-1" },
-  { slug: "design-prototyping", title: "Design & Prototyping", desc: "Rapid prototyping met Figma Make, Lovable en Google Stitch.", icon: "✏️", gradient: "bg-gradient-to-br from-teal to-purple", span: "md:col-span-1" },
-  { slug: "it-consultancy", title: "IT Consultancy", desc: "Datastructuur, architectuuradvies en IT-roadmap.", icon: "🧭", gradient: "bg-gradient-to-br from-purple-med to-purple-deep", span: "md:col-span-2" },
+  { slug: "procesautomatisering", title: "Procesautomatisering", desc: "Repetitieve en cognitieve taken automatiseren met Mendix.", accent: "purple", span: "md:col-span-2 md:row-span-2", mock: "workflow" },
+  { slug: "agentic-ai", title: "Agentic AI", desc: "AI-agenten die zelfstandig kenniswerk uitvoeren, geregisseerd door Mendix.", accent: "teal", span: "md:col-span-2" },
+  { slug: "ai-development", title: "AI Development", desc: "Custom AI-modellen trainen op je eigen bedrijfsdata.", accent: "purple", span: "md:col-span-1" },
+  { slug: "systeemintegratie", title: "Systeemintegratie", desc: "Microsoft Dynamics, SAP, REST-API's — al je systemen praten met elkaar.", accent: "teal", span: "md:col-span-1" },
+  { slug: "app-ontwikkeling", title: "App ontwikkeling", desc: "Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd.", accent: "purple", span: "md:col-span-2" },
+  { slug: "portalen-dashboards", title: "Portalen & dashboards", desc: "Klant- en medewerkersportalen met zelfservice en actueel inzicht.", accent: "teal", span: "md:col-span-2" },
+  { slug: "legacy-modernisering", title: "Legacy modernisering", desc: "Verouderde systemen gefaseerd vervangen. Stap voor stap, niet in één keer.", accent: "yellow", span: "md:col-span-1" },
+  { slug: "design-prototyping", title: "Design & Prototyping", desc: "Rapid prototyping met Figma Make, Lovable en Google Stitch.", accent: "purple", span: "md:col-span-1" },
+  { slug: "it-consultancy", title: "IT Consultancy", desc: "Datastructuur, architectuuradvies en IT-roadmap.", accent: "teal", span: "md:col-span-2" },
 ];

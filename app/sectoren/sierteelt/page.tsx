@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const content: SectorContent = {
-  emoji: "🌱",
+  icon: "sierteelt",
   title: "Sierteelt & Horticultuur",
   tagline: "Software die meebeweegt met je seizoen.",
   intro:

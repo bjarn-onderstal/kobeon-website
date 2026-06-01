@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const content: SectorContent = {
-  emoji: "⚖️",
+  icon: "semi-publiek",
   title: "Semi-publieke organisaties",
   tagline: "Compliance én efficiëntie. Zonder compromis.",
   intro:
