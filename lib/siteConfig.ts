@@ -375,9 +375,9 @@ export const services: Service[] = [
   { slug: "agentic-ai", title: "Agentic AI", desc: "AI-agenten die zelfstandig kenniswerk uitvoeren, geregisseerd door Mendix.", accent: "teal", span: "md:col-span-2" },
   { slug: "ai-development", title: "AI Development", desc: "Custom AI-modellen trainen op je eigen bedrijfsdata.", accent: "purple", span: "md:col-span-1" },
   { slug: "systeemintegratie", title: "Systeemintegratie", desc: "Microsoft Dynamics, SAP, REST-API's — al je systemen praten met elkaar.", accent: "teal", span: "md:col-span-1" },
-  { slug: "app-ontwikkeling", title: "App ontwikkeling", desc: "Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd.", accent: "purple", span: "md:col-span-2" },
-  { slug: "portalen-dashboards", title: "Portalen & dashboards", desc: "Klant- en medewerkersportalen met zelfservice en actueel inzicht.", accent: "teal", span: "md:col-span-2" },
+  { slug: "app-ontwikkeling", title: "App ontwikkeling", desc: "Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd.", accent: "purple", span: "md:col-span-1" },
+  { slug: "portalen-dashboards", title: "Portalen & dashboards", desc: "Klant- en medewerkersportalen met zelfservice en actueel inzicht.", accent: "teal", span: "md:col-span-2 md:row-span-2", mock: "dashboard" },
   { slug: "legacy-modernisering", title: "Legacy modernisering", desc: "Verouderde systemen gefaseerd vervangen. Stap voor stap, niet in één keer.", accent: "yellow", span: "md:col-span-1" },
   { slug: "design-prototyping", title: "Design & Prototyping", desc: "Rapid prototyping met Figma Make, Lovable en Google Stitch.", accent: "purple", span: "md:col-span-1" },
-  { slug: "it-consultancy", title: "IT Consultancy", desc: "Datastructuur, architectuuradvies en IT-roadmap.", accent: "teal", span: "md:col-span-2" },
+  { slug: "it-consultancy", title: "IT Consultancy", desc: "Datastructuur, architectuuradvies en IT-roadmap.", accent: "teal", span: "md:col-span-1" },
 ];
