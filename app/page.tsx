@@ -7,8 +7,11 @@ import HoeWeWerken from "@/components/sections/HoeWeWerken";
 import DienstenBento from "@/components/sections/DienstenBento";
 import MendixVoordeel from "@/components/sections/MendixVoordeel";
 import ModellenDataCloud from "@/components/sections/ModellenDataCloud";
-import Projecten from "@/components/sections/Projecten";
 import Onderzoek from "@/components/sections/Onderzoek";
+import Projecten from "@/components/sections/Projecten";
+import SectorenSpotlight from "@/components/sections/SectorenSpotlight";
+import Testimonials from "@/components/sections/Testimonials";
+import QuickscanTeaser from "@/components/sections/QuickscanTeaser";
 import Faq from "@/components/sections/Faq";
 import FinalCta from "@/components/sections/FinalCta";
 
@@ -24,8 +27,11 @@ export default function Home() {
       <DienstenBento />
       <MendixVoordeel />
       <ModellenDataCloud />
-      <Projecten />
       <Onderzoek />
+      <Projecten />
+      <SectorenSpotlight />
+      <Testimonials />
+      <QuickscanTeaser />
       <Faq />
       <FinalCta />
     </>
