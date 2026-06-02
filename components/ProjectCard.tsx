@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import DeviceFrame from "@/components/DeviceFrame";
 import MiniMock from "@/components/MiniMock";
@@ -13,17 +14,12 @@ const dot: Record<Project["accent"], string> = {
 };
 
 export default function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
-  const { name, sector, metric, accent, transformation, kind, soon } = project;
-  return (
-    <motion.article
-      className={`group ${soon ? "opacity-70" : ""}`}
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: index * 0.07 }}
-    >
+  const { name, sector, metric, accent, transformation, kind, soon, slug } = project;
+
+  const inner = (
+    <>
       <div className={`relative transition-transform duration-300 group-hover:-translate-y-1 ${soon ? "rounded-2xl border-2 border-dashed border-line p-2" : ""}`}>
-        <DeviceFrame theme="light" url={`${project.slug}.kobeon.nl`}>
+        <DeviceFrame theme="light" url={`${slug}.kobeon.nl`}>
           <MiniMock kind={kind} />
         </DeviceFrame>
         {soon && (
@@ -47,6 +43,18 @@ export default function ProjectCard({ project, index = 0 }: { project: Project; 
           </span>
         )}
       </div>
+    </>
+  );
+
+  return (
+    <motion.article
+      className={`group ${soon ? "opacity-70" : ""}`}
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: index * 0.07 }}
+    >
+      {soon ? inner : <Link href={`/projecten/${slug}`}>{inner}</Link>}
     </motion.article>
   );
 }
