@@ -1,7 +1,18 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { nav } from "@/lib/siteConfig";
+
+// Pagina's waarvan de eerste sectie een donkere (paarse) hero heeft.
+// Op deze pagina's mag de nav transparant starten met witte tekst.
+const DARK_HERO_PATHS = ["/", "/werkwijze", "/werken-bij", "/discovery-sessie", "/quickscan"];
+function hasDarkHero(pathname: string) {
+  if (DARK_HERO_PATHS.includes(pathname)) return true;
+  // Alle sectordetailpagina's (/sectoren/sierteelt etc.) — niet de overzichtspagina /sectoren zelf
+  if (pathname.startsWith("/sectoren/")) return true;
+  return false;
+}
 
 function Chevron() {
   return (
@@ -12,6 +23,7 @@ function Chevron() {
 }
 
 export default function Nav() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -23,7 +35,8 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const frosted = scrolled || mobileOpen;
+  const darkHero = hasDarkHero(pathname);
+  const frosted = scrolled || mobileOpen || !darkHero;
   const txt = frosted ? "text-ink" : "text-white/90";
   const close = () => setMobileOpen(false);
 
@@ -34,7 +47,7 @@ export default function Nav() {
       }`}
     >
       <nav className="container-x flex h-16 items-center justify-between">
-        <Link href="/" onClick={close} className={`text-xl font-bold ${frosted ? "text-ink" : "text-white"}`}>
+        <Link href="/" onClick={close} className={`text-xl font-bold ${!darkHero || frosted ? "text-ink" : "text-white"}`}>
           Kobeon
         </Link>
 
@@ -97,7 +110,7 @@ export default function Nav() {
             Plan een Discovery-sessie
           </Link>
           <button
-            className={`md:hidden ${frosted ? "text-ink" : "text-white"}`}
+            className={`md:hidden ${!darkHero || frosted ? "text-ink" : "text-white"}`}
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Menu openen of sluiten"
             aria-expanded={mobileOpen}
