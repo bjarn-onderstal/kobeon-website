@@ -5,13 +5,13 @@ import Section from "@/components/Section";
 const cards = [
   {
     title: "Je eigen AI-model",
-    body: "Een toonaangevend model, een open-source model of een eigen model binnen je eigen omgeving — vrij te wisselen.",
+    body: "Een toonaangevend model, een open-source model of een eigen model binnen je eigen omgeving: volledig vrij te wisselen.",
     chips: ["GPT", "Claude", "Open-source", "Eigen model"],
     active: 3,
   },
   {
     title: "Je eigen data",
-    body: "AI wordt gegrond in jóuw data, zonder die te vervangen. Je bestaande systemen blijven het bronsysteem.",
+    body: "AI aangedreven door RAG (Retrieval-Augmented Generation), veilig toegepast op jouw eigen data zonder deze te vervangen. Je bestaande systemen blijven het bronsysteem.",
     chips: ["AFAS", "SAP", "Dynamics", "→ AI"],
     active: 3,
   },
@@ -32,7 +32,7 @@ export default function ModellenDataCloud() {
           Je modellen. Je data. <span className="gradient-text">Je cloud.</span>
         </h2>
         <p className="mt-4 text-lg text-muted">
-          Wij bouwen op Mendix, maar jij houdt de regie. De software draait op wat je al gebruikt — geen gedwongen winkelnering, geen dataverhuizing, geen vendor lock-in.
+          Wij bouwen op Mendix, maar jij houdt de regie. De software draait op wat je al gebruikt: geen vendor lock-in, volledige datasoevereiniteit en flexibele cloudkeuze.
         </p>
       </div>
 

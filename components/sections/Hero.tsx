@@ -21,7 +21,7 @@ export default function Hero() {
             <span className="block text-yellow">Wij wel.</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/75">
-            Kobeon bouwt enterprise-software op Mendix — het platform dat al negen jaar Gartner-Leider is.
+            Kobeon bouwt enterprise-software op Mendix, het platform dat al negen jaar Gartner-Leider is.
             Van procesautomatisering tot AI op maat. Binnen zes weken draait je eerste werkende versie, met meetbaar resultaat.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
