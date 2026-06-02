@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { site, vacancies, services, projects } from "@/lib/siteConfig";
 
-const routes = ["", "/diensten", "/projecten", "/sectoren", "/sectoren/sierteelt", "/sectoren/detachering", "/sectoren/semi-publiek", "/sectoren/onderwijs", "/sectoren/kinderopvang", "/sectoren/maakindustrie", "/werkwijze", "/quickscan", "/over-kobeon", "/werken-bij", "/vacatures", "/discovery-sessie"];
+const routes = ["", "/diensten", "/projecten", "/sectoren", "/sectoren/sierteelt", "/sectoren/detachering", "/sectoren/semi-publiek", "/sectoren/onderwijs", "/sectoren/kinderopvang", "/sectoren/maakindustrie", "/werkwijze", "/quickscan", "/over-kobeon", "/werken-bij", "/vacatures", "/discovery-sessie", "/contact"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const vacancyRoutes = vacancies.filter((v) => !v.open).map((v) => `/vacatures/${v.slug}`);
