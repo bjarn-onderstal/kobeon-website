@@ -22,25 +22,25 @@ export const nav: NavItem[] = [
       {
         heading: "Bouwen",
         items: [
-          { label: "Procesautomatisering", href: "/diensten#procesautomatisering" },
-          { label: "App ontwikkeling", href: "/diensten#app-ontwikkeling" },
-          { label: "Portalen & dashboards", href: "/diensten#portalen-dashboards" },
-          { label: "Legacy modernisering", href: "/diensten#legacy-modernisering" },
+          { label: "Procesautomatisering", href: "/diensten/procesautomatisering" },
+          { label: "App ontwikkeling", href: "/diensten/app-ontwikkeling" },
+          { label: "Portalen & dashboards", href: "/diensten/portalen-dashboards" },
+          { label: "Legacy modernisering", href: "/diensten/legacy-modernisering" },
         ],
       },
       {
         heading: "AI & Integratie",
         items: [
-          { label: "Agentic AI", href: "/diensten#agentic-ai" },
-          { label: "AI Development", href: "/diensten#ai-development" },
-          { label: "Systeemintegratie", href: "/diensten#systeemintegratie" },
+          { label: "Agentic AI", href: "/diensten/agentic-ai" },
+          { label: "AI Development", href: "/diensten/ai-development" },
+          { label: "Systeemintegratie", href: "/diensten/systeemintegratie" },
         ],
       },
       {
         heading: "Strategie",
         items: [
-          { label: "Design & Prototyping", href: "/diensten#design-prototyping" },
-          { label: "IT Consultancy", href: "/diensten#it-consultancy" },
+          { label: "Design & Prototyping", href: "/diensten/design-prototyping" },
+          { label: "IT Consultancy", href: "/diensten/it-consultancy" },
         ],
       },
     ],
@@ -368,16 +368,195 @@ export type Service = {
   accent: "purple" | "teal" | "yellow";
   span: string;
   mock?: ProjectKind;
+  // Detailvelden voor /diensten/[slug]
+  heroLine: string;
+  intro: string;
+  watJeKrijgt: string[];
+  aanpak: string[];
+  relatedProjects: string[]; // project-slugs
 };
 
 export const services: Service[] = [
-  { slug: "procesautomatisering", title: "Procesautomatisering", desc: "Repetitieve en cognitieve taken automatiseren met Mendix.", accent: "purple", span: "md:col-span-2 md:row-span-2", mock: "workflow" },
-  { slug: "agentic-ai", title: "Agentic AI", desc: "AI-agenten die zelfstandig kenniswerk uitvoeren, geregisseerd door Mendix.", accent: "teal", span: "md:col-span-2" },
-  { slug: "ai-development", title: "AI Development", desc: "Custom AI-modellen trainen op je eigen bedrijfsdata.", accent: "purple", span: "md:col-span-1" },
-  { slug: "systeemintegratie", title: "Systeemintegratie", desc: "Microsoft Dynamics, SAP, REST-API's — al je systemen praten met elkaar.", accent: "teal", span: "md:col-span-1" },
-  { slug: "app-ontwikkeling", title: "App ontwikkeling", desc: "Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd.", accent: "purple", span: "md:col-span-1" },
-  { slug: "portalen-dashboards", title: "Portalen & dashboards", desc: "Klant- en medewerkersportalen met zelfservice en actueel inzicht.", accent: "teal", span: "md:col-span-2 md:row-span-2", mock: "dashboard" },
-  { slug: "legacy-modernisering", title: "Legacy modernisering", desc: "Verouderde systemen gefaseerd vervangen. Stap voor stap, niet in één keer.", accent: "yellow", span: "md:col-span-1" },
-  { slug: "design-prototyping", title: "Design & Prototyping", desc: "Rapid prototyping met Figma Make, Lovable en Google Stitch.", accent: "purple", span: "md:col-span-1" },
-  { slug: "it-consultancy", title: "IT Consultancy", desc: "Datastructuur, architectuuradvies en IT-roadmap.", accent: "teal", span: "md:col-span-1" },
+  {
+    slug: "procesautomatisering",
+    title: "Procesautomatisering",
+    desc: "Repetitieve en cognitieve taken automatiseren met Mendix.",
+    accent: "purple",
+    span: "md:col-span-2 md:row-span-2",
+    mock: "workflow",
+    heroLine: "Repetitief werk verdwijnt. Je mensen houden tijd over.",
+    intro: "Handmatige stappen, overtypen en wachten op goedkeuringen kosten je team elke dag uren. Wij automatiseren die processen op Mendix — met een volledig audit-spoor, zodat je grip houdt.",
+    watJeKrijgt: [
+      "Minder handwerk en minder fouten; je mensen richten zich op het werk dat telt.",
+      "Kortere doorlooptijden — van dagen naar uren.",
+      "Volledige traceerbaarheid: elke stap is auditeerbaar.",
+    ],
+    aanpak: [
+      "We brengen je proces in kaart en modelleren het als werkstroom met duidelijke statussen en goedkeuringen.",
+      "Koppelingen met je bestaande systemen (Microsoft Dynamics, SAP, AFAS, Exact) zodat data niet meer wordt overgetypt.",
+      "Governance en rolgebaseerde toegang standaard ingebouwd.",
+      "Binnen zes weken een werkende eerste versie; daarna doorontwikkelen.",
+    ],
+    relatedProjects: ["epsa", "homezero"],
+  },
+  {
+    slug: "agentic-ai",
+    title: "Agentic AI",
+    desc: "AI-agenten die zelfstandig kenniswerk uitvoeren, geregisseerd door Mendix.",
+    accent: "teal",
+    span: "md:col-span-2",
+    heroLine: "AI die het werk áf maakt, niet alleen antwoorden geeft.",
+    intro: "Een losse chatbot beantwoordt vragen. Een agentic oplossing voert hele taken uit — matchen, controleren, verwerken — binnen jouw bedrijfsregels en altijd controleerbaar.",
+    watJeKrijgt: [
+      "Kenniswerk dat zelfstandig wordt afgehandeld, met een mens die goedkeurt waar het moet.",
+      "Minder doorlooptijd op repetitief beoordelings- en verwerkingswerk.",
+      "Geen black box: elke actie is herleidbaar.",
+    ],
+    aanpak: [
+      "AI-agenten geregisseerd door Mendix, met veilige, rolgebaseerde toegang tot je data en applicaties.",
+      "Mens-in-de-loop: goedkeuringsstappen waar dat nodig is.",
+      "Governance, logging en security ingebouwd — klaar voor AVG en de EU AI Act.",
+    ],
+    relatedProjects: ["rechtspraak"],
+  },
+  {
+    slug: "ai-development",
+    title: "AI Development",
+    desc: "Custom AI-modellen trainen op je eigen bedrijfsdata.",
+    accent: "purple",
+    span: "md:col-span-1",
+    heroLine: "Een AI-model getraind op jouw data. Jij houdt de data.",
+    intro: "Generieke modellen kennen jouw vak niet. Wij bouwen modellen die getraind zijn op je eigen bedrijfsdata en die in productie blijven presteren.",
+    watJeKrijgt: [
+      "Voorspellingen en classificaties die kloppen met jouw praktijk.",
+      "Je data blijft van jou, in je eigen omgeving.",
+      "Modellen die meegroeien en gemonitord worden.",
+    ],
+    aanpak: [
+      "Modellen getraind op je eigen data, geïntegreerd in Mendix als beheerde (governed) API.",
+      "Keuze uit een toonaangevend, open-source of eigen model — vrij te wisselen.",
+      "Draait in je eigen cloud, on-prem of volledig afgeschermd als regelgeving dat eist.",
+    ],
+    relatedProjects: ["rechtspraak"],
+  },
+  {
+    slug: "systeemintegratie",
+    title: "Systeemintegratie",
+    desc: "Microsoft Dynamics, SAP, REST-API's — al je systemen praten met elkaar.",
+    accent: "teal",
+    span: "md:col-span-1",
+    heroLine: "Je systemen werken eindelijk samen.",
+    intro: "Losse pakketten die niet met elkaar praten kosten tijd en veroorzaken fouten. Wij verbinden ze, zodat je één bron van waarheid hebt.",
+    watJeKrijgt: [
+      "Geen overtypen meer; data stroomt automatisch tussen systemen.",
+      "Minder fouten, meer overzicht.",
+      "Nieuwe applicaties bovenop je bestaande landschap — zonder alles te vervangen.",
+    ],
+    aanpak: [
+      "Out-of-the-box-connectoren voor Microsoft Dynamics, SAP, AFAS, Exact, Salesforce en AWS — plus elke REST/OData-API.",
+      "Mendix als integratielaag, met monitoring en governance.",
+      "Gefaseerd, zodat je tijdens de koppeling blijft draaien.",
+    ],
+    relatedProjects: ["homezero", "epsa"],
+  },
+  {
+    slug: "app-ontwikkeling",
+    title: "App ontwikkeling",
+    desc: "Web- en mobiele applicaties op Mendix. Enterprise-kwaliteit, standaard ingebouwd.",
+    accent: "purple",
+    span: "md:col-span-1",
+    heroLine: "Web- en mobiele apps op Mendix. Enterprise-kwaliteit, standaard ingebouwd.",
+    intro: "Software die past op hoe jij werkt — voor je klanten én je medewerkers, op desktop en mobiel.",
+    watJeKrijgt: [
+      "Apps die exact aansluiten op je processen.",
+      "Werkt op elk apparaat, ook in het veld.",
+      "Schaalt van tien tot honderdduizenden gebruikers.",
+    ],
+    aanpak: [
+      "Web- en mobiele applicaties op Mendix, met security en schaalbaarheid ingebouwd.",
+      "Eén keer bouwen, overal beschikbaar.",
+      "Binnen zes weken een werkende MVP.",
+    ],
+    relatedProjects: ["petje-af", "bkd"],
+  },
+  {
+    slug: "portalen-dashboards",
+    title: "Portalen & dashboards",
+    desc: "Klant- en medewerkersportalen met zelfservice en actueel inzicht.",
+    accent: "teal",
+    span: "md:col-span-2 md:row-span-2",
+    mock: "dashboard",
+    heroLine: "Je klanten en mensen regelen het zelf. Jij ziet alles, actueel.",
+    intro: "Geef klanten, leden of medewerkers een eigen portaal met zelfservice, en houd zelf realtime zicht via dashboards.",
+    watJeKrijgt: [
+      "Minder telefoon en mail; gebruikers regelen het zelf.",
+      "Actueel inzicht in één overzicht.",
+      "Hogere tevredenheid en minder administratie.",
+    ],
+    aanpak: [
+      "Klant- en medewerkersportalen met rolgebaseerde toegang.",
+      "Dashboards met live data uit je gekoppelde systemen.",
+      "Schaalbaar en veilig, AVG-proof.",
+    ],
+    relatedProjects: ["petje-af", "golfclub"],
+  },
+  {
+    slug: "legacy-modernisering",
+    title: "Legacy modernisering",
+    desc: "Verouderde systemen gefaseerd vervangen. Stap voor stap, niet in één keer.",
+    accent: "yellow",
+    span: "md:col-span-1",
+    heroLine: "Verouderde systemen vervangen. Stap voor stap, zonder risico.",
+    intro: "Een systeem dat niemand meer durft aan te raken hoeft niet in één keer vervangen. Wij moderniseren gefaseerd, met behoud van wat werkt.",
+    watJeKrijgt: [
+      "Geen alles-in-één-keer-risico; je blijft draaien tijdens de overgang.",
+      "Lagere beheerkosten en minder afhankelijkheid van schaarse kennis.",
+      "Een platform dat klaar is voor de toekomst.",
+    ],
+    aanpak: [
+      "Gefaseerd: nieuwe functionaliteit op Mendix bovenop of naast het oude systeem, stap voor stap overzetten.",
+      "Integratie met bestaande data, zodat niets verloren gaat.",
+      "Governance en security ingebouwd.",
+    ],
+    relatedProjects: ["homezero"],
+  },
+  {
+    slug: "design-prototyping",
+    title: "Design & Prototyping",
+    desc: "Rapid prototyping met Figma Make, Lovable en Google Stitch.",
+    accent: "purple",
+    span: "md:col-span-1",
+    heroLine: "Van idee naar klikbaar prototype in dagen.",
+    intro: "Je ziet en test het eindresultaat vóór we bouwen. Zo weet je zeker dat we het juiste maken.",
+    watJeKrijgt: [
+      "Snel duidelijkheid en draagvlak.",
+      "Minder verrassingen tijdens de bouw.",
+      "Een ontwerp dat aansluit op je gebruikers.",
+    ],
+    aanpak: [
+      "Rapid prototyping met Figma Make, Lovable en Google Stitch.",
+      "Ontwerpen vertaald naar toegankelijke Mendix-UI.",
+      "Onderdeel van elk traject — fase 2 in onze werkwijze.",
+    ],
+    relatedProjects: [],
+  },
+  {
+    slug: "it-consultancy",
+    title: "IT Consultancy",
+    desc: "Datastructuur, architectuuradvies en IT-roadmap.",
+    accent: "teal",
+    span: "md:col-span-1",
+    heroLine: "Heldere keuzes: datastructuur, architectuur en een IT-routekaart.",
+    intro: "Niet zomaar bouwen, maar eerst de juiste fundamenten en richting bepalen — zodat je investeringen renderen.",
+    watJeKrijgt: [
+      "Een duidelijke roadmap en architectuur die hout snijdt.",
+      "Betere beslissingen over bouwen, kopen of koppelen.",
+      "Een datastructuur die meegroeit met je organisatie.",
+    ],
+    aanpak: [
+      "Architectuuradvies, datamodellering en een gefaseerde IT-roadmap.",
+      "Onafhankelijk en resultaatgericht advies.",
+    ],
+    relatedProjects: [],
+  },
 ];

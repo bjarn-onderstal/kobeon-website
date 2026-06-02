@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import type { Service } from "@/lib/siteConfig";
 import Icon from "@/components/Icon";
@@ -36,9 +37,12 @@ export default function ServiceTile({ service, index }: { service: Service; inde
       )}
       <h3 className="font-serif text-xl text-ink">{title}</h3>
       <p className="mt-1.5 text-sm leading-relaxed text-muted">{desc}</p>
-      <span className={`mt-3 inline-flex items-center gap-1 text-sm font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${a.cta}`}>
+      <Link
+        href={`/diensten/${slug}`}
+        className={`mt-3 inline-flex items-center gap-1 text-sm font-semibold opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${a.cta}`}
+      >
         Meer info <span className="transition-transform group-hover:translate-x-1">→</span>
-      </span>
+      </Link>
     </motion.div>
   );
 }

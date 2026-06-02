@@ -98,7 +98,7 @@ Dit bestand is de **single source of truth** voor de planning en staat op GitHub
 >
 > **Over de content:** de uitgeschreven copy voor de **9 dienstpagina's (S1)** en **/over-kobeon (S4)** staat klaar in **`docs/content-subpaginas.md`** — gebruik die als basis (hero-regel, intro, "Wat het oplevert", "Hoe we het bouwen op Mendix", relevante cases, team). Vul aan met `docs/00-brief-volledig.txt` (v3.7/v3.8) waar nodig. **Echte cijfers, quotes en case-resultaten die nog ontbreken vragen input van Kobeon** — markeer die als `[in te vullen]` en verzin geen claims. Houd Rechtspraak anoniem.
 
-- [ ] **S1. Dienst-detailpagina's — `/diensten/[slug]` (9 stuks)**
+- [x] **S1. Dienst-detailpagina's — `/diensten/[slug]` (9 stuks)**
   Bouw per dienst een eigen pagina: procesautomatisering, agentic-ai, ai-development, systeemintegratie, app-ontwikkeling, portalen-dashboards, legacy-modernisering, design-prototyping, it-consultancy.
   - Eén herbruikbaar template `components/ServicePage.tsx` + dynamische route `app/diensten/[slug]/page.tsx` met `generateStaticParams` en `generateMetadata` (unieke title 50–60 / description 150–160 per dienst, v3.4-stijl).
   - Inhoud per pagina (licht, je/jouw, voordeel-eerst): hero (dienstnaam + 1 pakkende regel + Discovery-CTA) · "Wat het oplevert" · "Hoe we het bouwen op Mendix" (3–4 punten met de juiste integraties + governance) · een passende `MiniMock`/`ScreenShowcase`-slot · "Relevante cases" (links naar projecten) · korte FAQ (1–3) · afsluitende CTA.
@@ -169,6 +169,7 @@ Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pa
 - 2026-05-31 — Verfijning V2 afgerond: Portalen & dashboards als 2e feature-tegel met dashboard-mini-mock; bento herbalanceerd naar 16 cellen (App ontwikkeling + IT Consultancy naar 1-breed), geen gaten. (9e5cc95)
 - 2026-05-31 — Stap 6–8 afgerond: Sectoren-spotlight (hergebruikt SectorCard) + Testimonials-carrousel + Quickscan-teaser op de homepage; homepage-volgorde vastgezet (3 donkere blokken). Homepage compleet. (a06d9a0)
 
+- 2026-06-02 — S1 afgerond: 9 dienst-detailpagina's via `app/diensten/[slug]/page.tsx` + herbruikbaar `ServicePage` template. Nav-megamenu en bento-tegels linken naar `/diensten/[slug]`. Sitemap uitgebreid. Build slaagt, alle 9 routes 200 OK.
 - 2026-06-02 — S4 afgerond: /over-kobeon gevuld met hero, credentials-strook (6 tegels), klanten-regel, teamgrid (8 leden met initialen), vestiging + contact + CTA. Content uit `docs/content-subpaginas.md`. Build slaagt.
 - 2026-06-02 — Verfijning V3 afgerond: nav-bug opgelost via `usePathname()` in `components/Nav.tsx`; transparante nav alleen op pagina's met donkere hero (`/`, `/sectoren/*`, `/werkwijze`, `/werken-bij`, `/discovery-sessie`, `/quickscan`), alle overige pagina's krijgen standaard witte balk met `text-ink`.
 
