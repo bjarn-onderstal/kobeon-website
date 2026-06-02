@@ -12,6 +12,22 @@ Wanneer de gebruiker zegt **"pak de volgende stap op"**:
 6. **Commit** met een duidelijke message.
 7. Geef kort terug wát je deed en **stop voor review**. Begin niet automatisch aan de volgende stap.
 
+## SAMENWERKEN — meerdere mensen/agents zonder conflicten (lees dit)
+Dit bestand is de **single source of truth** voor de planning en staat op GitHub (`KOBEON/kobeon-site`). Houd je aan deze regels, dan voorkomen we merge- en overschrijf-conflicten:
+
+1. **Claim je stap vóór je begint.** Zet in dit bestand het vakje op `[~]` met je naam/branch erachter (bijv. `- [~] **19. …** (WIP: Sjoerd, feat/stap-19)`), commit + push dat meteen. Zo ziet iedereen wie waaraan werkt. Pak nooit een stap die al `[~]` of `[x]` is.
+2. **Werk altijd op een feature-branch, nooit direct op `main`.** Begin met de laatste main:
+   ```
+   git checkout main && git pull
+   git checkout -b feat/stap-19-a11y
+   ```
+3. **Eén stap per branch/PR.** Commit klein en vaak, push je branch, open een **Pull Request** naar `main`. Merge pas na review. Vink in die PR de stap af (`[x]`) + voeg een voortgangslog-regel toe (datum + 1 zin + commit/PR).
+4. **Nooit met twee mensen/agents tegelijk in dezelfde working copy aan dezelfde bestanden werken** — op schijf is er geen merge-vangnet en overschrijf je elkaar. Branches + PR's zijn het vangnet.
+5. **Niet committen:** `node_modules` en `.next` (staan in `.gitignore`). Draai na een clone eerst `npm install`.
+6. Vóór elke nieuwe stap: `git pull` op `main` zodat je op de actuele staat verder bouwt.
+
+> (Optioneel, GitHub-native: spiegel deze stappen als GitHub **Issues** en een **Project-board** als je liever daar afstemt. Dit bestand blijft dan de korte status; de Issues de discussie.)
+
 > Belangrijk: de homepage moet net zo rijk worden als in de Lovable-brief. De foundation had maar 6 secties; stappen 1–8 bouwen de volledige homepage op. Houd de copy/teksten aan uit `docs/00-brief-volledig.txt` (v3.7/v3.8/v3.12).
 
 > Status-reconciliatie (2026-05-31): dit plan is later herzien/hernummerd. Veel pagina's en enkele homepage-secties zijn al gebouwd in een eerdere reeks (zie voortgangslog onderaan). De vakjes hieronder zijn bijgewerkt naar de werkelijke stand. Steps die nog deels open staan, staan bewust op `[ ]` met een toelichting in het log.
