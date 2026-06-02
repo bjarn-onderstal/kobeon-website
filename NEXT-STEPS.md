@@ -90,6 +90,44 @@ Dit bestand is de **single source of truth** voor de planning en staat op GitHub
 - [x] **V1. Diensten-bento + iconen herontwerp** — bento omgezet naar lichte, consistente kaarten (wit, `shadow-soft`, hover lift + accentrand) i.p.v. donkere gradient-slabs; line-iconen via `components/Icon.tsx` voor de diensten; **sectoren typografisch zónder iconen** (accentbalk + naam in de serif). Alle emoji verwijderd (diensten, sector-kaarten, 6 sectordetailpagina's, `SectorPage`-hero).
 - [x] **V2. Tweede feature-tegel met mini-mock (diensten-bento)** — geef de tegel **Portalen & dashboards** een lichte mini-mock: zet in `lib/siteConfig.ts` `mock: "dashboard"` op die service en vergroot 'm naar feature-formaat (`span: "md:col-span-2 md:row-span-2"`), zodat 'ie — net als Procesautomatisering — een `MiniMock` toont i.p.v. een icoon. De grid is `grid-flow-row-dense`; pas zo nodig de `span` van de andere tegels aan zodat er geen gaten vallen en het ritme klopt. Klaar wanneer: 2 feature-tegels met mini-mock, bento netjes gevuld, `npm run build` slaagt.
 
+- [ ] **V3. Menu/navigatie leesbaar op álle pagina's (bug)** — De `Nav` is nu transparant met witte tekst tot je 60px scrollt. Op pagina's zónder donkere hero (o.a. /over-kobeon en placeholder-pagina's) is het menu daardoor wit-op-wit = onzichtbaar bovenaan. Fix: standaard de "solid" variant (witte balk, `text-ink`) op alle pagina's, en alléén de transparant-over-hero-variant op pagina's mét een donkere hero (homepage, sectorpagina's, werkwijze, vacatures, werken-bij, discovery). Implementeer met een prop (bv. `<Nav overHero />`) die alleen die pagina's zetten, of detecteer via `usePathname`. Controleer meteen dat de dropdowns (Diensten-megamenu, Over ons) én het mobiele menu op elke pagina werken. Klaar wanneer: nav overal leesbaar, dropdowns + mobiel menu werken, `npm run build` slaagt.
+
+### Subpagina's / detailpagina's (S1–S4) — nog te bouwen
+
+> Achtergrond: de overzichtspagina's staan, maar de meeste **detailpagina's ontbreken**. De bento-tegels en het Diensten-megamenu linken nu naar ankers op `/diensten`, en de projectkaarten linken nergens heen. Dit blok voegt volwaardige subpagina's toe. Eén stap per keer; houd je aan CLAUDE.md (licht-eerst, je/jouw, diensten = line-iconen, sectoren = typografisch, geen emoji).
+>
+> **Over de content:** de uitgeschreven copy voor de **9 dienstpagina's (S1)** en **/over-kobeon (S4)** staat klaar in **`docs/content-subpaginas.md`** — gebruik die als basis (hero-regel, intro, "Wat het oplevert", "Hoe we het bouwen op Mendix", relevante cases, team). Vul aan met `docs/00-brief-volledig.txt` (v3.7/v3.8) waar nodig. **Echte cijfers, quotes en case-resultaten die nog ontbreken vragen input van Kobeon** — markeer die als `[in te vullen]` en verzin geen claims. Houd Rechtspraak anoniem.
+
+- [ ] **S1. Dienst-detailpagina's — `/diensten/[slug]` (9 stuks)**
+  Bouw per dienst een eigen pagina: procesautomatisering, agentic-ai, ai-development, systeemintegratie, app-ontwikkeling, portalen-dashboards, legacy-modernisering, design-prototyping, it-consultancy.
+  - Eén herbruikbaar template `components/ServicePage.tsx` + dynamische route `app/diensten/[slug]/page.tsx` met `generateStaticParams` en `generateMetadata` (unieke title 50–60 / description 150–160 per dienst, v3.4-stijl).
+  - Inhoud per pagina (licht, je/jouw, voordeel-eerst): hero (dienstnaam + 1 pakkende regel + Discovery-CTA) · "Wat het oplevert" · "Hoe we het bouwen op Mendix" (3–4 punten met de juiste integraties + governance) · een passende `MiniMock`/`ScreenShowcase`-slot · "Relevante cases" (links naar projecten) · korte FAQ (1–3) · afsluitende CTA.
+  - Data: breid `services` in `lib/siteConfig.ts` uit met detailvelden (`intro`, `watJeKrijgt[]`, `aanpak[]`, `relatedProjects[]`, `faq[]`) — generiek/placeholder waar nog geen echte content is.
+  - **Copy:** gebruik de uitgeschreven teksten per dienst uit `docs/content-subpaginas.md`.
+  - SEO/links: `Service` + `BreadcrumbList` JSON-LD per pagina; 9 routes toevoegen aan `app/sitemap.ts`; bento-tegels én het Diensten-megamenu naar `/diensten/[slug]` laten linken (anker mag als secundair blijven).
+  Klaar wanneer: 9 dienstpagina's bestaan, consistent in stijl, in de sitemap, `npm run build` slaagt.
+
+- [ ] **S2. Case-/projectdetailpagina's — `/projecten/[slug]` (7 stuks)**
+  Bouw per case een pagina: homezero, petje-af, epsa, golfclub, bkd, rechtspraak, floriusflowers.
+  - Template `components/ProjectPage.tsx` + `app/projecten/[slug]/page.tsx` met `generateStaticParams`/`generateMetadata`.
+  - Inhoud (transformatie-frame): hero (klant + "van X naar Y") · de uitdaging · onze aanpak op Mendix · het resultaat (cijfers) · device-mockup/`MiniMock` of screenshot-slot · sector + gebruikte diensten (links naar S1) · quote-placeholder · CTA. Respecteer anonimisering: **rechtspraak** geen herleidbare naam/logo; **floriusflowers** als "Binnenkort"-stub.
+  - Data: breid `projects` uit met `challenge`, `approach[]`, `result`, `quote?`, `relatedServices[]`. Generiek waar content ontbreekt.
+  - SEO/links: `Article` (of `CreativeWork`) + `BreadcrumbList` JSON-LD; routes in sitemap; projectkaarten (homepage + /projecten) naar `/projecten/[slug]` linken.
+  Klaar wanneer: 7 casepagina's, consistent, in de sitemap, build slaagt.
+
+- [ ] **S3. (optioneel) Contact + Insights/klantverhalen**
+  - `/contact` — eenvoudige contactpagina met de gegevens uit `site` (e-mail, telefoon, adres Zwolle) + formulier of mailto + Discovery-CTA. Voeg "Contact" toe aan nav én footer en aan de sitemap.
+  - (Later, alleen bij content/tijd) Insights/klantverhalen-index als blog-achtige sectie.
+  Klaar wanneer: /contact bestaat, in nav/footer + sitemap.
+
+- [ ] **S4. /over-kobeon vullen (nu leeg/placeholder)**
+  Bouw een volwaardige Over-pagina, licht en je/jouw, enterprise-toon (warm mag, maar bewijs-gedreven).
+  - Inhoud: kort kernverhaal (Mendix + AI implementatiepartner; samenwerken vanuit vertrouwen, zakelijk gebracht) · credentials-strook (Mendix Certified Partner · 6 experts · 2 Advanced Trainers · 3 MVP's · ISO 27001 · "hoogste Mendix-expertdichtheid van Nederland") · echte klanten (ABN AMRO, Zilveren Kruis, Rechtspraak, BKD, Petje af, HomeZero, EPSA) · team-grid · vestiging Zwolle · Discovery-CTA.
+  - Team (naam · rol; placeholder-foto's tot echte beschikbaar): Agnes Roolvink — Mendix Expert · Daryl Zandvliet — Mendix Expert · Frank Schutte — Mendix Expert · Bjarn Onderstal — Co-Founder | Mendix Expert | MVP · Hunter Koppen — Co-Founder | Mendix Expert | MVP · Sjoerd Beljon — Co-Founder | Mendix Expert | MVP · Cas Boswinkel — Mendix Specialist (AI-lead) · Robin Broeks — Mendix Specialist.
+  - **Copy:** gebruik de uitgeschreven Over-Kobeon-tekst (kernverhaal, credentials, klanten, team, vestiging, CTA) uit `docs/content-subpaginas.md`.
+  - SEO: metadata + `BreadcrumbList`-schema; route in sitemap.
+  Klaar wanneer: /over-kobeon gevuld en consistent, in de sitemap, `npm run build` slaagt.
+
 ### Afronden (stap 18–21)
 
 - [x] **18. SEO + schema** — per-pagina title/meta/H1 (v3.4-teksten), JSON-LD (FAQPage/Service/BreadcrumbList/JobPosting), sitemap bijwerken, OG-images, alt-teksten.
@@ -101,6 +139,8 @@ Dit bestand is de **single source of truth** voor de planning en staat op GitHub
 
 ## VOORTGANGSLOG
 - 2026-05-31 — Stap 0 afgerond: foundation opgeleverd (homepage-basis + componenten + SEO-basis).
+- 2026-06-01 — Bouwplan uitgebreid met ontbrekende subpagina's: S1 (9 dienst-detailpagina's), S2 (7 case-detailpagina's), S3 (optioneel /contact + Insights), S4 (/over-kobeon vullen — staat nu leeg). Plus bug V3: nav onleesbaar (wit-op-wit) op pagina's zonder donkere hero. Content-regel toegevoegd (placeholders markeren, claims niet verzinnen). Alleen omschreven, nog niet gebouwd — oppakken bij volgende bouwopdracht.
+- 2026-06-01 — Echte copy toegevoegd in `docs/content-subpaginas.md`: alle 9 dienst-detailpagina's (hero, intro, "wat het oplevert", "hoe we het bouwen op Mendix", relevante cases) + de /over-kobeon-tekst (kernverhaal, credentials, klanten, team). S1 en S4 verwijzen er nu naar. Ontbrekende harde cijfers/quotes als `[in te vullen]` gemarkeerd.
 - 2026-05-31 — Bouwplan verrijkt: volledige homepage-opbouw toegevoegd (4-taken-sectie "Wat we bouwen" als stap 13, plus tempo/proces, introductie, Mendix-voordeel, onderzoek-strook, projecten/sectoren/testimonials, quickscan-teaser).
 
 - 2026-05-31 — Stap 13 afgerond: "Wat we bouwen" naar 4 taken + "Eén platform: Mendix"-band + integratie-marquee; abstracte "Vier oplossingen"-sectie (Solutions/SolutionCard/solutions) verwijderd. (94be996) — let op: de losse diensten-bento staat (op eerder verzoek) nog op de homepage; meenemen bij stap 8.

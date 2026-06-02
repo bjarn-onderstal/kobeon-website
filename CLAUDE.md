@@ -38,13 +38,17 @@ Je bouwt de productie-website voor **Kobeon**, een Nederlandse **Mendix + AI imp
 ## Wat al staat
 Homepage: Hero, LogoStrip, WatWeBouwen (4 taken), Introductie + snelheid, HoeWeWerken, MendixVoordeel, ModellenDataCloud, Onderzoek, Projecten, DienstenBento, FAQ, FinalCTA. Pagina's: /diensten, /projecten, /sectoren (+ 6 detailpagina's), /werkwijze, /werken-bij, /vacatures, /quickscan, /discovery-sessie, /over-kobeon. Nav + Footer + SEO-basis. De abstracte "Vier oplossingen"-sectie is verwijderd.
 
-## Wat nog moet (volgorde)
-1. Service-demo-rijen (licht) met de mock-componenten uit de brief (MockWorkflow/MockAgent/MockTraining/MockIntegration/MockPortal — bouw die nog).
-2. Diensten-bento / video-tegels (v3.5) op lichte achtergrond.
-3. Projecten (case-cards met device-mockups), Sectoren (6), Werkwijze, Werken bij + vacatures, Quickscan, Discovery-sessie.
-4. Onderzoek/autoriteit-strook (v3.9). Mendix-voordeel + "Je modellen, je data, je cloud".
-5. Per-pagina SEO + schema afmaken.
-Werk steeds met kleine, afgebakende stappen en commit vaak.
+## Wat nog moet (zie NEXT-STEPS.md voor de actuele lijst)
+De overzichtspagina's en de homepage-secties staan grotendeels. Open punten:
+- **Subpagina's** — (S1) dienst-detailpagina's `/diensten/[slug]` (9), (S2) case-detailpagina's `/projecten/[slug]` (7), (S3, optioneel) `/contact`.
+- **/over-kobeon vullen** — staat nu leeg (S4): kernverhaal, credentials, echte klanten, team, Zwolle, CTA.
+- **Menu-fix (V3)** — de nav is wit-op-wit (onzichtbaar) op pagina's zónder donkere hero; overal leesbaar maken.
+- Homepage-restanten: Sectoren-spotlight + Testimonials (stap 6), Quickscan-teaser (stap 7), volgorde-check (stap 8).
+- Toegankelijkheid/performance (Lighthouse ≥ 90), assets inladen, deploy naar Vercel.
+
+Content-regel voor (sub)pagina's: trek copy uit `docs/00-brief-volledig.txt` (v3.7/v3.8) en echte klant-/dienstinfo waar beschikbaar; markeer placeholder-tekst duidelijk en overdrijf geen claims. De structuur mag al staan; echte cijfers, quotes en cases vragen input van Kobeon.
+
+Werk steeds met kleine, afgebakende stappen en commit vaak (één schrijver tegelijk).
 
 ## Bouwplan
 Volg `NEXT-STEPS.md`. Als de gebruiker zegt "pak de volgende stap op", volg het PROTOCOL bovenaan dat bestand: doe één stap, vink af, log de voortgang, commit, en stop voor review.
