@@ -5,7 +5,7 @@ import Section from "@/components/Section";
 const tiles = [
   {
     title: "Standaard veilig",
-    body: "Security, ISO 27001 en AVG zitten ingebouwd — niet iets dat achteraf wordt aangezet.",
+    body: "Security, ISO 27001 en AVG zitten ingebouwd, niet iets dat achteraf wordt aangezet.",
   },
   {
     title: "Enterprise-schaalbaarheid",
@@ -13,11 +13,11 @@ const tiles = [
   },
   {
     title: "Governance & audit trails",
-    body: "Elke actie — van mens of AI-agent — is auditeerbaar, traceerbaar en afdwingbaar. Klaar voor NIS2, EU AI Act, AVG, BIO en ISO 27001.",
+    body: "Elke actie (van mens of AI-agent) is auditeerbaar, traceerbaar en compliant. Klaar voor NIS2, EU AI Act, AVG, BIO en ISO 27001.",
   },
   {
     title: "Siemens als fundament",
-    body: "Mendix wordt gedragen door Siemens en koppelt out-of-the-box met SAP, Dynamics, AFAS, Exact, Salesforce en AWS — plus elke REST/OData-API.",
+    body: "Mendix wordt gedragen door Siemens en koppelt out-of-the-box met SAP, Dynamics, AFAS, Exact, Salesforce en AWS, plus elke REST/OData-API.",
   },
 ];
 

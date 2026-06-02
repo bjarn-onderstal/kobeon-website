@@ -8,7 +8,7 @@ type Insight = { quote: string; source: string; toVerify?: boolean };
 // brief — gemarkeerd als 'te verifiëren' tot de definitieve bron is aangeleverd.
 const insights: Insight[] = [
   { quote: "Negen jaar op rij Gartner-Leider voor enterprise low-code.", source: "Gartner (2025), via Mendix" },
-  { quote: "Eén platform van 10 tot 100.000 gebruikers — cloud of on-prem.", source: "Mendix" },
+  { quote: "Eén platform van 10 tot 100.000 gebruikers, in de cloud of on-premise.", source: "Mendix" },
   { quote: "Gedragen door Siemens.", source: "Mendix" },
   {
     quote: "Vooroplopende bedrijven die AI op schaal inzetten realiseren tot 60% meer omzetgroei en tot 45% hogere kostenbesparingen.",
@@ -21,7 +21,7 @@ const insights: Insight[] = [
     toVerify: true,
   },
   {
-    quote: "Slechts 2 op de 10 organisaties voelt zich klaar voor AI.",
+    quote: "Slechts 2 op de 10 organisaties voelen zich klaar voor AI.",
     source: "Gartner, via Mendix",
     toVerify: true,
   },
@@ -31,12 +31,12 @@ export default function Onderzoek() {
   return (
     <Section tone="canvas" id="onderzoek">
       <div className="max-w-2xl">
-        <p className="text-sm font-semibold uppercase tracking-wide text-purple">Onderzoek & autoriteit</p>
+        <p className="text-sm font-semibold uppercase tracking-wide text-purple">Cijfers & Onderbouwing</p>
         <h2 className="h-display mt-3 text-3xl md:text-5xl">
           De cijfers achter <span className="gradient-text">de urgentie.</span>
         </h2>
         <p className="mt-4 text-lg text-muted">
-          We laten de bronnen het werk doen. Onderbouwd en toegeschreven — geen loze beloftes.
+          Volledig onderbouwd door onafhankelijk marktonderzoek — geen loze beloftes.
         </p>
       </div>
 

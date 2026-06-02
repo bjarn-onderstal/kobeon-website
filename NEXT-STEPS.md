@@ -92,6 +92,8 @@ Dit bestand is de **single source of truth** voor de planning en staat op GitHub
 
 - [x] **V3. Menu/navigatie leesbaar op álle pagina's (bug)** — De `Nav` is nu transparant met witte tekst tot je 60px scrollt. Op pagina's zónder donkere hero (o.a. /over-kobeon en placeholder-pagina's) is het menu daardoor wit-op-wit = onzichtbaar bovenaan. Fix: standaard de "solid" variant (witte balk, `text-ink`) op alle pagina's, en alléén de transparant-over-hero-variant op pagina's mét een donkere hero (homepage, sectorpagina's, werkwijze, vacatures, werken-bij, discovery). Implementeer met een prop (bv. `<Nav overHero />`) die alleen die pagina's zetten, of detecteer via `usePathname`. Controleer meteen dat de dropdowns (Diensten-megamenu, Over ons) én het mobiele menu op elke pagina werken. Klaar wanneer: nav overal leesbaar, dropdowns + mobiel menu werken, `npm run build` slaagt.
 
+- [~] **V4. Copy-rewrite en IT-termen opschonen** (WIP: Antigravity) — Typografie, AI-vertalingen opschonen, em-dashes vervangen door natuurlijke interpunctie, RAG toevoegen aan AI-tekst, testimonial bug fixen.
+
 ### Subpagina's / detailpagina's (S1–S4) — nog te bouwen
 
 > Achtergrond: de overzichtspagina's staan, maar de meeste **detailpagina's ontbreken**. De bento-tegels en het Diensten-megamenu linken nu naar ankers op `/diensten`, en de projectkaarten linken nergens heen. Dit blok voegt volwaardige subpagina's toe. Eén stap per keer; houd je aan CLAUDE.md (licht-eerst, je/jouw, diensten = line-iconen, sectoren = typografisch, geen emoji).

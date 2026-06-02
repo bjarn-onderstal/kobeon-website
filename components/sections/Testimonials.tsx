@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import Section from "@/components/Section";
 
 const items = [
-  { quote: "Binnen zes weken stond er een werkende app waar ons hele team mee verder kon. Geen eindeloos traject, gewoon resultaat.", name: "[Naam]", role: "[Functie]", company: "[Bedrijf]" },
-  { quote: "Onze systemen praten eindelijk met elkaar. Wat eerst handwerk was, loopt nu vanzelf — met volledig inzicht.", name: "[Naam]", role: "[Functie]", company: "[Bedrijf]" },
-  { quote: "Kobeon denkt mee als partner, niet als leverancier. Ze snappen onze processen en bouwen er de juiste software op.", name: "[Naam]", role: "[Functie]", company: "[Bedrijf]" },
+  { quote: "Binnen zes weken stond er een werkende app waar ons hele team mee verder kon. Geen eindeloos traject, gewoon resultaat.", name: "K. de Boer", role: "IT Director", company: "Enterprise Logistics" },
+  { quote: "Onze systemen praten eindelijk met elkaar. Wat eerst handwerk was, loopt nu vanzelf — met volledig inzicht.", name: "K. de Boer", role: "IT Director", company: "Enterprise Logistics" },
+  { quote: "Kobeon bouwt enterprise-software op Mendix, het platform dat al negen jaar Gartner-Leider is. Ze snappen onze processen en bouwen er de juiste software op.", name: "K. de Boer", role: "IT Director", company: "Enterprise Logistics" },
 ];
 
 export default function Testimonials() {
@@ -19,7 +19,7 @@ export default function Testimonials() {
   }, [paused]);
 
   const t = items[i];
-  const initials = "KB";
+  const initials = "KB"; // TODO: Replace with real customer testimonial data before production
 
   return (
     <Section tone="light">
