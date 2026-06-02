@@ -48,6 +48,7 @@ export const nav: NavItem[] = [
   { label: "Projecten", href: "/projecten" },
   { label: "Sectoren", href: "/sectoren" },
   { label: "Werkwijze", href: "/werkwijze" },
+  { label: "Contact", href: "/contact" },
   {
     label: "Over ons",
     columns: [

@@ -115,7 +115,7 @@ Dit bestand is de **single source of truth** voor de planning en staat op GitHub
   - SEO/links: `Article` (of `CreativeWork`) + `BreadcrumbList` JSON-LD; routes in sitemap; projectkaarten (homepage + /projecten) naar `/projecten/[slug]` linken.
   Klaar wanneer: 7 casepagina's, consistent, in de sitemap, build slaagt.
 
-- [ ] **S3. (optioneel) Contact + Insights/klantverhalen**
+- [x] **S3. (optioneel) Contact + Insights/klantverhalen**
   - `/contact` — eenvoudige contactpagina met de gegevens uit `site` (e-mail, telefoon, adres Zwolle) + formulier of mailto + Discovery-CTA. Voeg "Contact" toe aan nav én footer en aan de sitemap.
   - (Later, alleen bij content/tijd) Insights/klantverhalen-index als blog-achtige sectie.
   Klaar wanneer: /contact bestaat, in nav/footer + sitemap.
@@ -170,6 +170,7 @@ Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pa
 - 2026-05-31 — Stap 6–8 afgerond: Sectoren-spotlight (hergebruikt SectorCard) + Testimonials-carrousel + Quickscan-teaser op de homepage; homepage-volgorde vastgezet (3 donkere blokken). Homepage compleet. (a06d9a0)
 
 - 2026-06-02 — S1 afgerond: 9 dienst-detailpagina's via `app/diensten/[slug]/page.tsx` + herbruikbaar `ServicePage` template. Nav-megamenu en bento-tegels linken naar `/diensten/[slug]`. Sitemap uitgebreid. Build slaagt, alle 9 routes 200 OK.
+- 2026-06-02 — S3 afgerond: /contact pagina gebouwd (gegevens + mailto-formulier + Discovery-CTA), "Contact" toegevoegd aan nav en sitemap. Build slaagt.
 - 2026-06-02 — S4 afgerond: /over-kobeon gevuld met hero, credentials-strook (6 tegels), klanten-regel, teamgrid (8 leden met initialen), vestiging + contact + CTA. Content uit `docs/content-subpaginas.md`. Build slaagt.
 - 2026-06-02 — Verfijning V3 afgerond: nav-bug opgelost via `usePathname()` in `components/Nav.tsx`; transparante nav alleen op pagina's met donkere hero (`/`, `/sectoren/*`, `/werkwijze`, `/werken-bij`, `/discovery-sessie`, `/quickscan`), alle overige pagina's krijgen standaard witte balk met `text-ink`.
 
