@@ -107,7 +107,7 @@ Dit bestand is de **single source of truth** voor de planning en staat op GitHub
   - SEO/links: `Service` + `BreadcrumbList` JSON-LD per pagina; 9 routes toevoegen aan `app/sitemap.ts`; bento-tegels én het Diensten-megamenu naar `/diensten/[slug]` laten linken (anker mag als secundair blijven).
   Klaar wanneer: 9 dienstpagina's bestaan, consistent in stijl, in de sitemap, `npm run build` slaagt.
 
-- [ ] **S2. Case-/projectdetailpagina's — `/projecten/[slug]` (7 stuks)**
+- [x] **S2. Case-/projectdetailpagina's — `/projecten/[slug]` (7 stuks)**
   Bouw per case een pagina: homezero, petje-af, epsa, golfclub, bkd, rechtspraak, floriusflowers.
   - Template `components/ProjectPage.tsx` + `app/projecten/[slug]/page.tsx` met `generateStaticParams`/`generateMetadata`.
   - Inhoud (transformatie-frame): hero (klant + "van X naar Y") · de uitdaging · onze aanpak op Mendix · het resultaat (cijfers) · device-mockup/`MiniMock` of screenshot-slot · sector + gebruikte diensten (links naar S1) · quote-placeholder · CTA. Respecteer anonimisering: **rechtspraak** geen herleidbare naam/logo; **floriusflowers** als "Binnenkort"-stub.
@@ -172,6 +172,8 @@ Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pa
 - 2026-06-02 — S1 afgerond: 9 dienst-detailpagina's via `app/diensten/[slug]/page.tsx` + herbruikbaar `ServicePage` template. Nav-megamenu en bento-tegels linken naar `/diensten/[slug]`. Sitemap uitgebreid. Build slaagt, alle 9 routes 200 OK.
 - 2026-06-02 — S4 afgerond: /over-kobeon gevuld met hero, credentials-strook (6 tegels), klanten-regel, teamgrid (8 leden met initialen), vestiging + contact + CTA. Content uit `docs/content-subpaginas.md`. Build slaagt.
 - 2026-06-02 — Verfijning V3 afgerond: nav-bug opgelost via `usePathname()` in `components/Nav.tsx`; transparante nav alleen op pagina's met donkere hero (`/`, `/sectoren/*`, `/werkwijze`, `/werken-bij`, `/discovery-sessie`, `/quickscan`), alle overige pagina's krijgen standaard witte balk met `text-ink`.
+
+- 2026-06-02 — S2 afgerond: 7 case-detailpagina's via `app/projecten/[slug]/page.tsx` + herbruikbaar `ProjectPage` template. Detailvelden (challenge, approach, result, relatedServices) toegevoegd aan alle projecten in `siteConfig.ts`. ProjectCard linkt nu naar `/projecten/[slug]`. Sitemap uitgebreid. Build slaagt, alle 7 routes gegenereerd.
 
 **Nog open / deels:**
 - **Stap 13** — demo-rijen "Wat we bouwen" staan al op de homepage, MÁÁR met 5 rijen i.p.v. 4; de abstracte "Vier oplossingen"-sectie is nog NIET verwijderd en er staat nu ook een extra diensten-bento op de homepage. Nog te doen: terugbrengen naar de 4 taken, de abstracte sectie eruit, "Eén platform: Mendix"-band eronder, homepage-bento heroverwegen.
