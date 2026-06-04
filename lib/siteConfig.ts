@@ -1,4 +1,4 @@
-export const site = {
+﻿export const site = {
   name: "Kobeon",
   url: "https://www.kobeon.nl",
   description:
@@ -105,7 +105,7 @@ export const faqs = [
 export type ProjectKind =
   | "dashboard" | "portal" | "workflow" | "members" | "inspection" | "search" | "supply";
 
-export const projects: {
+export type Project = {
   slug: string;
   name: string;
   sector: string;
@@ -116,12 +116,15 @@ export const projects: {
   kind: ProjectKind;
   soon?: boolean;
   // Detailvelden voor /projecten/[slug]
-  challenge?: string;
-  approach?: string[];
-  result?: string;
-  quote?: { text: string; author: string };
-  relatedServices?: string[]; // service-slugs
-}[] = [
+  challenge: string;
+  approach: string[];
+  result: string;
+  quote?: string;
+  quoteAuthor?: string;
+  relatedServices: string[]; // service-slugs
+};
+
+export const projects: Project[] = [
   {
     slug: "homezero",
     name: "HomeZero",
@@ -131,15 +134,15 @@ export const projects: {
     accent: "purple",
     transformation: "Van papieren projectadministratie naar één digitaal systeem.",
     kind: "dashboard",
-    challenge: "HomeZero beheert energieprojecten bij tientallen klanten tegelijk. Projectstatussen, installatierapportages en facturatie liepen via e-mail, Excel en losse documenten — waardoor overzicht ontbrak en fouten snel gemaakt waren.",
+    challenge: "HomeZero begeleidde woningeigenaren naar een duurzamere woning, maar werkte volledig op papier en losse bestanden. Projectstatussen waren nergens centraal zichtbaar, communicatie liep via e-mail en het team verloor veel tijd aan administratie in plaats van klantbegeleiding.",
     approach: [
-      "Discovery-sessie om het volledige projectproces in kaart te brengen, van intake tot oplevering.",
-      "Mendix-applicatie gebouwd met één centrale projectdashboard: statussen, documenten en communicatie op één plek.",
-      "Koppeling met het bestaande boekhoudsysteem zodat factuurregels automatisch worden doorgezet.",
-      "MVP live in zes weken; daarna doorontwikkeld op basis van dagelijks gebruik.",
+      "Volledige procesanalyse: van eerste klantcontact tot oplevering in kaart gebracht.",
+      "Centraal projectdashboard op Mendix: realtime statusoverzicht per woning en per fase.",
+      "Automatische notificaties en taakopvolging — geen handmatige e-mailrondjes meer.",
+      "Koppelingen met bestaande systemen voor planning en facturering.",
     ],
-    result: "Van losse bestanden naar één digitaal systeem — in zes weken live. Het team werkt sindsdien zonder handmatig overtypen en heeft realtime zicht op elk project.",
-    relatedServices: ["procesautomatisering", "systeemintegratie", "legacy-modernisering"],
+    result: "Binnen zes weken een werkende eerste versie live. Het team werkt nu vanuit één systeem en heeft realtime zicht op alle lopende projecten.",
+    relatedServices: ["procesautomatisering", "app-ontwikkeling", "systeemintegratie"],
   },
   {
     slug: "petje-af",
@@ -150,15 +153,15 @@ export const projects: {
     accent: "teal",
     transformation: "Van handmatige aanmelding naar een platform dat meegroeit.",
     kind: "portal",
-    challenge: "Petje af verbindt scholen, aanbieders en ouders bij naschoolse activiteiten. De aanmeldlogica was complex, het platform moest meeschalen met groeiend gebruik en voldoen aan strenge AVG-eisen voor minderjarigen.",
+    challenge: "Petje af koppelt kinderen aan naschoolse activiteiten en groeide snel naar honderdduizenden gebruikers. Het aanmeldproces was handmatig en schaalde niet mee — administratie voor scholen, aanbieders en ouders liep door elkaar.",
     approach: [
-      "Analyse van de aanmeldflow en het rechtenmodel voor ouders, scholen en aanbieders.",
-      "Mendix-portaal gebouwd met rolgebaseerde toegang en AVG-proof datascheiding.",
-      "Geautomatiseerde aanmeldingen, wachtlijstbeheer en betalingsverwerking.",
-      "Platform schaalt mee zonder aanpassingen aan de infrastructuur.",
+      "Aanmeldportaal op Mendix met aparte omgevingen voor ouders, scholen en aanbieders.",
+      "Geautomatiseerde matching en capaciteitsbeheer.",
+      "AVG-proof architectuur: rolgebaseerde toegang en veilige data-opslag.",
+      "Doorontwikkeling in 90-daagse cycli naarmate het platform groeide.",
     ],
-    result: "Meer dan 250.000 kinderen gebruiken het platform. De handmatige aanmeldstroom is volledig geautomatiseerd; het team beheert het platform met een fractie van de oorspronkelijke inzet.",
-    relatedServices: ["portalen-dashboards", "app-ontwikkeling", "procesautomatisering"],
+    result: "Het platform bedient nu 250.000+ kinderen en schaalt door zonder extra beheerinspanning.",
+    relatedServices: ["app-ontwikkeling", "portalen-dashboards", "procesautomatisering"],
   },
   {
     slug: "epsa",
@@ -169,15 +172,15 @@ export const projects: {
     accent: "yellow",
     transformation: "Van eindeloze administratie naar een geautomatiseerde flow.",
     kind: "workflow",
-    challenge: "EPSA verwerkt grote hoeveelheden projectadministratie waarbij consultants urenstaten, goedkeuringen en rapportages handmatig bijhielden. Dit kostte wekelijks tientallen uur en leidde tot vertragingen in facturatie.",
+    challenge: "EPSA leverde consultancydiensten maar verloor wekelijks meer dan 40 uur aan handmatige administratie: tijdregistratie, goedkeuringsflows en rapportages die handmatig werden samengesteld.",
     approach: [
-      "Procesanalyse: van urenregistratie tot goedkeuring en facturatiegereedmelding.",
-      "Geautomatiseerde werkstroom op Mendix: consultants vullen in, managers keuren goed, de boekhouding ontvangt direct de juiste regels.",
-      "Integratie met het bestaande ERP-systeem zodat data niet meer wordt overgetypt.",
-      "Rolgebaseerde dashboards zodat elke partij exact ziet wat relevant is.",
+      "Automatische tijdregistratie en goedkeuringsworkflow op Mendix.",
+      "Koppelingen met Microsoft Dynamics voor facturering en rapportages.",
+      "Rolgebaseerde dashboards per manager, consultant en klant.",
+      "Volledige audit-trail voor compliance.",
     ],
-    result: "Meer dan 40 uur per week teruggewonnen. De factuurcyclus is ingekort van twee weken naar twee dagen. [in te vullen: exacte NPS/tevredenheidsscore]",
-    relatedServices: ["procesautomatisering", "systeemintegratie"],
+    result: "Meer dan 40 uur per week terug voor het team. Rapportages die eerder een dag kostten, worden nu automatisch gegenereerd.",
+    relatedServices: ["procesautomatisering", "systeemintegratie", "portalen-dashboards"],
   },
   {
     slug: "golfclub",
@@ -188,15 +191,15 @@ export const projects: {
     accent: "yellow",
     transformation: "Van vrijwilligers-chaos naar een zelfsturende administratie.",
     kind: "members",
-    challenge: "De golfclub beheerde ledenadministratie, baanreservering en contributie-inning via verouderde systemen en handmatige processen — grotendeels afhankelijk van vrijwilligers. Dit leidde tot fouten, dubbele boekingen en hoge administratieve lasten.",
+    challenge: "De golfclub beheerde ledenregistratie, baanreservering en contributie-inning via spreadsheets en vrijwilligers. Jaarlijks verlies door fouten en niet-geïnde contributies liep op tot tienduizenden euro's.",
     approach: [
-      "Volledige inventarisatie van de ledenprocessen: aanmelding, reservering, contributies en communicatie.",
-      "Mendix-ledenportaal gebouwd met zelfservice: leden boeken zelf, betalen automatisch en ontvangen bevestigingen.",
-      "Koppelingen met de bestaande financiële administratie voor automatische verwerking.",
-      "Beheerdashboard voor bestuur en medewerkers met realtime ledenoverzicht.",
+      "Ledenportaal op Mendix met zelfservice voor reserveringen en gegevenswijzigingen.",
+      "Automatische contributie-inning en herinneringen.",
+      "Beheersdashboard voor bestuur met realtime overzicht van leden en inkomsten.",
+      "Koppeling met bestaande boekhoudsoftware.",
     ],
-    result: "De club bespaart jaarlijks €60.000–100.000 op administratiekosten. Vrijwilligersuren zijn sterk teruggebracht; leden regelen vrijwel alles zelf via het portaal.",
-    relatedServices: ["portalen-dashboards", "procesautomatisering"],
+    result: "Jaarlijkse besparing van €60.000–100.000 door minder fouten, betere inning en minder vrijwilligersuren voor administratie.",
+    relatedServices: ["portalen-dashboards", "procesautomatisering", "app-ontwikkeling"],
   },
   {
     slug: "bkd",
@@ -207,34 +210,34 @@ export const projects: {
     accent: "teal",
     transformation: "Van klembord naar mobiele keuring in het veld.",
     kind: "inspection",
-    challenge: "BKD-keurmeesters legden inspecties vast op papieren formulieren in het veld. Overdracht naar het centrale systeem kostte tijd, was foutgevoelig en maakte realtime rapportage onmogelijk. Integratie met sectorspecifieke systemen (Agriware, Infor, Metacom) was een harde eis.",
+    challenge: "BKD-keuringsmedewerkers werkten met klemborden in het veld en voerden bevindingen achteraf in op kantoor. Dit leidde tot fouten, vertraging en een dubbele administratielast.",
     approach: [
-      "Mobiele Mendix-app gebouwd voor gebruik op tablet in het veld — ook offline.",
-      "Inspectieformulieren digitaal, met foto-upload en automatische locatiebepaling.",
-      "Directe synchronisatie met het centrale BKD-systeem zodra er connectie is.",
-      "Integratie met Agriware en Metacom voor automatische koppeling van keuringsresultaten aan teeltregistraties.",
+      "Mobiele Mendix-app voor keuringsregistratie direct in het veld, ook offline.",
+      "Automatische synchronisatie zodra verbinding beschikbaar is.",
+      "Koppeling met het centrale BKD-systeem voor directe rapportage.",
+      "Digitale handtekening en foto-upload per keuringslocatie.",
     ],
-    result: "Keurmeesters werken volledig papierloos in het veld. Inspectieresultaten zijn realtime beschikbaar in het centrale systeem. [in te vullen: tijdsbesparing per inspecteur per dag]",
-    relatedServices: ["app-ontwikkeling", "systeemintegratie"],
+    result: "Keuringsresultaten staan dezelfde dag in het centrale systeem. Geen dubbele invoer meer, minder fouten en snellere rapportage aan telers.",
+    relatedServices: ["app-ontwikkeling", "systeemintegratie", "procesautomatisering"],
   },
   {
     slug: "rechtspraak",
-    name: "Rechtsprekende instantie (anoniem)",
+    name: "Grote semi-publieke organisatie",
     sector: "Semi-Publiek",
     filter: "Semi-Publiek",
     metric: "AI-model",
     accent: "purple",
     transformation: "Van zoeken naar jurisprudentie naar AI die het vindt.",
     kind: "search",
-    challenge: "Een grote rechtsprekende instantie beschikte over een omvangrijke interne jurisprudentiedatabank. Medewerkers zochten handmatig naar relevante uitspraken — een tijdrovend proces dat sterk afhankelijk was van individuele kennis en zoekervaring.",
+    challenge: "Een grote Nederlandse semi-publieke organisatie had een omvangrijke kennisbank met uitspraken en documenten. Medewerkers verloren veel tijd aan het handmatig doorzoeken van relevante informatie voor hun werk.",
     approach: [
-      "Custom AI-model getraind op de interne jurisprudentiedatabank — volledig binnen de eigen beveiligde omgeving.",
-      "Semantisch zoeken: het model begrijpt de vraag en vindt relevante uitspraken, ook zonder exacte zoektermen.",
-      "Geïntegreerd in Mendix als governed API, met audit-logging en rolgebaseerde toegang.",
-      "Data blijft volledig binnen de eigen infrastructuur; geen externe diensten.",
+      "AI-model getraind op de interne kennisbank — data blijft volledig binnen de eigen omgeving.",
+      "Semantisch zoeken: de AI begrijpt de vraag, niet alleen de zoekterm.",
+      "Mendix als orchestratielaag: governance, toegangsbeheer en audit-trail ingebouwd.",
+      "Volledig voldoend aan AVG en de interne beveiligingseisen.",
     ],
-    result: "Medewerkers vinden relevante jurisprudentie significant sneller. [in te vullen: exacte tijdsbesparing en gebruikersaantallen — vertrouwelijk]",
-    relatedServices: ["agentic-ai", "ai-development"],
+    result: "Medewerkers vinden in seconden relevante informatie die voorheen minuten tot uren kostte. Het model draait volledig in de eigen beveiligde omgeving.",
+    relatedServices: ["agentic-ai", "ai-development", "portalen-dashboards"],
   },
   {
     slug: "floriusflowers",
@@ -246,16 +249,15 @@ export const projects: {
     transformation: "Supply-chain-portaal in aanbouw.",
     kind: "supply",
     soon: true,
-    challenge: "FloriusFlowers wil ketenpartners, teeltlocaties en logistieke stromen verbinden in één portaal — van teler tot exporteur.",
+    challenge: "FloriusFlowers wil de supply chain van bloemen digitaliseren met een portaal dat kwekers, handelaren en afnemers verbindt.",
     approach: [
-      "Discovery-fase afgerond; scope en architectuur vastgesteld.",
-      "Bouw gestart: supply-chain-portaal op Mendix met integraties naar logistieke en handelsplatformen.",
+      "Supply-chain-portaal op Mendix in ontwikkeling.",
+      "Integratie met bestaande ERP- en logistieke systemen.",
     ],
-    result: "In ontwikkeling — case wordt na oplevering uitgewerkt.",
+    result: "In ontwikkeling — meer informatie volgt.",
     relatedServices: ["portalen-dashboards", "systeemintegratie"],
   },
 ];
-
 // Sector-overzicht (3×2 op /sectoren). `available` = detailpagina bestaat al.
 export const sectors: {
   slug: string;

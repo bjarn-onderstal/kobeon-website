@@ -171,6 +171,7 @@ Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pa
 - 2026-05-31 — Verfijning V2 afgerond: Portalen & dashboards als 2e feature-tegel met dashboard-mini-mock; bento herbalanceerd naar 16 cellen (App ontwikkeling + IT Consultancy naar 1-breed), geen gaten. (9e5cc95)
 - 2026-05-31 — Stap 6–8 afgerond: Sectoren-spotlight (hergebruikt SectorCard) + Testimonials-carrousel + Quickscan-teaser op de homepage; homepage-volgorde vastgezet (3 donkere blokken). Homepage compleet. (a06d9a0)
 
+- 2026-06-02 — S2 afgerond: 7 projectdetailpagina's via `app/projecten/[slug]/page.tsx` + herbruikbaar `ProjectPage` template. ProjectCard linkt naar `/projecten/[slug]`. Rechtspraak anoniem gehouden, FloriusFlowers als stub. Sitemap uitgebreid. Build slaagt.
 - 2026-06-02 — S1 afgerond: 9 dienst-detailpagina's via `app/diensten/[slug]/page.tsx` + herbruikbaar `ServicePage` template. Nav-megamenu en bento-tegels linken naar `/diensten/[slug]`. Sitemap uitgebreid. Build slaagt, alle 9 routes 200 OK.
 - 2026-06-02 — S3 afgerond: /contact pagina gebouwd (gegevens + mailto-formulier + Discovery-CTA), "Contact" toegevoegd aan nav en sitemap. Build slaagt.
 - 2026-06-02 — S4 afgerond: /over-kobeon gevuld met hero, credentials-strook (6 tegels), klanten-regel, teamgrid (8 leden met initialen), vestiging + contact + CTA. Content uit `docs/content-subpaginas.md`. Build slaagt.

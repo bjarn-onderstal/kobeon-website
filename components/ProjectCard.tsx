@@ -3,9 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import DeviceFrame from "@/components/DeviceFrame";
 import MiniMock from "@/components/MiniMock";
-import type { projects } from "@/lib/siteConfig";
-
-type Project = (typeof projects)[number];
+import type { Project } from "@/lib/siteConfig";
 
 const dot: Record<Project["accent"], string> = {
   purple: "bg-purple",
@@ -14,8 +12,7 @@ const dot: Record<Project["accent"], string> = {
 };
 
 export default function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
-  const { name, sector, metric, accent, transformation, kind, soon, slug } = project;
-
+  const { slug, name, sector, metric, accent, transformation, kind, soon } = project;
   const inner = (
     <>
       <div className={`relative transition-transform duration-300 group-hover:-translate-y-1 ${soon ? "rounded-2xl border-2 border-dashed border-line p-2" : ""}`}>
@@ -28,7 +25,6 @@ export default function ProjectCard({ project, index = 0 }: { project: Project; 
           </span>
         )}
       </div>
-
       <div className="mt-4">
         <span className="chip border-line bg-canvas text-xs text-muted">{sector}</span>
         <h3 className="h-display mt-3 text-xl">{name}</h3>
@@ -54,7 +50,7 @@ export default function ProjectCard({ project, index = 0 }: { project: Project; 
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: index * 0.07 }}
     >
-      {soon ? inner : <Link href={`/projecten/${slug}`}>{inner}</Link>}
+      {soon ? inner : <Link href={`/projecten/${slug}`} className="block">{inner}</Link>}
     </motion.article>
   );
 }

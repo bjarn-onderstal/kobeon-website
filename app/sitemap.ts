@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const vacancyRoutes = vacancies.filter((v) => !v.open).map((v) => `/vacatures/${v.slug}`);
   const serviceRoutes = services.map((s) => `/diensten/${s.slug}`);
   const projectRoutes = projects.map((p) => `/projecten/${p.slug}`);
-  return [...routes, ...serviceRoutes, ...vacancyRoutes, ...projectRoutes].map((r) => ({
+  return [...routes, ...serviceRoutes, ...projectRoutes, ...vacancyRoutes].map((r) => ({
     url: `${site.url}${r}`,
     lastModified: new Date(),
     changeFrequency: "monthly",

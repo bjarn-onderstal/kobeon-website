@@ -16,7 +16,7 @@ export async function generateMetadata({
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
   const title = `${project.name} — ${project.transformation.replace(/\.$/, "")}`;
-  const description = `Case: ${project.transformation} Sector: ${project.sector}. ${project.challenge?.slice(0, 100) ?? ""}`;
+  const description = `${project.challenge.slice(0, 155)}`;
   return {
     title,
     description,

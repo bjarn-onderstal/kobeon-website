@@ -4,29 +4,18 @@ import DeviceFrame from "@/components/DeviceFrame";
 import MiniMock from "@/components/MiniMock";
 import FinalCta from "@/components/sections/FinalCta";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
-import { services, type projects } from "@/lib/siteConfig";
+import { services, type Project } from "@/lib/siteConfig";
 
-type Project = (typeof projects)[number];
-
-const accentClass: Record<Project["accent"], string> = {
-  purple: "bg-purple/10 text-purple",
-  teal: "bg-teal/10 text-teal",
-  yellow: "bg-yellow/20 text-ink",
-};
-
-function CheckIcon() {
+function StepIcon({ n }: { n: number }) {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden className="mt-0.5 shrink-0">
-      <circle cx="10" cy="10" r="10" className="fill-purple/10" />
-      <path d="M6 10l3 3 5-5" stroke="#6C3EF4" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-teal/10 text-sm font-bold text-teal">
+      {n}
+    </span>
   );
 }
 
 export default function ProjectPage({ project }: { project: Project }) {
-  const relatedSvcs = services.filter((s) =>
-    (project.relatedServices ?? []).includes(s.slug)
-  );
+  const relatedSvcs = services.filter((s) => project.relatedServices.includes(s.slug));
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
@@ -55,115 +44,119 @@ export default function ProjectPage({ project }: { project: Project }) {
       <Section tone="light" className="pt-32">
         <div className="flex flex-wrap items-center gap-3">
           <span className="chip border-line bg-canvas text-xs text-muted">{project.sector}</span>
-          <span className={`chip text-xs font-semibold ${accentClass[project.accent]}`}>
-            {project.metric}
-          </span>
+          {project.soon && (
+            <span className="chip border-yellow/40 bg-yellow/10 text-xs font-semibold text-ink">
+              Binnenkort
+            </span>
+          )}
         </div>
         <h1 className="h-display mt-4 max-w-3xl text-4xl md:text-5xl">{project.transformation}</h1>
-        {project.soon && (
-          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-line bg-canvas px-4 py-2 text-sm text-muted">
-            <span className="h-2 w-2 rounded-full bg-yellow" />
-            Dit project is nog in ontwikkeling — de volledige case verschijnt na oplevering.
-          </p>
+        <p className="mt-4 text-2xl font-semibold text-purple">{project.metric}</p>
+        {!project.soon && (
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link href="/discovery-sessie" className="btn-primary">
+              Plan een Discovery-sessie
+            </Link>
+            <Link href="/projecten" className="btn-ghost">
+              Alle cases
+            </Link>
+          </div>
         )}
       </Section>
 
-      {/* Device mock */}
+      {/* Mock-up */}
       <Section tone="canvas">
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-xl">
           <DeviceFrame theme="light" url={`${project.slug}.kobeon.nl`}>
             <MiniMock kind={project.kind} />
           </DeviceFrame>
         </div>
       </Section>
 
-      {/* Uitdaging */}
-      {project.challenge && (
-        <Section tone="light">
-          <div className="mx-auto max-w-2xl">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-purple">De uitdaging</p>
-            <h2 className="h-display mb-4 text-2xl md:text-3xl">Waar het begon</h2>
-            <p className="text-lg leading-relaxed text-muted">{project.challenge}</p>
-          </div>
-        </Section>
-      )}
-
-      {/* Aanpak */}
-      {project.approach && project.approach.length > 0 && (
-        <Section tone="purplebg">
-          <h2 className="h-display mb-8 text-2xl md:text-3xl">Onze aanpak op Mendix</h2>
-          <ol className="space-y-4">
-            {project.approach.map((item, i) => (
-              <li key={i} className="flex gap-4 rounded-2xl border border-line bg-white p-5 shadow-soft">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-purple/10 text-sm font-bold text-purple">
-                  {i + 1}
-                </span>
-                <p className="text-ink">{item}</p>
-              </li>
-            ))}
-          </ol>
-        </Section>
-      )}
-
-      {/* Resultaat */}
-      {project.result && (
-        <Section tone="canvas">
-          <div className="mx-auto max-w-2xl">
-            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-purple">Het resultaat</p>
-            <h2 className="h-display mb-4 text-2xl md:text-3xl">Wat het opleverde</h2>
-            <div className="flex gap-3 rounded-2xl border border-line bg-white p-6 shadow-soft">
-              <CheckIcon />
-              <p className="text-lg leading-relaxed text-ink">{project.result}</p>
+      {!project.soon ? (
+        <>
+          {/* Uitdaging */}
+          <Section tone="light">
+            <div className="mx-auto max-w-2xl">
+              <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-purple">
+                De uitdaging
+              </p>
+              <h2 className="h-display mb-6 text-2xl md:text-3xl">Wat er speelde</h2>
+              <p className="text-lg leading-relaxed text-muted">{project.challenge}</p>
             </div>
-          </div>
-        </Section>
-      )}
+          </Section>
 
-      {/* Quote */}
-      {project.quote && (
+          {/* Aanpak */}
+          <Section tone="purplebg">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-purple">
+              Onze aanpak
+            </p>
+            <h2 className="h-display mb-8 text-2xl md:text-3xl">Hoe we het hebben gebouwd</h2>
+            <ol className="space-y-4">
+              {project.approach.map((step, i) => (
+                <li
+                  key={step}
+                  className="flex gap-4 rounded-2xl border border-line bg-white p-5 shadow-soft"
+                >
+                  <StepIcon n={i + 1} />
+                  <p className="text-ink">{step}</p>
+                </li>
+              ))}
+            </ol>
+          </Section>
+
+          {/* Resultaat */}
+          <Section tone="canvas">
+            <div className="rounded-2xl border border-line bg-white p-8 shadow-soft md:p-12">
+              <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-teal">
+                Het resultaat
+              </p>
+              <p className="text-3xl font-bold text-purple md:text-4xl">{project.metric}</p>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{project.result}</p>
+              {project.quote && (
+                <blockquote className="mt-8 border-l-4 border-purple/30 pl-5">
+                  <p className="italic text-ink">&ldquo;{project.quote}&rdquo;</p>
+                  {project.quoteAuthor && (
+                    <cite className="mt-2 block text-sm text-muted not-italic">
+                      — {project.quoteAuthor}
+                    </cite>
+                  )}
+                </blockquote>
+              )}
+            </div>
+          </Section>
+
+          {/* Gebruikte diensten */}
+          {relatedSvcs.length > 0 && (
+            <Section tone="light">
+              <h2 className="h-display mb-8 text-2xl md:text-3xl">Gebruikte diensten</h2>
+              <div className="flex flex-wrap gap-3">
+                {relatedSvcs.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/diensten/${s.slug}`}
+                    className="rounded-full border border-line bg-canvas px-4 py-2 text-sm font-medium text-ink transition hover:border-purple hover:text-purple"
+                  >
+                    {s.title}
+                  </Link>
+                ))}
+              </div>
+            </Section>
+          )}
+        </>
+      ) : (
+        /* Binnenkort stub */
         <Section tone="light">
           <div className="mx-auto max-w-xl text-center">
-            <p className="h-display text-xl italic text-ink">"{project.quote.text}"</p>
-            <p className="mt-4 text-sm font-semibold text-muted">— {project.quote.author}</p>
+            <p className="mb-4 text-muted">
+              Dit project is momenteel in ontwikkeling. Wil je meer weten?
+            </p>
+            <Link href="/discovery-sessie" className="btn-primary">
+              Plan een Discovery-sessie
+            </Link>
           </div>
         </Section>
       )}
-
-      {/* Gerelateerde diensten */}
-      {relatedSvcs.length > 0 && (
-        <Section tone="light">
-          <h2 className="h-display mb-6 text-2xl md:text-3xl">Gebruikte diensten</h2>
-          <div className="flex flex-wrap gap-3">
-            {relatedSvcs.map((s) => (
-              <Link
-                key={s.slug}
-                href={`/diensten/${s.slug}`}
-                className="rounded-full border border-line bg-white px-5 py-2 text-sm font-medium text-ink shadow-soft transition hover:-translate-y-0.5 hover:border-purple hover:text-purple hover:shadow-lift"
-              >
-                {s.title}
-              </Link>
-            ))}
-          </div>
-        </Section>
-      )}
-
-      {/* CTA band */}
-      <section className="bg-purple-deep text-white">
-        <div className="container-x py-16 md:py-20">
-          <p className="text-sm font-semibold uppercase tracking-widest text-white/60">
-            {project.sector}
-          </p>
-          <h2 className="h-display mt-3 max-w-2xl text-3xl md:text-4xl">
-            Vergelijkbare uitdaging?
-          </h2>
-          <p className="mt-4 max-w-xl text-white/75">
-            Plan een gratis Discovery-sessie van 60 minuten. Daarna weet je precies wat er mogelijk is voor jouw organisatie.
-          </p>
-          <Link href="/discovery-sessie" className="btn-primary mt-8 inline-flex">
-            Plan een Discovery-sessie
-          </Link>
-        </div>
-      </section>
 
       <FinalCta />
     </>
