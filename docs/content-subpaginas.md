@@ -155,3 +155,24 @@ We denken mee als partner, niet als leverancier. Onze kracht is de combinatie va
 **CTA:** Plan een Discovery-sessie — Gratis · 60 minuten · daarna weet je precies waar je staat.
 
 > Open voor Kobeon om aan te scherpen: een persoonlijke oprichtersquote, exacte oprichtingsdatum/jaar, en of jullie team-foto's willen tonen. Markeer ontbrekende stukken als `[in te vullen]`.
+
+---
+
+## Beeld per dienst — bento-achtergronden (voor V4)
+
+Stijl = de lichte/gegronde set uit `docs/visual-brief.md` (stijl-anker: realistisch, licht, daglicht, brand als zachte tint, **geen** neon/sci-fi). Eén familie: zelfde licht en palet, zodat de 9 tegels samen kloppen. Bestand per tegel: `/public/visuals/svc-<slug>.jpg` (4:3). Tot er beeld is, blijft de `MiniMock`/het icoon staan (fallback).
+
+**Feature-tegels (groot, 2×2) — hier het beeld prominent laten "bleeden" en wit-gefade:**
+- **procesautomatisering** → licht bureau met laptop die een workflow/kanban-board toont; zacht daglicht, subtiele paarse tint.
+- **portalen-dashboards** → breed scherm met een elegant dashboard/portaal; zacht daglicht, teal-accent.
+
+**Overige tegels (subtieler beeld of mini-mock/icoon):**
+- **agentic-ai** → monitor/tablet met een rustige assistent/chat + taakchips; teal-getint.
+- **ai-development** → monitor met schone grafieken + datatabel; gedempt paars-teal.
+- **systeemintegratie** → opgeruimd tafelblad met verbonden systeemkaartjes/kabels; neutraal, brand-getint.
+- **app-ontwikkeling** → telefoon + laptop naast elkaar met schone app-UI; licht bureau.
+- **legacy-modernisering** → een verouderd scherm naast een schoon, modern scherm; subtiele paarse tint.
+- **design-prototyping** → designersbureau met papieren wireframes + tablet-prototype; tactiel, licht.
+- **it-consultancy** → whiteboard/scherm met een opgeruimde roadmap/architectuur; rustige meeting-hoek.
+
+Mapping naar `docs/visual-brief.md` (daar heten ze afgekort): proces→procesautomatisering · agent→agentic-ai · aidev→ai-development · integratie→systeemintegratie · app→app-ontwikkeling · portaal→portalen-dashboards · legacy→legacy-modernisering · design→design-prototyping · consultancy→it-consultancy. Hernoem de bestanden naar `svc-<slug>.jpg` zodat ze matchen met `ServiceTile`.
