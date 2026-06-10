@@ -14,6 +14,12 @@ Je bouwt de productie-website voor **Kobeon**, een Nederlandse **Mendix + AI imp
 - **Kaarten zijn altijd licht en consistent:** witte kaart op canvas, `rounded-2xl`, `border-line`, `shadow-soft`; hover = `-translate-y-1` + `shadow-lift` + accentrand (paars/teal/geel). Géén donkere image-slabs. Dit geldt voor diensten-bento, sector-kaarten en case-kaarten.
 - **Diensten-bento:** asymmetrisch ritme via `span`; grote feature-tegels (`mock` gezet) tonen een lichte `MiniMock` i.p.v. een icoon.
 
+## Mock-UI's & animaties (vastgesteld)
+- **Echte app-uitstraling.** De mock-UI's (behalve `MockIntegration`, die is goed) moeten ogen als een gevuld applicatiescherm: app-shell (sidebar + topbar/titel + content), realistische componenten (datatabel met kolomkoppen/rijen/statusbadges, KPI-kaarten, tabs, knoppen) en **concrete NL-data** (namen, bedragen, statussen) — geen grijze placeholder-balkjes.
+- **Flat ≠ leeg.** Houd het flat-styled (Atlas-achtig), met diepte via zachte schaduwen en subtiele laagjes. **Geen** 3D, neon of glow.
+- **Topbalk:** app-titelbalk met modulenaam (of strak slot + `kobeon.nl`) — geen nep-dev-URL's, geen rood/geel/teal "verkeerslicht"-stippen.
+- **Animatie met ziel:** speel bij in-beeld-komen één geloofwaardige handeling af (rij goedgekeurd, getal springt één keer, taak vinkt af) en hou daarna de eindstaat vast. **Geen eindeloze loop/pulse.** Eén focuspunt per mock, natuurlijke easing, `prefers-reduced-motion` gerespecteerd.
+
 ## Toon van de copy (belangrijk)
 - Aanspreekvorm: **je / jouw** (nooit u/uw).
 - **Enterprise, zelfverzekerd, bewijs-gedreven** — niet gemoedelijk/folksy. Geen "trots op je software", geen knipogen.

@@ -49,3 +49,27 @@ Negen achtergronden, telkens met het stijl-anker zodat ze samen een set vormen. 
 **Consistentie-tip:** genereer ze in één sessie kort na elkaar en verwijs naar de vorige: *"same realistic product-photography style, lighting and palette as the previous image"*. Zo blijft de set uniform.
 
 Optioneel — **sector- en case-achtergronden** in dezelfde gegronde stijl (sectorpagina-hero's), realistisch i.p.v. abstract: horticultuur (een lichte kas of een tablet met keuring-app op een werkbank), staffing (een nette kantooromgeving met een lap
+---
+
+## Image-edit prompts (upload je app-screenshot → plak de prompt)
+
+Werkwijze: maak een (geanonimiseerde) screenshot van een échte Mendix-app en laat Nano Banana die alleen *bewerken/inlijsten* — niet hertekenen. Zo lijkt het echt op Mendix i.p.v. futuristisch.
+
+**0. Anonimiseren (alleen als er echte data in staat):**
+> Edit the uploaded screenshot. Keep the exact interface, layout and styling. Replace all real names, e-mail addresses, client and brand logos, ID/case numbers and financial figures with neutral, realistic placeholder data. Keep it believable and consistent. Do not change the UI design and do not redraw anything.
+
+**1. Standaard — laptop/browser-tegel:**
+> You are editing the uploaded screenshot of a real business web application. Keep the on-screen interface exactly as it is: same layout, same flat 2D UI — do not redraw, restyle or invent UI. Place the screenshot inside a clean, modern laptop (or a tidy browser window) on a minimalist light desk. Soft natural daylight from the side, gentle realistic shadows, shallow depth of field with subtle bokeh. Background: a calm, softly out-of-focus light workspace, subtly tinted in deep purple (#2A0870) and teal (#13A6A6). Keep generous empty space on the left for text. Premium product-photography look — believable, NOT a 3D render. No glow, no neon, no holograms, no futuristic HUD, no sci-fi, no dark space, no abstract particles, no added text, no faces. Output 16:9, high resolution.
+
+**2. Telefoon-frame (mobiele apps):**
+> You are editing the uploaded screenshot of a real mobile app. Keep the app UI exactly as it is — flat, 2D, do not redraw. Place it inside a modern smartphone standing on a clean, light desk. Soft natural daylight, gentle shadows, shallow depth of field, a calm background subtly tinted in deep purple (#2A0870) and teal (#13A6A6), with empty space beside the phone. Premium product photography, believable, not a 3D render. No glow, neon, holograms, sci-fi or added text, no faces. Output 4:5 (portrait).
+
+**3. Feature-tegel met "weggewerkte" achtergrond (de 2 grote bento-tegels):**
+> You are editing the uploaded screenshot of a real business web app. Keep the UI flat and exactly as-is. Place it large inside a subtle browser window and let it bleed toward the bottom-right corner, fading softly into a clean WHITE background via a smooth white gradient — the top-left area stays plain white and empty for a heading. Light, airy, premium, realistic. Subtle deep-purple/teal tint only at the edges. No dark overlay, no glow, no neon, no 3D, no added text, no faces. Output 4:3.
+
+**4. Meerdere screenshots:**
+- Consistente set: draai prompt 1 per screenshot en voeg toe: "Use the same laptop, desk, lighting and palette as the previous image."
+- Combineren: upload 2 screenshots en gebruik:
+> Compose one clean scene on a tidy light desk: a laptop showing the first uploaded screenshot and a smartphone showing the second. Keep both UIs flat, real and unchanged. Soft daylight, gentle shadows, a calm background subtly tinted in deep purple (#2A0870) and teal (#13A6A6), with empty space on the left for text. Premium product photography, not a 3D render. No glow, neon, 3D effects, added text or faces. Output 16:9.
+
+**Bestandsnamen:** hero → `hero-primary.jpg`; dienst-tegels → `svc-<slug>.jpg` (prompt 3 voor de 2 feature-tegels, prompt 1 voor de rest); cases → per slug (prompt 2 voor mobiele apps). Alles in `/public/visuals/` (of `/public/screens/`). Lever 2× resolutie.

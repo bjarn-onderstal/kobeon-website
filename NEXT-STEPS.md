@@ -34,6 +34,19 @@ Dit bestand is de **single source of truth** voor de planning en staat op GitHub
 
 ---
 
+## Aanbevolen volgorde (meeste visuele winst eerst)
+0. **Commit + push eerst je huidige in-progress werk + de bijgewerkte docs** — schoon startpunt.
+1. **V3 — menu leesbaar op alle pagina's.** Snelle bugfix die élke pagina raakt (incl. de nieuwe subpagina's); zonder dit ogen lichte pagina's stuk.
+2. **V5 — mock-topbalk (app-titel i.p.v. nep-URL) + animatie met ziel** (één keer afspelen, echte NL-content, geen glow). Grootste "minder AI"-winst, geen assets nodig, en de basis voor V6.
+3. **V6 — mocks 'echte app'-gevoel** (app-shell, dichtheid, diepte). Bouwt voort op V5.
+4. **V4 — bento achtergrond-image stijlvol weggewerkt** (code met fallback nu; echte beelden later via stap 20).
+5. **S4 — /over-kobeon vullen** (copy staat klaar in `docs/content-subpaginas.md`; vult de lege pagina).
+6. **S1 — 9 dienst-detailpagina's afmaken** (copy staat klaar).
+7. **S2 — 7 case-detailpagina's.**
+8. **S3 — /contact afronden.**
+9. **Afronden:** 19 (toegankelijkheid/performance) → 20 (beelden/assets inladen — activeert V4) → 21 (deploy naar Vercel).
+Commit + push per logische stap.
+
 ## STAPPEN
 
 - [x] **0. Foundation** — Next.js + Tailwind + Framer Motion; homepage (Hero, LogoStrip, "Vier oplossingen, één platform", Stats, FAQ, FinalCTA), Nav/Footer, SEO-basis, asset-structuur.
@@ -93,6 +106,29 @@ Dit bestand is de **single source of truth** voor de planning en staat op GitHub
 - [x] **V3. Menu/navigatie leesbaar op álle pagina's (bug)** — De `Nav` is nu transparant met witte tekst tot je 60px scrollt. Op pagina's zónder donkere hero (o.a. /over-kobeon en placeholder-pagina's) is het menu daardoor wit-op-wit = onzichtbaar bovenaan. Fix: standaard de "solid" variant (witte balk, `text-ink`) op alle pagina's, en alléén de transparant-over-hero-variant op pagina's mét een donkere hero (homepage, sectorpagina's, werkwijze, vacatures, werken-bij, discovery). Implementeer met een prop (bv. `<Nav overHero />`) die alleen die pagina's zetten, of detecteer via `usePathname`. Controleer meteen dat de dropdowns (Diensten-megamenu, Over ons) én het mobiele menu op elke pagina werken. Klaar wanneer: nav overal leesbaar, dropdowns + mobiel menu werken, `npm run build` slaagt.
 
 - [~] **V4. Copy-rewrite en IT-termen opschonen** (WIP: Antigravity) — Typografie, AI-vertalingen opschonen, em-dashes vervangen door natuurlijke interpunctie, RAG toevoegen aan AI-tekst, testimonial bug fixen.
+
+- [ ] **V5. Mock-UI's: meer ziel, minder "AI" (device-frame topbar + animaties)**
+  **A. Topbar / URL** (`components/DeviceFrame.tsx`, en de `url`-props in `components/sections/WatWeBouwen.tsx`, `ProjectCard.tsx`, `ProjectPage.tsx`): de nep-dev-URL's (`app.kobeon.nl/orders`, `/agent`, `/training`, `/integraties`) ogen onecht. Vervang door één van:
+  - **App-titelbalk (aanbevolen voor de product-mocks):** toon de modulenaam i.p.v. een URL — bv. "Orderverwerking", "Klantportaal", "Modeltraining", "Integraties" — met een klein Kobeon-app-icoon links. Leest als echte Mendix-software, niet als website.
+  - **Of een nette browserbalk:** klein slot-icoon + alléén `kobeon.nl` (geen diepe paden), monochroom.
+  Maak de rood/geel/teal "verkeerslicht"-stippen neutraal-grijs en kleiner, of laat ze weg bij de titelbalk-variant. Topbar licht en strak, geen afgekapte tekst.
+  **B. Animaties — meer ziel:**
+  - **Speel één keer af, dan rust:** bij in-beeld-komen doet elke mock één geloofwaardige handeling (rij wordt goedgekeurd, getal springt één keer omhoog, taak vinkt af) en houdt daarna de eindstaat vast. **Geen eindeloze loop/pulse.**
+  - Eén focuspunt per mock; verminder het totaal aantal gelijktijdige animaties op de homepage.
+  - Natuurlijke easing + lichte stagger (ease-out/spring, kleine onregelmatige delays), niet strak lineair.
+  - **Concrete, menselijke content** i.p.v. abstracte grijze balkjes: echte NL-labels/namen/statussen/bedragen (bv. "Order #1042 · Goedgekeurd", "A. Jansen", "€12.480").
+  - **Schrap gradient/glow** op datavisualisaties (de paars→teal gradient-balken in `MockDashboard`/`MiniMock`): platte merkkleuren.
+  - Respecteer `prefers-reduced-motion` (toon de nette eindstaat).
+  Klaar wanneer: device-frames tonen een app-titelbalk of nette `kobeon.nl`-balk (geen nep-paden), mocks spelen één keer af en rusten, content is concreet/NL, geen glow; de homepage voelt rustiger en "echter".
+
+- [ ] **V6. Mock-UI's: meer "echte app"-gevoel (behalve integratie)**
+  `MockIntegration` (node/systeem-diagram) is goed — laat die ongewijzigd. De overige mocks (`MockDashboard`, `MockWorkflow`, `MockAgent`, `MockTraining`, `MockPortal` + `MiniMock`) ogen nu te vlak/leeg. Geef ze de structuur en dichtheid van een échte applicatie, met diepte — maar blijf flat-styled (Atlas-achtig), géén 3D/neon/glow.
+  - **App-shell:** linker-sidebar met nav-items (label + klein icoon, één actief), topbar met titel/zoek/avatar, content-gebied. Sluit aan op de app-titelbalk uit V5.
+  - **Realistische componenten:** datatabel met kolomkoppen, rijen, statusbadges en paginatie; KPI-kaarten met een kleine sparkline; tabs/filters; knoppen; eventueel een detailpaneel.
+  - **Concrete NL-data** (namen, bedragen, data, statussen) — geen grijze placeholder-balkjes.
+  - **Diepte:** subtiele laagjes (sidebar iets andere tint, kaarten met zachte schaduw, lichte scheidingslijnen, hover/active states). Flat mét diepte, niet glanzend/gloeiend.
+  - Animatie volgens V5 (één keer afspelen, dan rust). Let op leesbaarheid op kleine tegels: toon dichtheid maar houd het scherp; op de kleinste formaten een compactere variant.
+  Klaar wanneer: de niet-integratie-mocks ogen als gevulde, geloofwaardige app-schermen (sidebar + topbar + realistische content, met diepte), flat-styled en zonder glow; `MockIntegration` ongewijzigd; `npm run build` slaagt.
 
 ### Subpagina's / detailpagina's (S1–S4) — nog te bouwen
 
