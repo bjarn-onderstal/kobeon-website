@@ -31,6 +31,18 @@ const content: SectorContent = {
     { title: "Documentstromen digitaal", body: "Dossiers, goedkeuringen en archivering geautomatiseerd, met behoud van controle." },
   ],
   systems: ["ISO 27001", "BIO", "NIS2", "Audit trails", "REST / OData"],
+  examples: [
+    "Zaak-/dossierbeheer en documentstromen met volledig audit-spoor.",
+    "AI-model op regelgeving of jurisprudentie (zoals bij de Rechtspraak, anoniem).",
+    "Veilige portalen — BIO/ISO 27001-proof, on-prem of air-gapped waar nodig.",
+    "Geautomatiseerde compliance-checks en rapportages.",
+  ],
+  relatedServices: [
+    { label: "AI Development", href: "/diensten/ai-development" },
+    { label: "Agentic AI", href: "/diensten/agentic-ai" },
+    { label: "Procesautomatisering", href: "/diensten/procesautomatisering" },
+    { label: "Systeemintegratie", href: "/diensten/systeemintegratie" },
+  ],
   caseSlug: "rechtspraak",
 };
 

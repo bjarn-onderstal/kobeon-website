@@ -46,7 +46,23 @@ export const nav: NavItem[] = [
     ],
   },
   { label: "Projecten", href: "/projecten" },
-  { label: "Sectoren", href: "/sectoren" },
+  {
+    label: "Sectoren",
+    href: "/sectoren",
+    columns: [
+      {
+        items: [
+          { label: "Sierteelt & Horticultuur", href: "/sectoren/sierteelt" },
+          { label: "Staffing & Detachering", href: "/sectoren/detachering" },
+          { label: "Semi-Publiek", href: "/sectoren/semi-publiek" },
+          { label: "Onderwijs", href: "/sectoren/onderwijs" },
+          { label: "Kinderopvang", href: "/sectoren/kinderopvang" },
+          { label: "Maakindustrie", href: "/sectoren/maakindustrie" },
+          { label: "Alle sectoren", href: "/sectoren" },
+        ],
+      },
+    ],
+  },
   { label: "Werkwijze", href: "/werkwijze" },
   { label: "Contact", href: "/contact" },
   {

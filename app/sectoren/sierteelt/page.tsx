@@ -31,6 +31,19 @@ const content: SectorContent = {
     { title: "Automatiseer de pieken", body: "Orderverwerking, planning en facturatie lopen door — ook als het seizoen losbarst." },
   ],
   systems: ["Agriware", "Infor", "Metacom (Meijel)", "BKD-ketenregister", "REST / OData"],
+  examples: [
+    "Teelt- en oogstplanning + arbeidsplanning op piekmomenten, gekoppeld aan Agriware, Infor of Metacom.",
+    "Mobiele keuring/inspectie in het veld (zoals bij BKD).",
+    "Supply-chain-/ketenportaal: kweker → veiling → transport → klant, realtime.",
+    "Field service voor machines: werkorders, handleidingen en onderdelen op aanvraag.",
+    "AI/WhatsApp voor orders, beschikbaarheid en klantvragen.",
+  ],
+  relatedServices: [
+    { label: "App ontwikkeling", href: "/diensten/app-ontwikkeling" },
+    { label: "Portalen & dashboards", href: "/diensten/portalen-dashboards" },
+    { label: "Systeemintegratie", href: "/diensten/systeemintegratie" },
+    { label: "Procesautomatisering", href: "/diensten/procesautomatisering" },
+  ],
   caseSlug: "bkd",
 };
 

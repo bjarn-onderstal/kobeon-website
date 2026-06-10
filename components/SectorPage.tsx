@@ -13,6 +13,8 @@ export type SectorContent = {
   problems: { title: string; body: string }[];
   approach: { title: string; body: string }[];
   systems: string[];
+  examples?: string[];
+  relatedServices?: { label: string; href: string }[];
   caseSlug?: string;
 };
 
@@ -28,7 +30,7 @@ const accentBg: Record<SectorContent["accent"], string> = {
 };
 
 export default function SectorPage({ content }: { content: SectorContent }) {
-  const { title, tagline, intro, accent, problems, approach, systems, caseSlug } = content;
+  const { title, tagline, intro, accent, problems, approach, systems, examples, relatedServices, caseSlug } = content;
   const caseProject = projects.find((p) => p.slug === caseSlug);
 
   return (
@@ -93,6 +95,37 @@ export default function SectorPage({ content }: { content: SectorContent }) {
           </div>
         </div>
       </Section>
+
+      {/* Wat we voor jouw sector bouwen */}
+      {examples && examples.length > 0 && (
+        <Section tone="light">
+          <div className="max-w-2xl">
+            <p className={`text-sm font-semibold uppercase tracking-wide ${accentText[accent]}`}>Voorbeelden</p>
+            <h2 className="h-display mt-3 text-3xl md:text-4xl">Wat we voor jouw sector bouwen.</h2>
+          </div>
+          <ul className="mt-10 grid gap-4 md:grid-cols-2">
+            {examples.map((e) => (
+              <li key={e} className="flex items-start gap-3 rounded-2xl border border-line bg-canvas p-5">
+                <span className={`mt-1.5 inline-block h-2 w-2 shrink-0 rounded-full ${accentBg[accent]}`} />
+                <span className="text-sm leading-relaxed text-ink">{e}</span>
+              </li>
+            ))}
+          </ul>
+          {relatedServices && relatedServices.length > 0 && (
+            <div className="mt-8">
+              <p className="text-sm font-semibold text-ink">Relevante diensten</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {relatedServices.map((s) => (
+                  <Link key={s.href} href={s.href} className="group inline-flex items-center gap-1 rounded-full border border-line bg-white px-3 py-1 text-sm font-medium text-purple transition hover:border-purple">
+                    {s.label}
+                    <span className="transition-transform group-hover:translate-x-0.5">→</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </Section>
+      )}
 
       {/* Case */}
       {caseProject && (

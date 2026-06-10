@@ -31,6 +31,17 @@ const content: SectorContent = {
     { title: "LRK-compliant", body: "Registratie en wettelijke eisen ingebouwd in het proces." },
   ],
   systems: ["LRK", "Ouderportalen", "Facturering", "Planning", "GGD"],
+  examples: [
+    "Ouderportaal met zelfservice (plaatsing, facturen, communicatie).",
+    "Automatische facturering en incasso.",
+    "Planning van groepen en personeel.",
+    "LRK-compliant registratie en GGD-meldingen.",
+  ],
+  relatedServices: [
+    { label: "Portalen & dashboards", href: "/diensten/portalen-dashboards" },
+    { label: "Procesautomatisering", href: "/diensten/procesautomatisering" },
+    { label: "App ontwikkeling", href: "/diensten/app-ontwikkeling" },
+  ],
   caseSlug: "petje-af",
 };
 

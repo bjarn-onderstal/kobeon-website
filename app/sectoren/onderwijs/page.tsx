@@ -31,6 +31,18 @@ const content: SectorContent = {
     { title: "DUO/BRON-integratie", body: "Veilige, geautomatiseerde uitwisseling — minder fouten, minder werk." },
   ],
   systems: ["DUO / BRON", "AVG", "Aanmeldportalen", "REST / OData"],
+  examples: [
+    "Aanmeld- en inschrijfportalen die meeschalen bij groei.",
+    "Administratie-automatisering en rapportage-dashboards.",
+    "Koppeling met DUO/BRON.",
+    "AVG-proof beheer van leerlingdata.",
+  ],
+  relatedServices: [
+    { label: "App ontwikkeling", href: "/diensten/app-ontwikkeling" },
+    { label: "Portalen & dashboards", href: "/diensten/portalen-dashboards" },
+    { label: "Procesautomatisering", href: "/diensten/procesautomatisering" },
+    { label: "Systeemintegratie", href: "/diensten/systeemintegratie" },
+  ],
   caseSlug: "petje-af",
 };
 

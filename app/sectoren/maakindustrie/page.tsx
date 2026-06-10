@@ -31,6 +31,19 @@ const content: SectorContent = {
     { title: "Supply chain & OEE-dashboard", body: "Actueel zicht op toeleverketen en machineprestatie, op één scherm." },
   ],
   systems: ["SAP", "Microsoft Dynamics 365", "Legacy", "REST / OData / Kafka"],
+  examples: [
+    "Productie- en capaciteitsplanning, gekoppeld aan SAP of Microsoft Dynamics.",
+    "Field Service Management: monteur-app met werkorders, machineseries, handleidingen en onderdelen op aanvraag — ook offline.",
+    "Digitale werkorders en mobiele kwaliteitsregistratie op de werkvloer.",
+    "Supply-chain- en OEE-dashboards met realtime data.",
+  ],
+  relatedServices: [
+    { label: "Systeemintegratie", href: "/diensten/systeemintegratie" },
+    { label: "App ontwikkeling", href: "/diensten/app-ontwikkeling" },
+    { label: "Portalen & dashboards", href: "/diensten/portalen-dashboards" },
+    { label: "Legacy modernisering", href: "/diensten/legacy-modernisering" },
+    { label: "AI Development", href: "/diensten/ai-development" },
+  ],
 };
 
 export default function Page() {

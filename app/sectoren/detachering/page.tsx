@@ -31,6 +31,18 @@ const content: SectorContent = {
     { title: "Consultant- & klantportalen", body: "Zelfservice voor uren, contracten en status, voor je consultants én je opdrachtgevers." },
   ],
   systems: ["AFAS", "Nmbrs", "Wet DBA-toetsing", "REST / OData"],
+  examples: [
+    "AI-matching van kandidaten op opdrachten (recruiter keurt goed).",
+    "Consultant-/medewerkersportaal met urenregistratie, documenten en declaraties.",
+    "DBA-compliance en contract-/onboardingflows geautomatiseerd.",
+    "Koppeling met AFAS en Nmbrs voor facturatie en payroll.",
+  ],
+  relatedServices: [
+    { label: "Agentic AI", href: "/diensten/agentic-ai" },
+    { label: "Systeemintegratie", href: "/diensten/systeemintegratie" },
+    { label: "Portalen & dashboards", href: "/diensten/portalen-dashboards" },
+    { label: "Procesautomatisering", href: "/diensten/procesautomatisering" },
+  ],
   caseSlug: "epsa",
 };
 
