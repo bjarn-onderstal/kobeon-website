@@ -124,7 +124,7 @@ export default function Page() {
       {/* De 5 fasen — lichte, alternerende rijen */}
       <Section tone="light" id="fasen">
         <div className="space-y-20 md:space-y-28">
-          {phases.map(({ no, title: t, duration, body, deliverables, badges, metric, url, Demo }, i) => {
+          {phases.map(({ no, title: t, duration, body, deliverables, badges, metric, Demo }, i) => {
             const reversed = i % 2 === 1;
             return (
               <div key={no} className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
@@ -153,7 +153,7 @@ export default function Page() {
                 </div>
 
                 <div className={`relative ${reversed ? "md:order-1" : ""}`}>
-                  <DeviceFrame theme="light" url={url}>
+                  <DeviceFrame theme="light" title={t}>
                     <Demo theme="light" />
                   </DeviceFrame>
                   <FloatingMetric
