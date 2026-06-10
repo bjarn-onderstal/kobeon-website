@@ -99,24 +99,6 @@ export default function ServicePage({ service }: { service: Service }) {
         </Section>
       )}
 
-      {/* CTA band */}
-      <section className="bg-purple-deep text-white">
-        <div className="container-x py-16 md:py-20">
-          <p className="text-sm font-semibold uppercase tracking-widest text-white/60">
-            {service.title}
-          </p>
-          <h2 className="h-display mt-3 max-w-2xl text-3xl md:text-4xl">
-            Klaar om te starten?
-          </h2>
-          <p className="mt-4 max-w-xl text-white/75">
-            Plan een gratis Discovery-sessie van 60 minuten. Daarna weet je precies wat er mogelijk is en wat het oplevert.
-          </p>
-          <Link href="/discovery-sessie" className="btn-primary mt-8 inline-flex">
-            Plan een Discovery-sessie
-          </Link>
-        </div>
-      </section>
-
       <FinalCta />
     </>
   );
