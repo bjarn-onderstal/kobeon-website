@@ -646,3 +646,16 @@ export const services: Service[] = [
     relatedProjects: [],
   },
 ];
+
+// Doorverwijs-logica (dienst → sector): welke sectoren leunen op welke dienst.
+// Spiegelt de `relatedServices` op de sector-detailpagina's. ServicePage rendert
+// hieruit pills naar /sectoren/<slug>, met titel uit de `sectors`-array.
+export const serviceToSectors: Record<string, string[]> = {
+  "procesautomatisering": ["sierteelt", "detachering", "semi-publiek", "onderwijs", "kinderopvang"],
+  "agentic-ai": ["detachering", "semi-publiek"],
+  "ai-development": ["semi-publiek", "maakindustrie"],
+  "systeemintegratie": ["sierteelt", "detachering", "semi-publiek", "onderwijs", "maakindustrie"],
+  "app-ontwikkeling": ["sierteelt", "onderwijs", "kinderopvang", "maakindustrie"],
+  "portalen-dashboards": ["sierteelt", "detachering", "onderwijs", "kinderopvang", "maakindustrie"],
+  "legacy-modernisering": ["maakindustrie"],
+};

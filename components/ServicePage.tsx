@@ -3,7 +3,7 @@ import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 import FinalCta from "@/components/sections/FinalCta";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
-import { projects, type Service } from "@/lib/siteConfig";
+import { projects, sectors, serviceToSectors, type Service } from "@/lib/siteConfig";
 
 function CheckIcon() {
   return (
@@ -16,6 +16,8 @@ function CheckIcon() {
 
 export default function ServicePage({ service }: { service: Service }) {
   const relatedCases = projects.filter((p) => service.relatedProjects.includes(p.slug));
+  const relatedSectorSlugs = serviceToSectors[service.slug] ?? [];
+  const relatedSectors = sectors.filter((s) => relatedSectorSlugs.includes(s.slug));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -94,6 +96,28 @@ export default function ServicePage({ service }: { service: Service }) {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {relatedCases.map((p) => (
               <ProjectCard key={p.slug} project={p} />
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {/* Relevant voor deze sectoren (dienst → sector) */}
+      {relatedSectors.length > 0 && (
+        <Section tone="canvas">
+          <h2 className="h-display mb-3 text-2xl md:text-3xl">Relevant voor deze sectoren</h2>
+          <p className="mb-8 max-w-2xl text-muted">
+            Zo zetten we {service.title.toLowerCase()} concreet in per branche.
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {relatedSectors.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/sectoren/${s.slug}`}
+                className="group inline-flex items-center gap-1 rounded-full border border-line bg-white px-4 py-2 text-sm font-medium text-purple shadow-soft transition hover:border-purple"
+              >
+                {s.title}
+                <span className="transition-transform group-hover:translate-x-0.5">→</span>
+              </Link>
             ))}
           </div>
         </Section>
