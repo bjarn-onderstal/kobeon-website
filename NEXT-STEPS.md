@@ -182,6 +182,8 @@ Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pa
 
 - 2026-06-10 — Stap 19 afgerond: Lighthouse (productie-build) gemeten op homepage + dienst- en over-kobeon-pagina. Scores homepage na fix: Performance 97, Accessibility 100, Best Practices 100, SEO 100; subpagina's A/BP/SEO 100, Perf 92–93. Enige a11y-issue was contrast van de klant-logostrip (`text-ink/70` + wrapper `opacity-70` → 3.31:1); opgelost door `text-muted` zonder dubbele opacity (5.1:1). reduced-motion, focus-visible al eerder gedaan.
 
+- 2026-06-10 — Stap 20 (deels): echte teamfoto's ingeladen op /over-kobeon. 8 portretten in `/public/team/`, verkleind naar max 512px (~15–25KB), getoond als ronde avatars via `next/image` met initialen-fallback voor leden zonder foto. Resterend deel van stap 20 (app-screenshots via `screens.config.json` + de ScreenShowcase-laag) staat nog open.
+
 **Nog open / deels:**
 - **Stap 13** — demo-rijen "Wat we bouwen" staan al op de homepage, MÁÁR met 5 rijen i.p.v. 4; de abstracte "Vier oplossingen"-sectie is nog NIET verwijderd en er staat nu ook een extra diensten-bento op de homepage. Nog te doen: terugbrengen naar de 4 taken, de abstracte sectie eruit, "Eén platform: Mendix"-band eronder, homepage-bento heroverwegen.
 - Stap 2, 3, 6, 7, 8, 13, V1, V2 zijn inmiddels alle afgerond — **de homepage is compleet**. Nog open: **19** (Lighthouse-meting), **20** (assets), **21** (deploy, incl. csstype build-fix).

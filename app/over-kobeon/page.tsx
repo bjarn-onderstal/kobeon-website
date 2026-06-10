@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Section from "@/components/Section";
 import FinalCta from "@/components/sections/FinalCta";
 
@@ -33,15 +34,17 @@ const clients = [
   "EPSA",
 ];
 
-const team = [
-  { name: "Bjarn Onderstal", role: "Co-Founder · Mendix Expert · MVP" },
-  { name: "Hunter Koppen", role: "Co-Founder · Mendix Expert · MVP" },
-  { name: "Sjoerd Beljon", role: "Co-Founder · Mendix Expert · MVP" },
-  { name: "Agnes Roolvink", role: "Mendix Expert" },
-  { name: "Daryl Zandvliet", role: "Mendix Expert" },
-  { name: "Frank Schutte", role: "Mendix Expert" },
-  { name: "Cas Boswinkel", role: "Mendix Specialist · AI-lead" },
-  { name: "Robin Broeks", role: "Mendix Specialist" },
+type TeamMember = { name: string; role: string; photo?: string };
+
+const team: TeamMember[] = [
+  { name: "Bjarn Onderstal", role: "Co-Founder · Mendix Expert · MVP", photo: "/team/bjarn.jpg" },
+  { name: "Hunter Koppen", role: "Co-Founder · Mendix Expert · MVP", photo: "/team/hunter.jpg" },
+  { name: "Sjoerd Beljon", role: "Co-Founder · Mendix Expert · MVP", photo: "/team/sjoerd.jpg" },
+  { name: "Agnes Roolvink", role: "Mendix Expert", photo: "/team/agnes.jpeg" },
+  { name: "Daryl Zandvliet", role: "Mendix Expert", photo: "/team/daryl.jpeg" },
+  { name: "Frank Schutte", role: "Mendix Expert", photo: "/team/frank.jpeg" },
+  { name: "Cas Boswinkel", role: "Mendix Specialist · AI-lead", photo: "/team/cas.jpeg" },
+  { name: "Robin Broeks", role: "Mendix Specialist", photo: "/team/robin.jpg" },
 ];
 
 function initials(name: string) {
@@ -125,9 +128,19 @@ export default function Page() {
               key={m.name}
               className="flex items-start gap-4 rounded-2xl border border-line bg-white p-5 shadow-soft"
             >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-purple/10 text-sm font-bold text-purple">
-                {initials(m.name)}
-              </div>
+              {m.photo ? (
+                <Image
+                  src={m.photo}
+                  alt={`Portretfoto van ${m.name}`}
+                  width={112}
+                  height={112}
+                  className="h-14 w-14 shrink-0 rounded-full object-cover"
+                />
+              ) : (
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-purple/10 text-sm font-bold text-purple">
+                  {initials(m.name)}
+                </div>
+              )}
               <div>
                 <p className="font-semibold text-ink">{m.name}</p>
                 <p className="mt-0.5 text-sm text-muted">{m.role}</p>
