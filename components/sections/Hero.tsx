@@ -37,7 +37,7 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <DeviceFrame theme="light" url="app.kobeon.nl">
+          <DeviceFrame theme="light" title="Kobeon · Dashboard">
             <MockDashboard theme="light" />
           </DeviceFrame>
           <FloatingMetric value="6 wkn" label="naar werkende MVP" className="absolute -left-4 -top-4" />

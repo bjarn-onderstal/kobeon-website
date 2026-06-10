@@ -66,7 +66,7 @@ export default function WatWeBouwen() {
       </div>
 
       <div className="mt-16 space-y-20 md:space-y-28">
-        {rows.map(({ tag, title, body, url, metric, Demo }, i) => {
+        {rows.map(({ tag, title, body, metric, Demo }, i) => {
           const reversed = i % 2 === 1;
           return (
             <div key={tag} className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
@@ -86,7 +86,7 @@ export default function WatWeBouwen() {
 
               {/* demo-kolom met zwevend metric-kaartje */}
               <div className={`relative ${reversed ? "md:order-1" : ""}`}>
-                <DeviceFrame theme="light" url={url}>
+                <DeviceFrame theme="light" title={tag}>
                   <Demo theme="light" />
                 </DeviceFrame>
                 <FloatingMetric
