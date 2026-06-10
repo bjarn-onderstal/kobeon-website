@@ -2,7 +2,7 @@
 
 Echte copy om te gebruiken bij **S1** (dienst-detailpagina's) en **S4** (/over-kobeon). Toon: je/jouw, enterprise, voordeel-eerst, geen Nederengels. Waar een hard cijfer/quote ontbreekt: `[in te vullen door Kobeon]` — niets verzinnen. Rechtspraak blijft anoniem.
 
-Gedeelde elementen per dienstpagina: hero (titel + pakkende regel + Discovery-CTA) · intro · "Wat het oplevert" (3 punten) · "Hoe we het bouwen op Mendix" (3–4 punten) · relevante cases (links) · korte FAQ (optioneel) · afsluit-CTA ("Plan een Discovery-sessie · Gratis · 60 minuten").
+Gedeelde elementen per dienstpagina: hero (titel + pakkende regel + Discovery-CTA) · intro · "Wat het oplevert" (3 punten) · "Hoe we het bouwen op Mendix" (3–4 punten) · **"Voorbeelden" (3–4 concrete use-cases — net als op de homepage, zodat bezoekers voelen wat er kan)** · relevante cases (links) · korte FAQ (optioneel) · afsluit-CTA ("Plan een Discovery-sessie · Gratis · 60 minuten").
 
 ---
 
@@ -20,6 +20,11 @@ Gedeelde elementen per dienstpagina: hero (titel + pakkende regel + Discovery-CT
 - Koppelingen met je bestaande systemen (Microsoft Dynamics, SAP, AFAS, Exact) zodat data niet meer wordt overgetypt.
 - Governance en rolgebaseerde toegang standaard ingebouwd.
 - Binnen zes weken een werkende eerste versie; daarna doorontwikkelen.
+**Voorbeelden:**
+- Inkoop- en factuurverwerking met automatische controles en goedkeuring.
+- Order-to-cash: van aanvraag tot levering en facturatie.
+- HR-onboarding: accounts, documenten en taken automatisch klaargezet.
+- Keuringsbeheer (zoals bij BKD): aanvraag, inspectie en certificaat in één flow.
 **Relevante cases:** EPSA (40+ uur/week terug), HomeZero.
 
 ### 2. Agentic AI — `/diensten/agentic-ai`
@@ -33,6 +38,11 @@ Gedeelde elementen per dienstpagina: hero (titel + pakkende regel + Discovery-CT
 - AI-agenten geregisseerd door Mendix, met veilige, rolgebaseerde toegang tot je data en applicaties.
 - Mens-in-de-loop: goedkeuringsstappen waar dat nodig is.
 - Governance, logging en security ingebouwd — klaar voor AVG en de EU AI Act.
+**Voorbeelden:**
+- Kandidaat- of vacaturematching met een voorstel dat een mens goedkeurt.
+- Documenten lezen en verwerken (contracten, aanvragen) en de data wegschrijven.
+- Compliance-checks: toetsen tegen regels en afwijkingen markeren.
+- Klantvragen end-to-end afhandelen, met escalatie naar een mens waar nodig.
 **Relevante cases:** Rechtspraak (anoniem) — AI op jurisprudentie.
 
 ### 3. AI Development — `/diensten/ai-development`
@@ -46,6 +56,11 @@ Gedeelde elementen per dienstpagina: hero (titel + pakkende regel + Discovery-CT
 - Modellen getraind op je eigen data, geïntegreerd in Mendix als beheerde (governed) API.
 - Keuze uit een toonaangevend, open-source of eigen model — vrij te wisselen.
 - Draait in je eigen cloud, on-prem of volledig afgeschermd als regelgeving dat eist.
+**Voorbeelden:**
+- Voorspellend onderhoud: machine-uitval voorspellen vóór het gebeurt.
+- Anomaliedetectie in transacties of productiedata.
+- Risico- of kredietscoring op je eigen historie.
+- Een kennismodel op je eigen documenten (zoals jurisprudentie).
 **Relevante cases:** Rechtspraak (anoniem).
 
 ### 4. Systeemintegratie — `/diensten/systeemintegratie`
@@ -59,6 +74,11 @@ Gedeelde elementen per dienstpagina: hero (titel + pakkende regel + Discovery-CT
 - Out-of-the-box-connectoren voor Microsoft Dynamics, SAP, AFAS, Exact, Salesforce en AWS — plus elke REST/OData-API.
 - Mendix als integratielaag, met monitoring en governance.
 - Gefaseerd, zodat je tijdens de koppeling blijft draaien.
+**Voorbeelden:**
+- ERP, CRM en veldsystemen koppelen tot één bron van waarheid.
+- Agriware, Infor of Metacom ontsluiten richting nieuwe apps en portalen.
+- AFAS/Exact koppelen voor facturatie en HR.
+- Een knowledge graph/ontologie als contextlaag, zodat AI je bedrijf "snapt".
 **Relevante cases:** HomeZero, EPSA.
 
 ### 5. App ontwikkeling — `/diensten/app-ontwikkeling`
@@ -72,6 +92,11 @@ Gedeelde elementen per dienstpagina: hero (titel + pakkende regel + Discovery-CT
 - Web- en mobiele applicaties op Mendix, met security en schaalbaarheid ingebouwd.
 - Eén keer bouwen, overal beschikbaar.
 - Binnen zes weken een werkende MVP.
+**Voorbeelden:**
+- Field-service-app voor monteurs: werkorders, handleidingen, machineseries en onderdelen op aanvraag — ook offline.
+- Mobiele inspectie-/keuringsapp voor in het veld.
+- Planningsapp voor agri of productie (teelt/oogst, capaciteit, personeel).
+- Klant- of medewerkersapp die op je processen is gebouwd.
 **Relevante cases:** Petje af (250K+ kinderen), BKD (mobiele keuring in het veld).
 
 ### 6. Portalen & dashboards — `/diensten/portalen-dashboards`
@@ -85,6 +110,11 @@ Gedeelde elementen per dienstpagina: hero (titel + pakkende regel + Discovery-CT
 - Klant- en medewerkersportalen met rolgebaseerde toegang.
 - Dashboards met live data uit je gekoppelde systemen.
 - Schaalbaar en veilig, AVG-proof.
+**Voorbeelden:**
+- Klant- of leveranciersportaal met zelfservice.
+- Monteur-/field-service-portaal met werkorders, handleidingen en onderdelen.
+- Planningsdashboard (capaciteit, teelt/oogst, productie) met realtime data.
+- KPI-dashboards die live uit je gekoppelde systemen putten.
 **Relevante cases:** Petje af (aanmeldportaal), Golfclub (ledenadministratie).
 
 ### 7. Legacy modernisering — `/diensten/legacy-modernisering`
@@ -98,6 +128,11 @@ Gedeelde elementen per dienstpagina: hero (titel + pakkende regel + Discovery-CT
 - Gefaseerd: nieuwe functionaliteit op Mendix bovenop of naast het oude systeem, stap voor stap overzetten.
 - Integratie met bestaande data, zodat niets verloren gaat.
 - Governance en security ingebouwd.
+**Voorbeelden:**
+- Een verouderd planningssysteem gefaseerd vervangen, zonder stilstand.
+- Een oude werkorder-/veldapplicatie naar een moderne mobiele app.
+- Een Access/Excel-oplossing omzetten naar een schaalbare Mendix-app.
+- Maatwerk-legacy ontsluiten en stap voor stap uitfaseren.
 **Relevante cases:** HomeZero (van papier naar één digitaal systeem).
 
 ### 8. Design & Prototyping — `/diensten/design-prototyping`
@@ -111,6 +146,11 @@ Gedeelde elementen per dienstpagina: hero (titel + pakkende regel + Discovery-CT
 - Rapid prototyping met Figma Make, Lovable en Google Stitch.
 - Ontwerpen vertaald naar toegankelijke Mendix-UI.
 - Onderdeel van elk traject — fase 2 in onze werkwijze.
+**Voorbeelden:**
+- Klikbaar prototype van een planningsapp om met gebruikers te valideren.
+- Een field-service-app eerst testen vóór de bouw.
+- Een portaal-concept om draagvlak te krijgen bij stakeholders.
+- Snel varianten van een schermflow uitproberen.
 **Relevante cases:** onderdeel van elk project (verwijs naar /werkwijze).
 
 ### 9. IT Consultancy — `/diensten/it-consultancy`
@@ -123,6 +163,11 @@ Gedeelde elementen per dienstpagina: hero (titel + pakkende regel + Discovery-CT
 **Hoe we het bouwen op Mendix:**
 - Architectuuradvies, datamodellering en een gefaseerde IT-roadmap.
 - Onafhankelijk en resultaatgericht advies.
+**Voorbeelden:**
+- Een datastructuur/ontologie opzetten als fundament voor AI.
+- Een IT-roadmap richting de agentic enterprise.
+- Advies "bouwen, kopen of koppelen" bij een nieuw systeemlandschap.
+- Architectuurreview van een bestaand Mendix-landschap.
 **Relevante cases:** [in te vullen door Kobeon].
 
 ---
@@ -176,3 +221,98 @@ Stijl = de lichte/gegronde set uit `docs/visual-brief.md` (stijl-anker: realisti
 - **it-consultancy** → whiteboard/scherm met een opgeruimde roadmap/architectuur; rustige meeting-hoek.
 
 Mapping naar `docs/visual-brief.md` (daar heten ze afgekort): proces→procesautomatisering · agent→agentic-ai · aidev→ai-development · integratie→systeemintegratie · app→app-ontwikkeling · portaal→portalen-dashboards · legacy→legacy-modernisering · design→design-prototyping · consultancy→it-consultancy. Hernoem de bestanden naar `svc-<slug>.jpg` zodat ze matchen met `ServiceTile`.
+
+---
+
+## Onze visie — de agentic enterprise (Mendix-pivot)
+Voor /over-kobeon en als kort visie-blok op de homepage. Toon: je/jouw, enterprise, zelfverzekerd.
+
+Software verandert van "schermen die je zelf bedient" naar een **hybride workforce**: je mensen én AI-agenten werken samen. De agent neemt het repeterende en het zware uitzoekwerk over; je mensen beslissen en sturen. Mendix heeft z'n strategie hier vol op gericht — de *agentic enterprise* — en wij bouwen het voor je, op een manier die je kunt vertrouwen.
+
+Wat dat concreet betekent in wat wij leveren:
+- **Context voor AI (knowledge graph / ontologie).** Agenten zijn alleen betrouwbaar als ze je bedrijf begrijpen. We ontsluiten je data over systemen heen in een model dat agenten in bedrijfstaal "snappen" — zonder je datalandschap te vervangen.
+- **Agenten die werk áf maken**, geregisseerd in werkstromen met de mens-in-de-loop waar het moet — van vaste workflows voor gereguleerde processen tot meer autonome agent-samenwerking.
+- **Governance vanaf dag één.** Elke beslissing van een agent is herleidbaar (audit trail), gedrag is toetsbaar, en token-/kostengebruik wordt bewaakt — geen "rogue agents" of budgetverrassingen.
+- **Jij houdt de regie:** je eigen LLM of agent meenemen (bring-your-own), en draaien waar je wilt — cloud, on-prem of volledig afgeschermd (air-gapped) voor maximale IP-bescherming.
+- **Richting intent-based bouwen:** steeds vaker beschrijf je wat je nodig hebt (in taal of een requirements-document) en bouwt het platform mee — wij bewaken kwaliteit, architectuur en governance.
+
+> Bewijs van wat deze aanpak oplevert — *op het Mendix-platform, bij Mendix-klanten (toeschrijven aan Mendix)*: tot 30% snellere ticketafhandeling, tot 95% minder handmatige invoer, 75% minder rekenfouten, en doorlooptijden van 2 maanden terug naar 3 weken. Wij vertalen die aanpak naar jouw situatie.
+
+## Veelgevraagde oplossingen (inspiratie voor bezoekers)
+Naast de negen diensten bouwen we deze oplossing
+---
+
+## Sectoren — voorbeelden/oplossingen per sector (voor de sectorpagina's)
+Voeg per sectorpagina een blok **"Wat we voor jouw sector bouwen"** toe met 3–5 concrete voorbeelden — net als de "Voorbeelden" op de dienstpagina's, zodat bezoekers voelen wat er kan. Planning en field service zitten verweven bij sierteelt en maakindustrie.
+
+### Sierteelt & Horticultuur
+- Teelt- en oogstplanning + arbeidsplanning op piekmomenten (gekoppeld aan Agriware, Infor of Metacom).
+- Mobiele keuring/inspectie in het veld (zoals bij BKD).
+- Supply-chain-/ketenportaal: kweker → veiling → transport → klant, realtime.
+- Field service voor machines: werkorders, handleidingen en onderdelen op aanvraag.
+- AI/WhatsApp voor orders, beschikbaarheid en klantvragen.
+
+### Staffing & Detachering
+- AI-matching van kandidaten op opdrachten (recruiter keurt goed).
+- Consultant-/medewerkersportaal met urenregistratie, documenten en declaraties.
+- DBA-compliance en contract-/onboardingflows geautomatiseerd.
+- Koppeling met AFAS en Nmbrs voor facturatie en payroll.
+
+### Semi-Publiek
+- Zaak-/dossierbeheer en documentstromen met volledig audit-spoor.
+- AI-model op regelgeving of jurisprudentie (zoals bij de Rechtspraak, anoniem).
+- Veilige portalen — BIO/ISO 27001-proof, on-prem of air-gapped waar nodig.
+- Geautomatiseerde compliance-checks en rapportages.
+
+### Onderwijs
+- Aanmeld- en inschrijfportalen die meeschalen bij groei.
+- Administratie-automatisering en rapportage-dashboards.
+- Koppeling met DUO/BRON.
+- AVG-proof beheer van leerlingdata.
+
+### Kinderopvang
+- Ouderportaal met zelfservice (plaatsing, facturen, communicatie).
+- Automatische facturering en incasso.
+- Planning van groepen en personeel.
+- LRK-compliant registratie en GGD-meldingen.
+
+### Maakindustrie
+- Productie- en capaciteitsplanning, gekoppeld aan SAP of Microsoft Dynamics.
+- Field Service Management: monteur-app met werkorders, machineseries, handleidingen en onderdelen op aanvraag — ook offline.
+- Digitale werkorders en mobiele kwaliteitsregistratie op de werkvloer.
+- Supply-chain- en OEE-dashboards met realtime data.
+
+---
+
+## Doorverwijs-logica & interne links (sector ↔ dienst ↔ case)
+Regel: elke **sectorpagina** linkt naar haar 3–4 relevante **diensten** + de bijbehorende **case**; elke **dienstpagina** linkt terug naar de relevante **sectoren** + cases. Goed voor de gebruiker én voor interne links/SEO. Houd de links wederzijds (waar A→B, ook B→A).
+
+### Per sector → diensten + case
+- **Sierteelt & Horticultuur** → App ontwikkeling, Portalen & dashboards, Systeemintegratie, Procesautomatisering · case: BKD (+ FloriusFlowers, binnenkort).
+- **Staffing & Detachering** → Agentic AI (matching), Systeemintegratie (AFAS/Nmbrs), Portalen & dashboards, Procesautomatisering · case: EPSA.
+- **Semi-Publiek** → AI Development, Agentic AI, Procesautomatisering, Systeemintegratie · case: Rechtspraak (anoniem).
+- **Onderwijs** → App ontwikkeling, Portalen & dashboards, Procesautomatisering, Systeemintegratie (DUO/BRON) · case: Petje af.
+- **Kinderopvang** → Portalen & dashboards, Procesautomatisering, App ontwikkeling · case: Petje af.
+- **Maakindustrie** → Systeemintegratie (ERP), App ontwikkeling (field service), Portalen & dashboards (planning/OEE), Legacy modernisering, AI Development (voorspellend onderhoud) · case: [in te vullen].
+
+### Per dienst → sectoren + cases (de omgekeerde links)
+- **Procesautomatisering** → alle sectoren · cases: EPSA, HomeZero, BKD.
+- **Agentic AI** → Staffing, Semi-Publiek · case: Rechtspraak.
+- **AI Development** → Semi-Publiek, Maakindustrie · case: Rechtspraak.
+- **App ontwikkeling** → Sierteelt, Onderwijs, Maakindustrie, Kinderopvang · cases: Petje af, BKD.
+- **Systeemintegratie** → Sierteelt, Staffing, Maakindustrie · cases: HomeZero, EPSA.
+- **Portalen & dashboards** → Onderwijs, Kinderopvang, Sierteelt, Maakindustrie · cases: Petje af, Golfclub.
+- **Legacy modernisering** → Maakindustrie, Semi-Publiek · case: HomeZero.
+- **Design & Prototyping** → alle sectoren (onderdeel van elk traject).
+- **IT Consultancy** → alle sectoren.
+
+### Cases → sector + diensten (voor de case-detailpagina's, S2)
+- **HomeZero** (Energie) → Procesautomatisering, Systeemintegratie, Legacy modernisering.
+- **Petje af** (Onderwijs/Kinderopvang) → Portalen & dashboards, App ontwikkeling, Procesautomatisering.
+- **EPSA** (Professional Services/Staffing) → Procesautomatisering, Systeemintegratie, Portalen & dashboards.
+- **Golfclub** (Sport) → Portalen & dashboards, Procesautomatisering.
+- **BKD** (Horticultuur) → App ontwikkeling, Procesautomatisering.
+- **Rechtspraak** (Semi-Publiek, anoniem) → AI Development, Agentic AI.
+- **FloriusFlowers** (Horticultuur, binnenkort) → Systeemintegratie, Portalen & dashboards.
+
+Implementatie-tip: zet deze relaties als data in `lib/siteConfig.ts` (bv. `relatedServices`/`relatedSectors`/`relatedProjects` per item), dan genereren de "Relevante diensten/sectoren/cases"-blokken zich vanzelf en blijven de links consistent.

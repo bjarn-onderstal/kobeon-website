@@ -130,6 +130,12 @@ Commit + push per logische stap.
   - Animatie volgens V5 (één keer afspelen, dan rust). Let op leesbaarheid op kleine tegels: toon dichtheid maar houd het scherp; op de kleinste formaten een compactere variant.
   Klaar wanneer: de niet-integratie-mocks ogen als gevulde, geloofwaardige app-schermen (sidebar + topbar + realistische content, met diepte), flat-styled en zonder glow; `MockIntegration` ongewijzigd; `npm run build` slaagt.
 
+- [ ] **V7. Sectorpagina's: "Wat we voor jouw sector bouwen"-blok + Sectoren-submenu**
+  - **Voorbeelden-blok per sector:** voeg op elke sectorpagina een blok "Wat we voor jouw sector bouwen" toe met 3–5 concrete voorbeelden (copy: `docs/content-subpaginas.md` § Sectoren — voorbeelden per sector), net als de "Voorbeelden" op de dienstpagina's. Breid `SectorContent`/`SectorPage` uit met een `solutions`/`examples`-veld. Weef planning + field service in bij **sierteelt** en **maakindustrie**.
+  - **Sectoren-submenu (dropdown) in de nav** (`lib/siteConfig.ts` → `nav`): geef het item "Sectoren" `columns` met de 6 sectoren als links naar `/sectoren/<slug>` + een "Alle sectoren" → `/sectoren`, net als het Diensten-megamenu. Nu is "Sectoren" alleen een directe link zonder submenu. Werkt in desktop-dropdown én mobiel menu (`components/Nav.tsx` ondersteunt `columns` al).
+  - **Wederzijdse interne links:** wire `relatedServices` / `relatedSectors` / `relatedProjects` per item volgens `docs/content-subpaginas.md` § Doorverwijs-logica, zodat sector-, dienst- en casepagina's netjes naar elkaar verwijzen (goed voor UX én SEO).
+  Klaar wanneer: elke sectorpagina heeft een voorbeelden-blok; de nav toont een Sectoren-dropdown (desktop + mobiel); de wederzijdse links staan; `npm run build` slaagt.
+
 ### Subpagina's / detailpagina's (S1–S4) — nog te bouwen
 
 > Achtergrond: de overzichtspagina's staan, maar de meeste **detailpagina's ontbreken**. De bento-tegels en het Diensten-megamenu linken nu naar ankers op `/diensten`, en de projectkaarten linken nergens heen. Dit blok voegt volwaardige subpagina's toe. Eén stap per keer; houd je aan CLAUDE.md (licht-eerst, je/jouw, diensten = line-iconen, sectoren = typografisch, geen emoji).
@@ -141,7 +147,7 @@ Commit + push per logische stap.
   - Eén herbruikbaar template `components/ServicePage.tsx` + dynamische route `app/diensten/[slug]/page.tsx` met `generateStaticParams` en `generateMetadata` (unieke title 50–60 / description 150–160 per dienst, v3.4-stijl).
   - Inhoud per pagina (licht, je/jouw, voordeel-eerst): hero (dienstnaam + 1 pakkende regel + Discovery-CTA) · "Wat het oplevert" · "Hoe we het bouwen op Mendix" (3–4 punten met de juiste integraties + governance) · een passende `MiniMock`/`ScreenShowcase`-slot · "Relevante cases" (links naar projecten) · korte FAQ (1–3) · afsluitende CTA.
   - Data: breid `services` in `lib/siteConfig.ts` uit met detailvelden (`intro`, `watJeKrijgt[]`, `aanpak[]`, `relatedProjects[]`, `faq[]`) — generiek/placeholder waar nog geen echte content is.
-  - **Copy:** gebruik de uitgeschreven teksten per dienst uit `docs/content-subpaginas.md`.
+  - **Copy:** gebruik de uitgeschreven teksten per dienst uit `docs/content-subpaginas.md`, én voeg per pagina het blok "Voorbeelden / Veelgevraagd" toe (§ Voorbeelden & use-cases per dienst) voor meer inhoud en dynamiek — minder statisch.
   - SEO/links: `Service` + `BreadcrumbList` JSON-LD per pagina; 9 routes toevoegen aan `app/sitemap.ts`; bento-tegels én het Diensten-megamenu naar `/diensten/[slug]` laten linken (anker mag als secundair blijven).
   Klaar wanneer: 9 dienstpagina's bestaan, consistent in stijl, in de sitemap, `npm run build` slaagt.
 
@@ -166,6 +172,12 @@ Commit + push per logische stap.
   - SEO: metadata + `BreadcrumbList`-schema; route in sitemap.
   Klaar wanneer: /over-kobeon gevuld en consistent, in de sitemap, `npm run build` slaagt.
 
+- [ ] **S5. Voorbeeldoplossingen + visie (Planning, Field Service, agentic enterprise)**
+  - **Voorbeeldoplossingen-strip** (licht, op /diensten en/of homepage) met o.a. **Planningsoplossingen** en **Field Service Management** — zodat bezoekers zien dat we dit ook doen. Copy: `docs/content-subpaginas.md` § Veelgevraagde oplossingen. (Kunnen later eigen detailpagina's worden.)
+  - **Dienst-detailpagina's (S1) verrijken** met een blok "Voorbeelden / Veelgevraagd" per dienst (zie `docs/content-subpaginas.md` § Voorbeelden & use-cases) — meer inhoud en dynamiek, minder statisch. Weef planning + field service in waar relevant (App ontwikkeling, Portalen & dashboards, Systeemintegratie, Procesautomatisering).
+  - **Visie "de agentic enterprise"** (zie `docs/content-subpaginas.md` § Onze visie) verwerken als kort blok op /over-kobeon en een korte visie-sectie/regel op de homepage. Mendix-metrics toeschrijven aan Mendix.
+  Klaar wanneer: planning + field service zichtbaar als voorbeeldoplossingen; dienstpagina's hebben use-case-blokken; visie staat op /over-kobeon (+ homepage); `npm run build` slaagt.
+
 ### Afronden (stap 18–21)
 
 - [x] **18. SEO + schema** — per-pagina title/meta/H1 (v3.4-teksten), JSON-LD (FAQPage/Service/BreadcrumbList/JobPosting), sitemap bijwerken, OG-images, alt-teksten.
@@ -178,6 +190,8 @@ Commit + push per logische stap.
 ## VOORTGANGSLOG
 - 2026-05-31 — Stap 0 afgerond: foundation opgeleverd (homepage-basis + componenten + SEO-basis).
 - 2026-06-01 — Bouwplan uitgebreid met ontbrekende subpagina's: S1 (9 dienst-detailpagina's), S2 (7 case-detailpagina's), S3 (optioneel /contact + Insights), S4 (/over-kobeon vullen — staat nu leeg). Plus bug V3: nav onleesbaar (wit-op-wit) op pagina's zonder donkere hero. Content-regel toegevoegd (placeholders markeren, claims niet verzinnen). Alleen omschreven, nog niet gebouwd — oppakken bij volgende bouwopdracht.
+- 2026-06-01 — Per-dienst "Voorbeelden"-blokken inline gezet (9 diensten) + per-sector voorbeelden toegevoegd in `docs/content-subpaginas.md`. Stap V7 toegevoegd: sector-voorbeeldenblok + Sectoren-submenu (dropdown) in de nav. Plus § Doorverwijs-logica (sector ↔ dienst ↔ case) voor wederzijdse interne links.
+- 2026-06-01 — Content verdiept in `docs/content-subpaginas.md`: visie "de agentic enterprise" (Mendix-pivot), twee voorbeeldoplossingen (Planningsoplossingen + Field Service Management, incl. machinehandleidingen/series/onderdelen op aanvraag) en "Voorbeelden & use-cases per dienst" voor meer dynamiek. Stap S5 toegevoegd; S1 verwijst naar de use-case-blokken. Propositie-referentie ook bijgewerkt.
 - 2026-06-01 — Echte copy toegevoegd in `docs/content-subpaginas.md`: alle 9 dienst-detailpagina's (hero, intro, "wat het oplevert", "hoe we het bouwen op Mendix", relevante cases) + de /over-kobeon-tekst (kernverhaal, credentials, klanten, team). S1 en S4 verwijzen er nu naar. Ontbrekende harde cijfers/quotes als `[in te vullen]` gemarkeerd.
 - 2026-05-31 — Bouwplan verrijkt: volledige homepage-opbouw toegevoegd (4-taken-sectie "Wat we bouwen" als stap 13, plus tempo/proces, introductie, Mendix-voordeel, onderzoek-strook, projecten/sectoren/testimonials, quickscan-teaser).
 
