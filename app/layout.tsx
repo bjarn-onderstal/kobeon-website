@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     template: "%s | Kobeon",
   },
   description: site.description,
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Mendix Partner Nederland | Enterprise software & AI op maat – Kobeon",
     description: site.description,

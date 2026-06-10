@@ -6,7 +6,7 @@ import { services } from "@/lib/siteConfig";
 
 const title = "Diensten — negen manieren om te digitaliseren";
 const description =
-  "De negen diensten van Kobeon op Mendix: procesautomatisering, agentic AI, AI development, app-ontwikkeling, systeemintegratie, portalen, legacy-modernisering, design en IT-consultancy.";
+  "Negen diensten op Mendix — van procesautomatisering en agentic AI tot systeemintegratie en portalen. Binnen zes weken een werkende versie die met je meegroeit.";
 
 export const metadata: Metadata = {
   title,
