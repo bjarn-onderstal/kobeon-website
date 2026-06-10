@@ -133,7 +133,7 @@ Dit bestand is de **single source of truth** voor de planning en staat op GitHub
 ### Afronden (stap 18–21)
 
 - [x] **18. SEO + schema** — per-pagina title/meta/H1 (v3.4-teksten), JSON-LD (FAQPage/Service/BreadcrumbList/JobPosting), sitemap bijwerken, OG-images, alt-teksten.
-- [ ] **19. Toegankelijkheid & performance** — Lighthouse ≥ 90 (SEO + a11y), contrast, focus, lazy-load, reduced-motion.
+- [x] **19. Toegankelijkheid & performance** — Lighthouse ≥ 90 (SEO + a11y), contrast, focus, lazy-load, reduced-motion.
 - [ ] **20. Assets inladen** — Nano Banana → `/public/visuals`; screenshots → `/public/screens` + `screens.config.json`. Tot dan blijven de mocks staan.
 - [ ] **21. Deploy naar Vercel** — `site.url` goedzetten, deploy, sitemap/robots/metadata in productie checken.
 
@@ -179,6 +179,8 @@ Onderstaande was al gebouwd vóór deze planherziening (commits op het schone pa
 - 2026-06-02 — Verfijning V3 afgerond: nav-bug opgelost via `usePathname()` in `components/Nav.tsx`; transparante nav alleen op pagina's met donkere hero (`/`, `/sectoren/*`, `/werkwijze`, `/werken-bij`, `/discovery-sessie`, `/quickscan`), alle overige pagina's krijgen standaard witte balk met `text-ink`.
 
 - 2026-06-02 — S2 afgerond: 7 case-detailpagina's via `app/projecten/[slug]/page.tsx` + herbruikbaar `ProjectPage` template. Detailvelden (challenge, approach, result, relatedServices) toegevoegd aan alle projecten in `siteConfig.ts`. ProjectCard linkt nu naar `/projecten/[slug]`. Sitemap uitgebreid. Build slaagt, alle 7 routes gegenereerd.
+
+- 2026-06-10 — Stap 19 afgerond: Lighthouse (productie-build) gemeten op homepage + dienst- en over-kobeon-pagina. Scores homepage na fix: Performance 97, Accessibility 100, Best Practices 100, SEO 100; subpagina's A/BP/SEO 100, Perf 92–93. Enige a11y-issue was contrast van de klant-logostrip (`text-ink/70` + wrapper `opacity-70` → 3.31:1); opgelost door `text-muted` zonder dubbele opacity (5.1:1). reduced-motion, focus-visible al eerder gedaan.
 
 **Nog open / deels:**
 - **Stap 13** — demo-rijen "Wat we bouwen" staan al op de homepage, MÁÁR met 5 rijen i.p.v. 4; de abstracte "Vier oplossingen"-sectie is nog NIET verwijderd en er staat nu ook een extra diensten-bento op de homepage. Nog te doen: terugbrengen naar de 4 taken, de abstracte sectie eruit, "Eén platform: Mendix"-band eronder, homepage-bento heroverwegen.

@@ -9,9 +9,9 @@ export default function LogoStrip() {
           <span className="font-semibold text-ink">Zilveren Kruis</span> en de{" "}
           <span className="font-semibold text-ink">Rechtspraak</span>, ook voor groeiende organisaties die dezelfde kwaliteit eisen.
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-70">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {clients.map((c) => (
-            <span key={c} className="text-base font-semibold tracking-tight text-ink/70">{c}</span>
+            <span key={c} className="text-base font-semibold tracking-tight text-muted">{c}</span>
           ))}
         </div>
       </div>
