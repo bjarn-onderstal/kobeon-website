@@ -7,6 +7,7 @@ import HoeWeWerken from "@/components/sections/HoeWeWerken";
 import DienstenBento from "@/components/sections/DienstenBento";
 import MendixVoordeel from "@/components/sections/MendixVoordeel";
 import ModellenDataCloud from "@/components/sections/ModellenDataCloud";
+import VisieAgentic from "@/components/sections/VisieAgentic";
 import Onderzoek from "@/components/sections/Onderzoek";
 import Projecten from "@/components/sections/Projecten";
 import SectorenSpotlight from "@/components/sections/SectorenSpotlight";
@@ -27,6 +28,7 @@ export default function Home() {
       <DienstenBento />
       <MendixVoordeel />
       <ModellenDataCloud />
+      <VisieAgentic variant="compact" />
       <Onderzoek />
       <Projecten />
       <SectorenSpotlight />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import Section from "@/components/Section";
+import VisieAgentic from "@/components/sections/VisieAgentic";
 import FinalCta from "@/components/sections/FinalCta";
 
 const title = "Over Kobeon — enterprise-software op Mendix";
@@ -115,6 +116,9 @@ export default function Page() {
           ))}
         </div>
       </Section>
+
+      {/* Onze visie — de agentic enterprise */}
+      <VisieAgentic variant="full" />
 
       {/* Team */}
       <Section tone="purplebg">
