@@ -136,6 +136,23 @@ Commit + push per logische stap.
   - **Wederzijdse interne links:** wire `relatedServices` / `relatedSectors` / `relatedProjects` per item volgens `docs/content-subpaginas.md` § Doorverwijs-logica, zodat sector-, dienst- en casepagina's netjes naar elkaar verwijzen (goed voor UX én SEO).
   Klaar wanneer: elke sectorpagina heeft een voorbeelden-blok; de nav toont een Sectoren-dropdown (desktop + mobiel); de wederzijdse links staan; `npm run build` slaagt.
 
+- [x] **V8. Mini-mock op élke diensten-tegel (niet alleen op proces & portalen)**
+  Nu hebben alleen Procesautomatisering (workflow) en Portalen & dashboards (dashboard) een visueel voorbeeld in de tegel; de andere 7 tonen alleen een icoon. Geef **elke** dienst een eigen lichte `MiniMock`.
+  - Zet `mock` op alle 9 services in `lib/siteConfig.ts` met een passende `kind`:
+    - procesautomatisering → `workflow` · portalen-dashboards → `dashboard` (bestaand)
+    - agentic-ai → `agent` (chat/agent-paneel met taakchips + "mens keurt goed"-vinkje)
+    - ai-development → `training` (dalende curve + accuraat-getal dat optikt)
+    - systeemintegratie → `integration` (centrale node + omliggende systemen, lijnen)
+    - app-ontwikkeling → `app` (telefoon/app-scherm met lijstjes)
+    - legacy-modernisering → `legacy` (oud scherm → nieuw scherm, pijl/overgang)
+    - design-prototyping → `design` (wireframe-blokjes → gevulde UI)
+    - it-consultancy → `roadmap` (stappen/architectuur met knooppunten)
+  - Breid `components/MiniMock.tsx` uit met deze nieuwe `kind`-varianten — licht, flat, concrete NL-content, geen glow, in de stijl van de bestaande mini-mocks (volgt V5/V6: één keer afspelen of statisch, geen eindeloze loop).
+  - Let op de kleine tegels (col-span-1, ~190px): houd de mock compact en scanbaar (eventueel vereenvoudigde variant); grote feature-tegels mogen rijker.
+  - **Logo linksboven in de nav (twee-staten):** plaats het Kobeon-logo links in de nav, gelinkt naar `/`. Gebruik het **witte** logo wanneer de nav transparant over een donkere hero ligt, en het **gradient (teal→paars)** logo zodra de nav wit/frosted is (gescrolld) en op lichte pagina's; donkere footer = wit logo. Zet de aangeleverde bestanden in `/public` (bv. `logo-white.svg` + `logo-gradient.svg`) en laat `Nav.tsx` wisselen op de bestaande `frosted`-state. (Paars/teal/charcoal-varianten zijn reserve.)
+  - **Body-teksten dienstpagina's (S1):** vervang de te korte intro's door de **Uitgebreide bodyteksten per dienst** uit `docs/content-subpaginas.md` (2 alinea's probleem→aanpak + 3 pijlers), bovenop de bestaande "Wat het oplevert"/"Voorbeelden"/cases.
+  Klaar wanneer: alle 9 diensten-tegels tonen een eigen mini-mock; het logo staat linksboven (juiste variant per nav-staat); de dienstpagina's hebben de uitgebreide body; `npm run build` slaagt.
+
 ### Subpagina's / detailpagina's (S1–S4) — nog te bouwen
 
 > Achtergrond: de overzichtspagina's staan, maar de meeste **detailpagina's ontbreken**. De bento-tegels en het Diensten-megamenu linken nu naar ankers op `/diensten`, en de projectkaarten linken nergens heen. Dit blok voegt volwaardige subpagina's toe. Eén stap per keer; houd je aan CLAUDE.md (licht-eerst, je/jouw, diensten = line-iconen, sectoren = typografisch, geen emoji).
@@ -147,7 +164,7 @@ Commit + push per logische stap.
   - Eén herbruikbaar template `components/ServicePage.tsx` + dynamische route `app/diensten/[slug]/page.tsx` met `generateStaticParams` en `generateMetadata` (unieke title 50–60 / description 150–160 per dienst, v3.4-stijl).
   - Inhoud per pagina (licht, je/jouw, voordeel-eerst): hero (dienstnaam + 1 pakkende regel + Discovery-CTA) · "Wat het oplevert" · "Hoe we het bouwen op Mendix" (3–4 punten met de juiste integraties + governance) · een passende `MiniMock`/`ScreenShowcase`-slot · "Relevante cases" (links naar projecten) · korte FAQ (1–3) · afsluitende CTA.
   - Data: breid `services` in `lib/siteConfig.ts` uit met detailvelden (`intro`, `watJeKrijgt[]`, `aanpak[]`, `relatedProjects[]`, `faq[]`) — generiek/placeholder waar nog geen echte content is.
-  - **Copy:** gebruik de uitgeschreven teksten per dienst uit `docs/content-subpaginas.md`, én voeg per pagina het blok "Voorbeelden / Veelgevraagd" toe (§ Voorbeelden & use-cases per dienst) voor meer inhoud en dynamiek — minder statisch.
+  - **Copy:** gebruik per dienst de **Uitgebreide bodyteksten** (§ Uitgebreide bodyteksten per dienst) als hoofdtekst — 2 alinea's probleem→aanpak + 3 pijlers — plus het "Voorbeelden"-blok, de hero-regel en relevante cases uit `docs/content-subpaginas.md`. Zo krijgt elke pagina body en is 'ie niet meer te kort.
   - SEO/links: `Service` + `BreadcrumbList` JSON-LD per pagina; 9 routes toevoegen aan `app/sitemap.ts`; bento-tegels én het Diensten-megamenu naar `/diensten/[slug]` laten linken (anker mag als secundair blijven).
   Klaar wanneer: 9 dienstpagina's bestaan, consistent in stijl, in de sitemap, `npm run build` slaagt.
 
@@ -188,8 +205,10 @@ Commit + push per logische stap.
 ---
 
 ## VOORTGANGSLOG
+- 2026-06-11 — V8 afgerond: (1) elke diensten-tegel een eigen mini-mock — `ProjectKind` uitgebreid met agent/training/integration/app/legacy/design/roadmap, 7 nieuwe `MiniMock`-varianten, `serviceMock`-map + `ServiceTile` valt erop terug; (2) merk-logo (venn-mark) linksboven in de nav, twee-staten (wit op donkere hero, gradient op licht/frosted), SVG-bestanden in `/public` (logo-white/gradient + teal/purple/charcoal als reserve); (3) uitgebreide bodyteksten per dienst (2 alinea's + 3 pijlers) uit `docs/content-subpaginas.md` via `serviceBodies`-map in `ServicePage`. Build slaagt; alle dienst-routes 200.
 - 2026-05-31 — Stap 0 afgerond: foundation opgeleverd (homepage-basis + componenten + SEO-basis).
 - 2026-06-01 — Bouwplan uitgebreid met ontbrekende subpagina's: S1 (9 dienst-detailpagina's), S2 (7 case-detailpagina's), S3 (optioneel /contact + Insights), S4 (/over-kobeon vullen — staat nu leeg). Plus bug V3: nav onleesbaar (wit-op-wit) op pagina's zonder donkere hero. Content-regel toegevoegd (placeholders markeren, claims niet verzinnen). Alleen omschreven, nog niet gebouwd — oppakken bij volgende bouwopdracht.
+- 2026-06-01 — Stap V8 toegevoegd/uitgebreid: elke diensten-tegel een eigen mini-mock; + logo linksboven in de nav (twee-staten: wit op donker, gradient op licht); + uitgebreide bodyteksten per dienst (§ in content-subpaginas) zodat de detailpagina's meer body krijgen.
 - 2026-06-01 — Per-dienst "Voorbeelden"-blokken inline gezet (9 diensten) + per-sector voorbeelden toegevoegd in `docs/content-subpaginas.md`. Stap V7 toegevoegd: sector-voorbeeldenblok + Sectoren-submenu (dropdown) in de nav. Plus § Doorverwijs-logica (sector ↔ dienst ↔ case) voor wederzijdse interne links.
 - 2026-06-01 — Content verdiept in `docs/content-subpaginas.md`: visie "de agentic enterprise" (Mendix-pivot), twee voorbeeldoplossingen (Planningsoplossingen + Field Service Management, incl. machinehandleidingen/series/onderdelen op aanvraag) en "Voorbeelden & use-cases per dienst" voor meer dynamiek. Stap S5 toegevoegd; S1 verwijst naar de use-case-blokken. Propositie-referentie ook bijgewerkt.
 - 2026-06-01 — Echte copy toegevoegd in `docs/content-subpaginas.md`: alle 9 dienst-detailpagina's (hero, intro, "wat het oplevert", "hoe we het bouwen op Mendix", relevante cases) + de /over-kobeon-tekst (kernverhaal, credentials, klanten, team). S1 en S4 verwijzen er nu naar. Ontbrekende harde cijfers/quotes als `[in te vullen]` gemarkeerd.

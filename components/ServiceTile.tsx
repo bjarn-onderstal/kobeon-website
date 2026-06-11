@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import type { Service } from "@/lib/siteConfig";
+import { serviceMock, type Service } from "@/lib/siteConfig";
 import Icon from "@/components/Icon";
 import MiniMock from "@/components/MiniMock";
 
@@ -45,6 +45,8 @@ function TileBackdrop({ slug, wash }: { slug: string; wash: string }) {
 export default function ServiceTile({ service, index }: { service: Service; index: number }) {
   const { slug, title, desc, accent, span, mock } = service;
   const a = accentMap[accent];
+  // V8 — elke tegel toont een mini-mock; val terug op de centrale map per slug.
+  const mockKind = mock ?? serviceMock[slug];
   return (
     <motion.div
       id={slug}
@@ -58,9 +60,9 @@ export default function ServiceTile({ service, index }: { service: Service; inde
 
       {/* Inhoud boven de achtergrondlaag. */}
       <div className="relative z-10 flex flex-1 flex-col">
-        {mock ? (
+        {mockKind ? (
           <div className="mb-5 flex-1 rounded-xl border border-line bg-canvas/90 p-4 backdrop-blur-[1px]">
-            <MiniMock kind={mock} />
+            <MiniMock kind={mockKind} />
           </div>
         ) : (
           <span className={`mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl ${a.tint}`}>

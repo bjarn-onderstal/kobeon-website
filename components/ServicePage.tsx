@@ -3,7 +3,7 @@ import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 import FinalCta from "@/components/sections/FinalCta";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
-import { projects, sectors, serviceToSectors, type Service } from "@/lib/siteConfig";
+import { projects, sectors, serviceToSectors, serviceBodies, type Service } from "@/lib/siteConfig";
 
 function CheckIcon() {
   return (
@@ -18,6 +18,7 @@ export default function ServicePage({ service }: { service: Service }) {
   const relatedCases = projects.filter((p) => service.relatedProjects.includes(p.slug));
   const relatedSectorSlugs = serviceToSectors[service.slug] ?? [];
   const relatedSectors = sectors.filter((s) => relatedSectorSlugs.includes(s.slug));
+  const body = serviceBodies[service.slug];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -47,7 +48,25 @@ export default function ServicePage({ service }: { service: Service }) {
           Diensten
         </p>
         <h1 className="h-display max-w-3xl text-4xl md:text-5xl">{service.heroLine}</h1>
-        <p className="mt-6 max-w-2xl text-lg text-muted">{service.intro}</p>
+        {body ? (
+          <div className="mt-6 max-w-2xl space-y-4">
+            {body.paras.map((p, i) => (
+              <p key={i} className={`leading-relaxed ${i === 0 ? "text-lg text-ink" : "text-base text-muted"}`}>{p}</p>
+            ))}
+          </div>
+        ) : (
+          <p className="mt-6 max-w-2xl text-lg text-muted">{service.intro}</p>
+        )}
+        {body && (
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {body.pijlers.map((p) => (
+              <div key={p.t} className="rounded-2xl border border-line bg-white p-5 shadow-soft">
+                <p className="font-serif text-base text-ink">{p.t}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted">{p.b}</p>
+              </div>
+            ))}
+          </div>
+        )}
         <div className="mt-8 flex flex-wrap gap-4">
           <Link href="/discovery-sessie" className="btn-primary">
             Plan een Discovery-sessie

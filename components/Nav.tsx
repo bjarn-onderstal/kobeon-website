@@ -47,8 +47,23 @@ export default function Nav() {
       }`}
     >
       <nav className="container-x flex h-16 items-center justify-between">
-        <Link href="/" onClick={close} className={`text-xl font-bold ${!darkHero || frosted ? "text-ink" : "text-white"}`}>
-          Kobeon
+        <Link href="/" onClick={close} className="flex items-center gap-2" aria-label="Kobeon — naar home">
+          {/* eslint-disable-next-line @next/next/no-img-element -- merklogo (SVG), twee-staten */}
+          <img
+            src={darkHero && !frosted ? "/logo-white.svg" : "/logo-gradient.svg"}
+            alt=""
+            aria-hidden
+            className="h-7 w-auto"
+          />
+          <span
+            className={`text-lg font-semibold uppercase tracking-[0.18em] ${
+              darkHero && !frosted
+                ? "text-white"
+                : "bg-gradient-to-r from-teal to-purple bg-clip-text text-transparent"
+            }`}
+          >
+            Kobeon
+          </span>
         </Link>
 
         {/* desktop */}

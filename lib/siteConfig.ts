@@ -119,7 +119,9 @@ export const faqs = [
 // Klantcases (homepage-sectie + /projecten). `kind` stuurt de mini-mockup,
 // `filter` de filterpills, `accent` de kleur van het resultaatcijfer.
 export type ProjectKind =
-  | "dashboard" | "portal" | "workflow" | "members" | "inspection" | "search" | "supply";
+  | "dashboard" | "portal" | "workflow" | "members" | "inspection" | "search" | "supply"
+  // V8 — extra dienst-tegel-mocks
+  | "agent" | "training" | "integration" | "app" | "legacy" | "design" | "roadmap";
 
 export type Project = {
   slug: string;
@@ -658,4 +660,125 @@ export const serviceToSectors: Record<string, string[]> = {
   "app-ontwikkeling": ["sierteelt", "onderwijs", "kinderopvang", "maakindustrie"],
   "portalen-dashboards": ["sierteelt", "detachering", "onderwijs", "kinderopvang", "maakindustrie"],
   "legacy-modernisering": ["maakindustrie"],
+};
+
+// V8 — elke dienst-tegel een eigen mini-mock. ServiceTile gebruikt deze map
+// (slug → kind), zodat álle 9 tegels een visueel voorbeeld tonen i.p.v. alleen
+// een icoon. De varianten staan in components/MiniMock.tsx.
+export const serviceMock: Record<string, ProjectKind> = {
+  "procesautomatisering": "workflow",
+  "portalen-dashboards": "dashboard",
+  "agentic-ai": "agent",
+  "ai-development": "training",
+  "systeemintegratie": "integration",
+  "app-ontwikkeling": "app",
+  "legacy-modernisering": "legacy",
+  "design-prototyping": "design",
+  "it-consultancy": "roadmap",
+};
+
+// V8 — uitgebreide bodyteksten per dienst (2 alinea's probleem→aanpak + 3 pijlers).
+// Bron: docs/content-subpaginas.md § "Uitgebreide bodyteksten per dienst".
+// ServicePage rendert dit als hoofdtekst, bovenop wat-het-oplevert/voorbeelden/cases.
+export type ServiceBody = { paras: string[]; pijlers: { t: string; b: string }[] };
+export const serviceBodies: Record<string, ServiceBody> = {
+  "procesautomatisering": {
+    paras: [
+      "Handmatig overtypen, papieren goedkeuringen en losse Excel-lijstjes kosten je team elke dag tijd — en introduceren fouten die je vaak pas later ontdekt. Naarmate je groeit, lopen die processen vast en wordt het overzicht kleiner in plaats van groter.",
+      "Wij brengen je proces in kaart en bouwen het na als één werkstroom op Mendix: aanvragen, controles, goedkeuringen en verwerking lopen automatisch, met de juiste mensen op de juiste momenten. Repetitief én cognitief werk (beoordelen, classificeren, samenvatten) nemen we uit handen — met een volledig audit-spoor, zodat altijd herleidbaar is wat er is gebeurd en waarom.",
+    ],
+    pijlers: [
+      { t: "Minder handwerk", b: "je mensen houden tijd over voor het werk dat telt." },
+      { t: "Kortere doorlooptijd", b: "van dagen naar uren." },
+      { t: "Volledig auditeerbaar", b: "elke stap traceerbaar, klaar voor compliance." },
+    ],
+  },
+  "agentic-ai": {
+    paras: [
+      "Een chatbot beantwoordt vragen, maar maakt geen werk áf. Het echte werk — matchen, controleren, documenten verwerken, communiceren — blijft liggen of kost je mensen uren per dag.",
+      "Met agentic AI bouwen we AI-agenten die hele taken zelfstandig uitvoeren, binnen jouw bedrijfsregels en met veilige, rolgebaseerde toegang tot je systemen. Een mens keurt goed waar dat moet; de rest gaat vanzelf. Alles geregisseerd door Mendix, met logging en governance ingebouwd — geen black box, maar een werkstroom die je kunt vertrouwen en bijsturen.",
+    ],
+    pijlers: [
+      { t: "Werk dat áf is", b: "geen slim antwoord, maar een afgeronde taak." },
+      { t: "Mens in de loop", b: "goedkeuren en bijsturen waar het telt." },
+      { t: "Volledig herleidbaar", b: "elke actie gelogd, klaar voor AVG en de EU AI Act." },
+    ],
+  },
+  "ai-development": {
+    paras: [
+      "Generieke AI-modellen kennen jouw vak niet. Voor de beslissingen die er echt toe doen — voorspellen, detecteren, scoren — heb je modellen nodig die je eigen data en context begrijpen.",
+      "Wij trainen modellen op je eigen bedrijfsdata en zetten ze in productie als een beheerde, controleerbare service binnen je Mendix-applicaties. Je houdt de data én de regie: kies een toonaangevend, open-source of eigen model, en draai het in je eigen cloud, on-prem of volledig afgeschermd. We monitoren de prestaties, zodat het model accuraat blijft — niet alleen op de lanceerdag.",
+    ],
+    pijlers: [
+      { t: "Getraind op jouw data", b: "voorspellingen die kloppen met de praktijk." },
+      { t: "Jij houdt de regie", b: "je data blijft van jou, model vrij te kiezen." },
+      { t: "Blijft presteren", b: "gemonitord en bijgestuurd in productie." },
+    ],
+  },
+  "app-ontwikkeling": {
+    paras: [
+      "Standaardpakketten passen zelden op hoe jij werkt, en maatwerk in high-code is traag en duur. Je medewerkers en klanten verdienen software die hun werk makkelijker maakt — op kantoor én in het veld.",
+      "Op Mendix bouwen we web- en mobiele applicaties die exact aansluiten op je processen, met security, schaalbaarheid en governance standaard ingebouwd. Eén keer bouwen, overal beschikbaar — van een desktop-app tot een offline-app voor de monteur. Binnen zes weken draait je eerste werkende versie, daarna breiden we uit op basis van echt gebruik.",
+    ],
+    pijlers: [
+      { t: "Past op je proces", b: "geen concessies aan standaardsoftware." },
+      { t: "Web én mobiel", b: "werkt op elk apparaat, ook offline in het veld." },
+      { t: "Enterprise-kwaliteit", b: "schaalt van tien tot honderdduizenden gebruikers." },
+    ],
+  },
+  "systeemintegratie": {
+    paras: [
+      "Losse pakketten — ERP, CRM, boekhouding, vaksystemen — die niet met elkaar praten kosten tijd en veroorzaken fouten. Je schakelt constant tussen applicaties en typt dezelfde gegevens dubbel in, met een verhoogd risico op fouten en een gebrek aan overzicht.",
+      "Wij verbinden je systemen tot één geheel, zodat data automatisch tussen applicaties stroomt en je één bron van waarheid hebt. Mendix koppelt out-of-the-box met Microsoft Dynamics, SAP, AFAS, Exact, Salesforce en AWS, plus elke REST/OData-API — en waar een systeem geen nette koppeling heeft, lossen we dat op. Vaak is de grootste winst juist het verbinden van silo's die nu niet samenwerken, zonder dat je een werkend systeem hoeft te vervangen.",
+    ],
+    pijlers: [
+      { t: "Naadloze koppeling", b: "al je software werkt samen, geen geschakel meer." },
+      { t: "Minder fouten", b: "geen dubbele invoer, hogere datakwaliteit." },
+      { t: "Realtime data", b: "beslissingen op actuele, betrouwbare gegevens." },
+    ],
+  },
+  "portalen-dashboards": {
+    paras: [
+      "Telefoontjes, mailtjes en uitdraaien om iemand op de hoogte te houden kosten je team tijd en je klanten geduld. En zelf mis je het overzicht omdat de informatie verspreid zit.",
+      "Wij bouwen portalen waarin je klanten, leden of medewerkers zelf hun zaken regelen, en dashboards die je realtime inzicht geven uit je gekoppelde systemen. Rolgebaseerde toegang en AVG standaard ingebouwd. Van een ouderportaal of leveranciersportaal tot een monteur-portaal met werkorders, handleidingen en onderdelen.",
+    ],
+    pijlers: [
+      { t: "Zelfservice", b: "minder telefoon en mail; gebruikers regelen het zelf." },
+      { t: "Realtime inzicht", b: "alles actueel, in één overzicht." },
+      { t: "Veilig & AVG-proof", b: "rolgebaseerde toegang standaard." },
+    ],
+  },
+  "legacy-modernisering": {
+    paras: [
+      "Een verouderd systeem dat niemand meer durft aan te raken remt je af: hoge beheerkosten, afhankelijkheid van schaarse kennis en geen ruimte om mee te bewegen. Tegelijk voelt alles-in-één-keer vervangen te riskant.",
+      "Wij moderniseren gefaseerd. We bouwen nieuwe functionaliteit op Mendix bovenop of naast het oude systeem, koppelen de bestaande data en zetten stap voor stap over — zonder stilstand. Zo houd je continuïteit terwijl je naar een platform gaat dat veilig, schaalbaar en klaar voor de toekomst is.",
+    ],
+    pijlers: [
+      { t: "Geen big bang", b: "je blijft draaien tijdens de overgang." },
+      { t: "Behoud van data", b: "bestaande gegevens gaan mee, niets verloren." },
+      { t: "Klaar voor de toekomst", b: "lagere beheerlast, ruimte om te groeien." },
+    ],
+  },
+  "design-prototyping": {
+    paras: [
+      "De duurste fout is software bouwen die net niet doet wat gebruikers nodig hebben. Dat voorkom je door eerst te zien en te testen voordat er één regel gebouwd wordt.",
+      "Wij maken in dagen een klikbaar prototype — met Figma Make, Lovable en Google Stitch — zodat je het eindresultaat ervaart en valideert met je gebruikers vóór de bouw. Daarna vertalen we het ontwerp naar toegankelijke Mendix-UI. Het is fase 2 in onze werkwijze en bespaart later tijd, geld en verrassingen.",
+    ],
+    pijlers: [
+      { t: "Zien vóór bouwen", b: "je weet zeker dat we het juiste maken." },
+      { t: "Snel valideren", b: "toetsen met echte gebruikers in dagen." },
+      { t: "Draagvlak", b: "stakeholders zien en voelen het resultaat vooraf." },
+    ],
+  },
+  "it-consultancy": {
+    paras: [
+      "Niet elke vraag begint bij bouwen. Soms heb je eerst richting nodig: welke data, welke architectuur, bouwen-kopen-of-koppelen, en hoe je stap voor stap bij de agentic enterprise komt.",
+      "Wij adviseren onafhankelijk en resultaatgericht: datastructuur en ontologie, architectuur en een IT-roadmap die hout snijdt. Geen dik rapport dat in een la verdwijnt, maar heldere keuzes waar je morgen mee aan de slag kunt — en die je investeringen laten renderen.",
+    ],
+    pijlers: [
+      { t: "Heldere keuzes", b: "onderbouwd advies, geen ruis." },
+      { t: "Toekomstvaste architectuur", b: "een fundament dat meegroeit." },
+      { t: "Roadmap die werkt", b: "concrete stappen, geen plank-rapport." },
+    ],
+  },
 };
