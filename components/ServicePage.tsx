@@ -11,6 +11,7 @@ import MockAgent from "@/components/MockAgent";
 import MockTraining from "@/components/MockTraining";
 import MockIntegration from "@/components/MockIntegration";
 import MockPlanning from "@/components/MockPlanning";
+import MockFieldService from "@/components/MockFieldService";
 import MockDashboard from "@/components/MockDashboard";
 import MockPortal from "@/components/MockPortal";
 
@@ -22,7 +23,7 @@ const SERVICE_DEMOS: Record<string, Demo> = {
   "agentic-ai": { Demo: MockAgent, caption: "Matching: de agent doet een voorstel, een mens keurt goed." },
   "ai-development": { Demo: MockTraining, caption: "Een model getraind op je eigen data — de accuratesse loopt op." },
   "systeemintegratie": { Demo: MockIntegration, caption: "ERP, CRM en veldsystemen gekoppeld rond één Mendix-kern." },
-  "app-ontwikkeling": { Demo: MockPlanning, caption: "Planningsapp: capaciteit en personeel over meerdere lijnen." },
+  "app-ontwikkeling": { Demo: MockFieldService, caption: "Field-service-app: werkorders en onderdelen op aanvraag — ook offline." },
   "portalen-dashboards": { Demo: MockPlanning, caption: "Planningsdashboard: productie en capaciteit over meerdere lijnen, realtime." },
   "legacy-modernisering": { Demo: MockDashboard, caption: "Van losse Excel-lijstjes naar één modern, schaalbaar dashboard." },
   "design-prototyping": { Demo: MockPortal, caption: "Van klikbaar prototype naar werkende, toegankelijke Mendix-UI." },

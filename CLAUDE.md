@@ -12,7 +12,7 @@ Je bouwt de productie-website voor **Kobeon**, een Nederlandse **Mendix + AI imp
 - **Diensten:** line-iconen via `components/Icon.tsx` (`<Icon name={slug} />`), in een zacht getinte accent-cirkel. Eén consistente line-stijl; **geen emoji**.
 - **Sectoren:** **typografie-gedreven, geen iconen** — een korte accentbalk in de merkkleur + de sectornaam in de serif (`.h-display`). Zie `components/SectorCard.tsx` en de hero-chip in `SectorPage.tsx`.
 - **Kaarten zijn altijd licht en consistent:** witte kaart op canvas, `rounded-2xl`, `border-line`, `shadow-soft`; hover = `-translate-y-1` + `shadow-lift` + accentrand (paars/teal/geel). Géén donkere image-slabs. Dit geldt voor diensten-bento, sector-kaarten en case-kaarten.
-- **Diensten-bento:** asymmetrisch ritme via `span`; grote feature-tegels (`mock` gezet) tonen een lichte `MiniMock` i.p.v. een icoon.
+- **Diensten-bento:** asymmetrisch ritme via `span`; **elke tegel toont een lichte `MiniMock` als mini-voorbeeld** (niet alleen een icoon), zodat je per dienst voelt wat er kan. Grote feature-tegels mogen een rijkere/grotere mock; kleine tegels een compacte variant.
 
 ## Mock-UI's & animaties (vastgesteld)
 - **Echte app-uitstraling.** De mock-UI's (behalve `MockIntegration`, die is goed) moeten ogen als een gevuld applicatiescherm: app-shell (sidebar + topbar/titel + content), realistische componenten (datatabel met kolomkoppen/rijen/statusbadges, KPI-kaarten, tabs, knoppen) en **concrete NL-data** (namen, bedragen, statussen) — geen grijze placeholder-balkjes.
