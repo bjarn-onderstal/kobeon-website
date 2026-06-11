@@ -30,6 +30,13 @@ export default function DeviceFrame({
             {label}
           </span>
         )}
+        {/* rechter app-chrome: 'online'-stip + avatar — geeft het 'echte app'-gevoel */}
+        <span className="ml-auto flex items-center gap-2" aria-hidden>
+          <span className="h-1.5 w-1.5 rounded-full bg-teal" />
+          <span className={`flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-bold ${isLight ? "bg-purple/10 text-purple" : "bg-white/10 text-white/70"}`}>
+            K
+          </span>
+        </span>
       </div>
       <div className="p-4">{children}</div>
     </div>

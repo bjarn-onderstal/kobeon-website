@@ -23,7 +23,7 @@ export default function MockPortal({ theme = "light" }: { theme?: MockTheme }) {
   // daarna start de cyclus opnieuw.
   useEffect(() => {
     if (!inView) return;
-    const id = setInterval(() => setCycle((c) => c + 1), 4200);
+    const id = setInterval(() => setCycle((c) => c + 1), 5200);
     return () => clearInterval(id);
   }, [inView]);
 
@@ -70,9 +70,9 @@ export default function MockPortal({ theme = "light" }: { theme?: MockTheme }) {
               <motion.div
                 key={`${cycle}-${row.id}`}
                 className={`flex items-center justify-between rounded-lg border px-3 py-2 ${t.tile}`}
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.25, duration: 0.4 }}
+                transition={{ type: "spring", stiffness: 260, damping: 24, delay: i * 0.28 }}
               >
                 <div>
                   <div className={`text-xs font-semibold ${t.text}`}>{row.id}</div>
@@ -82,8 +82,8 @@ export default function MockPortal({ theme = "light" }: { theme?: MockTheme }) {
                   className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${
                     done ? "bg-teal/15 text-teal" : "bg-yellow/15 text-yellow"
                   }`}
-                  animate={{ scale: done ? [1, 1.12, 1] : 1 }}
-                  transition={{ duration: 0.4 }}
+                  animate={{ scale: done ? [1, 1.18, 1] : 1 }}
+                  transition={{ type: "spring", stiffness: 420, damping: 14 }}
                 >
                   {done ? "Goedgekeurd" : "In behandeling"}
                 </motion.span>

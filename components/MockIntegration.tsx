@@ -67,22 +67,35 @@ export default function MockIntegration({
             ))}
         </svg>
 
-        {/* centrale Mendix-node */}
-        <div
-          className="absolute -translate-x-1/2 -translate-y-1/2 rounded-xl bg-purple px-3 py-1.5 text-xs font-bold text-white shadow-lift"
-          style={{ left: "50%", top: "50%" }}
-        >
-          Mendix
+        {/* centrale Mendix-node (positionering en scale-in gescheiden) */}
+        <div className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: "50%", top: "50%" }}>
+          <motion.div
+            className="rounded-xl bg-purple px-3 py-1.5 text-xs font-bold text-white shadow-lift"
+            initial={{ scale: 0.5, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 300, damping: 17 }}
+          >
+            Mendix
+          </motion.div>
         </div>
 
-        {/* systeem-nodes */}
+        {/* systeem-nodes — ploppen één voor één in vanuit het midden */}
         {points.map((p, i) => (
           <div
             key={`n-${i}`}
-            className={`absolute -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-lg border px-2 py-1 text-[11px] font-medium ${t.tile} ${t.text}`}
+            className="absolute -translate-x-1/2 -translate-y-1/2"
             style={{ left: `${(p.x / 300) * 100}%`, top: `${(p.y / 240) * 100}%` }}
           >
-            {p.label}
+            <motion.div
+              className={`whitespace-nowrap rounded-lg border px-2 py-1 text-[11px] font-medium ${t.tile} ${t.text}`}
+              initial={{ scale: 0.6, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 320, damping: 20, delay: 0.15 + i * 0.1 }}
+            >
+              {p.label}
+            </motion.div>
           </div>
         ))}
       </div>

@@ -89,6 +89,7 @@ export default function MockAgent({ theme = "light" }: { theme?: MockTheme }) {
               key={tool}
               initial={{ opacity: 0, y: 6, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 420, damping: 22 }}
               className="rounded-full bg-teal/10 px-2.5 py-1 text-[11px] font-medium text-teal"
             >
               {tool}
@@ -104,8 +105,8 @@ export default function MockAgent({ theme = "light" }: { theme?: MockTheme }) {
           className={`flex h-5 items-center gap-1 rounded-full px-2 text-[11px] font-bold ${
             approved ? "bg-teal text-white" : "bg-black/10 text-transparent"
           }`}
-          animate={{ scale: approved ? [1, 1.15, 1] : 1 }}
-          transition={{ duration: 0.4 }}
+          animate={{ scale: approved ? [1, 1.2, 1] : 1 }}
+          transition={{ type: "spring", stiffness: 420, damping: 14 }}
         >
           {approved ? "✓ akkoord" : "•"}
         </motion.span>

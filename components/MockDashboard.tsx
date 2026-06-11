@@ -16,7 +16,7 @@ export default function MockDashboard({ theme = "light" }: { theme?: "light" | "
 
   useEffect(() => {
     if (!inView) return;
-    const id = setInterval(() => setCycle((c) => c + 1), 4200);
+    const id = setInterval(() => setCycle((c) => c + 1), 5200);
     return () => clearInterval(id);
   }, [inView]);
 
@@ -49,7 +49,7 @@ export default function MockDashboard({ theme = "light" }: { theme?: "light" | "
             style={{ background: "linear-gradient(180deg,#5348CE,#13A6A6)" }}
             initial={{ height: 0 }}
             animate={{ height: inView ? `${h}%` : 0 }}
-            transition={{ duration: 0.8, delay: i * 0.08, ease: "easeOut" }}
+            transition={{ type: "spring", stiffness: 120, damping: 16, delay: i * 0.09 }}
           />
         ))}
       </div>

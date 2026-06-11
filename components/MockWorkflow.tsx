@@ -13,13 +13,22 @@ export default function MockWorkflow({ theme = "light" }: { theme?: MockTheme })
   const { ref, inView } = useInView<HTMLDivElement>();
   const [done, setDone] = useState(0);
 
-  // Loopt zolang in beeld: taken vullen zich, daarna reset naar 0 en opnieuw.
+  // Loopt zolang in beeld: taken vullen zich één voor één met een rustige cadans;
+  // bij "Klaar" houdt-ie even adem (langere pauze) voor de flow opnieuw start —
+  // dat geeft de demo ritme i.p.v. een mechanische tik.
   useEffect(() => {
     if (!inView) return;
-    const id = setInterval(() => {
-      setDone((d) => (d >= STEPS.length ? 0 : d + 1));
-    }, 850);
-    return () => clearInterval(id);
+    let d = 0;
+    let to: ReturnType<typeof setTimeout>;
+    const run = () => {
+      setDone(d);
+      const atEnd = d >= STEPS.length;
+      const delay = atEnd ? 2000 : 720; // adempauze als alles klaar is
+      d = atEnd ? 0 : d + 1;
+      to = setTimeout(run, delay);
+    };
+    run();
+    return () => clearTimeout(to);
   }, [inView]);
 
   const progress = Math.min(done, STEPS.length) / STEPS.length;
@@ -28,7 +37,14 @@ export default function MockWorkflow({ theme = "light" }: { theme?: MockTheme })
     <div ref={ref} className={`rounded-xl ${t.surface} p-4`} style={{ minHeight: 268 }}>
       <div className="mb-3 flex items-center justify-between">
         <span className={`text-xs font-semibold uppercase tracking-wide ${t.muted}`}>Orderverwerking</span>
-        <span className="rounded-full bg-teal/10 px-2 py-0.5 text-[10px] font-semibold text-teal">live</span>
+        <span className="inline-flex items-center gap-1 rounded-full bg-teal/10 px-2 py-0.5 text-[10px] font-semibold text-teal">
+          <motion.span
+            className="h-1.5 w-1.5 rounded-full bg-teal"
+            animate={{ opacity: [1, 0.3, 1] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          />
+          live
+        </span>
       </div>
 
       <div className="space-y-2">
@@ -45,8 +61,8 @@ export default function MockWorkflow({ theme = "light" }: { theme?: MockTheme })
                   ? "border-purple/40 bg-purple/5"
                   : t.idle
               }`}
-              animate={{ scale: isActive ? 1.02 : 1 }}
-              transition={{ duration: 0.25 }}
+              animate={{ scale: isActive ? 1.03 : 1 }}
+              transition={{ type: "spring", stiffness: 380, damping: 22 }}
             >
               <span
                 className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold ${
