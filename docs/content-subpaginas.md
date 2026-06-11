@@ -316,3 +316,71 @@ Regel: elke **sectorpagina** linkt naar haar 3–4 relevante **diensten** + de b
 - **FloriusFlowers** (Horticultuur, binnenkort) → Systeemintegratie, Portalen & dashboards.
 
 Implementatie-tip: zet deze relaties als data in `lib/siteConfig.ts` (bv. `relatedServices`/`relatedSectors`/`relatedProjects` per item), dan genereren de "Relevante diensten/sectoren/cases"-blokken zich vanzelf en blijven de links consistent.
+
+---
+
+## Uitgebreide bodyteksten per dienst (voor meer body op de detailpagina's)
+Gebruik deze als de hoofdtekst op elke dienst-detailpagina (2 alinea's: probleem → aanpak), gevolgd door 3 korte pijlers. Vult de bestaande hero/voorbeelden/cases aan. Toon: je/jouw, enterprise, geen Nederengels, geen verzonnen cijfers.
+
+### Procesautomatisering
+Handmatig overtypen, papieren goedkeuringen en losse Excel-lijstjes kosten je team elke dag tijd — en introduceren fouten die je vaak pas later ontdekt. Naarmate je groeit, lopen die processen vast en wordt het overzicht kleiner in plaats van groter.
+Wij brengen je proces in kaart en bouwen het na als één werkstroom op Mendix: aanvragen, controles, goedkeuringen en verwerking lopen automatisch, met de juiste mensen op de juiste momenten. Repetitief én cognitief werk (beoordelen, classificeren, samenvatten) nemen we uit handen — met een volledig audit-spoor, zodat altijd herleidbaar is wat er is gebeurd en waarom.
+- **Minder handwerk** — je mensen houden tijd over voor het werk dat telt.
+- **Kortere doorlooptijd** — van dagen naar uren.
+- **Volledig auditeerbaar** — elke stap traceerbaar, klaar voor compliance.
+
+### Agentic AI
+Een chatbot beantwoordt vragen, maar maakt geen werk áf. Het echte werk — matchen, controleren, documenten verwerken, communiceren — blijft liggen of kost je mensen uren per dag.
+Met agentic AI bouwen we AI-agenten die hele taken zelfstandig uitvoeren, binnen jouw bedrijfsregels en met veilige, rolgebaseerde toegang tot je systemen. Een mens keurt goed waar dat moet; de rest gaat vanzelf. Alles geregisseerd door Mendix, met logging en governance ingebouwd — geen black box, maar een werkstroom die je kunt vertrouwen en bijsturen.
+- **Werk dat áf is** — geen slim antwoord, maar een afgeronde taak.
+- **Mens in de loop** — goedkeuren en bijsturen waar het telt.
+- **Volledig herleidbaar** — elke actie gelogd, klaar voor AVG en de EU AI Act.
+
+### AI Development
+Generieke AI-modellen kennen jouw vak niet. Voor de beslissingen die er echt toe doen — voorspellen, detecteren, scoren — heb je modellen nodig die je eigen data en context begrijpen.
+Wij trainen modellen op je eigen bedrijfsdata en zetten ze in productie als een beheerde, controleerbare service binnen je Mendix-applicaties. Je houdt de data én de regie: kies een toonaangevend, open-source of eigen model, en draai het in je eigen cloud, on-prem of volledig afgeschermd. We monitoren de prestaties, zodat het model accuraat blijft — niet alleen op de lanceerdag.
+- **Getraind op jouw data** — voorspellingen die kloppen met de praktijk.
+- **Jij houdt de regie** — je data blijft van jou, model vrij te kiezen.
+- **Blijft presteren** — gemonitord en bijgestuurd in productie.
+
+### App ontwikkeling
+Standaardpakketten passen zelden op hoe jij werkt, en maatwerk in high-code is traag en duur. Je medewerkers en klanten verdienen software die hun werk makkelijker maakt — op kantoor én in het veld.
+Op Mendix bouwen we web- en mobiele applicaties die exact aansluiten op je processen, met security, schaalbaarheid en governance standaard ingebouwd. Eén keer bouwen, overal beschikbaar — van een desktop-app tot een offline-app voor de monteur. Binnen zes weken draait je eerste werkende versie, daarna breiden we uit op basis van echt gebruik.
+- **Past op je proces** — geen concessies aan standaardsoftware.
+- **Web én mobiel** — werkt op elk apparaat, ook offline in het veld.
+- **Enterprise-kwaliteit** — schaalt van tien tot honderdduizenden gebruikers.
+
+### Systeemintegratie
+Losse pakketten — ERP, CRM, boekhouding, vaksystemen — die niet met elkaar praten kosten tijd en veroorzaken fouten. Je schakelt constant tussen applicaties en typt dezelfde gegevens dubbel in, met een verhoogd risico op fouten en een gebrek aan overzicht.
+Wij verbinden je systemen tot één geheel, zodat data automatisch tussen applicaties stroomt en je één bron van waarheid hebt. Mendix koppelt out-of-the-box met Microsoft Dynamics, SAP, AFAS, Exact, Salesforce en AWS, plus elke REST/OData-API — en waar een systeem geen nette koppeling heeft, lossen we dat op. Vaak is de grootste winst juist het verbinden van silo's die nu niet samenwerken, zonder dat je een werkend systeem hoeft te vervangen.
+- **Naadloze koppeling** — al je software werkt samen, geen geschakel meer.
+- **Minder fouten** — geen dubbele invoer, hogere datakwaliteit.
+- **Realtime data** — beslissingen op actuele, betrouwbare gegevens.
+
+### Portalen & dashboards
+Telefoontjes, mailtjes en uitdraaien om iemand op de hoogte te houden kosten je team tijd en je klanten geduld. En zelf mis je het overzicht omdat de informatie verspreid zit.
+Wij bouwen portalen waarin je klanten, leden of medewerkers zelf hun zaken regelen, en dashboards die je realtime inzicht geven uit je gekoppelde systemen. Rolgebaseerde toegang en AVG standaard ingebouwd. Van een ouderportaal of leveranciersportaal tot een monteur-portaal met werkorders, handleidingen en onderdelen.
+- **Zelfservice** — minder telefoon en mail; gebruikers regelen het zelf.
+- **Realtime inzicht** — alles actueel, in één overzicht.
+- **Veilig & AVG-proof** — rolgebaseerde toegang standaard.
+
+### Legacy modernisering
+Een verouderd systeem dat niemand meer durft aan te raken remt je af: hoge beheerkosten, afhankelijkheid van schaarse kennis en geen ruimte om mee te bewegen. Tegelijk voelt alles-in-één-keer vervangen te riskant.
+Wij moderniseren gefaseerd. We bouwen nieuwe functionaliteit op Mendix bovenop of naast het oude systeem, koppelen de bestaande data en zetten stap voor stap over — zonder stilstand. Zo houd je continuïteit terwijl je naar een platform gaat dat veilig, schaalbaar en klaar voor de toekomst is.
+- **Geen big bang** — je blijft draaien tijdens de overgang.
+- **Behoud van data** — bestaande gegevens gaan mee, niets verloren.
+- **Klaar voor de toekomst** — lagere beheerlast, ruimte om te groeien.
+
+### Design & Prototyping
+De duurste fout is software bouwen die net niet doet wat gebruikers nodig hebben. Dat voorkom je door eerst te zien en te testen voordat er één regel gebouwd wordt.
+Wij maken in dagen een klikbaar prototype — met Figma Make, Lovable en Google Stitch — zodat je het eindresultaat ervaart en valideert met je gebruikers vóór de bouw. Daarna vertalen we het ontwerp naar toegankelijke Mendix-UI. Het is fase 2 in onze werkwijze en bespaart later tijd, geld en verrassingen.
+- **Zien vóór bouwen** — je weet zeker dat we het juiste maken.
+- **Snel valideren** — toetsen met echte gebruikers in dagen.
+- **Draagvlak** — stakeholders zien en voelen het resultaat vooraf.
+
+### IT Consultancy
+Niet elke vraag begint bij bouwen. Soms heb je eerst richting nodig: welke data, welke architectuur, bouwen-kopen-of-koppelen, en hoe je stap voor stap bij de agentic enterprise komt.
+Wij adviseren onafhankelijk en resultaatgericht: datastructuur en ontologie, architectuur en een IT-roadmap die hout snijdt. Geen dik rapport dat in een la verdwijnt, maar heldere keuzes waar je morgen mee aan de slag kunt — en die je investeringen laten renderen.
+- **Heldere keuzes** — onderbouwd advies, geen ruis.
+- **Toekomstvaste architectuur** — een fundament dat meegroeit.
+- **Roadmap die werkt** — concrete stappen, geen plank-rapport.

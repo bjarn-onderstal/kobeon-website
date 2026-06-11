@@ -782,3 +782,77 @@ export const serviceBodies: Record<string, ServiceBody> = {
     ],
   },
 };
+
+// V8+ — "Voorbeelden" (concrete use-cases) per dienst, uit
+// docs/content-subpaginas.md § S1. ServicePage rendert dit als een eigen blok,
+// net als de voorbeelden op de sectorpagina's.
+export const serviceVoorbeelden: Record<string, string[]> = {
+  "procesautomatisering": [
+    "Inkoop- en factuurverwerking met automatische controles en goedkeuring.",
+    "Order-to-cash: van aanvraag tot levering en facturatie.",
+    "HR-onboarding: accounts, documenten en taken automatisch klaargezet.",
+    "Keuringsbeheer (zoals bij BKD): aanvraag, inspectie en certificaat in één flow.",
+  ],
+  "agentic-ai": [
+    "Kandidaat- of vacaturematching met een voorstel dat een mens goedkeurt.",
+    "Documenten lezen en verwerken (contracten, aanvragen) en de data wegschrijven.",
+    "Compliance-checks: toetsen tegen regels en afwijkingen markeren.",
+    "Klantvragen end-to-end afhandelen, met escalatie naar een mens waar nodig.",
+  ],
+  "ai-development": [
+    "Voorspellend onderhoud: machine-uitval voorspellen vóór het gebeurt.",
+    "Anomaliedetectie in transacties of productiedata.",
+    "Risico- of kredietscoring op je eigen historie.",
+    "Een kennismodel op je eigen documenten (zoals jurisprudentie).",
+  ],
+  "systeemintegratie": [
+    "ERP, CRM en veldsystemen koppelen tot één bron van waarheid.",
+    "Agriware, Infor of Metacom ontsluiten richting nieuwe apps en portalen.",
+    "AFAS/Exact koppelen voor facturatie en HR.",
+    "Een knowledge graph/ontologie als contextlaag, zodat AI je bedrijf “snapt”.",
+  ],
+  "app-ontwikkeling": [
+    "Field-service-app voor monteurs: werkorders, handleidingen, machineseries en onderdelen op aanvraag — ook offline.",
+    "Mobiele inspectie-/keuringsapp voor in het veld.",
+    "Planningsapp voor agri of productie (teelt/oogst, capaciteit, personeel).",
+    "Klant- of medewerkersapp die op je processen is gebouwd.",
+  ],
+  "portalen-dashboards": [
+    "Klant- of leveranciersportaal met zelfservice.",
+    "Monteur-/field-service-portaal met werkorders, handleidingen en onderdelen.",
+    "Planningsdashboard (capaciteit, teelt/oogst, productie) met realtime data.",
+    "KPI-dashboards die live uit je gekoppelde systemen putten.",
+  ],
+  "legacy-modernisering": [
+    "Een verouderd planningssysteem gefaseerd vervangen, zonder stilstand.",
+    "Een oude werkorder-/veldapplicatie naar een moderne mobiele app.",
+    "Een Access/Excel-oplossing omzetten naar een schaalbare Mendix-app.",
+    "Maatwerk-legacy ontsluiten en stap voor stap uitfaseren.",
+  ],
+  "design-prototyping": [
+    "Klikbaar prototype van een planningsapp om met gebruikers te valideren.",
+    "Een field-service-app eerst testen vóór de bouw.",
+    "Een portaal-concept om draagvlak te krijgen bij stakeholders.",
+    "Snel varianten van een schermflow uitproberen.",
+  ],
+  "it-consultancy": [
+    "Een datastructuur/ontologie opzetten als fundament voor AI.",
+    "Een IT-roadmap richting de agentic enterprise.",
+    "Advies “bouwen, kopen of koppelen” bij een nieuw systeemlandschap.",
+    "Architectuurreview van een bestaand Mendix-landschap.",
+  ],
+};
+
+// Het team — één gedeelde bron voor /over-kobeon én /werken-bij, zodat beide
+// pagina's gelijk blijven lopen als het team groeit.
+export type TeamMember = { name: string; role: string; photo?: string };
+export const team: TeamMember[] = [
+  { name: "Bjarn Onderstal", role: "Co-Founder · Mendix Expert · MVP", photo: "/team/bjarn.jpg" },
+  { name: "Hunter Koppen", role: "Co-Founder · Mendix Expert · MVP", photo: "/team/hunter.jpg" },
+  { name: "Sjoerd Beljon", role: "Co-Founder · Mendix Expert · MVP", photo: "/team/sjoerd.jpg" },
+  { name: "Agnes Roolvink", role: "Mendix Expert", photo: "/team/agnes.jpeg" },
+  { name: "Daryl Zandvliet", role: "Mendix Expert", photo: "/team/daryl.jpeg" },
+  { name: "Frank Schutte", role: "Mendix Expert", photo: "/team/frank.jpeg" },
+  { name: "Cas Boswinkel", role: "Mendix Specialist · AI-lead", photo: "/team/cas.jpeg" },
+  { name: "Robin Broeks", role: "Mendix Specialist", photo: "/team/robin.jpg" },
+];

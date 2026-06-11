@@ -4,6 +4,7 @@ import Image from "next/image";
 import Section from "@/components/Section";
 import VisieAgentic from "@/components/sections/VisieAgentic";
 import FinalCta from "@/components/sections/FinalCta";
+import { team } from "@/lib/siteConfig";
 
 const title = "Over Kobeon — enterprise-software op Mendix";
 const description =
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 
 const credentials = [
   { value: "Mendix Certified", label: "Partner" },
-  { value: "6", label: "Mendix experts" },
+  { value: "8", label: "Mendix experts" },
   { value: "3", label: "Mendix MVP's" },
   { value: "2", label: "Advanced Trainers" },
   { value: "ISO 27001", label: "gecertificeerd" },
@@ -33,19 +34,6 @@ const clients = [
   "Petje af",
   "HomeZero",
   "EPSA",
-];
-
-type TeamMember = { name: string; role: string; photo?: string };
-
-const team: TeamMember[] = [
-  { name: "Bjarn Onderstal", role: "Co-Founder · Mendix Expert · MVP", photo: "/team/bjarn.jpg" },
-  { name: "Hunter Koppen", role: "Co-Founder · Mendix Expert · MVP", photo: "/team/hunter.jpg" },
-  { name: "Sjoerd Beljon", role: "Co-Founder · Mendix Expert · MVP", photo: "/team/sjoerd.jpg" },
-  { name: "Agnes Roolvink", role: "Mendix Expert", photo: "/team/agnes.jpeg" },
-  { name: "Daryl Zandvliet", role: "Mendix Expert", photo: "/team/daryl.jpeg" },
-  { name: "Frank Schutte", role: "Mendix Expert", photo: "/team/frank.jpeg" },
-  { name: "Cas Boswinkel", role: "Mendix Specialist · AI-lead", photo: "/team/cas.jpeg" },
-  { name: "Robin Broeks", role: "Mendix Specialist", photo: "/team/robin.jpg" },
 ];
 
 function initials(name: string) {

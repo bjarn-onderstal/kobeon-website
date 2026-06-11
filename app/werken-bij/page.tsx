@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Section from "@/components/Section";
 import VacanciesList from "@/components/VacanciesList";
 import FinalCta from "@/components/sections/FinalCta";
-import { culture } from "@/lib/siteConfig";
+import { culture, team } from "@/lib/siteConfig";
 
 const title = "Werken bij Kobeon — bouw mee aan Mendix & AI";
 const description =
@@ -16,16 +17,16 @@ export const metadata: Metadata = {
   openGraph: { title: `${title} | Kobeon`, description, url: "/werken-bij", type: "website" },
 };
 
-const team = [
-  { naam: "[Naam]", rol: "Mendix Advanced Trainer" },
-  { naam: "[Naam]", rol: "Solution Architect" },
-  { naam: "[Naam]", rol: "AI / Agentic Engineer" },
-  { naam: "[Naam]", rol: "Medior Mendix Developer" },
-  { naam: "[Naam]", rol: "UX Designer" },
-  { naam: "[Naam]", rol: "Business Development" },
-];
-
 const proces = ["Reactie binnen 5 werkdagen", "Kennismaking", "Technische / case-sessie", "Aanbod"];
+
+function initials(name: string) {
+  return name
+    .split(" ")
+    .filter((w) => w.length > 2)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join("");
+}
 
 export default function Page() {
   return (
@@ -49,7 +50,7 @@ export default function Page() {
             <Link href="/vacatures/open-sollicitatie" className="btn-ghost text-white">Open sollicitatie</Link>
           </div>
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/60">
-            {["Mendix Certified Partner", "2 Advanced Mendix Trainers", "ISO 27001", "6 experts"].map((t) => (
+            {["Mendix Certified Partner", "2 Advanced Mendix Trainers", "ISO 27001", "8 experts"].map((t) => (
               <span key={t}>· {t}</span>
             ))}
           </div>
@@ -72,21 +73,40 @@ export default function Page() {
         </div>
       </Section>
 
-      {/* Ons team */}
+      {/* Ons team — gedeelde bron met /over-kobeon */}
       <Section tone="canvas">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wide text-purple">Ons team</p>
-          <h2 className="h-display mt-3 text-3xl md:text-4xl">Wij zijn met 6 — en groeien.</h2>
+          <h2 className="h-display mt-3 text-3xl md:text-4xl">Wij zijn met {team.length} — en groeien.</h2>
+          <p className="mt-4 text-muted">
+            Een klein, hecht team van senior Mendix-experts. Bij jouw start hoor je er meteen bij — en bouw je mee.
+          </p>
         </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {team.map((m, i) => (
-            <div key={i} className="rounded-2xl border border-line bg-white p-6 shadow-soft">
-              <div className="h-14 w-14 rounded-full bg-gradient-to-br from-purple-med to-teal" />
-              <h3 className="mt-4 font-serif text-lg text-ink">{m.naam}</h3>
-              <p className="text-sm text-muted">{m.rol}</p>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {team.map((m) => (
+            <div key={m.name} className="rounded-2xl border border-line bg-white p-6 text-center shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
+              {m.photo ? (
+                <Image
+                  src={m.photo}
+                  alt={`Portretfoto van ${m.name}`}
+                  width={144}
+                  height={144}
+                  className="mx-auto h-20 w-20 rounded-full object-cover"
+                />
+              ) : (
+                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-purple/10 text-lg font-bold text-purple">
+                  {initials(m.name)}
+                </div>
+              )}
+              <h3 className="mt-4 font-serif text-lg text-ink">{m.name}</h3>
+              <p className="mt-0.5 text-sm text-muted">{m.role}</p>
             </div>
           ))}
         </div>
+        <p className="mt-8 text-sm text-muted">
+          Benieuwd naar de gezichten?{" "}
+          <Link href="/over-kobeon" className="font-semibold text-purple hover:underline">Maak kennis met het team →</Link>
+        </p>
       </Section>
 
       {/* Vacatures */}

@@ -3,7 +3,7 @@ import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 import FinalCta from "@/components/sections/FinalCta";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
-import { projects, sectors, serviceToSectors, serviceBodies, type Service } from "@/lib/siteConfig";
+import { projects, sectors, serviceToSectors, serviceBodies, serviceVoorbeelden, type Service } from "@/lib/siteConfig";
 
 function CheckIcon() {
   return (
@@ -19,6 +19,7 @@ export default function ServicePage({ service }: { service: Service }) {
   const relatedSectorSlugs = serviceToSectors[service.slug] ?? [];
   const relatedSectors = sectors.filter((s) => relatedSectorSlugs.includes(s.slug));
   const body = serviceBodies[service.slug];
+  const voorbeelden = serviceVoorbeelden[service.slug] ?? [];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -107,6 +108,24 @@ export default function ServicePage({ service }: { service: Service }) {
           ))}
         </ol>
       </Section>
+
+      {/* Voorbeelden — concrete use-cases */}
+      {voorbeelden.length > 0 && (
+        <Section tone="tealbg">
+          <h2 className="h-display mb-3 text-2xl md:text-3xl">Voorbeelden</h2>
+          <p className="mb-8 max-w-2xl text-muted">
+            Een greep uit wat we hiermee bouwen — zodat je voelt wat er kan.
+          </p>
+          <ul className="grid gap-4 md:grid-cols-2">
+            {voorbeelden.map((v) => (
+              <li key={v} className="flex items-start gap-3 rounded-2xl border border-line bg-white p-5 shadow-soft">
+                <span className="mt-1.5 inline-block h-2 w-2 shrink-0 rounded-full bg-teal" />
+                <span className="text-sm leading-relaxed text-ink">{v}</span>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       {/* Relevante cases */}
       {relatedCases.length > 0 && (
