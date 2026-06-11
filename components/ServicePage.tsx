@@ -4,6 +4,30 @@ import ProjectCard from "@/components/ProjectCard";
 import FinalCta from "@/components/sections/FinalCta";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { projects, sectors, serviceToSectors, serviceBodies, serviceVoorbeelden, type Service } from "@/lib/siteConfig";
+import type { ComponentType } from "react";
+import DeviceFrame from "@/components/DeviceFrame";
+import MockWorkflow from "@/components/MockWorkflow";
+import MockAgent from "@/components/MockAgent";
+import MockTraining from "@/components/MockTraining";
+import MockIntegration from "@/components/MockIntegration";
+import MockPlanning from "@/components/MockPlanning";
+import MockDashboard from "@/components/MockDashboard";
+import MockPortal from "@/components/MockPortal";
+
+// Per dienst een uitgelichte, interactieve demo (zoals op de homepage) die één
+// concreet voorbeeld in beeld brengt — in een DeviceFrame naast de voorbeeldenlijst.
+type Demo = { Demo: ComponentType<{ theme?: "light" | "dark" }>; caption: string };
+const SERVICE_DEMOS: Record<string, Demo> = {
+  "procesautomatisering": { Demo: MockWorkflow, caption: "Orderverwerking: inkoop en facturen automatisch gecontroleerd en goedgekeurd." },
+  "agentic-ai": { Demo: MockAgent, caption: "Matching: de agent doet een voorstel, een mens keurt goed." },
+  "ai-development": { Demo: MockTraining, caption: "Een model getraind op je eigen data — de accuratesse loopt op." },
+  "systeemintegratie": { Demo: MockIntegration, caption: "ERP, CRM en veldsystemen gekoppeld rond één Mendix-kern." },
+  "app-ontwikkeling": { Demo: MockPlanning, caption: "Planningsapp: capaciteit en personeel over meerdere lijnen." },
+  "portalen-dashboards": { Demo: MockPlanning, caption: "Planningsdashboard: productie en capaciteit over meerdere lijnen, realtime." },
+  "legacy-modernisering": { Demo: MockDashboard, caption: "Van losse Excel-lijstjes naar één modern, schaalbaar dashboard." },
+  "design-prototyping": { Demo: MockPortal, caption: "Van klikbaar prototype naar werkende, toegankelijke Mendix-UI." },
+  "it-consultancy": { Demo: MockIntegration, caption: "Architectuur en datastructuur als fundament — systemen rond één kern." },
+};
 
 function CheckIcon() {
   return (
@@ -20,6 +44,7 @@ export default function ServicePage({ service }: { service: Service }) {
   const relatedSectors = sectors.filter((s) => relatedSectorSlugs.includes(s.slug));
   const body = serviceBodies[service.slug];
   const voorbeelden = serviceVoorbeelden[service.slug] ?? [];
+  const demo = SERVICE_DEMOS[service.slug];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -114,16 +139,26 @@ export default function ServicePage({ service }: { service: Service }) {
         <Section tone="tealbg">
           <h2 className="h-display mb-3 text-2xl md:text-3xl">Voorbeelden</h2>
           <p className="mb-8 max-w-2xl text-muted">
-            Een greep uit wat we hiermee bouwen — zodat je voelt wat er kan.
+            Een greep uit wat we hiermee bouwen — zodat je gelijk een beeld hebt.
           </p>
-          <ul className="grid gap-4 md:grid-cols-2">
-            {voorbeelden.map((v) => (
-              <li key={v} className="flex items-start gap-3 rounded-2xl border border-line bg-white p-5 shadow-soft">
-                <span className="mt-1.5 inline-block h-2 w-2 shrink-0 rounded-full bg-teal" />
-                <span className="text-sm leading-relaxed text-ink">{v}</span>
-              </li>
-            ))}
-          </ul>
+          <div className={`grid gap-8 ${demo ? "lg:grid-cols-2 lg:items-center" : ""}`}>
+            {demo && (
+              <div className="relative">
+                <DeviceFrame theme="light" title={service.title}>
+                  <demo.Demo theme="light" />
+                </DeviceFrame>
+                <p className="mt-3 text-sm text-muted">{demo.caption}</p>
+              </div>
+            )}
+            <ul className={`grid gap-4 ${demo ? "" : "md:grid-cols-2"}`}>
+              {voorbeelden.map((v) => (
+                <li key={v} className="flex items-start gap-3 rounded-2xl border border-line bg-white p-5 shadow-soft">
+                  <span className="mt-1.5 inline-block h-2 w-2 shrink-0 rounded-full bg-teal" />
+                  <span className="text-sm leading-relaxed text-ink">{v}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Section>
       )}
 
