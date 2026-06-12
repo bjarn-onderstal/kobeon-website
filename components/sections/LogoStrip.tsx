@@ -6,8 +6,8 @@ export default function LogoStrip() {
       <div className="container-x py-12">
         <p className="text-center text-sm text-muted">
           Software voor <span className="font-semibold text-ink">ABN AMRO</span>,{" "}
-          <span className="font-semibold text-ink">Zilveren Kruis</span> en een{" "}
-          <span className="font-semibold text-ink">grote semi-publieke organisatie</span>, ook voor groeiende organisaties die dezelfde kwaliteit eisen.
+          <span className="font-semibold text-ink">Zilveren Kruis</span> en{" "}
+          <span className="font-semibold text-ink">Petje af</span>, ook voor groeiende organisaties die dezelfde kwaliteit eisen.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
           {clients.map((c) => (

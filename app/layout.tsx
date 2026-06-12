@@ -6,7 +6,13 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import MotionProvider from "@/components/MotionProvider";
+import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { site } from "@/lib/siteConfig";
+
+// GA4 Measurement-ID (G-XXXXXXXXXX). Zet NEXT_PUBLIC_GA_ID in Vercel/.env.local;
+// zonder ID wordt Google Analytics niet geladen.
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
 const sans = Ubuntu({ subsets: ["latin"], weight: ["400", "500", "700"], variable: "--font-sans" });
 
@@ -47,7 +53,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
         </MotionProvider>
+        <Analytics />
       </body>
+      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
     </html>
   );
 }
