@@ -102,14 +102,14 @@
   "epsa": {
     "frame": "browser",
     "urlBar": "",
-    "label": "EPSA — Staffing & Detachering",
+    "label": "EPSA Connect — Staffing & Detachering",
     "metric": "40+ u/week",
     "metricSub": "administratie terug",
-    "images": ["/screens/epsa-onboarding.png", "/screens/epsa-opdrachten-mobiel.png"],
-    "animation": "tour",
+    "video": { "mp4": "/visuals/case-epsa.mp4", "webm": "/visuals/case-epsa.webm", "poster": "/visuals/case-epsa-poster.jpg" },
+    "animation": "video",
     "cursor": false,
     "anonymized": true,
-    "status": "placeholder"
+    "status": "live"
   },
   "golfclub": {
     "frame": "browser",

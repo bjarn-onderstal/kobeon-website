@@ -1,25 +1,19 @@
 import MiniMock from "@/components/MiniMock";
+import CaseVideo from "@/components/CaseVideo";
 import type { Project } from "@/lib/siteConfig";
 
-// Toont het echte productbeeld in de DeviceFrame: een loopende video (autoplay,
-// muted, loop, playsinline + poster als fallback), anders een screenshot, anders
-// de gecodeerde MiniMock-fallback.
+// Toont het echte productbeeld in de DeviceFrame: een loopende video (met poster-
+// fallback bij prefers-reduced-motion), anders een screenshot, anders de
+// gecodeerde MiniMock-fallback.
 export default function CaseMedia({ project }: { project: Project }) {
   if (project.video) {
     return (
-      <video
-        className="block w-full rounded-lg"
+      <CaseVideo
+        mp4={project.video.mp4}
+        webm={project.video.webm}
         poster={project.video.poster}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-label={`Productbeeld van ${project.name}`}
-      >
-        {project.video.webm && <source src={project.video.webm} type="video/webm" />}
-        <source src={project.video.mp4} type="video/mp4" />
-      </video>
+        label={`Productbeeld van ${project.name}`}
+      />
     );
   }
 
