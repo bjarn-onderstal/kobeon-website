@@ -2,7 +2,7 @@
   name: "Kobeon",
   url: "https://www.kobeon.nl",
   description:
-    "Kobeon bouwt enterprise-software op Mendix — het platform dat al negen jaar Gartner-Leider is. Van procesautomatisering tot AI op maat. Binnen zes weken een werkende versie.",
+    "Kobeon bouwt enterprise-software op Mendix, het platform dat al negen jaar Gartner-Leider is. Van procesautomatisering tot AI op maat. Binnen zes weken een werkende versie.",
   email: "info@kobeon.nl",
   phone: "+31 (0)85 200 7076",
   address: "Noordzeelaan 50, 8017 JW Zwolle",
@@ -64,7 +64,6 @@ export const nav: NavItem[] = [
     ],
   },
   { label: "Werkwijze", href: "/werkwijze" },
-  { label: "Contact", href: "/contact" },
   {
     label: "Over ons",
     columns: [
@@ -76,6 +75,7 @@ export const nav: NavItem[] = [
       },
     ],
   },
+  { label: "Contact", href: "/contact" },
 ];
 
 // Integratie-namen voor de homepage = enterprise + sterke NL-namen (geen branche-niche).
@@ -100,11 +100,11 @@ export const stats = [
 export const faqs = [
   {
     q: "Waarom een agentic AI-platform en niet 'gewone' AI zoals ChatGPT?",
-    a: "Een losse AI-tool beantwoordt vragen; een agentic platform doet het werk. Het verschil zit in regie en context. Een gewone chatbot kent jouw systemen en processen niet en handelt niets zelfstandig af. Een agentic oplossing op Mendix krijgt — binnen strikte governance — toegang tot jouw data en applicaties (Microsoft Dynamics, SAP, AFAS), volgt jouw bedrijfsregels en voert hele processen end-to-end uit, met een mens die goedkeurt waar dat moet. Geen 'slim antwoord', maar een taak die áf is.",
+    a: "Een losse AI-tool beantwoordt vragen; een agentic platform doet het werk. Het verschil zit in regie en context. Een gewone chatbot kent jouw systemen en processen niet en handelt niets zelfstandig af. Een agentic oplossing op Mendix krijgt, binnen strikte governance, toegang tot jouw data en applicaties (Microsoft Dynamics, SAP, AFAS), volgt jouw bedrijfsregels en voert hele processen end-to-end uit, met een mens die goedkeurt waar dat moet. Geen 'slim antwoord', maar een taak die áf is.",
   },
   {
     q: "Waarom Mendix en niet alles custom (high-code) laten bouwen?",
-    a: "High-code geeft maximale vrijheid, maar tegen een prijs: lange doorlooptijden, hoge kosten en afhankelijkheid van schaarse specialisten. Mendix levert dezelfde enterprise-kwaliteit — security, schaalbaarheid, integraties — maar modelgedreven, waardoor wij in weken bouwen wat custom-teams in maanden doen. Je houdt volledige flexibiliteit, zonder een dichtgetimmerde codebase. De snelheid van low-code, de degelijkheid van enterprise software, en een MVP in zes weken.",
+    a: "High-code geeft maximale vrijheid, maar tegen een prijs: lange doorlooptijden, hoge kosten en afhankelijkheid van schaarse specialisten. Mendix levert dezelfde enterprise-kwaliteit (security, schaalbaarheid, integraties) maar modelgedreven, waardoor wij in weken bouwen wat custom-teams in maanden doen. Je houdt volledige flexibiliteit, zonder een dichtgetimmerde codebase. De snelheid van low-code, de degelijkheid van enterprise software, en een MVP in zes weken.",
   },
   {
     q: "Is low-code veilig en schaalbaar genoeg voor bedrijfskritische toepassingen?",
@@ -112,7 +112,7 @@ export const faqs = [
   },
   {
     q: "We hebben al systemen (Microsoft Dynamics, SAP, AFAS). Moet dat eruit?",
-    a: "Nee. Wij bouwen bovenop en tussen wat je al hebt. Mendix is ontworpen om te integreren — via standaard connectoren en API's praten je bestaande systemen met elkaar en met nieuwe applicaties. Vaak is de grootste winst juist het verbinden van silo's, zonder een werkend systeem te vervangen.",
+    a: "Nee. Wij bouwen bovenop en tussen wat je al hebt. Mendix is ontworpen om te integreren. Via standaard connectoren en API's praten je bestaande systemen met elkaar en met nieuwe applicaties. Vaak is de grootste winst juist het verbinden van silo's, zonder een werkend systeem te vervangen.",
   },
 ];
 
@@ -158,7 +158,7 @@ export const projects: Project[] = [
     challenge: "HomeZero begeleidt huiseigenaren bij het verduurzamen van hun woning, maar werkte op papier en in losse Excel-bestanden. Woninggegevens, berekeningen en afspraken stonden verspreid, statussen waren nergens centraal zichtbaar en het team verloor tijd aan administratie in plaats van klantbegeleiding.",
     approach: [
       "Eén platform op Mendix dat woninggegevens, energieberekeningen, installateurs en afspraken samenbrengt.",
-      "Realtime statussen per woning en per fase — overzicht over het hele traject.",
+      "Realtime statussen per woning en per fase: overzicht over het hele traject.",
       "Het toewijzen van installateurs en het plannen van afspraken vanuit één systeem.",
       "Koppelingen met bestaande systemen voor planning en facturering.",
     ],
@@ -179,7 +179,7 @@ export const projects: Project[] = [
     accent: "teal",
     transformation: "Van handmatige aanmelding naar een platform dat meegroeit.",
     kind: "portal",
-    challenge: "Petje af koppelt kinderen aan naschoolse activiteiten en groeide snel naar honderdduizenden gebruikers. Het aanmeldproces was handmatig en schaalde niet mee — administratie voor scholen, aanbieders en ouders liep door elkaar.",
+    challenge: "Petje af koppelt kinderen aan naschoolse activiteiten en groeide snel naar honderdduizenden gebruikers. Het aanmeldproces was handmatig en schaalde niet mee. De administratie voor scholen, aanbieders en ouders liep door elkaar.",
     approach: [
       "Aanmeldportaal op Mendix met aparte omgevingen voor ouders, scholen en aanbieders.",
       "Geautomatiseerde matching en capaciteitsbeheer.",
@@ -202,10 +202,10 @@ export const projects: Project[] = [
     approach: [
       "Onboarding & verificatie: identiteit via iDIN, plus IBAN-, KvK- en BTW-controle in de flow.",
       "Opdrachten voor consultancy en detachering, met matching tussen professional en opdracht.",
-      "Uren registreren en in één klik de maand afsluiten — van uur naar factuur.",
+      "Uren registreren en in één klik de maand afsluiten: van uur naar factuur.",
       "Support, nieuws en updates in dezelfde omgeving; gekoppeld aan AFAS/Nmbrs.",
     ],
-    result: "Meer dan 40 uur per week terug. In EPSA Connect regelen professionals hun opdrachten, uren, facturatie en onboarding zelf — minder mailen, minder fouten en schaalbaar mee met de groei.",
+    result: "Meer dan 40 uur per week terug. In EPSA Connect regelen professionals hun opdrachten, uren, facturatie en onboarding zelf, minder mailen, minder fouten en schaalbaar mee met de groei.",
     relatedServices: ["portalen-dashboards", "app-ontwikkeling", "procesautomatisering", "systeemintegratie"],
     video: {
       mp4: "/visuals/case-epsa.mp4",
@@ -262,7 +262,7 @@ export const projects: Project[] = [
     kind: "search",
     challenge: "Een grote Nederlandse semi-publieke organisatie had een omvangrijke kennisbank met uitspraken en documenten. Medewerkers verloren veel tijd aan het handmatig doorzoeken van relevante informatie voor hun werk.",
     approach: [
-      "AI-model getraind op de interne kennisbank — data blijft volledig binnen de eigen omgeving.",
+      "AI-model getraind op de interne kennisbank. De data blijft volledig binnen de eigen omgeving.",
       "Semantisch zoeken: de AI begrijpt de vraag, niet alleen de zoekterm.",
       "Mendix als orchestratielaag: governance, toegangsbeheer en audit-trail ingebouwd.",
       "Volledig voldoend aan AVG en de interne beveiligingseisen.",
@@ -285,7 +285,7 @@ export const projects: Project[] = [
       "Supply-chain-portaal op Mendix in ontwikkeling.",
       "Integratie met bestaande ERP- en logistieke systemen.",
     ],
-    result: "In ontwikkeling — meer informatie volgt.",
+    result: "In ontwikkeling. Meer informatie volgt.",
     relatedServices: ["portalen-dashboards", "systeemintegratie"],
   },
 ];
@@ -307,7 +307,7 @@ export const sectors: {
 
 // Kernwaarden (uit het VTO — titels letterlijk). Gebruikt op /over-kobeon en /werken-bij.
 export const coreValues = [
-  { title: "Wees geen engnek", body: "No-nonsense, recht door zee en zonder kapsones — gewoon doen wat werkt." },
+  { title: "Wees geen engnek", body: "No-nonsense, recht door zee en zonder kapsones, gewoon doen wat werkt." },
   { title: "Samen is leuker", body: "We bouwen, reviewen en vieren samen; je staat er nooit alleen voor." },
   { title: "Feedback is een cadeautje", body: "Eerlijk en direct, omdat we elkaar én het werk beter willen maken." },
 ];
@@ -316,9 +316,9 @@ export const coreValues = [
 export const culture = [
   { title: "Werken met experts", body: "Je leert van Mendix MVP's, Experts en 2 Advanced Trainers, en groeit richting certificering." },
   { title: "Samen, niet solo", body: "Je staat er nooit alleen voor; we bouwen, reviewen en vieren samen." },
-  { title: "Echte impact", body: "Je werk gaat live bij klanten als ABN AMRO, Zilveren Kruis en de Rechtspraak — geen la-projecten." },
+  { title: "Echte impact", body: "Je werk gaat live bij klanten als ABN AMRO, Zilveren Kruis en de Rechtspraak, geen la-projecten." },
   { title: "Eigenaarschap", body: "Jij pakt features end-to-end op, van Discovery tot livegang; we vertrouwen op jouw scherpte." },
-  { title: "Aan de voorkant van AI", body: "Agentic AI, custom modellen en de agentic enterprise — niet als hype, maar in echte oplossingen." },
+  { title: "Aan de voorkant van AI", body: "Agentic AI, custom modellen en de agentic enterprise, niet als hype maar in echte oplossingen." },
   { title: "Plezier", body: "Vrijdag is kantoor- en demodag, met een borrel na. Plus legendarische trips (ski, summer workation)." },
 ];
 
@@ -363,8 +363,8 @@ export const vacancies: {
     hours: "32–40 uur",
     teaser: "Bouw samen met klanten en collega's aan oplossingen die logisch voelen, goed werken en lekker draaien.",
     intro: [
-      "Bij Kobeon houden we van snelheid. Niet gehaast bouwen, maar slim en doordacht — daarom werken we met Mendix.",
-      "Als Medior Mendix Consultant bouw je samen met klanten en collega's aan oplossingen die logisch voelen, goed werken en lekker draaien. Je denkt mee, stelt de juiste vragen en vertaalt ideeën naar iets dat echt waarde toevoegt — met de ruimte om keuzes te maken.",
+      "Bij Kobeon houden we van snelheid. Niet gehaast bouwen, maar slim en doordacht, daarom werken we met Mendix.",
+      "Als Medior Mendix Consultant bouw je samen met klanten en collega's aan oplossingen die logisch voelen, goed werken en lekker draaien. Je denkt mee, stelt de juiste vragen en vertaalt ideeën naar iets dat echt waarde toevoegt, met de ruimte om keuzes te maken.",
     ],
     profiel: [
       "Intermediate gecertificeerd, of op weg naar Advanced.",
@@ -395,7 +395,7 @@ export const vacancies: {
     hours: "32–40 uur",
     teaser: "Bouw enterprise-applicaties op Mendix voor klanten in horticultuur, staffing en de publieke sector.",
     intro: [
-      "Je bouwt enterprise-applicaties op Mendix voor klanten in horticultuur, staffing en de publieke sector — van datamodel tot UX, end-to-end per feature, samen met experts.",
+      "Je bouwt enterprise-applicaties op Mendix voor klanten in horticultuur, staffing en de publieke sector: van datamodel tot UX, end-to-end per feature, samen met experts.",
     ],
     profiel: [
       "Ervaring met Mendix, of een sterke low-code/high-code-basis en de wil om te certificeren.",
@@ -421,9 +421,9 @@ export const vacancies: {
     type: "Hybride",
     location: "Zwolle",
     hours: "32–40 uur",
-    teaser: "Bouw agentic AI-oplossingen en custom modellen, geïntegreerd in Mendix — productieklaar en controleerbaar.",
+    teaser: "Bouw agentic AI-oplossingen en custom modellen, geïntegreerd in Mendix: productieklaar en controleerbaar.",
     intro: [
-      "Bouw agentic AI-oplossingen en custom modellen, geïntegreerd in Mendix — productieklaar, controleerbaar en met governance. Aan de voorkant van de agentic enterprise.",
+      "Bouw agentic AI-oplossingen en custom modellen, geïntegreerd in Mendix: productieklaar, controleerbaar en met governance. Aan de voorkant van de agentic enterprise.",
     ],
     profiel: [
       "Ervaring met LLM's, agent-frameworks en API-integraties.",
@@ -477,9 +477,9 @@ export const vacancies: {
     type: "Hybride",
     location: "Zwolle",
     hours: "Sales",
-    teaser: "Eigenaar van onze groei en hoeder van het Kobeon-proces — van introductie en discovery tot technische validatie.",
+    teaser: "Eigenaar van onze groei en hoeder van het Kobeon-proces: van introductie en discovery tot technische validatie.",
     intro: [
-      "Kobeon is niet het zoveelste IT-bureau — we zijn de Mendix-partner met de hoogste expertdichtheid van Nederland.",
+      "Kobeon is niet het zoveelste IT-bureau. We zijn de Mendix-partner met de hoogste expertdichtheid van Nederland.",
       "Om onze propositie bij de top-100-accounts te verzilveren, zoeken we een Sales Growth Lead: eigenaar van onze groei en hoeder van het Kobeon-proces, van introductie en discovery tot technische validatie en visie-ontwikkeling.",
     ],
     profiel: [
@@ -510,7 +510,7 @@ export const vacancies: {
     hours: "Fulltime",
     teaser: "Leer Mendix van 2 Advanced Trainers en werk vanaf dag één aan echte projecten. Begeleiding naar certificering.",
     intro: [
-      "Start je carrière aan de voorkant van low-code en AI. In ons traineeship leer je Mendix van 2 Advanced Trainers en draai je vanaf dag één mee in echte klantprojecten — met begeleiding naar certificering.",
+      "Start je carrière aan de voorkant van low-code en AI. In ons traineeship leer je Mendix van 2 Advanced Trainers en draai je vanaf dag één mee in echte klantprojecten, met begeleiding naar certificering.",
     ],
     profiel: [
       "Een afgeronde of bijna afgeronde (hbo/wo) opleiding, richting IT.",
@@ -539,7 +539,7 @@ export const vacancies: {
     kind: "stage",
     teaser: "Loop mee aan de voorkant van low-code en AI: onderzoek en bouw mee aan een concreet Mendix-vraagstuk.",
     intro: [
-      "Loop mee aan de voorkant van low-code en AI. Je onderzoekt en bouwt mee aan een concreet vraagstuk op Mendix — bijvoorbeeld een agentic-AI-workflow, een knowledge-graph-contextlaag of een herbruikbare integratiecomponent — begeleid door Mendix MVP's en Experts.",
+      "Loop mee aan de voorkant van low-code en AI. Je onderzoekt en bouwt mee aan een concreet vraagstuk op Mendix (bijvoorbeeld een agentic-AI-workflow, een knowledge-graph-contextlaag of een herbruikbare integratiecomponent) begeleid door Mendix MVP's en Experts.",
     ],
     rol: [
       "Een afgebakend onderzoek + werkend prototype op Mendix.",
@@ -553,7 +553,7 @@ export const vacancies: {
     ],
     voorwaarden: [
       "Begeleiding door experts.",
-      "Een serieuze opdracht — geen koffie halen.",
+      "Een serieuze opdracht, geen koffie halen.",
       "Stagevergoeding [bedrag] en vrijdagborrel.",
       "Uitzicht op een baan.",
     ],
@@ -568,7 +568,7 @@ export const vacancies: {
     kind: "stage",
     teaser: "Help onze groei versnellen: onderzoek onze go-to-market en lever een onderbouwd advies + concrete aanpak.",
     intro: [
-      "Help ons onze groei te versnellen. Je onderzoekt onze go-to-market in de focus-verticals (horticultuur, maakindustrie, semi-publiek) en levert een onderbouwd advies + concrete aanpak — van propositie en doelgroep tot kanalen en opvolging.",
+      "Help ons onze groei te versnellen. Je onderzoekt onze go-to-market in de focus-verticals (horticultuur, maakindustrie, semi-publiek) en levert een onderbouwd advies + concrete aanpak: van propositie en doelgroep tot kanalen en opvolging.",
     ],
     rol: [
       "Markt-/doelgroeponderzoek in onze verticals.",
@@ -595,9 +595,9 @@ export const vacancies: {
     location: "Zwolle",
     hours: "Hybride",
     kind: "stage",
-    teaser: "Help ons verhaal scherp en zichtbaar te maken — content, socials en campagnes die je meteen live ziet gaan.",
+    teaser: "Help ons verhaal scherp en zichtbaar te maken: content, socials en campagnes die je meteen live ziet gaan.",
     intro: [
-      "Help ons verhaal scherp en zichtbaar te maken. Je werkt mee aan onze content, socials en campagnes — van klantverhalen en LinkedIn tot de website — en ziet je werk meteen live gaan.",
+      "Help ons verhaal scherp en zichtbaar te maken. Je werkt mee aan onze content, socials en campagnes (van klantverhalen en LinkedIn tot de website) en ziet je werk meteen live gaan.",
     ],
     rol: [
       "Content maken: klantcases, social posts, nieuwsbrief.",
@@ -620,7 +620,7 @@ export const vacancies: {
     slug: "open-sollicitatie",
     title: "Open sollicitatie",
     category: "Alle",
-    type: "—",
+    type: "In overleg",
     location: "Hybride",
     teaser: "Niets gevonden dat past, maar wel overtuigd? Verras ons.",
     open: true,
@@ -655,10 +655,10 @@ export const services: Service[] = [
     span: "md:col-span-2 md:row-span-2",
     mock: "workflow",
     heroLine: "Repetitief werk verdwijnt. Je mensen houden tijd over.",
-    intro: "Handmatige stappen, overtypen en wachten op goedkeuringen kosten je team elke dag uren. Wij automatiseren die processen op Mendix — met een volledig audit-spoor, zodat je grip houdt.",
+    intro: "Handmatige stappen, overtypen en wachten op goedkeuringen kosten je team elke dag uren. Wij automatiseren die processen op Mendix, met een volledig audit-spoor, zodat je grip houdt.",
     watJeKrijgt: [
       "Minder handwerk en minder fouten; je mensen richten zich op het werk dat telt.",
-      "Kortere doorlooptijden — van dagen naar uren.",
+      "Kortere doorlooptijden: van dagen naar uren.",
       "Volledige traceerbaarheid: elke stap is auditeerbaar.",
     ],
     aanpak: [
@@ -676,7 +676,7 @@ export const services: Service[] = [
     accent: "teal",
     span: "md:col-span-2",
     heroLine: "AI die het werk áf maakt, niet alleen antwoorden geeft.",
-    intro: "Een losse chatbot beantwoordt vragen. Een agentic oplossing voert hele taken uit — matchen, controleren, verwerken — binnen jouw bedrijfsregels en altijd controleerbaar.",
+    intro: "Een losse chatbot beantwoordt vragen. Een agentic oplossing voert hele taken uit (matchen, controleren, verwerken) binnen jouw bedrijfsregels en altijd controleerbaar.",
     watJeKrijgt: [
       "Kenniswerk dat zelfstandig wordt afgehandeld, met een mens die goedkeurt waar het moet.",
       "Minder doorlooptijd op repetitief beoordelings- en verwerkingswerk.",
@@ -685,7 +685,7 @@ export const services: Service[] = [
     aanpak: [
       "AI-agenten geregisseerd door Mendix, met veilige, rolgebaseerde toegang tot je data en applicaties.",
       "Mens-in-de-loop: goedkeuringsstappen waar dat nodig is.",
-      "Governance, logging en security ingebouwd — klaar voor AVG en de EU AI Act.",
+      "Governance, logging en security ingebouwd, klaar voor AVG en de EU AI Act.",
     ],
     relatedProjects: ["rechtspraak"],
   },
@@ -704,7 +704,7 @@ export const services: Service[] = [
     ],
     aanpak: [
       "Modellen getraind op je eigen data, geïntegreerd in Mendix als beheerde (governed) API.",
-      "Keuze uit een toonaangevend, open-source of eigen model — vrij te wisselen.",
+      "Keuze uit een toonaangevend, open-source of eigen model, vrij te wisselen.",
       "Draait in je eigen cloud, on-prem of volledig afgeschermd als regelgeving dat eist.",
     ],
     relatedProjects: ["rechtspraak"],
@@ -712,7 +712,7 @@ export const services: Service[] = [
   {
     slug: "systeemintegratie",
     title: "Systeemintegratie",
-    desc: "Microsoft Dynamics, SAP, REST-API's — al je systemen praten met elkaar.",
+    desc: "Microsoft Dynamics, SAP, REST-API's: al je systemen praten met elkaar.",
     accent: "teal",
     span: "md:col-span-1",
     heroLine: "Je systemen werken eindelijk samen.",
@@ -720,10 +720,10 @@ export const services: Service[] = [
     watJeKrijgt: [
       "Geen overtypen meer; data stroomt automatisch tussen systemen.",
       "Minder fouten, meer overzicht.",
-      "Nieuwe applicaties bovenop je bestaande landschap — zonder alles te vervangen.",
+      "Nieuwe applicaties bovenop je bestaande landschap, zonder alles te vervangen.",
     ],
     aanpak: [
-      "Out-of-the-box-connectoren voor Microsoft Dynamics, SAP, AFAS, Exact, Salesforce en AWS — plus elke REST/OData-API.",
+      "Out-of-the-box-connectoren voor Microsoft Dynamics, SAP, AFAS, Exact, Salesforce en AWS, plus elke REST/OData-API.",
       "Mendix als integratielaag, met monitoring en governance.",
       "Gefaseerd, zodat je tijdens de koppeling blijft draaien.",
     ],
@@ -736,7 +736,7 @@ export const services: Service[] = [
     accent: "purple",
     span: "md:col-span-1",
     heroLine: "Web- en mobiele apps op Mendix. Enterprise-kwaliteit, standaard ingebouwd.",
-    intro: "Software die past op hoe jij werkt — voor je klanten én je medewerkers, op desktop en mobiel.",
+    intro: "Software die past op hoe jij werkt: voor je klanten én je medewerkers, op desktop en mobiel.",
     watJeKrijgt: [
       "Apps die exact aansluiten op je processen.",
       "Werkt op elk apparaat, ook in het veld.",
@@ -806,7 +806,7 @@ export const services: Service[] = [
     aanpak: [
       "Rapid prototyping met Figma Make, Lovable en Google Stitch.",
       "Ontwerpen vertaald naar toegankelijke Mendix-UI.",
-      "Onderdeel van elk traject — fase 2 in onze werkwijze.",
+      "Onderdeel van elk traject, fase 2 in onze werkwijze.",
     ],
     relatedProjects: [],
   },
@@ -817,7 +817,7 @@ export const services: Service[] = [
     accent: "teal",
     span: "md:col-span-1",
     heroLine: "Heldere keuzes: datastructuur, architectuur en een IT-routekaart.",
-    intro: "Niet zomaar bouwen, maar eerst de juiste fundamenten en richting bepalen — zodat je investeringen renderen.",
+    intro: "Niet zomaar bouwen, maar eerst de juiste fundamenten en richting bepalen, zodat je investeringen renderen.",
     watJeKrijgt: [
       "Een duidelijke roadmap en architectuur die hout snijdt.",
       "Betere beslissingen over bouwen, kopen of koppelen.",
@@ -866,8 +866,8 @@ export type ServiceBody = { paras: string[]; pijlers: { t: string; b: string }[]
 export const serviceBodies: Record<string, ServiceBody> = {
   "procesautomatisering": {
     paras: [
-      "Handmatig overtypen, papieren goedkeuringen en losse Excel-lijstjes kosten je team elke dag tijd — en introduceren fouten die je vaak pas later ontdekt. Naarmate je groeit, lopen die processen vast en wordt het overzicht kleiner in plaats van groter.",
-      "Wij brengen je proces in kaart en bouwen het na als één werkstroom op Mendix: aanvragen, controles, goedkeuringen en verwerking lopen automatisch, met de juiste mensen op de juiste momenten. Repetitief én cognitief werk (beoordelen, classificeren, samenvatten) nemen we uit handen — met een volledig audit-spoor, zodat altijd herleidbaar is wat er is gebeurd en waarom.",
+      "Handmatig overtypen, papieren goedkeuringen en losse Excel-lijstjes kosten je team elke dag tijd en introduceren fouten die je vaak pas later ontdekt. Naarmate je groeit, lopen die processen vast en wordt het overzicht kleiner in plaats van groter.",
+      "Wij brengen je proces in kaart en bouwen het na als één werkstroom op Mendix: aanvragen, controles, goedkeuringen en verwerking lopen automatisch, met de juiste mensen op de juiste momenten. Repetitief én cognitief werk (beoordelen, classificeren, samenvatten) nemen we uit handen, met een volledig audit-spoor, zodat altijd herleidbaar is wat er is gebeurd en waarom.",
     ],
     pijlers: [
       { t: "Minder handwerk", b: "je mensen houden tijd over voor het werk dat telt." },
@@ -877,8 +877,8 @@ export const serviceBodies: Record<string, ServiceBody> = {
   },
   "agentic-ai": {
     paras: [
-      "Een chatbot beantwoordt vragen, maar maakt geen werk áf. Het echte werk — matchen, controleren, documenten verwerken, communiceren — blijft liggen of kost je mensen uren per dag.",
-      "Met agentic AI bouwen we AI-agenten die hele taken zelfstandig uitvoeren, binnen jouw bedrijfsregels en met veilige, rolgebaseerde toegang tot je systemen. Een mens keurt goed waar dat moet; de rest gaat vanzelf. Alles geregisseerd door Mendix, met logging en governance ingebouwd — geen black box, maar een werkstroom die je kunt vertrouwen en bijsturen.",
+      "Een chatbot beantwoordt vragen, maar maakt geen werk áf. Het echte werk (matchen, controleren, documenten verwerken, communiceren) blijft liggen of kost je mensen uren per dag.",
+      "Met agentic AI bouwen we AI-agenten die hele taken zelfstandig uitvoeren, binnen jouw bedrijfsregels en met veilige, rolgebaseerde toegang tot je systemen. Een mens keurt goed waar dat moet; de rest gaat vanzelf. Alles geregisseerd door Mendix, met logging en governance ingebouwd. Geen black box, maar een werkstroom die je kunt vertrouwen en bijsturen.",
     ],
     pijlers: [
       { t: "Werk dat áf is", b: "geen slim antwoord, maar een afgeronde taak." },
@@ -888,8 +888,8 @@ export const serviceBodies: Record<string, ServiceBody> = {
   },
   "ai-development": {
     paras: [
-      "Generieke AI-modellen kennen jouw vak niet. Voor de beslissingen die er echt toe doen — voorspellen, detecteren, scoren — heb je modellen nodig die je eigen data en context begrijpen.",
-      "Wij trainen modellen op je eigen bedrijfsdata en zetten ze in productie als een beheerde, controleerbare service binnen je Mendix-applicaties. Je houdt de data én de regie: kies een toonaangevend, open-source of eigen model, en draai het in je eigen cloud, on-prem of volledig afgeschermd. We monitoren de prestaties, zodat het model accuraat blijft — niet alleen op de lanceerdag.",
+      "Generieke AI-modellen kennen jouw vak niet. Voor de beslissingen die er echt toe doen (voorspellen, detecteren, scoren) heb je modellen nodig die je eigen data en context begrijpen.",
+      "Wij trainen modellen op je eigen bedrijfsdata en zetten ze in productie als een beheerde, controleerbare service binnen je Mendix-applicaties. Je houdt de data én de regie: kies een toonaangevend, open-source of eigen model, en draai het in je eigen cloud, on-prem of volledig afgeschermd. We monitoren de prestaties, zodat het model accuraat blijft, niet alleen op de lanceerdag.",
     ],
     pijlers: [
       { t: "Getraind op jouw data", b: "voorspellingen die kloppen met de praktijk." },
@@ -899,8 +899,8 @@ export const serviceBodies: Record<string, ServiceBody> = {
   },
   "app-ontwikkeling": {
     paras: [
-      "Standaardpakketten passen zelden op hoe jij werkt, en maatwerk in high-code is traag en duur. Je medewerkers en klanten verdienen software die hun werk makkelijker maakt — op kantoor én in het veld.",
-      "Op Mendix bouwen we web- en mobiele applicaties die exact aansluiten op je processen, met security, schaalbaarheid en governance standaard ingebouwd. Eén keer bouwen, overal beschikbaar — van een desktop-app tot een offline-app voor de monteur. Binnen zes weken draait je eerste werkende versie, daarna breiden we uit op basis van echt gebruik.",
+      "Standaardpakketten passen zelden op hoe jij werkt, en maatwerk in high-code is traag en duur. Je medewerkers en klanten verdienen software die hun werk makkelijker maakt, op kantoor én in het veld.",
+      "Op Mendix bouwen we web- en mobiele applicaties die exact aansluiten op je processen, met security, schaalbaarheid en governance standaard ingebouwd. Eén keer bouwen, overal beschikbaar: van een desktop-app tot een offline-app voor de monteur. Binnen zes weken draait je eerste werkende versie, daarna breiden we uit op basis van echt gebruik.",
     ],
     pijlers: [
       { t: "Past op je proces", b: "geen concessies aan standaardsoftware." },
@@ -910,8 +910,8 @@ export const serviceBodies: Record<string, ServiceBody> = {
   },
   "systeemintegratie": {
     paras: [
-      "Losse pakketten — ERP, CRM, boekhouding, vaksystemen — die niet met elkaar praten kosten tijd en veroorzaken fouten. Je schakelt constant tussen applicaties en typt dezelfde gegevens dubbel in, met een verhoogd risico op fouten en een gebrek aan overzicht.",
-      "Wij verbinden je systemen tot één geheel, zodat data automatisch tussen applicaties stroomt en je één bron van waarheid hebt. Mendix koppelt out-of-the-box met Microsoft Dynamics, SAP, AFAS, Exact, Salesforce en AWS, plus elke REST/OData-API — en waar een systeem geen nette koppeling heeft, lossen we dat op. Vaak is de grootste winst juist het verbinden van silo's die nu niet samenwerken, zonder dat je een werkend systeem hoeft te vervangen.",
+      "Losse pakketten (ERP, CRM, boekhouding, vaksystemen) die niet met elkaar praten kosten tijd en veroorzaken fouten. Je schakelt constant tussen applicaties en typt dezelfde gegevens dubbel in, met een verhoogd risico op fouten en een gebrek aan overzicht.",
+      "Wij verbinden je systemen tot één geheel, zodat data automatisch tussen applicaties stroomt en je één bron van waarheid hebt. Mendix koppelt out-of-the-box met Microsoft Dynamics, SAP, AFAS, Exact, Salesforce en AWS, plus elke REST/OData-API. Waar een systeem geen nette koppeling heeft, lossen we dat op. Vaak is de grootste winst juist het verbinden van silo's die nu niet samenwerken, zonder dat je een werkend systeem hoeft te vervangen.",
     ],
     pijlers: [
       { t: "Naadloze koppeling", b: "al je software werkt samen, geen geschakel meer." },
@@ -933,7 +933,7 @@ export const serviceBodies: Record<string, ServiceBody> = {
   "legacy-modernisering": {
     paras: [
       "Een verouderd systeem dat niemand meer durft aan te raken remt je af: hoge beheerkosten, afhankelijkheid van schaarse kennis en geen ruimte om mee te bewegen. Tegelijk voelt alles-in-één-keer vervangen te riskant.",
-      "Wij moderniseren gefaseerd. We bouwen nieuwe functionaliteit op Mendix bovenop of naast het oude systeem, koppelen de bestaande data en zetten stap voor stap over — zonder stilstand. Zo houd je continuïteit terwijl je naar een platform gaat dat veilig, schaalbaar en klaar voor de toekomst is.",
+      "Wij moderniseren gefaseerd. We bouwen nieuwe functionaliteit op Mendix bovenop of naast het oude systeem, koppelen de bestaande data en zetten stap voor stap over, zonder stilstand. Zo houd je continuïteit terwijl je naar een platform gaat dat veilig, schaalbaar en klaar voor de toekomst is.",
     ],
     pijlers: [
       { t: "Geen big bang", b: "je blijft draaien tijdens de overgang." },
@@ -944,7 +944,7 @@ export const serviceBodies: Record<string, ServiceBody> = {
   "design-prototyping": {
     paras: [
       "De duurste fout is software bouwen die net niet doet wat gebruikers nodig hebben. Dat voorkom je door eerst te zien en te testen voordat er één regel gebouwd wordt.",
-      "Wij maken in dagen een klikbaar prototype — met Figma Make, Lovable en Google Stitch — zodat je het eindresultaat ervaart en valideert met je gebruikers vóór de bouw. Daarna vertalen we het ontwerp naar toegankelijke Mendix-UI. Het is fase 2 in onze werkwijze en bespaart later tijd, geld en verrassingen.",
+      "Wij maken in dagen een klikbaar prototype (met Figma Make, Lovable en Google Stitch) zodat je het eindresultaat ervaart en valideert met je gebruikers vóór de bouw. Daarna vertalen we het ontwerp naar toegankelijke Mendix-UI. Het is fase 2 in onze werkwijze en bespaart later tijd, geld en verrassingen.",
     ],
     pijlers: [
       { t: "Zien vóór bouwen", b: "je weet zeker dat we het juiste maken." },
@@ -955,7 +955,7 @@ export const serviceBodies: Record<string, ServiceBody> = {
   "it-consultancy": {
     paras: [
       "Niet elke vraag begint bij bouwen. Soms heb je eerst richting nodig: welke data, welke architectuur, bouwen-kopen-of-koppelen, en hoe je stap voor stap bij de agentic enterprise komt.",
-      "Wij adviseren onafhankelijk en resultaatgericht: datastructuur en ontologie, architectuur en een IT-roadmap die hout snijdt. Geen dik rapport dat in een la verdwijnt, maar heldere keuzes waar je morgen mee aan de slag kunt — en die je investeringen laten renderen.",
+      "Wij adviseren onafhankelijk en resultaatgericht: datastructuur en ontologie, architectuur en een IT-roadmap die hout snijdt. Geen dik rapport dat in een la verdwijnt, maar heldere keuzes waar je morgen mee aan de slag kunt, en die je investeringen laten renderen.",
     ],
     pijlers: [
       { t: "Heldere keuzes", b: "onderbouwd advies, geen ruis." },
@@ -994,7 +994,7 @@ export const serviceVoorbeelden: Record<string, string[]> = {
     "Een knowledge graph/ontologie als contextlaag, zodat AI je bedrijf “snapt”.",
   ],
   "app-ontwikkeling": [
-    "Field-service-app voor monteurs: werkorders, handleidingen, machineseries en onderdelen op aanvraag — ook offline.",
+    "Field-service-app voor monteurs: werkorders, handleidingen, machineseries en onderdelen op aanvraag, ook offline.",
     "Mobiele inspectie-/keuringsapp voor in het veld.",
     "Planningsapp voor agri of productie (teelt/oogst, capaciteit, personeel).",
     "Klant- of medewerkersapp die op je processen is gebouwd.",
@@ -1042,7 +1042,7 @@ export const team: TeamMember[] = [
 // Echte (geanonimiseerde) productscreenshots voor de ScreenShowcase.
 export type Screen = { src: string; frame: "browser" | "phone"; label?: string; alt: string };
 export const epsaScreens: Screen[] = [
-  { src: "/screens/epsa-onboarding.png", frame: "browser", label: "EPSA Connect — onboarding & verificatie", alt: "EPSA Connect onboarding en verificatie op desktop" },
+  { src: "/screens/epsa-onboarding.png", frame: "browser", label: "EPSA Connect: onboarding & verificatie", alt: "EPSA Connect onboarding en verificatie op desktop" },
   { src: "/screens/epsa-onboarding-mobiel.PNG", frame: "phone", label: "Onboarding (mobiel)", alt: "EPSA Connect onboarding op mobiel" },
   { src: "/screens/idin-mobiel.PNG", frame: "phone", label: "Verificatie via iDIN", alt: "Identiteitsverificatie via iDIN in EPSA Connect" },
 ];

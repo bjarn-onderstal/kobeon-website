@@ -20,7 +20,7 @@ export default function HoeWeWerken() {
           Van idee naar werkend. <span className="gradient-text">Stap voor stap.</span>
         </h2>
         <p className="mt-4 text-lg text-muted">
-          Een helder tempo met vaste stappen — en daarna blijven we doorontwikkelen.
+          Een helder tempo met vaste stappen, en daarna blijven we doorontwikkelen.
         </p>
       </div>
 

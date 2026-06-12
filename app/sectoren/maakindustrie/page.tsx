@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SectorPage, { type SectorContent } from "@/components/SectorPage";
 
-const title = "Maakindustrie — slimme fabriek op Mendix";
+const title = "Maakindustrie · slimme fabriek op Mendix";
 const description =
   "Software voor de maakindustrie: ERP-integratie (SAP, Dynamics 365, legacy), digitale werkorders, mobiele kwaliteitscontrole en een OEE-dashboard met actueel ketenzicht.";
 
@@ -25,7 +25,7 @@ const content: SectorContent = {
     { title: "Planning in Excel, OEE handmatig", body: "Sturen op verouderde cijfers kost marge en leidt tot stilstand." },
   ],
   approach: [
-    { title: "ERP-integratie", body: "SAP, Dynamics 365 en legacy gekoppeld op Mendix — via standaard connectoren en REST/OData/Kafka." },
+    { title: "ERP-integratie", body: "SAP, Dynamics 365 en legacy gekoppeld op Mendix, via standaard connectoren en REST/OData/Kafka." },
     { title: "Digitale werkorderflows", body: "Van order tot oplevering zonder papier, met status in realtime." },
     { title: "Mobiele kwaliteitsregistratie", body: "Keuringen op de vloer, met foto's en audit trail." },
     { title: "Supply chain & OEE-dashboard", body: "Actueel zicht op toeleverketen en machineprestatie, op één scherm." },
@@ -33,7 +33,7 @@ const content: SectorContent = {
   systems: ["SAP", "Microsoft Dynamics 365", "Legacy", "REST / OData / Kafka"],
   examples: [
     "Productie- en capaciteitsplanning, gekoppeld aan SAP of Microsoft Dynamics.",
-    "Field Service Management: monteur-app met werkorders, machineseries, handleidingen en onderdelen op aanvraag — ook offline.",
+    "Field Service Management: monteur-app met werkorders, machineseries, handleidingen en onderdelen op aanvraag, ook offline.",
     "Digitale werkorders en mobiele kwaliteitsregistratie op de werkvloer.",
     "Supply-chain- en OEE-dashboards met realtime data.",
   ],

@@ -15,7 +15,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
-  const title = `${service.title} — Mendix implementatie op maat`;
+  const title = `${service.title}: Mendix implementatie op maat`;
   const fullDesc = `${service.heroLine} ${service.intro}`;
   const description = fullDesc.length > 157 ? `${fullDesc.slice(0, 154).trimEnd()}…` : fullDesc;
   return {

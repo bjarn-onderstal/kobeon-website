@@ -30,7 +30,7 @@ export default function MendixVoordeel() {
           Wat maatwerk en standaardsoftware <span className="gradient-text">niet kunnen bieden.</span>
         </h2>
         <p className="mt-4 text-lg text-muted">
-          Wij bouwen op Mendix — het platform dat enterprise-eisen standaard invult, zodat jij niet kiest tussen snelheid en degelijkheid.
+          Wij bouwen op Mendix, het platform dat enterprise-eisen standaard invult, zodat jij niet kiest tussen snelheid en degelijkheid.
         </p>
       </div>
 
@@ -66,7 +66,7 @@ export default function MendixVoordeel() {
           </blockquote>
           <figcaption className="mt-6 flex items-center gap-4">
             <span className="flex h-14 w-14 items-center justify-center rounded-full bg-yellow text-lg font-bold text-ink">9×</span>
-            <span className="text-sm text-white/70">Gartner Magic Quadrant — Enterprise Low-Code (2025)</span>
+            <span className="text-sm text-white/70">Gartner Magic Quadrant: Enterprise Low-Code (2025)</span>
           </figcaption>
         </motion.figure>
       </div>

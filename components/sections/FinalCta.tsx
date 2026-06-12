@@ -9,7 +9,7 @@ export default function FinalCta() {
           Klaar voor de eerste stap?
         </h2>
         <p className="mt-4 text-lg text-white/80">
-          Eén gesprek van 60 minuten. Je betaalt niets en weet daarna precies waar je staat — en wat het oplevert.
+          Eén gesprek van 60 minuten. Je betaalt niets en weet daarna precies waar je staat, en wat het oplevert.
         </p>
         <div className="mt-8 flex justify-center">
           <Link href="/discovery-sessie" className="btn-primary text-base">Plan een Discovery-sessie</Link>

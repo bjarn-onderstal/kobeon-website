@@ -18,7 +18,7 @@ const scanMessages = [
 ];
 
 const dimensions = [
-  { label: "Procesautomatisering", score: 4, verdict: "Veel handmatige stappen — hoog automatiseringspotentieel." },
+  { label: "Procesautomatisering", score: 4, verdict: "Veel handmatige stappen, hoog automatiseringspotentieel." },
   { label: "Systeemintegratie", score: 3, verdict: "Systemen werken nog los van elkaar; koppelen levert direct winst op." },
   { label: "AI-gereedheid", score: 5, verdict: "Basis aanwezig; met de juiste data en governance snel op te schalen." },
   { label: "Schaalbaarheid", score: 6, verdict: "Redelijk schaalbaar, maar legacy remt groei op termijn." },
@@ -26,9 +26,9 @@ const dimensions = [
 ];
 
 const recommendations: { accent: "purple" | "teal" | "yellow"; title: string; body: string }[] = [
-  { accent: "purple", title: "Automatiseer je kernproces", body: "Begin met het proces met de meeste handmatige stappen — daar zit de snelste tijdwinst." },
+  { accent: "purple", title: "Automatiseer je kernproces", body: "Begin met het proces met de meeste handmatige stappen, daar zit de snelste tijdwinst." },
   { accent: "teal", title: "Verbind je systemen", body: "Koppel je bestaande systemen zodat data één keer wordt ingevoerd en overal klopt." },
-  { accent: "yellow", title: "Maak AI productieklaar", body: "Zet een eerste agentic workflow op met governance ingebouwd — geen eindeloze pilot." },
+  { accent: "yellow", title: "Maak AI productieklaar", body: "Zet een eerste agentic workflow op met governance ingebouwd, geen eindeloze pilot." },
 ];
 
 const recAccent = { purple: "border-purple bg-purplebg", teal: "border-teal bg-tealbg", yellow: "border-yellow bg-yellow/10" };
@@ -191,7 +191,7 @@ export default function QuickscanClient() {
             </div>
           </div>
           <p className="max-w-md text-lg text-muted">
-            Een degelijke basis met duidelijke groeikansen. De grootste winst zit in procesautomatisering en het verbinden van je systemen — precies waar wij in zes weken een werkende MVP voor neerzetten.
+            Een degelijke basis met duidelijke groeikansen. De grootste winst zit in procesautomatisering en het verbinden van je systemen, precies waar wij in zes weken een werkende MVP voor neerzetten.
           </p>
         </div>
 

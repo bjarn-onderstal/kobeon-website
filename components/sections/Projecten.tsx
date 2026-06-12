@@ -12,7 +12,7 @@ export default function Projecten() {
           Industrieën die we al <span className="gradient-text">gemoderniseerd hebben.</span>
         </h2>
         <p className="mt-4 text-lg text-muted">
-          Echte oplossingen, echt resultaat. Van papieren administratie naar werkende software — in weken, niet jaren.
+          Echte oplossingen, echt resultaat. Van papieren administratie naar werkende software. In weken, niet jaren.
         </p>
       </div>
 

@@ -45,7 +45,7 @@ const rows: Row[] = [
   {
     tag: "Systeemintegratie",
     title: "Al je systemen praten met elkaar",
-    body: "Microsoft Dynamics, SAP, REST/API — je systemen werken eindelijk samen.",
+    body: "Microsoft Dynamics, SAP, REST/API: je systemen werken eindelijk samen.",
     url: "app.kobeon.nl/integraties",
     metric: { value: "8", label: "systemen verbonden" },
     Demo: MockIntegration,
@@ -61,7 +61,7 @@ export default function WatWeBouwen() {
           Geen praatjes. <span className="gradient-text">Werkende software.</span>
         </h2>
         <p className="mt-4 text-lg text-muted">
-          Dit is wat we voor je bouwen — live, niet als screenshot. Elke demo draait op een loop, precies zoals de software straks voor je werkt.
+          Dit is wat we voor je bouwen, live en niet als screenshot. Elke demo draait op een loop, precies zoals de software straks voor je werkt.
         </p>
       </div>
 
@@ -106,7 +106,7 @@ export default function WatWeBouwen() {
         <div>
           <div className="font-serif text-2xl">Eén platform: Mendix.</div>
           <p className="mt-2 max-w-2xl text-white/75">
-            Security, governance en schaalbaarheid standaard ingebouwd — ISO 27001, audit trails, van 10 tot 100.000 gebruikers. Gedragen door Siemens, negen jaar op rij Gartner-Leider.
+            Security, governance en schaalbaarheid standaard ingebouwd: ISO 27001, audit trails, van 10 tot 100.000 gebruikers. Gedragen door Siemens, negen jaar op rij Gartner-Leider.
           </p>
         </div>
         <div className="mt-5 flex shrink-0 gap-2 md:mt-0">

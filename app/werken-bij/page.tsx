@@ -6,7 +6,7 @@ import VacanciesList from "@/components/VacanciesList";
 import FinalCta from "@/components/sections/FinalCta";
 import { culture, team, coreValues } from "@/lib/siteConfig";
 
-const title = "Werken bij Kobeon — bouw mee aan Mendix & AI";
+const title = "Werken bij Kobeon · bouw mee aan Mendix & AI";
 const description =
   "Werken bij Kobeon: een klein, senior Mendix-team met 2 Advanced Trainers en ISO 27001. Echte impact, MVP's in zes weken en eigenaarschap van Discovery tot livegang.";
 
@@ -40,7 +40,7 @@ export default function Page() {
         <div className="container-x relative pb-16 pt-32 md:pb-20 md:pt-40">
           <span className="chip border-white/20 bg-white/10 text-white/80">WERKEN BIJ KOBEON</span>
           <h1 className="h-display mt-6 max-w-3xl text-4xl md:text-6xl">
-            Bouw mee aan software die ertoe doet — <span className="text-yellow">met de scherpste Mendix-experts van Nederland.</span>
+            Bouw mee aan software die ertoe doet, <span className="text-yellow">met de scherpste Mendix-experts van Nederland.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             Bij Kobeon werk je in een team van experts dat kennis deelt, dicht op de klant zit en samen het verschil maakt. Geen radertje in een machine; jij hebt impact en eigenaarschap.
@@ -93,9 +93,9 @@ export default function Page() {
       <Section tone="canvas">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wide text-purple">Ons team</p>
-          <h2 className="h-display mt-3 text-3xl md:text-4xl">Wij zijn met {team.length} — en groeien.</h2>
+          <h2 className="h-display mt-3 text-3xl md:text-4xl">Wij zijn met {team.length}, en groeien.</h2>
           <p className="mt-4 text-muted">
-            Een klein, hecht team van senior Mendix-experts. Bij jouw start hoor je er meteen bij — en bouw je mee.
+            Een klein, hecht team van senior Mendix-experts. Bij jouw start hoor je er meteen bij, en bouw je mee.
           </p>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

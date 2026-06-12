@@ -6,7 +6,7 @@ import VisieAgentic from "@/components/sections/VisieAgentic";
 import FinalCta from "@/components/sections/FinalCta";
 import { team, coreValues } from "@/lib/siteConfig";
 
-const title = "Over Kobeon — enterprise-software op Mendix";
+const title = "Over Kobeon · enterprise-software op Mendix";
 const description =
   "Kobeon is een Nederlandse Mendix + AI implementatiepartner uit Zwolle. Klein, senior team. Mendix Certified Partner, 3 MVP's, ISO 27001. Van idee naar MVP in zes weken.";
 
@@ -57,18 +57,18 @@ export default function Page() {
           De Mendix-partner met de hoogste expertdichtheid van Nederland.
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-ink">
-          Samen bouwen we enterprise-software die werkt zoals jij denkt — snel, veilig en schaalbaar.
+          Samen bouwen we enterprise-software die werkt zoals jij denkt: snel, veilig en schaalbaar.
         </p>
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
           Kobeon is een Nederlandse Mendix- en AI-implementatiepartner uit Zwolle. Ons internationaal
           opererende team bestaat uit Mendix MVP&apos;s, Experts en Specialisten die complexe uitdagingen
-          omzetten in schaalbare oplossingen. Die diepe expertise — op het platform dat al negen jaar
-          Gartner-Leider is — is waar we het verschil maken.
+          omzetten in schaalbare oplossingen. Die diepe expertise (op het platform dat al negen jaar
+          Gartner-Leider is) is waar we het verschil maken.
         </p>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
           Maar techniek alleen is niet genoeg. We werken zij-aan-zij met je, vanuit vertrouwen: we denken
           mee, schakelen snel, communiceren helder en nemen je mee in elke stap. Geen leverancier op
-          afstand, maar een partner die naast je staat — van de eerste Discovery tot doorontwikkeling.
+          afstand, maar een partner die naast je staat: van de eerste Discovery tot doorontwikkeling.
           Wat de situatie ook is, we helpen je verder.
         </p>
       </Section>

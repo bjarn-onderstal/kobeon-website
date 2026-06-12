@@ -12,7 +12,7 @@ export default function SectorenSpotlight() {
           Sectorspecifieke kennis. <span className="gradient-text">Wij denken in jouw processen.</span>
         </h2>
         <p className="mt-4 text-lg text-muted">
-          Elke branche heeft eigen systemen, regels en knelpunten — die kennen we.
+          Elke branche heeft eigen systemen, regels en knelpunten. Die kennen we.
         </p>
       </div>
 

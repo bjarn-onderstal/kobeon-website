@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SectorPage, { type SectorContent } from "@/components/SectorPage";
 
-const title = "Semi-Publiek — compliant & efficiënt op Mendix";
+const title = "Semi-Publiek · compliant & efficiënt op Mendix";
 const description =
   "Software voor semi-publieke organisaties: governance, audit trails en BIO-compliant cloud standaard ingebouwd. Compliant met NIS2, EU AI Act, AVG en ISO 27001.";
 
@@ -16,7 +16,7 @@ const content: SectorContent = {
   title: "Semi-publieke organisaties",
   tagline: "Compliance én efficiëntie. Zonder compromis.",
   intro:
-    "Strenge regelgeving en verouderde systemen hoeven efficiëntie niet in de weg te staan. Wij bouwen software waarin governance, audit trails en veilige data standaard zijn ingebouwd — niet achteraf aangezet.",
+    "Strenge regelgeving en verouderde systemen hoeven efficiëntie niet in de weg te staan. Wij bouwen software waarin governance, audit trails en veilige data standaard zijn ingebouwd, niet achteraf aangezet.",
   accent: "yellow",
   problems: [
     { title: "Regelgeving verandert continu", body: "NIS2, EU AI Act, AVG en BIO stellen steeds nieuwe eisen die je aantoonbaar moet beheersen." },
@@ -25,16 +25,16 @@ const content: SectorContent = {
     { title: "Documentstromen op handkracht", body: "Dossiers en goedkeuringen kosten tijd en zijn moeilijk traceerbaar bij controle." },
   ],
   approach: [
-    { title: "Governance standaard ingebouwd", body: "Elke actie — van mens of AI-agent — is auditeerbaar en afdwingbaar. Klaar voor NIS2, EU AI Act, AVG en BIO." },
-    { title: "Audit trails op alles", body: "Wie deed wat, wanneer en waarom — volledig traceerbaar en exporteerbaar voor audits." },
-    { title: "BIO-compliant cloud", body: "Publieke, private, on-prem of volledig afgeschermde (air-gapped) omgeving — naar keuze." },
+    { title: "Governance standaard ingebouwd", body: "Elke actie (van mens of AI-agent) is auditeerbaar en afdwingbaar. Klaar voor NIS2, EU AI Act, AVG en BIO." },
+    { title: "Audit trails op alles", body: "Wie deed wat, wanneer en waarom: volledig traceerbaar en exporteerbaar voor audits." },
+    { title: "BIO-compliant cloud", body: "Publieke, private, on-prem of volledig afgeschermde (air-gapped) omgeving, naar keuze." },
     { title: "Documentstromen digitaal", body: "Dossiers, goedkeuringen en archivering geautomatiseerd, met behoud van controle." },
   ],
   systems: ["ISO 27001", "BIO", "NIS2", "Audit trails", "REST / OData"],
   examples: [
     "Zaak-/dossierbeheer en documentstromen met volledig audit-spoor.",
     "AI-model op regelgeving of jurisprudentie (zoals bij de Rechtspraak, anoniem).",
-    "Veilige portalen — BIO/ISO 27001-proof, on-prem of air-gapped waar nodig.",
+    "Veilige portalen: BIO/ISO 27001-proof, on-prem of air-gapped waar nodig.",
     "Geautomatiseerde compliance-checks en rapportages.",
   ],
   relatedServices: [

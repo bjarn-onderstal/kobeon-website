@@ -4,7 +4,7 @@ import Section from "@/components/Section";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { site } from "@/lib/siteConfig";
 
-const title = "Contact — Kobeon, Mendix & AI implementatiepartner";
+const title = "Contact · Kobeon, Mendix & AI implementatiepartner";
 const description =
   "Neem contact op met Kobeon. Bel, mail of plan direct een gratis Discovery-sessie van 60 minuten. Wij zijn gevestigd in Zwolle en werken door heel Nederland.";
 
@@ -28,7 +28,7 @@ const breadcrumbs = [
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "Contact — Kobeon",
+  name: "Contact · Kobeon",
   url: `${site.url}/contact`,
   mainEntity: {
     "@type": "Organization",
@@ -204,7 +204,7 @@ export default function ContactPage() {
             Plan een gratis Discovery-sessie.
           </h2>
           <p className="mt-4 max-w-xl text-white/75">
-            60 minuten. Geen verkooppraatje — na afloop weet je precies wat er mogelijk is en wat het oplevert.
+            60 minuten. Geen verkooppraatje, na afloop weet je precies wat er mogelijk is en wat het oplevert.
           </p>
           <Link href="/discovery-sessie" className="btn-primary mt-8 inline-flex">
             Plan een Discovery-sessie

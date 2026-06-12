@@ -4,7 +4,7 @@ import Section from "@/components/Section";
 
 const items = [
   { quote: "Binnen zes weken stond er een werkende app waar ons hele team mee verder kon. Geen eindeloos traject, gewoon resultaat.", name: "K. de Boer", role: "IT Director", company: "Enterprise Logistics" },
-  { quote: "Onze systemen praten eindelijk met elkaar. Wat eerst handwerk was, loopt nu vanzelf — met volledig inzicht.", name: "K. de Boer", role: "IT Director", company: "Enterprise Logistics" },
+  { quote: "Onze systemen praten eindelijk met elkaar. Wat eerst handwerk was, loopt nu vanzelf, met volledig inzicht.", name: "K. de Boer", role: "IT Director", company: "Enterprise Logistics" },
   { quote: "Kobeon bouwt enterprise-software op Mendix, het platform dat al negen jaar Gartner-Leider is. Ze snappen onze processen en bouwen er de juiste software op.", name: "K. de Boer", role: "IT Director", company: "Enterprise Logistics" },
 ];
 
@@ -29,7 +29,7 @@ export default function Testimonials() {
         onMouseLeave={() => setPaused(false)}
       >
         <p className="text-sm font-semibold uppercase tracking-wide text-purple">Wat klanten zeggen</p>
-        <h2 className="h-display mt-3 text-3xl md:text-5xl">Niet zeggen — laten zien.</h2>
+        <h2 className="h-display mt-3 text-3xl md:text-5xl">Niet zeggen, laten zien.</h2>
 
         <div className="relative mt-10 rounded-2xl border border-line bg-canvas p-8 md:p-12">
           <span className="pointer-events-none absolute left-6 top-2 font-serif text-7xl text-purple/15">“</span>

@@ -19,7 +19,7 @@ export default function Introductie() {
             Je bent gegroeid. <span className="gradient-text">Je systemen niet.</span>
           </h2>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-            Je draait op losse pakketten, Excel en e-mail. Standaardsoftware past niet op je processen; maatwerk in high-code is te traag en te duur. Wij bouwen software die wél past — op Mendix. De zekerheid van enterprise, de snelheid van low-code, en een team van Mendix-experts dat het binnen zes weken werkend krijgt.
+            Je draait op losse pakketten, Excel en e-mail. Standaardsoftware past niet op je processen; maatwerk in high-code is te traag en te duur. Wij bouwen software die wél past, op Mendix. De zekerheid van enterprise, de snelheid van low-code, en een team van Mendix-experts dat het binnen zes weken werkend krijgt.
           </p>
         </div>
 

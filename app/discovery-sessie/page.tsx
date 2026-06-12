@@ -5,7 +5,7 @@ import FaqJsonLd from "@/components/FaqJsonLd";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import HubspotMeetings from "@/components/HubspotMeetings";
 
-const title = "Plan een gratis Discovery-sessie — Kobeon";
+const title = "Plan een gratis Discovery-sessie · Kobeon";
 const description =
   "Plan een gratis Discovery-sessie van 60 minuten. Wij brengen je processen en besparingspotentieel in kaart en schetsen een concreet vervolg. Vrijblijvend.";
 
@@ -20,22 +20,22 @@ const meekrijg = [
   { title: "Procesanalyse", body: "We brengen je grootste knelpunten en kansen scherp in kaart." },
   { title: "Besparingspotentieel", body: "Een concrete inschatting van wat automatisering je oplevert." },
   { title: "Quick wins", body: "De eerste stappen die je direct kunt zetten." },
-  { title: "Vervolgplan", body: "Een helder voorstel voor een MVP in zes weken — vrijblijvend." },
+  { title: "Vervolgplan", body: "Een helder voorstel voor een MVP in zes weken, vrijblijvend." },
 ];
 
 const voorbereiding = [
-  "Je grootste proces- of software-uitdaging — waar loop je nu op vast?",
+  "Je grootste proces- of software-uitdaging: waar loop je nu op vast?",
   "Welke systemen je nu gebruikt (ERP, CRM, Excel, vaksystemen…).",
-  "Wat het je nu kost (tijd of geld) — een ruwe inschatting is genoeg.",
+  "Wat het je nu kost (tijd of geld): een ruwe inschatting is genoeg.",
   "Wat je over 6–12 maanden bereikt wilt hebben.",
   "Wie er vanuit jouw kant bij is (beslisser, proceseigenaar, IT).",
   "Optioneel: een screenshot of voorbeeld van het proces/scherm.",
 ];
 
 const faq = [
-  { q: "Wat kost een Discovery-sessie?", a: "Niets. De sessie van 60 minuten is gratis en volledig vrijblijvend — je zit nergens aan vast." },
+  { q: "Wat kost een Discovery-sessie?", a: "Niets. De sessie van 60 minuten is gratis en volledig vrijblijvend, je zit nergens aan vast." },
   { q: "Hoe lang duurt het en wat heb ik nodig?", a: "Reken op 60 minuten. Neem je grootste proces-uitdaging mee; wij zorgen voor de juiste vragen. Voorbereiden hoeft niet." },
-  { q: "Wat houd ik eraan over?", a: "Een helder beeld van waar software de meeste impact heeft, een inschatting van het besparingspotentieel en een concreet vervolgvoorstel — of simpelweg goede inzichten." },
+  { q: "Wat houd ik eraan over?", a: "Een helder beeld van waar software de meeste impact heeft, een inschatting van het besparingspotentieel en een concreet vervolgvoorstel, of simpelweg goede inzichten." },
 ];
 
 export default function Page() {
@@ -55,7 +55,7 @@ export default function Page() {
             Plan een gratis Discovery-sessie.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
-            Eén gesprek van 60 minuten. Je betaalt niets en weet daarna precies waar je staat — en wat het oplevert.
+            Eén gesprek van 60 minuten. Je betaalt niets en weet daarna precies waar je staat, en wat het oplevert.
           </p>
           <p className="mt-3 text-sm text-white/50">Vrijblijvend · 60 minuten · online, direct in je agenda</p>
         </div>
@@ -103,8 +103,8 @@ export default function Page() {
               Mail je grootste pijnpunten alvast naar{" "}
               <a href="mailto:sjoerd.beljon@kobeon.nl?subject=Discovery-sessie%20%E2%80%94%20mijn%20pijnpunten" className="font-semibold text-purple hover:underline">
                 sjoerd.beljon@kobeon.nl
-              </a>{" "}
-              — dan komen we al voorbereid en halen we meer uit het uur.
+              </a>
+              . Dan komen we al voorbereid en halen we meer uit het uur.
             </div>
           </aside>
         </div>

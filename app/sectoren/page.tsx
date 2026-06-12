@@ -3,7 +3,7 @@ import Section from "@/components/Section";
 import SectorCard from "@/components/SectorCard";
 import { sectors } from "@/lib/siteConfig";
 
-const title = "Sectoren — Mendix & AI per branche";
+const title = "Sectoren · Mendix & AI per branche";
 const description =
   "Sectorspecifieke software op Mendix: sierteelt, staffing, semi-publiek, onderwijs, kinderopvang en maakindustrie. Wij denken in jouw processen en systemen.";
 
@@ -23,7 +23,7 @@ export default function Page() {
           Sectorspecifieke kennis. <span className="gradient-text">Wij denken in jouw processen.</span>
         </h1>
         <p className="mt-4 text-lg text-muted">
-          Elke branche heeft eigen systemen, regels en knelpunten. Wij kennen ze — en bouwen er de juiste software op.
+          Elke branche heeft eigen systemen, regels en knelpunten. Wij kennen ze, en bouwen er de juiste software op.
         </p>
       </div>
 

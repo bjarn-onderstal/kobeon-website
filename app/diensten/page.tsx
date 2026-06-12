@@ -4,9 +4,9 @@ import Section from "@/components/Section";
 import DienstenBentoGrid from "@/components/DienstenBentoGrid";
 import { services } from "@/lib/siteConfig";
 
-const title = "Diensten — negen manieren om te digitaliseren";
+const title = "Diensten: negen manieren om te digitaliseren";
 const description =
-  "Negen diensten op Mendix — van procesautomatisering en agentic AI tot systeemintegratie en portalen. Binnen zes weken een werkende versie die met je meegroeit.";
+  "Negen diensten op Mendix: van procesautomatisering en agentic AI tot systeemintegratie en portalen. Binnen zes weken een werkende versie die met je meegroeit.";
 
 export const metadata: Metadata = {
   title,

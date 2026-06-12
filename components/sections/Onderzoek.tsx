@@ -12,12 +12,12 @@ const insights: Insight[] = [
   { quote: "Gedragen door Siemens.", source: "Mendix" },
   {
     quote: "Vooroplopende bedrijven die AI op schaal inzetten realiseren tot 60% meer omzetgroei en tot 45% hogere kostenbesparingen.",
-    source: "McKinsey — The State of AI",
+    source: "McKinsey, The State of AI",
     toVerify: true,
   },
   {
     quote: "Bedrijven die AI diep integreren realiseren tot 50% snellere omzetgroei dan hun branchegenoten.",
-    source: "Accenture — The Art of AI Maturity (2022)",
+    source: "Accenture, The Art of AI Maturity (2022)",
     toVerify: true,
   },
   {
@@ -36,7 +36,7 @@ export default function Onderzoek() {
           De cijfers achter <span className="gradient-text">de urgentie.</span>
         </h2>
         <p className="mt-4 text-lg text-muted">
-          Volledig onderbouwd door onafhankelijk marktonderzoek — geen loze beloftes.
+          Volledig onderbouwd door onafhankelijk marktonderzoek, geen loze beloftes.
         </p>
       </div>
 

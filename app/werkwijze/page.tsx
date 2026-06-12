@@ -10,9 +10,9 @@ import MockWorkflow from "@/components/MockWorkflow";
 import MockAgent from "@/components/MockAgent";
 import MockIntegration from "@/components/MockIntegration";
 
-const title = "Onze werkwijze — van idee naar MVP in zes weken";
+const title = "Onze werkwijze: van idee naar MVP in zes weken";
 const description =
-  "Zo werkt Kobeon: Discovery, prototype, heldere afspraken, MVP in 4–6 weken en livegang. Vooraf inzichtelijk — heldere scope, vaste planning, geen verrassingen.";
+  "Zo werkt Kobeon: Discovery, prototype, heldere afspraken, MVP in 4–6 weken en livegang. Vooraf inzichtelijk: heldere scope, vaste planning, geen verrassingen.";
 
 export const metadata: Metadata = {
   title,
@@ -38,7 +38,7 @@ const phases: Phase[] = [
     no: "01",
     title: "Discovery",
     duration: "1–2 weken",
-    body: "We brengen je processen, doelen en knelpunten in kaart en berekenen het concrete besparingspotentieel. Je krijgt een helder beeld van waar software de meeste impact heeft — en wat het oplevert.",
+    body: "We brengen je processen, doelen en knelpunten in kaart en berekenen het concrete besparingspotentieel. Je krijgt een helder beeld van waar software de meeste impact heeft, en wat het oplevert.",
     deliverables: ["Procesanalyse", "ROI-inschatting", "Scopevoorstel"],
     metric: { value: "€100K", label: "besparing/jaar in beeld" },
     url: "app.kobeon.nl/discovery",
@@ -59,7 +59,7 @@ const phases: Phase[] = [
     no: "03",
     title: "Heldere afspraken",
     duration: "vooraf",
-    body: "Voordat we bouwen, leggen we scope, planning en investering transparant vast. Geen open einde, geen budgetverrassingen — je weet vooraf precies waar je aan toe bent.",
+    body: "Voordat we bouwen, leggen we scope, planning en investering transparant vast. Geen open einde, geen budgetverrassingen, je weet vooraf precies waar je aan toe bent.",
     deliverables: ["Vaste scope", "Planning", "Investering"],
     metric: { value: "100%", label: "scope vooraf vast" },
     url: "app.kobeon.nl/scope",
@@ -69,7 +69,7 @@ const phases: Phase[] = [
     no: "04",
     title: "MVP bouwen",
     duration: "4–6 weken",
-    body: "We bouwen in korte sprints op Mendix, met jou nauw betrokken. Elke sprint levert iets werkends op — geen black box. Security, integraties en governance zitten vanaf dag één ingebouwd.",
+    body: "We bouwen in korte sprints op Mendix, met jou nauw betrokken. Elke sprint levert iets werkends op, geen black box. Security, integraties en governance zitten vanaf dag één ingebouwd.",
     deliverables: ["Werkende MVP", "Sprintdemo's", "Security & governance"],
     badges: ["Mendix", "Agentic AI", "REST/API"],
     metric: { value: "6 wkn", label: "naar werkende MVP" },
@@ -103,7 +103,7 @@ export default function Page() {
             Van idee naar werkende software. <span className="block text-yellow">Zonder verrassingen.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
-            Elk traject is vooraf inzichtelijk: heldere scope, vaste planning, een werkende MVP in zes weken. Je weet precies wat je krijgt, wanneer, en wat het oplevert — voordat we beginnen.
+            Elk traject is vooraf inzichtelijk: heldere scope, vaste planning, een werkende MVP in zes weken. Je weet precies wat je krijgt, wanneer, en wat het oplevert, voordat we beginnen.
           </p>
 
           {/* fase-tijdlijn */}
@@ -190,7 +190,7 @@ export default function Page() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {[
-            { t: "MVP in 6 weken", b: "Een werkende versie in weken — geen traject van een jaar." },
+            { t: "MVP in 6 weken", b: "Een werkende versie in weken, geen traject van een jaar." },
             { t: "Altijd iets werkends per sprint", b: "Elke sprint levert resultaat op. Geen black box, je ziet het groeien." },
             { t: "Vooraf inzichtelijk", b: "Scope, planning en opbrengst staan vast voordat we beginnen." },
           ].map((c) => (

@@ -47,7 +47,7 @@ export default function Nav() {
       }`}
     >
       <nav className="container-x flex h-16 items-center justify-between">
-        <Link href="/" onClick={close} className="flex items-center gap-2" aria-label="Kobeon — naar home">
+        <Link href="/" onClick={close} className="flex items-center gap-2" aria-label="Kobeon, naar home">
           {/* eslint-disable-next-line @next/next/no-img-element -- merklogo (SVG), twee-staten */}
           <img
             src={darkHero && !frosted ? "/logo-white.svg" : "/logo-gradient.svg"}

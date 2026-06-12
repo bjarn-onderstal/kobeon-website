@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import VacanciesList from "@/components/VacanciesList";
 
-const title = "Vacatures — werken bij Kobeon";
+const title = "Vacatures · werken bij Kobeon";
 const description =
   "Open posities bij Kobeon: Mendix Developer, Consultant, AI/Agentic Engineer, UX Designer, Sales en traineeship. Klein senior team, hybride werken, snelle groei.";
 

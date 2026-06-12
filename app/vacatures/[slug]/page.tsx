@@ -13,7 +13,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const v = vacancies.find((x) => x.slug === params.slug);
   if (!v) return {};
-  const title = `${v.title} — vacature bij Kobeon`;
+  const title = `${v.title} · vacature bij Kobeon`;
   const description = v.teaser;
   return {
     title,
@@ -34,7 +34,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   const profielLabel = isStage ? "Past bij jou" : "Herken jij jezelf?";
   const rolLabel = isStage ? "Wat ga je doen?" : "Werken zoals jij wil";
   const voorwaardenLabel = isStage ? "Wat bieden wij" : "Wat betekent dit voor jou?";
-  const chips = [location, type, hours].filter((x) => x && x !== "—");
+  const chips = [location, type, hours].filter((x) => x);
   const introParas = intro ?? [teaser];
 
   const jobPosting = !open
@@ -136,7 +136,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             <div>
               <h2 className="h-display text-2xl">Over Kobeon</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted">
-                Kobeon is een Mendix Certified Partner met de hoogste expertdichtheid van Nederland: een internationaal team van Mendix MVP's, Experts en Specialisten — met 2 Advanced Trainers en ISO 27001 — dat enterprise-software en AI bouwt op Mendix, het platform dat al negen jaar Gartner-Leider is. We werken zij-aan-zij met onze klanten, van Discovery tot livegang.
+                Kobeon is een Mendix Certified Partner met de hoogste expertdichtheid van Nederland: een internationaal team van Mendix MVP's, Experts en Specialisten (met 2 Advanced Trainers en ISO 27001) dat enterprise-software en AI bouwt op Mendix, het platform dat al negen jaar Gartner-Leider is. We werken zij-aan-zij met onze klanten, van Discovery tot livegang.
               </p>
             </div>
 

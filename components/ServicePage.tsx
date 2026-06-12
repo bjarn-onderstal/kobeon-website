@@ -22,13 +22,13 @@ type Demo = { Demo: ComponentType<{ theme?: "light" | "dark" }>; caption: string
 const SERVICE_DEMOS: Record<string, Demo> = {
   "procesautomatisering": { Demo: MockWorkflow, caption: "Orderverwerking: inkoop en facturen automatisch gecontroleerd en goedgekeurd." },
   "agentic-ai": { Demo: MockAgent, caption: "Matching: de agent doet een voorstel, een mens keurt goed." },
-  "ai-development": { Demo: MockTraining, caption: "Een model getraind op je eigen data — de accuratesse loopt op." },
+  "ai-development": { Demo: MockTraining, caption: "Een model getraind op je eigen data, de accuratesse loopt op." },
   "systeemintegratie": { Demo: MockIntegration, caption: "ERP, CRM en veldsystemen gekoppeld rond één Mendix-kern." },
-  "app-ontwikkeling": { Demo: MockFieldService, caption: "Field-service-app: werkorders en onderdelen op aanvraag — ook offline." },
+  "app-ontwikkeling": { Demo: MockFieldService, caption: "Field-service-app: werkorders en onderdelen op aanvraag, ook offline." },
   "portalen-dashboards": { Demo: MockPlanning, caption: "Planningsdashboard: productie en capaciteit over meerdere lijnen, realtime." },
   "legacy-modernisering": { Demo: MockDashboard, caption: "Van losse Excel-lijstjes naar één modern, schaalbaar dashboard." },
   "design-prototyping": { Demo: MockPortal, caption: "Van klikbaar prototype naar werkende, toegankelijke Mendix-UI." },
-  "it-consultancy": { Demo: MockIntegration, caption: "Architectuur en datastructuur als fundament — systemen rond één kern." },
+  "it-consultancy": { Demo: MockIntegration, caption: "Architectuur en datastructuur als fundament: systemen rond één kern." },
 };
 
 function CheckIcon() {
@@ -142,7 +142,7 @@ export default function ServicePage({ service }: { service: Service }) {
         <Section tone="tealbg">
           <h2 className="h-display mb-3 text-2xl md:text-3xl">Voorbeelden</h2>
           <p className="mb-8 max-w-2xl text-muted">
-            Een greep uit wat we hiermee bouwen — zodat je gelijk een beeld hebt.
+            Een greep uit wat we hiermee bouwen, zodat je gelijk een beeld hebt.
           </p>
           <div className={`grid gap-8 ${demo ? "lg:grid-cols-2 lg:items-center" : ""}`}>
             {demo && (
@@ -182,7 +182,7 @@ export default function ServicePage({ service }: { service: Service }) {
         <Section tone="light">
           <div className="max-w-2xl">
             <h2 className="h-display text-2xl md:text-3xl">Zo ziet het eruit bij een klant</h2>
-            <p className="mt-3 text-muted">Echte productbeelden uit EPSA Connect — staffing &amp; detachering op Mendix.</p>
+            <p className="mt-3 text-muted">Echte productbeelden uit EPSA Connect: staffing &amp; detachering op Mendix.</p>
           </div>
           <div className="mt-8">
             <ScreenShowcase screens={screens} />
