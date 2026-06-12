@@ -29,7 +29,6 @@ const credentials = [
 const clients = [
   "ABN AMRO",
   "Zilveren Kruis",
-  "de Rechtspraak",
   "BKD",
   "Petje af",
   "HomeZero",

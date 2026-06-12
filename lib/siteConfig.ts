@@ -86,7 +86,7 @@ export const integrations = [
 
 // Echte Kobeon-klanten (logo-strip). Toon alleen met toestemming.
 export const clients = [
-  "ABN AMRO", "Zilveren Kruis", "Rechtspraak", "BKD", "Petje af",
+  "ABN AMRO", "Zilveren Kruis", "BKD", "Petje af",
   "HomeZero", "EPSA", "FincValue", "TLFS",
 ];
 
@@ -252,7 +252,7 @@ export const projects: Project[] = [
     relatedServices: ["app-ontwikkeling", "systeemintegratie", "procesautomatisering"],
   },
   {
-    slug: "rechtspraak",
+    slug: "semi-publieke-organisatie",
     name: "Grote semi-publieke organisatie",
     sector: "Semi-Publiek",
     filter: "Semi-Publiek",
@@ -316,7 +316,7 @@ export const coreValues = [
 export const culture = [
   { title: "Werken met experts", body: "Je leert van Mendix MVP's, Experts en 2 Advanced Trainers, en groeit richting certificering." },
   { title: "Samen, niet solo", body: "Je staat er nooit alleen voor; we bouwen, reviewen en vieren samen." },
-  { title: "Echte impact", body: "Je werk gaat live bij klanten als ABN AMRO, Zilveren Kruis en de Rechtspraak, geen la-projecten." },
+  { title: "Echte impact", body: "Je werk gaat live bij klanten als ABN AMRO, Zilveren Kruis en een grote semi-publieke organisatie, geen la-projecten." },
   { title: "Eigenaarschap", body: "Jij pakt features end-to-end op, van Discovery tot livegang; we vertrouwen op jouw scherpte." },
   { title: "Aan de voorkant van AI", body: "Agentic AI, custom modellen en de agentic enterprise, niet als hype maar in echte oplossingen." },
   { title: "Plezier", body: "Vrijdag is kantoor- en demodag, met een borrel na. Plus legendarische trips (ski, summer workation)." },
@@ -687,7 +687,7 @@ export const services: Service[] = [
       "Mens-in-de-loop: goedkeuringsstappen waar dat nodig is.",
       "Governance, logging en security ingebouwd, klaar voor AVG en de EU AI Act.",
     ],
-    relatedProjects: ["rechtspraak"],
+    relatedProjects: ["semi-publieke-organisatie"],
   },
   {
     slug: "ai-development",
@@ -707,7 +707,7 @@ export const services: Service[] = [
       "Keuze uit een toonaangevend, open-source of eigen model, vrij te wisselen.",
       "Draait in je eigen cloud, on-prem of volledig afgeschermd als regelgeving dat eist.",
     ],
-    relatedProjects: ["rechtspraak"],
+    relatedProjects: ["semi-publieke-organisatie"],
   },
   {
     slug: "systeemintegratie",

@@ -33,7 +33,7 @@ const content: SectorContent = {
   systems: ["ISO 27001", "BIO", "NIS2", "Audit trails", "REST / OData"],
   examples: [
     "Zaak-/dossierbeheer en documentstromen met volledig audit-spoor.",
-    "AI-model op regelgeving of jurisprudentie (zoals bij de Rechtspraak, anoniem).",
+    "AI-model op regelgeving of jurisprudentie, volledig anoniem en binnen je eigen omgeving.",
     "Veilige portalen: BIO/ISO 27001-proof, on-prem of air-gapped waar nodig.",
     "Geautomatiseerde compliance-checks en rapportages.",
   ],
@@ -43,7 +43,7 @@ const content: SectorContent = {
     { label: "Procesautomatisering", href: "/diensten/procesautomatisering" },
     { label: "Systeemintegratie", href: "/diensten/systeemintegratie" },
   ],
-  caseSlug: "rechtspraak",
+  caseSlug: "semi-publieke-organisatie",
 };
 
 export default function Page() {

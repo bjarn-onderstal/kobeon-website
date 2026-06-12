@@ -136,13 +136,13 @@
     "anonymized": false,
     "status": "placeholder"
   },
-  "rechtspraak": {
+  "semi-publieke-organisatie": {
     "frame": "browser",
     "urlBar": "",
     "label": "Semi-publieke dienst (anoniem)",
     "metric": "AI-model",
     "metricSub": "op jurisprudentie",
-    "images": ["cases/rechtspraak-1.png"],
+    "images": ["cases/semi-publieke-organisatie-1.png"],
     "animation": "static",
     "cursor": false,
     "anonymized": false,
