@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Section from "@/components/Section";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import HubspotForm from "@/components/HubspotForm";
 import { site } from "@/lib/siteConfig";
 
 const title = "Contact · Kobeon, Mendix & AI implementatiepartner";
@@ -134,64 +135,15 @@ export default function ContactPage() {
           {/* Formulier */}
           <div>
             <h2 className="h-display mb-5 text-2xl">Stuur een bericht</h2>
-            <form
-              action={`mailto:${site.email}`}
-              method="get"
-              encType="text/plain"
-              className="space-y-4"
-            >
-              <div>
-                <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-ink">
-                  Naam
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  placeholder="Jan de Vries"
-                  className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-purple focus:outline-none focus:ring-2 focus:ring-purple/20"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ink">
-                  E-mailadres
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="jan@bedrijf.nl"
-                  className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-purple focus:outline-none focus:ring-2 focus:ring-purple/20"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-ink">
-                  Bericht
-                </label>
-                <textarea
-                  id="message"
-                  name="body"
-                  required
-                  rows={5}
-                  placeholder="Vertel kort wat je wil bereiken of welke vraag je hebt."
-                  className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-muted focus:border-purple focus:outline-none focus:ring-2 focus:ring-purple/20"
-                />
-              </div>
-              <button
-                type="submit"
-                className="btn-primary w-full justify-center"
-              >
-                Verstuur bericht
-              </button>
-              <p className="text-xs text-muted">
-                Dit opent je e-mailclient. Liever bellen?{" "}
-                <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="text-purple hover:underline">
-                  {site.phone}
-                </a>
-              </p>
-            </form>
+            <div className="rounded-2xl border border-line bg-white p-6 shadow-soft sm:p-7">
+              <HubspotForm />
+            </div>
+            <p className="mt-3 text-xs text-muted">
+              We reageren binnen één werkdag. Liever bellen?{" "}
+              <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="text-purple hover:underline">
+                {site.phone}
+              </a>
+            </p>
           </div>
         </div>
       </Section>
