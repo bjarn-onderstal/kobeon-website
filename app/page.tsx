@@ -15,6 +15,10 @@ import Testimonials from "@/components/sections/Testimonials";
 import QuickscanTeaser from "@/components/sections/QuickscanTeaser";
 import Faq from "@/components/sections/Faq";
 import FinalCta from "@/components/sections/FinalCta";
+import type { Metadata } from "next";
+
+// Self-referencing canonical (relatief → absolute www-URL via metadataBase in layout).
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 export default function Home() {
   return (
