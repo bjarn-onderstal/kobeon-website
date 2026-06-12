@@ -140,6 +140,9 @@ export type Project = {
   quote?: string;
   quoteAuthor?: string;
   relatedServices: string[]; // service-slugs
+  // Echte productbeelden (V10). Aanwezig → tonen in DeviceFrame i.p.v. MiniMock.
+  video?: { mp4: string; webm?: string; poster: string };
+  images?: string[];
 };
 
 export const projects: Project[] = [
@@ -150,17 +153,22 @@ export const projects: Project[] = [
     filter: "Energie",
     metric: "6 weken",
     accent: "purple",
-    transformation: "Van papieren projectadministratie naar één digitaal systeem.",
+    transformation: "Van papieren projectadministratie en losse Excel naar één digitaal platform voor verduurzaming.",
     kind: "dashboard",
-    challenge: "HomeZero begeleidde woningeigenaren naar een duurzamere woning, maar werkte volledig op papier en losse bestanden. Projectstatussen waren nergens centraal zichtbaar, communicatie liep via e-mail en het team verloor veel tijd aan administratie in plaats van klantbegeleiding.",
+    challenge: "HomeZero begeleidt huiseigenaren bij het verduurzamen van hun woning, maar werkte op papier en in losse Excel-bestanden. Woninggegevens, berekeningen en afspraken stonden verspreid, statussen waren nergens centraal zichtbaar en het team verloor tijd aan administratie in plaats van klantbegeleiding.",
     approach: [
-      "Volledige procesanalyse: van eerste klantcontact tot oplevering in kaart gebracht.",
-      "Centraal projectdashboard op Mendix: realtime statusoverzicht per woning en per fase.",
-      "Automatische notificaties en taakopvolging — geen handmatige e-mailrondjes meer.",
+      "Eén platform op Mendix dat woninggegevens, energieberekeningen, installateurs en afspraken samenbrengt.",
+      "Realtime statussen per woning en per fase — overzicht over het hele traject.",
+      "Het toewijzen van installateurs en het plannen van afspraken vanuit één systeem.",
       "Koppelingen met bestaande systemen voor planning en facturering.",
     ],
-    result: "Binnen zes weken een werkende eerste versie live. Het team werkt nu vanuit één systeem en heeft realtime zicht op alle lopende projecten.",
-    relatedServices: ["procesautomatisering", "app-ontwikkeling", "systeemintegratie"],
+    result: "Binnen zes weken een werkende eerste versie live. Eén systeem in plaats van losse tools: sneller plannen, minder fouten en overzicht over het hele verduurzamingstraject.",
+    relatedServices: ["procesautomatisering", "portalen-dashboards", "app-ontwikkeling", "systeemintegratie"],
+    video: {
+      mp4: "/visuals/case-homezero.mp4",
+      webm: "/visuals/case-homezero.webm",
+      poster: "/visuals/case-homezero-poster.jpg",
+    },
   },
   {
     slug: "petje-af",
@@ -184,21 +192,21 @@ export const projects: Project[] = [
   {
     slug: "epsa",
     name: "EPSA",
-    sector: "Professional Services",
+    sector: "Staffing & Detachering",
     filter: "Overige",
     metric: "40+ u/week terug",
     accent: "yellow",
-    transformation: "Van eindeloze administratie naar een geautomatiseerde flow.",
-    kind: "workflow",
-    challenge: "EPSA leverde consultancydiensten maar verloor wekelijks meer dan 40 uur aan handmatige administratie: tijdregistratie, goedkeuringsflows en rapportages die handmatig werden samengesteld.",
+    transformation: "Van losse urenregistratie en handmatige onboarding naar één portaal voor opdrachten, uren en verificatie.",
+    kind: "portal",
+    challenge: "EPSA werkt met zelfstandige professionals in consultancy en detachering, maar onboarding, opdrachten, urenregistratie en verificatie liepen via mail en losse tools. Dat kostte tijd, gaf fouten en schaalde niet mee met de groei.",
     approach: [
-      "Automatische tijdregistratie en goedkeuringsworkflow op Mendix.",
-      "Koppelingen met Microsoft Dynamics voor facturering en rapportages.",
-      "Rolgebaseerde dashboards per manager, consultant en klant.",
-      "Volledige audit-trail voor compliance.",
+      "Eén portaal én mobiele app op Mendix voor opdrachten, uren en onboarding.",
+      "Onboarding & verificatie: identiteit, IBAN en KvK-/BTW-controle in de flow.",
+      "Opdrachtenbeheer (consultancy/detachering, interim/fixed), urenregistratie en matching.",
+      "Koppelingen met AFAS/Nmbrs voor facturatie en payroll, met support in de app.",
     ],
-    result: "Meer dan 40 uur per week terug voor het team. Rapportages die eerder een dag kostten, worden nu automatisch gegenereerd.",
-    relatedServices: ["procesautomatisering", "systeemintegratie", "portalen-dashboards"],
+    result: "Meer dan 40 uur per week terug. Professionals regelen hun opdrachten, uren en onboarding zelf — minder mailen, minder fouten en schaalbaar mee met de groei.",
+    relatedServices: ["portalen-dashboards", "app-ontwikkeling", "procesautomatisering", "systeemintegratie"],
   },
   {
     slug: "golfclub",

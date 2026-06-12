@@ -384,3 +384,29 @@ Wij adviseren onafhankelijk en resultaatgericht: datastructuur en ontologie, arc
 - **Heldere keuzes** — onderbouwd advies, geen ruis.
 - **Toekomstvaste architectuur** — een fundament dat meegroeit.
 - **Roadmap die werkt** — concrete stappen, geen plank-rapport.
+
+---
+
+## Cases — echte beelden & herziene teksten (HomeZero, EPSA)
+Echte (geanonimiseerde) productbeelden vervangen de gecodeerde mini-mocks op de case- en relevante dienst-/sectorpagina's. Fallback blijft de MiniMock als een asset ontbreekt. Toon alleen met toestemming van de klant.
+
+### HomeZero — Energie (video beschikbaar ✅)
+**Assets (al geleverd, gecomprimeerd in `/public/visuals/`):** `case-homezero.mp4` (587 KB) · `case-homezero.webm` · `case-homezero-poster.jpg`.
+**Gebruik:** toon als loopende video in een `DeviceFrame` (browser, light) op de HomeZero-casepagina (hero) — `autoplay muted loop playsinline`, met de poster als fallback en lazy-load. Sterk genoeg om óók als `hero-primary` op de homepage en/of in de "Wat we bouwen"-feature-tegel Procesautomatisering/Portalen te gebruiken.
+**Herziene case-tekst (rijker, o.b.v. het echte platform):**
+- Sector: Energie · Metric: **6 weken** (naar livegang).
+- Transformatie: "Van papieren projectadministratie en losse Excel naar één digitaal platform voor verduurzaming."
+- Body: HomeZero begeleidt huiseigenaren bij verduurzaming. Wij bouwden het platform dat **woninggegevens, energieberekeningen, het toewijzen van installateurs en het plannen van afspraken** samenbrengt — met realtime statussen en koppelingen. Eén systeem in plaats van losse tools: sneller plannen, minder fouten en overzicht over het hele traject.
+- Relevante diensten: Procesautomatisering, Portalen & dashboards, App ontwikkeling, Systeemintegratie.
+
+### EPSA — Professional Services / Staffing & Detachering (screenshots aanleveren)
+**Assets (toe te voegen door Kobeon):** `/public/screens/epsa-onboarding.png` (laptop-dashboard: onboarding & verificatie) · `/public/screens/epsa-opdrachten-mobiel.png` (telefoon-app: Opdrachten). Evt. een 2e laptop-shot.
+**Gebruik:** toon in `DeviceFrame` (browser + phone) op de EPSA-casepagina, en als `ScreenShowcase` op de Staffing & Detachering-sectorpagina + de tegels App ontwikkeling / Portalen & dashboards.
+**Nieuw inzicht (herziene case):** EPSA is breder dan "administratie" — het is een **portaal + mobiele app voor staffing/detachering**: onboarding & verificatie (identiteit, IBAN, KvK/BTW), opdrachtenbeheer (Consultancy/Detachering, interim/fixed), urenregistratie, matching en support.
+- Sector: Professional Services / **Staffing & Detachering** · Metric: **40+ u/week terug**.
+- Transformatie: "Van losse urenregistratie en handmatige onboarding naar één portaal voor opdrachten, uren en verificatie."
+- Body: Voor EPSA bouwden we een platform én mobiele app waarin zelfstandige professionals hun opdrachten, uren en onboarding (identiteit, IBAN, KvK-/BTW-verificatie) zelf regelen — met matching en support. Minder mailen, minder fouten, en schaalbaar mee met de groei.
+- Relevante diensten: Portalen & dashboards, App ontwikkeling, Procesautomatisering, Systeemintegratie (AFAS/Nmbrs). Link óók vanuit de sector **Staffing & Detachering** (EPSA als case).
+
+### Data/wiring
+Voeg aan de `projects`-records optionele media-velden toe: `video` (mp4/webm + poster) en/of `images[]`. `ProjectCard`/`ProjectPage` tonen de echte media in een `DeviceFrame` wanneer aanwezig, anders de bestaande `MiniMock` (fallback). Werk `screens.config.json` bij voor hero-/tegelgebruik (homezero = video, epsa = screenshots) met `status: "live"` + `anonymized: true`.

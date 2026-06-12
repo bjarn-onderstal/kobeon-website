@@ -81,11 +81,11 @@
     "label": "HomeZero",
     "metric": "6 weken",
     "metricSub": "naar livegang",
-    "images": ["cases/homezero-1.png"],
-    "animation": "kenburns",
+    "video": { "mp4": "/visuals/case-homezero.mp4", "webm": "/visuals/case-homezero.webm", "poster": "/visuals/case-homezero-poster.jpg" },
+    "animation": "video",
     "cursor": false,
-    "anonymized": false,
-    "status": "placeholder"
+    "anonymized": true,
+    "status": "live"
   },
   "petjeaf": {
     "frame": "browser",
@@ -102,13 +102,13 @@
   "epsa": {
     "frame": "browser",
     "urlBar": "",
-    "label": "EPSA",
+    "label": "EPSA — Staffing & Detachering",
     "metric": "40+ u/week",
     "metricSub": "administratie terug",
-    "images": ["cases/epsa-1.png"],
-    "animation": "kenburns",
+    "images": ["/screens/epsa-onboarding.png", "/screens/epsa-opdrachten-mobiel.png"],
+    "animation": "tour",
     "cursor": false,
-    "anonymized": false,
+    "anonymized": true,
     "status": "placeholder"
   },
   "golfclub": {

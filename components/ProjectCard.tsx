@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import DeviceFrame from "@/components/DeviceFrame";
-import MiniMock from "@/components/MiniMock";
+import CaseMedia from "@/components/CaseMedia";
 import type { Project } from "@/lib/siteConfig";
 
 const dot: Record<Project["accent"], string> = {
@@ -12,12 +12,12 @@ const dot: Record<Project["accent"], string> = {
 };
 
 export default function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
-  const { slug, name, sector, metric, accent, transformation, kind, soon } = project;
+  const { slug, name, sector, metric, accent, transformation, soon } = project;
   const inner = (
     <>
       <div className={`relative transition-transform duration-300 group-hover:-translate-y-1 ${soon ? "rounded-2xl border-2 border-dashed border-line p-2" : ""}`}>
-        <DeviceFrame theme="light" url={`${slug}.kobeon.nl`}>
-          <MiniMock kind={kind} />
+        <DeviceFrame theme="light" title={name}>
+          <CaseMedia project={project} />
         </DeviceFrame>
         {soon && (
           <span className="absolute right-4 top-4 rounded-full bg-ink/80 px-2.5 py-1 text-[10px] font-semibold text-white">

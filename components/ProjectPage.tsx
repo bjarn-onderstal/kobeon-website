@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Section from "@/components/Section";
 import DeviceFrame from "@/components/DeviceFrame";
-import MiniMock from "@/components/MiniMock";
+import CaseMedia from "@/components/CaseMedia";
 import FinalCta from "@/components/sections/FinalCta";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { services, type Project } from "@/lib/siteConfig";
@@ -67,8 +67,8 @@ export default function ProjectPage({ project }: { project: Project }) {
       {/* Mock-up */}
       <Section tone="canvas">
         <div className="mx-auto max-w-xl">
-          <DeviceFrame theme="light" url={`${project.slug}.kobeon.nl`}>
-            <MiniMock kind={project.kind} />
+          <DeviceFrame theme="light" title={project.name}>
+            <CaseMedia project={project} />
           </DeviceFrame>
         </div>
       </Section>
