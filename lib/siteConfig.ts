@@ -1038,3 +1038,16 @@ export const team: TeamMember[] = [
   { name: "Cas Boswinkel", role: "Mendix Specialist · AI-lead", photo: "/team/cas.jpeg" },
   { name: "Robin Broeks", role: "Mendix Specialist", photo: "/team/robin.jpg" },
 ];
+
+// Echte (geanonimiseerde) productscreenshots voor de ScreenShowcase.
+export type Screen = { src: string; frame: "browser" | "phone"; label?: string; alt: string };
+export const epsaScreens: Screen[] = [
+  { src: "/screens/epsa-onboarding.png", frame: "browser", label: "EPSA Connect — onboarding & verificatie", alt: "EPSA Connect onboarding en verificatie op desktop" },
+  { src: "/screens/epsa-onboarding-mobiel.PNG", frame: "phone", label: "Onboarding (mobiel)", alt: "EPSA Connect onboarding op mobiel" },
+  { src: "/screens/idin-mobiel.PNG", frame: "phone", label: "Verificatie via iDIN", alt: "Identiteitsverificatie via iDIN in EPSA Connect" },
+];
+// Welke dienst-detailpagina's een ScreenShowcase tonen.
+export const serviceScreens: Record<string, Screen[]> = {
+  "app-ontwikkeling": epsaScreens,
+  "portalen-dashboards": epsaScreens,
+};

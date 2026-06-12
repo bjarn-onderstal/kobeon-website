@@ -106,6 +106,7 @@
     "metric": "40+ u/week",
     "metricSub": "administratie terug",
     "video": { "mp4": "/visuals/case-epsa.mp4", "webm": "/visuals/case-epsa.webm", "poster": "/visuals/case-epsa-poster.jpg" },
+    "images": ["/screens/epsa-onboarding.png", "/screens/epsa-onboarding-mobiel.PNG", "/screens/idin-mobiel.PNG"],
     "animation": "video",
     "cursor": false,
     "anonymized": true,

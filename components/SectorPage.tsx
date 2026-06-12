@@ -3,7 +3,8 @@ import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 import FinalCta from "@/components/sections/FinalCta";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
-import { projects } from "@/lib/siteConfig";
+import ScreenShowcase from "@/components/ScreenShowcase";
+import { projects, type Screen } from "@/lib/siteConfig";
 
 export type SectorContent = {
   title: string;
@@ -15,6 +16,7 @@ export type SectorContent = {
   systems: string[];
   examples?: string[];
   relatedServices?: { label: string; href: string }[];
+  screens?: Screen[];
   caseSlug?: string;
 };
 
@@ -30,7 +32,7 @@ const accentBg: Record<SectorContent["accent"], string> = {
 };
 
 export default function SectorPage({ content }: { content: SectorContent }) {
-  const { title, tagline, intro, accent, problems, approach, systems, examples, relatedServices, caseSlug } = content;
+  const { title, tagline, intro, accent, problems, approach, systems, examples, relatedServices, screens, caseSlug } = content;
   const caseProject = projects.find((p) => p.slug === caseSlug);
 
   return (
@@ -124,6 +126,19 @@ export default function SectorPage({ content }: { content: SectorContent }) {
               </div>
             </div>
           )}
+        </Section>
+      )}
+
+      {/* Productbeelden (echte screenshots) */}
+      {screens && screens.length > 0 && (
+        <Section tone="canvas">
+          <div className="max-w-2xl">
+            <p className={`text-sm font-semibold uppercase tracking-wide ${accentText[accent]}`}>In de praktijk</p>
+            <h2 className="h-display mt-3 text-3xl md:text-4xl">Zo ziet het eruit.</h2>
+          </div>
+          <div className="mt-10">
+            <ScreenShowcase screens={screens} />
+          </div>
         </Section>
       )}
 

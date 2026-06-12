@@ -3,7 +3,8 @@ import Section from "@/components/Section";
 import ProjectCard from "@/components/ProjectCard";
 import FinalCta from "@/components/sections/FinalCta";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
-import { projects, sectors, serviceToSectors, serviceBodies, serviceVoorbeelden, type Service } from "@/lib/siteConfig";
+import { projects, sectors, serviceToSectors, serviceBodies, serviceVoorbeelden, serviceScreens, type Service } from "@/lib/siteConfig";
+import ScreenShowcase from "@/components/ScreenShowcase";
 import type { ComponentType } from "react";
 import DeviceFrame from "@/components/DeviceFrame";
 import MockWorkflow from "@/components/MockWorkflow";
@@ -46,6 +47,7 @@ export default function ServicePage({ service }: { service: Service }) {
   const body = serviceBodies[service.slug];
   const voorbeelden = serviceVoorbeelden[service.slug] ?? [];
   const demo = SERVICE_DEMOS[service.slug];
+  const screens = serviceScreens[service.slug] ?? [];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -171,6 +173,19 @@ export default function ServicePage({ service }: { service: Service }) {
             {relatedCases.map((p) => (
               <ProjectCard key={p.slug} project={p} />
             ))}
+          </div>
+        </Section>
+      )}
+
+      {/* Productbeelden bij een klant (echte screenshots) */}
+      {screens.length > 0 && (
+        <Section tone="light">
+          <div className="max-w-2xl">
+            <h2 className="h-display text-2xl md:text-3xl">Zo ziet het eruit bij een klant</h2>
+            <p className="mt-3 text-muted">Echte productbeelden uit EPSA Connect — staffing &amp; detachering op Mendix.</p>
+          </div>
+          <div className="mt-8">
+            <ScreenShowcase screens={screens} />
           </div>
         </Section>
       )}

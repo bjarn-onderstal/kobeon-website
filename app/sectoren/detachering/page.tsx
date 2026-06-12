@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SectorPage, { type SectorContent } from "@/components/SectorPage";
+import { epsaScreens } from "@/lib/siteConfig";
 
 const title = "Staffing & Detachering — Mendix & AI-matching";
 const description =
@@ -43,6 +44,7 @@ const content: SectorContent = {
     { label: "Portalen & dashboards", href: "/diensten/portalen-dashboards" },
     { label: "Procesautomatisering", href: "/diensten/procesautomatisering" },
   ],
+  screens: epsaScreens,
   caseSlug: "epsa",
 };
 
