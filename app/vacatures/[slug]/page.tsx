@@ -28,15 +28,21 @@ const MAIL = "werkenbij@kobeon.nl";
 export default function Page({ params }: { params: { slug: string } }) {
   const vacancy = vacancies.find((v) => v.slug === params.slug);
   if (!vacancy) notFound();
-  const { title, type, location, teaser, doen, meebrengt, open } = vacancy;
+  const { title, type, location, hours, teaser, intro, profiel, rol, voorwaarden, kind, open } = vacancy;
   const mailto = `mailto:${MAIL}?subject=${encodeURIComponent(`Sollicitatie: ${title}`)}`;
+  const isStage = kind === "stage";
+  const profielLabel = isStage ? "Past bij jou" : "Herken jij jezelf?";
+  const rolLabel = isStage ? "Wat ga je doen?" : "Werken zoals jij wil";
+  const voorwaardenLabel = isStage ? "Wat bieden wij" : "Wat betekent dit voor jou?";
+  const chips = [location, type, hours].filter((x) => x && x !== "—");
+  const introParas = intro ?? [teaser];
 
   const jobPosting = !open
     ? {
         "@context": "https://schema.org",
         "@type": "JobPosting",
         title,
-        description: [teaser, ...(doen ?? [])].join(" "),
+        description: [teaser, ...(intro ?? []), ...(rol ?? [])].join(" "),
         datePosted: "2026-01-06",
         employmentType: type,
         hiringOrganization: { "@type": "Organization", name: site.name, sameAs: site.url },
@@ -66,12 +72,12 @@ export default function Page({ params }: { params: { slug: string } }) {
           <Link href="/vacatures" className="text-sm text-white/60 hover:text-white">← Alle vacatures</Link>
           <h1 className="h-display mt-4 max-w-3xl text-4xl md:text-5xl">{title}</h1>
           <div className="mt-5 flex flex-wrap gap-2">
-            {[vacancy.category, type, location].filter((x) => x && x !== "—").map((p) => (
+            {chips.map((p) => (
               <span key={p} className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm text-white/80">{p}</span>
             ))}
           </div>
           <div className="mt-7">
-            <a href={mailto} className="btn-primary">Solliciteer direct</a>
+            <a href={mailto} className="btn-primary">{open ? "Verras ons" : "Solliciteer nu"}</a>
           </div>
         </div>
       </section>
@@ -79,13 +85,31 @@ export default function Page({ params }: { params: { slug: string } }) {
       <Section tone="light">
         <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
           <div className="space-y-10">
-            <p className="text-lg text-muted">{teaser}</p>
+            <div className="space-y-4">
+              {introParas.map((p, i) => (
+                <p key={i} className="text-lg leading-relaxed text-muted">{p}</p>
+              ))}
+            </div>
 
-            {doen && (
+            {profiel && (
               <div>
-                <h2 className="h-display text-2xl">Wat je gaat doen</h2>
+                <h2 className="h-display text-2xl">{profielLabel}</h2>
                 <ul className="mt-4 space-y-2">
-                  {doen.map((d) => (
+                  {profiel.map((d) => (
+                    <li key={d} className="flex items-start gap-2 text-ink">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-purple text-[11px] font-bold text-white">+</span>
+                      <span className="text-sm leading-relaxed">{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {rol && (
+              <div>
+                <h2 className="h-display text-2xl">{rolLabel}</h2>
+                <ul className="mt-4 space-y-2">
+                  {rol.map((d) => (
                     <li key={d} className="flex items-start gap-2 text-ink">
                       <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal text-[11px] font-bold text-white">✓</span>
                       <span className="text-sm leading-relaxed">{d}</span>
@@ -95,14 +119,14 @@ export default function Page({ params }: { params: { slug: string } }) {
               </div>
             )}
 
-            {meebrengt && (
+            {voorwaarden && (
               <div>
-                <h2 className="h-display text-2xl">Wat je meebrengt</h2>
+                <h2 className="h-display text-2xl">{voorwaardenLabel}</h2>
                 <ul className="mt-4 space-y-2">
-                  {meebrengt.map((m) => (
-                    <li key={m} className="flex items-start gap-2 text-ink">
-                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-purple text-[11px] font-bold text-white">+</span>
-                      <span className="text-sm leading-relaxed">{m}</span>
+                  {voorwaarden.map((d) => (
+                    <li key={d} className="flex items-start gap-2 text-ink">
+                      <span className="mt-[7px] inline-block h-2 w-2 shrink-0 rounded-full bg-yellow" />
+                      <span className="text-sm leading-relaxed">{d}</span>
                     </li>
                   ))}
                 </ul>
@@ -112,9 +136,19 @@ export default function Page({ params }: { params: { slug: string } }) {
             <div>
               <h2 className="h-display text-2xl">Over Kobeon</h2>
               <p className="mt-4 text-sm leading-relaxed text-muted">
-                Kobeon is een Mendix Certified Partner: we bouwen enterprise-software en AI op Mendix — het platform dat al negen jaar Gartner-Leider is. Een klein, senior team met 2 Advanced Mendix Trainers en ISO 27001, dat in zes weken werkende oplossingen oplevert bij klanten in horticultuur, staffing en de publieke sector.
+                Kobeon is een Mendix Certified Partner met de hoogste expertdichtheid van Nederland: een internationaal team van Mendix MVP's, Experts en Specialisten — met 2 Advanced Trainers en ISO 27001 — dat enterprise-software en AI bouwt op Mendix, het platform dat al negen jaar Gartner-Leider is. We werken zij-aan-zij met onze klanten, van Discovery tot livegang.
               </p>
             </div>
+
+            {!open && (
+              <div className="rounded-2xl border border-line bg-canvas p-6">
+                <h2 className="font-serif text-lg text-ink">Niet helemaal jouw vacature?</h2>
+                <p className="mt-2 text-sm text-muted">Overtuigd van Kobeon, maar zit jouw rol er niet bij? We horen graag van je.</p>
+                <Link href="/vacatures/open-sollicitatie" className="group mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-purple">
+                  Stuur een open sollicitatie <span className="transition-transform group-hover:translate-x-1">→</span>
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Wat wij bieden */}

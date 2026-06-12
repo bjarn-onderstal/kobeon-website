@@ -292,28 +292,39 @@ export const sectors: {
   { slug: "maakindustrie", title: "Maakindustrie", accent: "yellow", systems: ["ERP-integratie", "Kwaliteitscontrole", "Productie-planning", "Supply chain"], available: true },
 ];
 
-// Cultuurpijlers voor /werken-bij.
+// Kernwaarden (uit het VTO — titels letterlijk). Gebruikt op /over-kobeon en /werken-bij.
+export const coreValues = [
+  { title: "Wees geen engnek", body: "No-nonsense, recht door zee en zonder kapsones — gewoon doen wat werkt." },
+  { title: "Samen is leuker", body: "We bouwen, reviewen en vieren samen; je staat er nooit alleen voor." },
+  { title: "Feedback is een cadeautje", body: "Eerlijk en direct, omdat we elkaar én het werk beter willen maken." },
+];
+
+// Cultuurpijlers voor /werken-bij (toon: expertise + samen).
 export const culture = [
-  { title: "Echte impact", body: "Je werk gaat live bij klanten in horticultuur, staffing en de publieke sector — geen la-projecten." },
-  { title: "Snelheid", body: "MVP in 6 weken. Je ziet je werk snel in productie." },
-  { title: "Senioriteit & groei", body: "Klein team, korte lijnen, 2 Advanced Mendix Trainers die je naar certificering coachen." },
-  { title: "Aan de voorkant van AI", body: "Agentic AI, custom modellen en orkestratie — niet als hype, maar in echte oplossingen." },
-  { title: "Vrijheid & eigenaarschap", body: "Jij pakt features end-to-end op, van Discovery tot livegang." },
-  { title: "Enterprise zonder bureaucratie", body: "Mendix-fundament en ISO 27001, met de wendbaarheid van een klein bureau." },
+  { title: "Werken met experts", body: "Je leert van Mendix MVP's, Experts en 2 Advanced Trainers, en groeit richting certificering." },
+  { title: "Samen, niet solo", body: "Je staat er nooit alleen voor; we bouwen, reviewen en vieren samen." },
+  { title: "Echte impact", body: "Je werk gaat live bij klanten als ABN AMRO, Zilveren Kruis en de Rechtspraak — geen la-projecten." },
+  { title: "Eigenaarschap", body: "Jij pakt features end-to-end op, van Discovery tot livegang; we vertrouwen op jouw scherpte." },
+  { title: "Aan de voorkant van AI", body: "Agentic AI, custom modellen en de agentic enterprise — niet als hype, maar in echte oplossingen." },
+  { title: "Plezier", body: "Vrijdag is kantoor- en demodag, met een borrel na. Plus legendarische trips (ski, summer workation)." },
 ];
 
-// Wat Kobeon biedt (gedeeld over alle vacatures).
+// Arbeidsvoorwaarden (gedeeld over alle vacatures).
 export const perks = [
-  "Marktconform salaris",
-  "Certificeringsbudget",
-  "Hybride werken",
-  "Klein, senior team",
-  "Snelle doorgroei",
-  "Moderne stack",
+  "Marktconform salaris (range per rol)",
+  "Pensioenregeling",
+  "Flexibele werkuren",
+  "Opleidings- & certificeringsbudget",
+  "Vrijdagborrel & bedrijfsuitjes",
+  "Reiskosten (OV of lease)",
+  "Telefoonplan",
+  "Fijn HQ in Zwolle + hybride werken",
 ];
 
-// Vacatures (generiek gehouden). `open` = open sollicitatie-kaart.
-export const vacancyCategories = ["Alle", "Development", "Consultancy", "AI", "Sales", "Stage/Traineeship"];
+// Vacatures in vast format (intro · profiel · rol · voorwaarden). `kind: "stage"`
+// schakelt de sectie-labels om voor afstudeer-/stageplekken. `open` = open
+// sollicitatie-kaart. Nieuwe rollen voeg je toe door een record bij te zetten.
+export const vacancyCategories = ["Alle", "Development", "Consultancy", "AI", "Sales", "Afstuderen/Stage"];
 
 export const vacancies: {
   slug: string;
@@ -321,117 +332,275 @@ export const vacancies: {
   category: string;
   type: string;
   location: string;
+  hours?: string;
   teaser: string;
-  doen?: string[];
-  meebrengt?: string[];
+  kind?: "stage";
+  intro?: string[];
+  profiel?: string[];
+  rol?: string[];
+  voorwaarden?: string[];
   open?: boolean;
 }[] = [
+  {
+    slug: "mendix-consultant-solution-architect",
+    title: "Medior Mendix Consultant",
+    category: "Consultancy",
+    type: "Hybride",
+    location: "Zwolle",
+    hours: "32–40 uur",
+    teaser: "Bouw samen met klanten en collega's aan oplossingen die logisch voelen, goed werken en lekker draaien.",
+    intro: [
+      "Bij Kobeon houden we van snelheid. Niet gehaast bouwen, maar slim en doordacht — daarom werken we met Mendix.",
+      "Als Medior Mendix Consultant bouw je samen met klanten en collega's aan oplossingen die logisch voelen, goed werken en lekker draaien. Je denkt mee, stelt de juiste vragen en vertaalt ideeën naar iets dat echt waarde toevoegt — met de ruimte om keuzes te maken.",
+    ],
+    profiel: [
+      "Intermediate gecertificeerd, of op weg naar Advanced.",
+      "Ervaring met Mendix-projecten.",
+      "Je bouwt liever iets bruikbaars dan iets perfects op papier.",
+      "Basiskennis HTML/CSS/REST/SOAP/JavaScript of SQL.",
+      "Vloeiend Nederlands én Engels, woonachtig in Nederland.",
+      "Je gelooft dat samenwerken key is.",
+    ],
+    rol: [
+      "Hybride werken: Zwolle, thuis of bij de klant.",
+      "Vrijdag is kantoor- en demodag, met een borrel na.",
+      "Meters maken in plaats van maanden plannen.",
+    ],
+    voorwaarden: [
+      "Salaris € 3.200–4.500 o.b.v. ervaring.",
+      "Pensioen, flexibele uren en opleidings-/certificeringsbudget.",
+      "Reiskosten (OV of lease), telefoonplan en bedrijfsuitjes.",
+      "Een fijn HQ in Zwolle + hybride werken.",
+    ],
+  },
   {
     slug: "medior-senior-mendix-developer",
     title: "Medior/Senior Mendix Developer",
     category: "Development",
-    type: "Fulltime",
-    location: "Hybride",
+    type: "Hybride",
+    location: "Zwolle",
+    hours: "32–40 uur",
     teaser: "Bouw enterprise-applicaties op Mendix voor klanten in horticultuur, staffing en de publieke sector.",
-    doen: [
-      "Enterprise-applicaties bouwen op Mendix, van datamodel tot UX.",
-      "Integraties opzetten met SAP, Dynamics, AFAS en REST/OData-API's.",
-      "Meedenken over architectuur en kwaliteit, end-to-end per feature.",
+    intro: [
+      "Je bouwt enterprise-applicaties op Mendix voor klanten in horticultuur, staffing en de publieke sector — van datamodel tot UX, end-to-end per feature, samen met experts.",
     ],
-    meebrengt: [
-      "Ervaring met Mendix (of sterke low-code/high-code-basis en de wil om te certificeren).",
+    profiel: [
+      "Ervaring met Mendix, of een sterke low-code/high-code-basis en de wil om te certificeren.",
       "Gevoel voor enterprise-kwaliteit: security, schaalbaarheid en governance.",
-      "Zelfstandigheid en zin om dicht op de klant te werken.",
+      "Zelfstandig en dicht op de klant.",
     ],
-  },
-  {
-    slug: "mendix-consultant-solution-architect",
-    title: "Mendix Consultant / Solution Architect",
-    category: "Consultancy",
-    type: "Fulltime",
-    location: "Hybride",
-    teaser: "Vertaal klantprocessen naar werkende oplossingen; voer Discovery-sessies en bewaak de architectuur.",
-    doen: [
-      "Discovery-sessies leiden en processen vertalen naar scope en oplossing.",
-      "De architectuur bewaken over integraties en applicaties heen.",
-      "Schakelen tussen klant en bouwteam als inhoudelijk aanspreekpunt.",
+    rol: [
+      "Bouwen van datamodel tot UX, end-to-end per feature.",
+      "Integraties met SAP, Dynamics, AFAS en REST/OData-API's.",
+      "Meedenken over architectuur en kwaliteit, samen met experts.",
     ],
-    meebrengt: [
-      "Ervaring met Mendix of enterprise-software en oplossingsontwerp.",
-      "Sterk in stakeholdermanagement en het challengen van aannames.",
-      "Helder kunnen communiceren, mondeling en op papier.",
+    voorwaarden: [
+      "Salaris [in te vullen] o.b.v. ervaring.",
+      "Pensioen, flexibele uren en opleidings-/certificeringsbudget.",
+      "Reiskosten (OV of lease), telefoonplan en bedrijfsuitjes.",
+      "Een fijn HQ in Zwolle + hybride werken.",
     ],
   },
   {
     slug: "ai-agentic-engineer",
     title: "AI / Agentic Engineer",
     category: "AI",
-    type: "Fulltime",
-    location: "Hybride",
-    teaser: "Bouw agentic AI-oplossingen en custom modellen, geïntegreerd in Mendix-applicaties.",
-    doen: [
+    type: "Hybride",
+    location: "Zwolle",
+    hours: "32–40 uur",
+    teaser: "Bouw agentic AI-oplossingen en custom modellen, geïntegreerd in Mendix — productieklaar en controleerbaar.",
+    intro: [
+      "Bouw agentic AI-oplossingen en custom modellen, geïntegreerd in Mendix — productieklaar, controleerbaar en met governance. Aan de voorkant van de agentic enterprise.",
+    ],
+    profiel: [
+      "Ervaring met LLM's, agent-frameworks en API-integraties.",
+      "Oog voor productie: geen losse PoC, maar iets dat echt gebruikt wordt.",
+      "Affiniteit met enterprise-context en compliance.",
+    ],
+    rol: [
       "Agentic AI-workflows ontwerpen en bouwen, geïntegreerd in Mendix.",
       "Custom modellen trainen en grondvesten in de data van de klant.",
       "Governance, security en betrouwbaarheid productieklaar maken.",
     ],
-    meebrengt: [
-      "Ervaring met LLM's, agent-frameworks en API-integraties.",
-      "Oog voor productie: geen losse PoC, maar iets dat echt gebruikt wordt.",
-      "Affiniteit met enterprise-context en compliance.",
+    voorwaarden: [
+      "Salaris [in te vullen] o.b.v. ervaring.",
+      "Pensioen, flexibele uren en opleidings-/certificeringsbudget.",
+      "Reiskosten (OV of lease), telefoonplan en bedrijfsuitjes.",
+      "Een fijn HQ in Zwolle + hybride werken.",
     ],
   },
   {
     slug: "ux-designer-prototyper",
     title: "UX Designer / Prototyper",
     category: "Development",
-    type: "Fulltime/Parttime",
-    location: "Hybride",
+    type: "Hybride",
+    location: "Zwolle",
+    hours: "32–40 uur",
     teaser: "Ontwerp en prototype in Figma Make, Lovable en Google Stitch; van idee naar klikbaar in dagen.",
-    doen: [
-      "Van analyse naar klikbaar prototype in dagen, niet weken.",
-      "Werken met Figma Make, Lovable en Google Stitch.",
-      "Ontwerpen vertalen naar bruikbare, toegankelijke Mendix-UI.",
+    intro: [
+      "Je maakt in dagen een klikbaar prototype, zodat we mét gebruikers valideren vóór er gebouwd wordt. Daarna vertaal je het ontwerp naar toegankelijke Mendix-UI.",
     ],
-    meebrengt: [
+    profiel: [
       "Sterk in interactie- en visueel ontwerp voor zakelijke applicaties.",
       "Snel kunnen prototypen en valideren met gebruikers.",
       "Oog voor detail en toegankelijkheid.",
     ],
+    rol: [
+      "Van analyse naar klikbaar prototype in dagen, niet weken.",
+      "Werken met Figma Make, Lovable en Google Stitch.",
+      "Ontwerpen vertalen naar bruikbare, toegankelijke Mendix-UI.",
+    ],
+    voorwaarden: [
+      "Salaris [in te vullen] o.b.v. ervaring.",
+      "Pensioen, flexibele uren en opleidings-/certificeringsbudget.",
+      "Reiskosten (OV of lease), telefoonplan en bedrijfsuitjes.",
+      "Een fijn HQ in Zwolle + hybride werken.",
+    ],
   },
   {
     slug: "business-development-sales",
-    title: "Business Development / Sales",
+    title: "Sales Growth Lead",
     category: "Sales",
-    type: "Fulltime",
-    location: "Hybride",
-    teaser: "Help organisaties de eerste stap zetten; van Discovery-sessie naar partnership.",
-    doen: [
-      "Nieuwe organisaties laten kennismaken met Kobeon en Mendix.",
-      "Discovery-sessies inplannen en opvolgen tot partnership.",
-      "Mee bouwen aan onze propositie en marktbenadering.",
+    type: "Hybride",
+    location: "Zwolle",
+    hours: "Sales",
+    teaser: "Eigenaar van onze groei en hoeder van het Kobeon-proces — van introductie en discovery tot technische validatie.",
+    intro: [
+      "Kobeon is niet het zoveelste IT-bureau — we zijn de Mendix-partner met de hoogste expertdichtheid van Nederland.",
+      "Om onze propositie bij de top-100-accounts te verzilveren, zoeken we een Sales Growth Lead: eigenaar van onze groei en hoeder van het Kobeon-proces, van introductie en discovery tot technische validatie en visie-ontwikkeling.",
     ],
-    meebrengt: [
-      "Ervaring in B2B-sales, het liefst in software of consultancy.",
-      "Inhoudelijke nieuwsgierigheid naar processen en technologie.",
-      "Een consultatieve, geen pusherige verkoopstijl.",
+    profiel: [
+      "Minutieus en nauwkeurig.",
+      "Eigenaarschap en IT-affiniteit.",
+      "Regisseur die sessies leidt en focus bewaakt.",
+      "Ambitie om te groeien in high-end software.",
+    ],
+    rol: [
+      "Bouw en benader de top-100-accounts.",
+      "≥ 4 gekwalificeerde gesprekken per week.",
+      "Vanaf Q2 ≥ 2 technische validaties per maand.",
+      "10 nieuwe partnerships per jaar; CRM als single source of truth.",
+    ],
+    voorwaarden: [
+      "Salaris € 3.500–5.000.",
+      "Leaseauto.",
+      "Transparante bonus op omzet-targets.",
+      "Werken bij de partner met de hoogste Mendix-kennisdichtheid, in een energieke, internationale omgeving.",
     ],
   },
   {
     slug: "traineeship-mendix-developer",
     title: "Traineeship Mendix Developer",
-    category: "Stage/Traineeship",
-    type: "Fulltime",
-    location: "Hybride",
+    category: "Afstuderen/Stage",
+    type: "Hybride",
+    location: "Zwolle",
+    hours: "Fulltime",
     teaser: "Leer Mendix van 2 Advanced Trainers en werk vanaf dag één aan echte projecten. Begeleiding naar certificering.",
-    doen: [
+    intro: [
+      "Start je carrière aan de voorkant van low-code en AI. In ons traineeship leer je Mendix van 2 Advanced Trainers en draai je vanaf dag één mee in echte klantprojecten — met begeleiding naar certificering.",
+    ],
+    profiel: [
+      "Een afgeronde of bijna afgeronde (hbo/wo) opleiding, richting IT.",
+      "Leergierigheid en logisch denkvermogen.",
+      "Zin om snel echt werk te leveren.",
+    ],
+    rol: [
       "Mendix leren van 2 Advanced Trainers, met begeleiding naar certificering.",
       "Vanaf dag één meebouwen aan echte klantprojecten.",
       "Stap voor stap meer eigenaarschap pakken.",
     ],
-    meebrengt: [
-      "Een afgeronde of bijna afgeronde (hbo/wo) opleiding, richting IT.",
-      "Leergierigheid en logisch denkvermogen.",
-      "Zin om snel echt werk te leveren.",
+    voorwaarden: [
+      "Marktconform starterssalaris [in te vullen].",
+      "Begeleiding naar Mendix-certificering.",
+      "Pensioen, flexibele uren, vrijdagborrel en bedrijfsuitjes.",
+      "Een fijn HQ in Zwolle + hybride werken.",
+    ],
+  },
+  {
+    slug: "afstudeeropdracht-it",
+    title: "Afstudeeropdracht IT / Software",
+    category: "Afstuderen/Stage",
+    type: "Afstuderen",
+    location: "Zwolle",
+    hours: "[periode]",
+    kind: "stage",
+    teaser: "Loop mee aan de voorkant van low-code en AI: onderzoek en bouw mee aan een concreet Mendix-vraagstuk.",
+    intro: [
+      "Loop mee aan de voorkant van low-code en AI. Je onderzoekt en bouwt mee aan een concreet vraagstuk op Mendix — bijvoorbeeld een agentic-AI-workflow, een knowledge-graph-contextlaag of een herbruikbare integratiecomponent — begeleid door Mendix MVP's en Experts.",
+    ],
+    rol: [
+      "Een afgebakend onderzoek + werkend prototype op Mendix.",
+      "Meedraaien in echte klantprojecten.",
+      "Je bevindingen vertalen naar een advies/scriptie.",
+    ],
+    profiel: [
+      "Hbo/wo richting Software Engineering, Informatica of AI.",
+      "Nieuwsgierig en zelfstandig.",
+      "Zin om snel echt te bouwen.",
+    ],
+    voorwaarden: [
+      "Begeleiding door experts.",
+      "Een serieuze opdracht — geen koffie halen.",
+      "Stagevergoeding [bedrag] en vrijdagborrel.",
+      "Uitzicht op een baan.",
+    ],
+  },
+  {
+    slug: "afstudeeropdracht-commerciele-economie",
+    title: "Afstudeeropdracht Commerciële Economie",
+    category: "Afstuderen/Stage",
+    type: "Afstuderen",
+    location: "Zwolle",
+    hours: "[periode]",
+    kind: "stage",
+    teaser: "Help onze groei versnellen: onderzoek onze go-to-market en lever een onderbouwd advies + concrete aanpak.",
+    intro: [
+      "Help ons onze groei te versnellen. Je onderzoekt onze go-to-market in de focus-verticals (horticultuur, maakindustrie, semi-publiek) en levert een onderbouwd advies + concrete aanpak — van propositie en doelgroep tot kanalen en opvolging.",
+    ],
+    rol: [
+      "Markt-/doelgroeponderzoek in onze verticals.",
+      "Analyse van onze sales-/marketingfunnel.",
+      "Een concreet groei-/go-to-market-advies.",
+      "Meedraaien met de CEO en het team.",
+    ],
+    profiel: [
+      "Hbo Commerciële Economie of vergelijkbaar.",
+      "Analytisch en ondernemend.",
+      "Affiniteit met B2B/tech.",
+    ],
+    voorwaarden: [
+      "Begeleiding en een opdracht met impact op onze strategie.",
+      "Stagevergoeding [bedrag].",
+      "Uitzicht op een rol (bv. richting Sales/Marketing).",
+    ],
+  },
+  {
+    slug: "marketing-stagiair",
+    title: "Marketing Stagiair(e)",
+    category: "Afstuderen/Stage",
+    type: "Stage",
+    location: "Zwolle",
+    hours: "Hybride",
+    kind: "stage",
+    teaser: "Help ons verhaal scherp en zichtbaar te maken — content, socials en campagnes die je meteen live ziet gaan.",
+    intro: [
+      "Help ons verhaal scherp en zichtbaar te maken. Je werkt mee aan onze content, socials en campagnes — van klantverhalen en LinkedIn tot de website — en ziet je werk meteen live gaan.",
+    ],
+    rol: [
+      "Content maken: klantcases, social posts, nieuwsbrief.",
+      "Meedenken over campagnes en SEO.",
+      "De website en merkstijl mee bewaken.",
+      "Meten wat werkt.",
+    ],
+    profiel: [
+      "Mbo/hbo richting Marketing/Communicatie.",
+      "Vlotte pen in het Nederlands.",
+      "Creatief, zelfstandig en hands-on.",
+    ],
+    voorwaarden: [
+      "Begeleiding en vrijheid om te experimenteren.",
+      "Stagevergoeding [bedrag].",
+      "Een plek in een team dat snel schakelt.",
     ],
   },
   {

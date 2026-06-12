@@ -4,7 +4,7 @@ import Image from "next/image";
 import Section from "@/components/Section";
 import VacanciesList from "@/components/VacanciesList";
 import FinalCta from "@/components/sections/FinalCta";
-import { culture, team } from "@/lib/siteConfig";
+import { culture, team, coreValues } from "@/lib/siteConfig";
 
 const title = "Werken bij Kobeon — bouw mee aan Mendix & AI";
 const description =
@@ -40,10 +40,10 @@ export default function Page() {
         <div className="container-x relative pb-16 pt-32 md:pb-20 md:pt-40">
           <span className="chip border-white/20 bg-white/10 text-white/80">WERKEN BIJ KOBEON</span>
           <h1 className="h-display mt-6 max-w-3xl text-4xl md:text-6xl">
-            Bouw mee aan software die er <span className="text-yellow">echt toe doet.</span>
+            Bouw mee aan software die ertoe doet — <span className="text-yellow">met de scherpste Mendix-experts van Nederland.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-white/75">
-            Geen tickets afwerken in een grote machine. Bij Kobeon zit je dicht op de klant, lever je in weken werkende Mendix-oplossingen op en groei je mee met een klein, senior team.
+            Bij Kobeon werk je in een team van experts dat kennis deelt, dicht op de klant zit en samen het verschil maakt. Geen radertje in een machine; jij hebt impact en eigenaarschap.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link href="#vacatures" className="btn-primary">Bekijk vacatures</Link>
@@ -61,13 +61,29 @@ export default function Page() {
       <Section tone="light">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-wide text-purple">Waarom Kobeon</p>
-          <h2 className="h-display mt-3 text-3xl md:text-4xl">Klein team, grote impact.</h2>
+          <h2 className="h-display mt-3 text-3xl md:text-4xl">Een team van experts.</h2>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {culture.map((c) => (
             <div key={c.title} className="rounded-2xl border border-line bg-white p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-lift">
               <h3 className="font-serif text-xl text-ink">{c.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{c.body}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Kernwaarden */}
+      <Section tone="purplebg">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-wide text-purple">Onze kernwaarden</p>
+          <h2 className="h-display mt-3 text-3xl md:text-4xl">Hoe we met elkaar omgaan.</h2>
+        </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {coreValues.map((v) => (
+            <div key={v.title} className="rounded-2xl border border-line bg-white p-6 shadow-soft">
+              <h3 className="font-serif text-xl text-ink">{v.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{v.body}</p>
             </div>
           ))}
         </div>

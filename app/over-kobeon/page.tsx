@@ -4,7 +4,7 @@ import Image from "next/image";
 import Section from "@/components/Section";
 import VisieAgentic from "@/components/sections/VisieAgentic";
 import FinalCta from "@/components/sections/FinalCta";
-import { team } from "@/lib/siteConfig";
+import { team, coreValues } from "@/lib/siteConfig";
 
 const title = "Over Kobeon — enterprise-software op Mendix";
 const description =
@@ -54,18 +54,22 @@ export default function Page() {
           Over Kobeon
         </p>
         <h1 className="h-display max-w-3xl text-4xl md:text-5xl">
-          Enterprise-software op Mendix, gebouwd door een klein, senior team.
+          De Mendix-partner met de hoogste expertdichtheid van Nederland.
         </h1>
-        <p className="mt-6 max-w-2xl text-lg text-muted">
-          Kobeon is een Nederlandse Mendix + AI implementatiepartner uit Zwolle. We bouwen
-          enterprise-software die past op hoe jij werkt — snel, veilig en schaalbaar. Geen
-          IT-black box en geen trajecten van jaren, maar duidelijke keuzes, korte lijnen en een
-          werkende versie binnen zes weken.
+        <p className="mt-6 max-w-2xl text-lg text-ink">
+          Samen bouwen we enterprise-software die werkt zoals jij denkt — snel, veilig en schaalbaar.
         </p>
-        <p className="mt-4 max-w-2xl text-lg text-muted">
-          We denken mee als partner, niet als leverancier. Onze kracht is de combinatie van
-          enterprise-vakwerk en snelheid: de zekerheid van Mendix — negen jaar op rij
-          Gartner-Leider, gedragen door Siemens — met de wendbaarheid van een klein, scherp team.
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
+          Kobeon is een Nederlandse Mendix- en AI-implementatiepartner uit Zwolle. Ons internationaal
+          opererende team bestaat uit Mendix MVP&apos;s, Experts en Specialisten die complexe uitdagingen
+          omzetten in schaalbare oplossingen. Die diepe expertise — op het platform dat al negen jaar
+          Gartner-Leider is — is waar we het verschil maken.
+        </p>
+        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted">
+          Maar techniek alleen is niet genoeg. We werken zij-aan-zij met je, vanuit vertrouwen: we denken
+          mee, schakelen snel, communiceren helder en nemen je mee in elke stap. Geen leverancier op
+          afstand, maar een partner die naast je staat — van de eerste Discovery tot doorontwikkeling.
+          Wat de situatie ook is, we helpen je verder.
         </p>
       </Section>
 
@@ -101,6 +105,22 @@ export default function Page() {
             >
               {c}
             </span>
+          ))}
+        </div>
+      </Section>
+
+      {/* Kernwaarden */}
+      <Section tone="purplebg">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-wide text-purple">Onze kernwaarden</p>
+          <h2 className="h-display mt-3 text-2xl md:text-3xl">Waar we voor staan.</h2>
+        </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {coreValues.map((v) => (
+            <div key={v.title} className="rounded-2xl border border-line bg-white p-6 shadow-soft">
+              <h3 className="font-serif text-xl text-ink">{v.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{v.body}</p>
+            </div>
           ))}
         </div>
       </Section>

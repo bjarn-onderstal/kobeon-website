@@ -3,6 +3,7 @@ import Section from "@/components/Section";
 import Accordion from "@/components/Accordion";
 import FaqJsonLd from "@/components/FaqJsonLd";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import HubspotMeetings from "@/components/HubspotMeetings";
 
 const title = "Plan een gratis Discovery-sessie — Kobeon";
 const description =
@@ -20,6 +21,15 @@ const meekrijg = [
   { title: "Besparingspotentieel", body: "Een concrete inschatting van wat automatisering je oplevert." },
   { title: "Quick wins", body: "De eerste stappen die je direct kunt zetten." },
   { title: "Vervolgplan", body: "Een helder voorstel voor een MVP in zes weken — vrijblijvend." },
+];
+
+const voorbereiding = [
+  "Je grootste proces- of software-uitdaging — waar loop je nu op vast?",
+  "Welke systemen je nu gebruikt (ERP, CRM, Excel, vaksystemen…).",
+  "Wat het je nu kost (tijd of geld) — een ruwe inschatting is genoeg.",
+  "Wat je over 6–12 maanden bereikt wilt hebben.",
+  "Wie er vanuit jouw kant bij is (beslisser, proceseigenaar, IT).",
+  "Optioneel: een screenshot of voorbeeld van het proces/scherm.",
 ];
 
 const faq = [
@@ -47,7 +57,7 @@ export default function Page() {
           <p className="mt-6 max-w-2xl text-lg text-white/75">
             Eén gesprek van 60 minuten. Je betaalt niets en weet daarna precies waar je staat — en wat het oplevert.
           </p>
-          <p className="mt-3 text-sm text-white/50">Vrijblijvend · 60 minuten · via Calendly</p>
+          <p className="mt-3 text-sm text-white/50">Vrijblijvend · 60 minuten · online, direct in je agenda</p>
         </div>
       </section>
 
@@ -67,23 +77,36 @@ export default function Page() {
         </div>
       </Section>
 
-      {/* Calendly-embed placeholder */}
+      {/* Plannen via HubSpot + voorbereiding */}
       <Section tone="canvas" id="plannen">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-purple">Kies een moment</p>
-          <h2 className="h-display mt-3 text-3xl md:text-4xl">Plan direct in onze agenda.</h2>
-        </div>
-        <div className="mt-8 overflow-hidden rounded-2xl border border-line bg-purple-deep" style={{ minHeight: 600 }}>
-          <div className="flex h-[600px] flex-col items-center justify-center px-6 text-center text-white">
-            <span className="text-4xl">📅</span>
-            <p className="mt-4 font-serif text-2xl">Calendly-agenda</p>
-            <p className="mt-2 max-w-md text-white/70">
-              Hier verschijnt de Calendly-planner. Tot die live staat, mail je ons gerust direct.
-            </p>
-            <a href="mailto:info@kobeon.nl?subject=Discovery-sessie%20plannen" className="btn-primary mt-6">
-              Plan via e-mail
-            </a>
+        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:items-start">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wide text-purple">Kies een moment</p>
+            <h2 className="h-display mt-3 text-3xl md:text-4xl">Plan direct in onze agenda.</h2>
+            <div className="mt-6 overflow-hidden rounded-2xl border border-line bg-white p-2 shadow-soft">
+              <HubspotMeetings />
+            </div>
+            <p className="mt-3 text-sm text-muted">Liever mailen? Stuur ons gerust een bericht via de pijnpunten-mail hiernaast.</p>
           </div>
+
+          <aside className="rounded-2xl border border-line bg-white p-7 shadow-soft">
+            <h3 className="font-serif text-xl text-ink">Wat bereid je voor?</h3>
+            <ul className="mt-4 space-y-2.5">
+              {voorbereiding.map((v) => (
+                <li key={v} className="flex items-start gap-2 text-sm text-ink">
+                  <span className="mt-[7px] inline-block h-2 w-2 shrink-0 rounded-full bg-teal" />
+                  <span className="leading-relaxed">{v}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 rounded-xl bg-purplebg p-4 text-sm leading-relaxed text-ink">
+              Mail je grootste pijnpunten alvast naar{" "}
+              <a href="mailto:sjoerd.beljon@kobeon.nl?subject=Discovery-sessie%20%E2%80%94%20mijn%20pijnpunten" className="font-semibold text-purple hover:underline">
+                sjoerd.beljon@kobeon.nl
+              </a>{" "}
+              — dan komen we al voorbereid en halen we meer uit het uur.
+            </div>
+          </aside>
         </div>
       </Section>
 

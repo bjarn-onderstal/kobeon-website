@@ -14,7 +14,7 @@ export default function FinalCta() {
         <div className="mt-8 flex justify-center">
           <Link href="/discovery-sessie" className="btn-primary text-base">Plan een Discovery-sessie</Link>
         </div>
-        <p className="mt-4 text-sm text-white/60">Vrijblijvend · 60 minuten · via Calendly</p>
+        <p className="mt-4 text-sm text-white/60">Vrijblijvend · 60 minuten · online, direct in je agenda</p>
       </div>
     </Section>
   );
