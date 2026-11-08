@@ -8,14 +8,7 @@ export default function JsonLd() {
     url: site.url,
     email: site.email,
     telephone: site.phone,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Noordzeelaan 50",
-      postalCode: "8017 JW",
-      addressLocality: "Zwolle",
-      addressRegion: "Overijssel",
-      addressCountry: "NL",
-    },
+    address: site.postalAddress,
     description: site.description,
   };
   return (
