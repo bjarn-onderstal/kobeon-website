@@ -37,14 +37,7 @@ const jsonLd = {
     url: site.url,
     email: site.email,
     telephone: site.phone,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Noordzeelaan 50",
-      addressLocality: "Zwolle",
-      addressRegion: "Overijssel",
-      postalCode: "8017 JW",
-      addressCountry: "NL",
-    },
+    address: site.postalAddress,
   },
 };
 

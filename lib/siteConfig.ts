@@ -6,6 +6,15 @@
   email: "info@kobeon.nl",
   phone: "+31 (0)85 200 7076",
   address: "Noordzeelaan 50, 8017 JW Zwolle",
+  // Gestructureerd adres voor JSON-LD (Organization, ContactPage, JobPosting).
+  postalAddress: {
+    "@type": "PostalAddress",
+    streetAddress: "Noordzeelaan 50",
+    postalCode: "8017 JW",
+    addressLocality: "Zwolle",
+    addressRegion: "Overijssel",
+    addressCountry: "NL",
+  },
 };
 
 // Navigatie. Items met `columns` zijn dropdowns/megamenu's; items met `href`
