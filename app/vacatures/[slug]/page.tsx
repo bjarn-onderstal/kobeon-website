@@ -48,7 +48,14 @@ export default function Page({ params }: { params: { slug: string } }) {
         hiringOrganization: { "@type": "Organization", name: site.name, sameAs: site.url },
         jobLocation: {
           "@type": "Place",
-          address: { "@type": "PostalAddress", addressLocality: "Zwolle", addressCountry: "NL" },
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Noordzeelaan 50",
+            addressLocality: "Zwolle",
+            addressRegion: "Overijssel",
+            postalCode: "8017 JW",
+            addressCountry: "NL",
+          },
         },
         applicantLocationRequirements: { "@type": "Country", name: "Nederland" },
         directApply: false,

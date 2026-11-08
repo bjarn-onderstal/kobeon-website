@@ -13,6 +13,7 @@ export default function JsonLd() {
       streetAddress: "Noordzeelaan 50",
       postalCode: "8017 JW",
       addressLocality: "Zwolle",
+      addressRegion: "Overijssel",
       addressCountry: "NL",
     },
     description: site.description,
